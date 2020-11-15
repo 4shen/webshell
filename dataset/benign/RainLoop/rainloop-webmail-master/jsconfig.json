@@ -1,0 +1,29 @@
+{
+	"compilerOptions": {
+		"target": "es2015",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"experimentalDecorators": true,
+		"baseUrl": "./dev",
+		"paths": {
+			"*": [
+				"*",
+			]
+		},
+	},
+	"exclude": [
+		"build",
+		"data",
+		"vendors",
+		"rainloop",
+		"plugins",
+		"node_modules",
+		"bower_components",
+		"jspm_packages",
+		"nbproject",
+		"tests",
+		"tmp",
+		"temp"
+	]
+}

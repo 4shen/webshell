@@ -1,0 +1,49 @@
+[
+	{
+		"name": "site_identifiers",
+		"comment": "Links local site identifiers to their corresponding site.",
+		"columns": [
+			{
+				"name": "si_type",
+				"comment": "local key type, ie 'interwiki' or 'langlink'",
+				"type": "binary",
+				"options": { "length": 32, "notnull": true }
+			},
+			{
+				"name": "si_key",
+				"comment": "local key value, ie 'en' or 'wiktionary'",
+				"type": "binary",
+				"options": { "length": 32, "notnull": true }
+			},
+			{
+				"name": "si_site",
+				"comment": "Key on site.site_id",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+			}
+		],
+		"indexes": [
+			{ "name": "site_ids_site", "columns": [ "si_site" ], "unique": false },
+			{ "name": "site_ids_key", "columns": [ "si_key" ], "unique": false }
+		],
+		"pk": [ "si_type", "si_key" ]
+	},
+	{
+		"name": "updatelog",
+		"comment": "A table to log updates, one text key row per update.",
+		"columns": [
+			{
+				"name": "ul_key",
+				"type": "string",
+				"options": { "length": 255, "notnull": true }
+			},
+			{
+				"name": "ul_value",
+				"type": "blob",
+				"options": { "length": 65530, "notnull": false }
+			}
+		],
+		"indexes": [],
+		"pk": [ "ul_key" ]
+	}
+]

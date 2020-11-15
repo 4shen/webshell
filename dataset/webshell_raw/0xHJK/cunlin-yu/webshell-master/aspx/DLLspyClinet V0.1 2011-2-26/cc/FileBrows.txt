@@ -1,0 +1,8 @@
+﻿<center>
+<input  id="DirPath" type="input" value="C:\\" class="input"   style="width:70%"/>
+ <input type="button" name="GoDir" value="GO" id="GoDir" class="bt"   onclick="DirDirectory();"/><br>
+  
+  <input  type="button" name="RootDir" value="Root Directory" id="RootDir" class="bt"   onclick="GoWebRootDir();" style="margin-left:15px;margin-right:15px;"/>
+  <input type="button" name="ParentDir" value="Parent Directory" id="ParentDir" class="bt"   onclick="GoParentDir();" style="margin-left:15px;margin-right:15px;"/>
+    <input type="button" name="DelDir" value="Delect Selected" id="DelDir" class="bt"   onclick="GoParentDir();" style="margin-left:15px;margin-right:15px;"/>
+<center/>

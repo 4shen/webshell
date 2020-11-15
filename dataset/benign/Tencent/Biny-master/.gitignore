@@ -1,0 +1,11 @@
+#git ignore
+/.idea
+/app/controller/testAction.php
+/app/template/main/test.tpl.php
+/web/static/js/test*
+/logs/*
+/config/autoload.php
+
+/composer.lock
+/composer.json
+/vendor

@@ -1,0 +1,51 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+sylius:
+    address:
+        city:
+            not_blank: Zadejte město.
+        country:
+            not_blank: Zvolte zemi.
+            disabled: Vybrané země je zakázán. Prosím zvolte jinou.
+        first_name:
+            not_blank: Zadejte křestní jméno.
+        last_name:
+            not_blank: Zadejte příjmení.
+        postcode:
+            not_blank: Zadejte PSČ.
+        province:
+            valid: Vyberte správný název státu.
+        street:
+            not_blank: Zadejte ulici.
+        not_shippable: Tato adresa není platnou dodací destinací.
+    country:
+        code:
+            not_blank: Zadejte prosím ISO kód země.
+            regex: Kód země může tvořit pouze písmena, číslice, pomlčky a podtržítka.
+            unique: ISO kód země musí být unikátní.
+    province:
+        code:
+            min_length: Kód provincie musí mít nejméně 5 znaků|Kód provincie musí mít nejméně 5 znaků.
+            not_blank: Zadejte prosím kód provincie.
+            regex: Kód provincie by měl mít následující formát XX-XX (např. US-FL).
+            unique: Provincie kód musí být jedinečný.
+        name:
+            not_blank: Zadejte prosím název státu.
+            unique: Název provincie musí být jedinečný.
+    zone:
+        scope:
+            not_blank: Zadejte rozsah.
+        code:
+            not_blank: Zadejte prosím kód zóny.
+            regex: Kód země může tvořit pouze písmena, číslice, pomlčky a podtržítka.
+            unique: Kód zóny musí být jedinečný.
+        members:
+            min_count: Prosím přidejte alespoň {{ limit }} člena oblasti.
+        name:
+            not_blank: Prosím zadejte název oblasti.
+    zone_member:
+        code:
+            not_blank: Prosím zvolte člena zóny.
+            regex: Kód země může tvořit pouze písmena, číslice, pomlčky a podtržítka.
+        unique: Zvolený člen zóny je již v této zóně.

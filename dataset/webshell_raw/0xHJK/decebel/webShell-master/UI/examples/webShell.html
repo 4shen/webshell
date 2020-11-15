@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>SB Demo for JQuery Terminal Emulator</title>
+    <meta name="Description" content="Demonstration for SB Terminal Emulator using call automaticly JSON-RPC service with authentication."/>
+    <script src="../js/jquery-1.7.1.min.js"></script>
+    <script src="../js/jquery.mousewheel-min.js"></script>
+    <script src="../js/jquery.terminal-min.js"></script>
+    <link href="../css/jquery.terminal.css" rel="stylesheet"/>
+  
+    <script>
+    
+    $.ajaxSetup({
+        async: false
+    });
+    
+    function tokenFound(str, token) {
+        if(token.length == 0) return false;
+        var n = str.search(token)
+        if(n === -1) {
+         return false;  
+        } else {
+           return true;
+        }    
+    }
+    
+    function tokenizeFlow(flowData) {
+        var flow = {}
+        var n = flowData.search(/-\s+>/)
+        if(n === -1) {
+         console.log("nothing to correct")   
+        } else {
+            flowData = flowData.replace(/-\s+>/g, "->")
+        }
+        var tokens = flowData.split("->")
+        for (var i = 0; i < tokens.length; i++)
+        {
+            flow[i] = tokens[i]
+        }
+     return flow;   
+    }
+    
+    function commandExtractor(codeLine) {
+        codeLine = codeLine.replace(/^\s+/,"");
+        codeLine = codeLine.replace(/$\s+/,"");
+        
+        var sep = codeLine.indexOf(" ");
+        if(sep >= 0) {
+        
+        var firstWord = codeLine.substr(0, codeLine.indexOf(" "));
+        //alert(firstWord)
+        var remain = codeLine.replace(firstWord, "");
+        //alert(remain);
+        return [firstWord, remain];
+        } else {
+         return [codeLine];   
+        }
+    }
+   
+    function postCommand(){
+        $.post("http://localhost:8080/test.html",
+        {
+            name:"aa",
+            id:"12"
+        },
+        function(data,status){
+            console.log("Data: " + data + "\nStatus: " + status);
+        });   
+    }
+    
+     window.commandResults = "";
+     function executeGetCommand(payload){         
+        //TODO: urlencode payload 
+        jQAnswer = $.get("http://localhost:8080/test.html?"+payload[0], function(data,status){
+            //console.log("Data: " + data + "\nStatus: " + status);
+            window.commandResults = new String(data);
+            return data;
+        } ).fail(function() {  window.commandResults = "Error connecting to the service. Is the service up?";  });
+    }    
+    
+      function getContent2(filename)
+    {
+        console.log("executing function: "+filename);
+        $.ajax({
+            url: "http://localhost:8080/test.html",
+            type: 'GET',
+            dataType: 'html',
+            beforeSend: function() {
+                console.log("before sending..");
+                //$('#'+id+' .contentarea').html('<img src="http://localhost:8080/loading.gif" />');
+            },
+            success: function(data, textStatus, xhr) {
+                console.log(" inside success");
+                responseData = data;
+                if (filename == 'http://localhost:8080/content3.html')
+                {
+                    setTimeout( function() {
+                        $('#'+id+' .contentarea').html(data);
+                    }, 2000);
+                }
+                else
+                {
+                    console.log(data);
+                    //$('#'+id+' .contentarea').html(data);
+                }
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                console.log("error making call");
+                $('#'+id+' .contentarea').html(textStatus);
+            }
+        });
+    }
+ 
+ 
+ commandMap = {
+    "makeflow" : function(cmdargs) { return tokenizeFlow(cmdargs); },
+    "help" : function(cmdargs) { return tokenFound(cmdargs, "help"); }
+ }
+ 
+ commandList = Object.keys(commandMap); //['makeflow', 'help']
+                    
+ jQuery(function($, undefined) {
+    $('#term_demo').terminal(function(command, term) {
+        if (command !== '') {
+            try {
+                console.log("command :"+command);
+                // strip the first word off to identify the command name
+                commandData = commandExtractor(command);
+                commandName = commandData[0];
+                commandParams = "";
+                if(commandData.length == 2) {
+                    commandParams = commandData[1];
+                }
+                commandFound = false;
+                //console.log("command params: "+commandParams);
+                // iterate thru the commandList and see which command it is
+                for(var i=0; i<commandList.length; i++) {
+                    
+                    if(tokenFound(commandName, commandList[i])) {
+                        commandFound = true;
+                        // we need to generate appropriate commandName payload
+                        payload = commandMap[commandName](commandParams);
+                        console.log("payload: "+payload[0]+" typeof :"+typeof payload);
+                        // ..
+                        // after done, we break
+                        executeGetCommand(payload);
+                        term.echo(window.commandResults);
+                        
+                        break;
+                    } else {
+                        // 
+                        console.log("token not found");
+                    }
+                }
+                if(commandFound === false) {
+                    // todo: help to be invoked 
+                    term.error("command unavailable");
+                }                  
+            } catch(e) {
+                term.error(new String(e));
+            }
+        } else {
+           term.echo('');
+        }
+    }, {
+        greetings: 'SB Interpreter',
+        name: 'sb_demo',
+        height: 200,
+        width: 800,
+        prompt: 'sb> '});
+});
+
+
+    
+    </script>
+  </head>
+<body>
+    
+    <article>
+    <div id="term_demo"></div>
+    </article>
+    
+
+    
+     
+</body>

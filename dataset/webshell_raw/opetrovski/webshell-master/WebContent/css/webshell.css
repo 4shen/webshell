@@ -1,0 +1,318 @@
+html {
+	/* allow scrolling if layout hits min-width/height */
+	overflow: auto !important; /* override Layout default of 'hidden' */
+}
+
+body {
+	background: #777;
+	color: #FFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	margin: 0;
+	min-width: 950px;
+	min-height: 600px;
+}
+
+p {
+	margin: 1ex 0;
+}
+
+a {
+	color: blue;
+	text-decoration: none;
+}
+
+a:visited {
+	color: purple;
+}
+
+a:hover {
+	color: red;
+	text-decoration: underline;
+}
+
+.hidden {
+	/* used to HIDE layout-panes until Layout initializes */
+	display: none;
+}
+
+
+.container { /* override default style */
+	padding: 0 !important;
+	overflow: hidden !important;
+}
+
+.allow-overflow {
+	overflow: visible;
+}
+
+/* HIDE all pane-elements until initialized */
+.ui-layout-north,.ui-layout-south,.ui-layout-west,.ui-layout-east,.ui-layout-center {
+	display: none;
+}
+
+/*
+	 *	Outer-Tabs Layout - Structural
+	 *
+	 *	NOTE: already set 'ui-layout-pane' to be: overflow: hidden; padding: 0
+	 */
+#outer-center { /* #tabbuttonss & #tabpanels container */
+	background: #DDD;
+	/* need a background to contrast panes - overridden by custom theme */
+	padding: 0; /* not sure why need this again? */
+}
+
+#tabbuttons { /* tabsContainerLayout - north-pane */
+	overflow: visible; /* so tabs (LI) can overlap bottom-border */
+}
+
+#tabpanels {
+	
+} /* tabsContainerLayout - center-pane */
+#tabpanels .tab-panel { /* tab-layout containers */
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	overflow: hidden;
+}
+/*
+	 *	Inner-Tabs
+	 */
+#innerTabs.ui-layout-center {
+	padding: 0;
+}
+
+#innerTabs>DIV:first-child {
+	
+} /* header-title */
+#innerTabs>UL {
+	
+} /* tab-buttons - header */
+#innerTabs .ui-widget-content {
+	
+} /* tab-panels-wrapper - content-pane */
+#innerTabs>DIV {
+	
+} /* tab-content wrappers: #simpleTab1, #simpleTab2, etc. */
+
+/*
+	 *	Outer Layout - Cosmetic
+	 */
+#outer-north {
+	font-weight: bold;
+	padding: 1em 1em;
+}
+
+#outer-north div.buttons {
+	float: right;
+	margin-right: 200px;
+	margin-top: -4px;
+}
+
+#outer-south {
+	padding: .5em 1em;
+}
+
+
+/* Tabs Wrapper & Buttons*/
+#outer-center.ui-tabs,#outer-center.ui-tabs>ul {
+	border-bottom: 0;
+	padding-bottom: 0;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+}
+
+
+/*	Tab Panels & Contents */
+.toolbar {
+	overflow: hidden;
+	/*border-top:		0 !important;*/
+}
+
+
+/*
+	 *	Can't pad #tabpanels .tab-panel containers because have width/height = 100%
+	 *	so must pad outer-edges of inner-panes instead to get nice whitespace
+	*/
+.tab-panel .ui-layout-west {
+	padding-left: 10px;
+}
+
+.tab-panel .ui-layout-east {
+	padding-right: 10px;
+}
+
+	
+.ui-widget-header {
+	padding: 4px 1em;
+	border: 0;
+	font-size: .85em;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	text-align: center;
+}
+ 
+.ui-widget-footer {
+	text-align: center;
+	padding: 3px 1ex 4px;
+}
+
+
+#tabbuttons .tabFilesystem a {
+	background: #007182;
+	color: #FFF;
+}
+
+#tabpanels #tabFilesystem,#tabFilesystem .ui-layout-resizer-sliding,#tabFilesystem .ui-layout-west,#tabFilesystem .ui-layout-east {
+	background: #83c9d4;
+}
+
+#tabFilesystem .ui-layout-resizer-closed {
+	border: 1px solid #378c99;
+}
+
+ #tabFilesystem .toolbar {
+	border: 1px solid #378c99;
+}
+
+#tabFilesystem .toolbar,#tabFilesystem .ui-widget-header {
+	background: #007182;
+}
+#tabFilesystem .ui-widget-footer {
+	background: #378c99;
+}
+	
+
+
+#tabbuttons .tabShell a {
+	background: #5CAD5C;
+	color: #FFF;
+}
+
+#tabpanels #tabShell,#tabShell .ui-layout-resizer-sliding,#tabShell .ui-layout-west, #tabShell .ui-layout-east {
+	background: #BBDDBB;
+}
+
+#tabShell .ui-layout-resizer-closed {
+	border: 1px solid #8DC68D;
+}
+
+#tabShell .toolbar,#tabShell .ui-widget-header {
+	background: #5CAD5C;
+}
+
+#tabShell .ui-widget-footer {
+	background: #8DC68D;
+}
+
+
+#tabbuttons .tabDatabase a {
+	background: #5C445C;
+	color: #FFF;
+}
+
+#tabpanels #tabDatabase,#tabDatabase .ui-layout-resizer-sliding,#tabDatabase .ui-layout-west, #tabDatabase .ui-layout-east {
+	background: #BB44BB;
+}
+
+#tabDatabase .ui-layout-resizer-closed {
+	border: 1px solid #8D448D;
+}
+
+#tabDatabase .toolbar,#tabDatabase .ui-widget-header {
+	background: #5C445C;
+}
+
+#tabDatabase .ui-widget-footer {
+	background: #8D448D;
+}
+
+
+/*
+ *	Layout Resizers 
+ */
+.ui-layout-resizer-sliding {
+	background-color: #BBB; /* overridden by custom theme, above */
+}
+
+.ui-layout-resizer-open-hover,.ui-layout-resizer-drag, /* cloned bar */
+	.ui-layout-resizer-dragging {
+	background: #BBB !important; /* need higher specificity */
+	opacity: 0.5 !important; /* ditto - not sure why? */
+	filter: Alpha(Opacity = 50) !important;
+}
+
+.ui-layout-resizer-dragging-limit {
+	background: #d44848 !important;
+}
+
+.ui-layout-resizer-closed-hover {
+	background: #ebd5aa;
+}
+
+/*
+ *	Layout Togglers 
+ */
+.ui-layout-toggler {
+	background-color: #FFF;
+	opacity: .60;
+	filter: Alpha(Opacity = 60);
+}
+
+.ui-layout-resizer-open-hover .ui-layout-toggler,.ui-layout-toggler-hover
+	{
+	opacity: 1;
+	filter: Alpha(Opacity = 100);
+}
+
+.ui-layout-toggler .ui-icon {
+	margin: 0 auto;
+} /* default - center horizontally */
+.ui-layout-toggler-north .ui-icon,.ui-layout-toggler-south .ui-icon {
+	margin-top: -3px;
+} /* tweak arrow vertical-center */
+.ui-layout-toggler-west .ui-icon,.ui-layout-toggler-east .ui-icon {
+	margin-left: -3px;
+} /* tweak arrow horizontal-center */
+/* assign arrows for each side & state */
+.ui-layout-toggler-north-closed .ui-icon,.ui-layout-toggler-south-open .ui-icon
+	{
+	background-position: -64px -192px; /* ui-icon-circle-triangle-s */
+	background-position: -128px -16px; /* ui-icon-triangle-2-n-s */
+	background-position: -64px -16px; /* ui-icon-triangle-1-s */
+}
+
+.ui-layout-toggler-south-closed .ui-icon,.ui-layout-toggler-north-open .ui-icon
+	{
+	background-position: -96px -192px; /* ui-icon-circle-triangle-n */
+	background-position: -128px -16px; /* ui-icon-triangle-2-n-s */
+	background-position: 0 -16px; /* ui-icon-triangle-1-n */
+}
+
+.ui-layout-toggler-west-closed .ui-icon,.ui-layout-toggler-east-open .ui-icon
+	{
+	background-position: -48px -192px; /* ui-icon-circle-triangle-e */
+	background-position: -144px -16px; /* ui-icon-triangle-2-e-w */
+	background-position: -32px -16px; /* ui-icon-triangle-1-e */
+}
+
+.ui-layout-toggler-east-closed .ui-icon,.ui-layout-toggler-west-open .ui-icon
+	{
+	background-position: -80px -192px; /* ui-icon-circle-triangle-w */
+	background-position: -144px -16px; /* ui-icon-triangle-2-e-w */
+	background-position: -96px -16px; /* ui-icon-triangle-1-w */
+}
+
+.hover {
+	background-color: #007182;
+	color: white;
+}
+
+
+.scrollingtable {
+  overflow: auto !important;
+  line-height: 20px;
+  padding: 5px 5px 5px 5px;
+}

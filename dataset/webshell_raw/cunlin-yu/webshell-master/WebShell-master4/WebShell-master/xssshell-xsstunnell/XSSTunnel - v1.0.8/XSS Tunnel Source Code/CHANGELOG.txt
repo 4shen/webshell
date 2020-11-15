@@ -1,0 +1,10 @@
+21.06.2007
+- Couple of bugs fixed
+- Both XSS Shell and XSS Tunnel tested under Firefox 1/2 and IE 6/7
+- XSS Tunnel crashed under IE 6 as client while transfering binary files, don't know the real reason. Will be investigated
+
+26.06.2007
+- Empty body crash fixed
+- Website URL Changed
+- Cache Enable Property added (to object and UI)
+- New Status Messages added

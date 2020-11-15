@@ -1,0 +1,195 @@
+/**
+ * @provides aphront-tokenizer-control-css
+ * @requires aphront-typeahead-control-css
+ * @requires phui-tag-view-css
+ */
+
+body div.jx-tokenizer {
+  background: transparent;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+body div.jx-tokenizer-container {
+  position: relative;
+  display: block;
+  padding: 0 0 2px 0;
+  min-height: 30px;
+  height: auto;
+}
+
+var.jx-tokenizer-metrics {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+body input.jx-tokenizer-input {
+  border: 1px solid transparent;
+  border-width: 1px 0px;
+  padding: 3px;
+  outline: none;
+  float: left;
+  width: 100%;
+  border-shadow: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  font-size: {$normalfontsize};
+  color: #333;
+  height: 26px;
+  background: transparent;
+}
+
+body input.jx-tokenizer-input:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  border-color: transparent;
+}
+
+body input.jx-typeahead-placeholder {
+  margin-left: 4px;
+  color: {$greytext};
+}
+
+a.jx-tokenizer-x {
+  margin-left: 4px;
+  color: {$bluetext};
+  float: right;
+}
+
+a.jx-tokenizer-x:hover {
+  color: {$darkbluetext};
+  text-decoration: none;
+}
+
+a.jx-tokenizer-token {
+  padding: 1px 6px;
+  border:  1px solid {$lightblueborder};
+  margin: 3px 2px 0 4px;
+  background-color: {$sh-bluebackground};
+  float: left;
+  cursor: pointer;
+  border-radius: 3px;
+  color: {$sh-bluetext};
+
+  /* See T13495. Certain Chinese glyphs can cause layout artifacts unless
+     we're fairly aggressive about specifying element sizing. */
+
+  line-height: 18px;
+  min-height: 20px;
+  max-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 95%;
+}
+
+a.jx-tokenizer-token:hover {
+  text-decoration: none;
+  border-color: {$sh-blueborder};
+}
+
+.jx-tokenizer-token .phui-icon-view {
+  display: inline-block;
+  margin: 2px 4px -3px 0;
+  color: {$sh-blueicon};
+}
+
+a.jx-tokenizer-token-function {
+  border-color: {$sh-lightgreyborder};
+  background: {$page.content};
+}
+
+a.jx-tokenizer-token-function:hover {
+  background: {$page.content};
+}
+
+a.jx-tokenizer-token-disabled {
+  background-color: {$sh-disabledbackground};
+  border-color: {$sh-lightdisabledborder};
+  color: {$sh-disabledtext};
+}
+
+a.jx-tokenizer-token-disabled:hover {
+  border-color: {$sh-disabledborder};
+  background-color: {$sh-disabledbackground};
+}
+
+.jx-tokenizer-token-disabled .phui-icon-view {
+  color: {$sh-disabledicon};
+}
+
+a.jx-tokenizer-token-invalid {
+  border-color: {$sh-lightredborder};
+  background: {$sh-redbackground};
+  color: {$sh-redtext};
+}
+
+a.jx-tokenizer-token-invalid:hover {
+  border-color: {$sh-redborder};
+  background: {$sh-redbackground};
+}
+
+.jx-tokenizer-token-invalid .phui-icon-view {
+  color: {$sh-redicon};
+}
+
+.tokenizer-result {
+  position: relative;
+  padding: 5px 8px 5px 28px;
+}
+
+.tokenizer-result .phui-icon-view {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 5px;
+  left: 8px;
+}
+
+.tokenizer-result-closed {
+  color: {$greytext};
+}
+
+.tokenizer-closed {
+  margin-top: 2px;
+}
+
+.jx-tokenizer-frame .button.tokenizer-browse-button {
+  display: none;
+}
+
+.jx-tokenizer-frame.has-browse .button.tokenizer-browse-button {
+  display: block;
+}
+
+.jx-tokenizer-frame.has-browse {
+  position: relative;
+}
+
+.jx-tokenizer-frame.has-browse div.jx-tokenizer-container {
+  padding-right: 32px;
+}
+
+.button.tokenizer-browse-button {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  border-radius: 0;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  padding: 0;
+  width: 30px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.button.tokenizer-browse-button .phui-icon-view {
+  top: 7px;
+  left: 9px;
+  position: absolute;
+}

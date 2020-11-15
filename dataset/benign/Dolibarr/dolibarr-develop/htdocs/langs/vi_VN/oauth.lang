@@ -1,0 +1,30 @@
+# Dolibarr language file - Source file is en_US - oauth
+ConfigOAuth=Cấu hình OAuth
+OAuthServices=Dịch vụ OAuth
+ManualTokenGeneration=Tạo token thủ công
+TokenManager=Trình quản lý token
+IsTokenGenerated=Đã tạo token?
+NoAccessToken=Không có token truy cập được lưu vào cơ sở dữ liệu cục bộ
+HasAccessToken=Một token đã được tạo và lưu vào cơ sở dữ liệu cục bộ
+NewTokenStored=Token đã nhận và lưu
+ToCheckDeleteTokenOnProvider=Nhấn vào đây để kiểm tra / xóa ủy quyền được lưu bởi nhà cung cấp %s OAuth
+TokenDeleted=Token đã bị xóa
+RequestAccess=Nhấp vào đây để yêu cầu / gia hạn quyền truy cập và nhận token mới để lưu
+DeleteAccess=Nhấn vào đây để xóa token
+UseTheFollowingUrlAsRedirectURI=Sử dụng URL sau đây làm URI chuyển hướng khi tạo thông tin đăng nhập với nhà cung cấp OAuth của bạn:
+ListOfSupportedOauthProviders=Nhập thông tin đăng nhập được cung cấp bởi nhà cung cấp OAuth2 của bạn. Chỉ các nhà cung cấp OAuth2 được hỗ trợ được liệt kê ở đây. Các dịch vụ này có thể được sử dụng bởi các mô-đun khác cần xác thực OAuth2.
+OAuthSetupForLogin=Trang để tạo token OAuth
+SeePreviousTab=Xem tab trước
+OAuthIDSecret=ID OAuth và bảo mật
+TOKEN_REFRESH=Làm mới token
+TOKEN_EXPIRED=Token đã hết hạn
+TOKEN_EXPIRE_AT=Token hết hạn tại
+TOKEN_DELETE=Xóa token đã lưu
+OAUTH_GOOGLE_NAME=Dịch vụ Google OAuth
+OAUTH_GOOGLE_ID=OAuth Google Id
+OAUTH_GOOGLE_SECRET=Bảo mật Google OAuth
+OAUTH_GOOGLE_DESC=Chuyển đến <a class="notasortlink" href="https://console.developers.google.com/" target="_blank">trang này</a> sau đó "Thông tin xác thực" để tạo thông tin xác thực OAuth
+OAUTH_GITHUB_NAME=Dịch vụ OAuth GitHub
+OAUTH_GITHUB_ID=OAuth GitHub Id
+OAUTH_GITHUB_SECRET=Bảo mật của OAuth GitHub
+OAUTH_GITHUB_DESC=Chuyển đến <a class="notasortlink" href="https://github.com/settings/developers" target="_blank">trang này</a> sau đó "Đăng ký ứng dụng mới" để tạo thông tin đăng nhập OAuth

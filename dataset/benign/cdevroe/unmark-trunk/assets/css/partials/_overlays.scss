@@ -1,0 +1,333 @@
+#importExportForm {
+  margin: 0 auto;
+  .loginInner {
+    //background: $color-gray;
+    header {
+      padding-top: 4px;
+      padding-bottom: 20px;
+    }
+  }
+  .from-unmark, .from-other {
+    padding: 0 0 12px;
+    p {
+      font-size: 12px;
+      color: $color_dark;
+      margin-top: 0;
+      em {
+        margin-top: 16px;
+      }
+    }
+  }
+  .export {
+    padding: 0 0 30px;
+    border-bottom: 1px solid transparentize($color_dark, .92);
+  }
+  .import {
+    padding-top: 20px;
+  }
+    a.exportbtn, a.importbtn {
+        background: $color_blue;
+        color: white;
+        display: block;
+        //box-shadow: 0 30px 60px -24px transparentize(white, .8) inset, 0 2px 7px 0 transparentize($color_dark, .85);
+        padding: 9px 20px 11px;
+        @include title-text;
+        font-size: 13px;
+        font-weight: 700;
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 0 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+    a.exportbtn {
+      margin-bottom: 0;
+    }
+    .importer, .importerHTML {
+        display:none;
+    }
+    small {
+        display: block;
+        margin-top: 28px;
+        color: transparentize($color_dark_gray, .2);
+    }
+    p {
+        font-size: 14px;
+        color: transparentize($color_dark_gray, .1);
+        &.note {
+          margin-bottom: 0;
+          margin-top: 14px;
+        }
+    }
+    h1 {
+        font-weight: 600;
+        color: $color_dark_gray;
+        font-size: 16px;
+        text-transform: none;
+        letter-spacing: normal;
+        word-spacing: normal;
+        margin: 50px 0 24px;
+    }
+    form {
+        box-shadow: none !important;
+    }
+}
+
+#helperforms {
+    position: absolute;
+    z-index: 20000;
+    width: 100%;
+    max-width: 320px;
+    top: 35px;
+    padding: 0 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    @include sm {
+        top: 60px;
+    }
+    .hiddenform { display: none; }
+
+    figure {
+      background: white;
+      border-radius: 8px;
+      width: 100%;
+      //max-width: 280px;
+      //margin: 0 auto;
+      padding: 20px;
+      box-shadow: 0 2px 5px 0 transparentize(darken($color_darkest, 20%), .7), 0 9px 20px 0 transparentize(darken($color_darkest, 20%), .8);
+      position: relative;
+      overflow: hidden;
+      #unmarkModalClose {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        height: 26px;
+        width: 26px;
+        border: 1px solid transparentize($color_dark_gray, .75);
+        border-radius: 50%;
+        cursor: pointer;
+        &:before, &:after {
+          content: " ";
+          display: block;
+          height: 2px;
+          width: 12px;
+          background: lighten($color_dark_gray, 10%);
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+          position: absolute;
+          top: 50%;
+          right: 50%;
+          margin-right: -6px;
+          margin-top: -1px;
+        }
+        &:after {
+          -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+        }
+        i {
+          display: none;
+        }
+      }
+      header {
+        //background: $color-gray;
+        padding: 4px 0 28px;
+        h1 {
+          margin: 0 0 20px;
+          color: $color_darkest;
+          font-weight: 600;
+          &:last-child  {
+            margin-bottom: 0;
+          }
+        }
+        p {
+          color: lighten(desaturate($color_darkest, 15%), 15%);
+          font-size: 12px;
+          margin-bottom: 6px;
+          a {
+            color: inherit;
+            border-bottom: 1px solid transparentize($color_darkest, .86);
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+          &.disclaimer {
+            font-style: italic;
+          }
+        }
+      }
+    }
+
+    #resetPasswordForm {
+        .login-submit {
+            display: block;
+        }
+        form {
+            //margin-top: 20px;
+            input {
+                //font-size: 22px;
+                //letter-spacing: 1px;
+                //font-weight: 300;
+                //padding: 9px 15px 11px;
+            }
+        }
+    }
+    #changePasswordForm {
+        .login-submit {
+            display: block;
+        }
+        form {
+            //margin-top: 20px;
+        }
+    }
+    #upgradeToPro {
+        .login-submit {
+            display: block;
+            //top: 101px;
+        }
+        button.cnclAcct {
+            border-radius: 5px;
+            padding: 10px 30px 12px;
+            margin-top: 25px;
+            background-color: $color_red;
+        }
+    }
+    #twitterAuth {
+        a.action {
+            background: $color_blue;
+            padding: 9px 20px 12px;
+            @include title-text;
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            display: block;
+            //margin-bottom: 36px;
+            height: 52px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .twitterMessage {
+          display: none;
+        }
+    }
+    #twitterSuccess, #twitterFail {
+        top : 0;
+    }
+    input {
+        @include input-style(12px);
+        &:not(:last-of-type) {
+          //border-bottom-width: 0;
+        }
+        &:not([type=submit]):not([type=file]) {
+          @include xs {
+            -webkit-appearance: none;
+          }
+        }
+    }
+    h1 {
+        font-weight: 600;
+        color: $color_dark_gray;
+        font-size: 18px;
+        text-transform: none;
+        letter-spacing: normal;
+        word-spacing: normal;
+        margin: 50px 0 24px;
+    }
+    form {
+        //box-shadow: 0 2px 5px 0 transparentize($color_dark_gray, .8), 0 4px 12px 0 transparentize($color_dark_gray, .9);
+        .exp-date {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          input {
+            //width: auto;
+            flex-grow: 0;
+            flex-shrink: 0;
+            &.exp-month {
+              flex-basis: calc(50% - 4px);
+            }
+            &.exp-year  {
+              flex-basis: calc(50% - 4px);
+            }
+          }
+        }
+        button, .login-submit {
+            position: relative;
+            margin: 0;
+            top: auto;
+            left: auto;
+            right: auto;
+            background: $color_blue;
+            padding: 12px 15px 15px;
+            font-size: 15px;
+            width: 100%;
+            height: 48px;
+            margin-top: 6px;
+            //box-shadow: 0 30px 60px -24px transparentize(white, .8) inset, 0 10px 12px -12px transparentize($color_darkest, .7) inset;
+            /*
+            &:after {
+                content: "";
+                width: 14px;
+                height: 7px;
+                border: solid white;
+                border-width: 0 0 2px 2px;
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -4px;
+                margin-top: -6px;
+            }
+            */
+            i {
+                display: none;
+            }
+        }
+    }
+}
+
+// Overlay
+#unmark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparentize($color_darkest, .05);
+    //opacity: 0;
+    z-index: 10000;
+    display: none;
+    #unmarkModalClose {
+        position: absolute;
+        top: 27px;
+        right: 25px;
+        height: 32px;
+        width: 32px;
+        //border: 1px solid transparentize($color_dark_gray, .65);
+        border-radius: 50%;
+        &:before, &:after {
+            content: " ";
+            display: block;
+            height: 2px;
+            width: 16px;
+            background: lighten($color_dark_gray, 10%);
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            margin-right: -8px;
+            margin-top: -1px;
+        }
+        &:after {
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+        i {
+            display: none;
+        }
+    }
+}

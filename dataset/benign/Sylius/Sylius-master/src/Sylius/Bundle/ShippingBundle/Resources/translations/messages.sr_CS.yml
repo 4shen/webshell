@@ -1,0 +1,37 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+sylius:
+    form:
+        rule:
+            unit_count_configuration:
+                count: Broj
+                equal: Jednako
+        shipment:
+            state: stanje
+            states:
+                checkout: Plaćanje
+                pending: Na čekanju
+                ready: Spremno
+                shipped: Isporučeno
+                cancelled: Otkazano
+            tracking_code: Kod Praćenja
+        shipping_calculator:
+            flat_rate_configuration:
+                amount: Iznos
+            per_unit_rate_configuration:
+                amount: Iznos
+        shipping_category:
+            description: Opis
+            name: Ime
+        shipping_method:
+            calculator: Kalkulator
+            category: Kategorija poreske stope
+            channels: Kanali
+            configuration: Konfiguracija
+            description: Opis
+            enabled: Omogućeno
+            name: Ime
+            position: Pozicija
+            tax_category: Kategorija proizvoda
+            translations: Prevodi

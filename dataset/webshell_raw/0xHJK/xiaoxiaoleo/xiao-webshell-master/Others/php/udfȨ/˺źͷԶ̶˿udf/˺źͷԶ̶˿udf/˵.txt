@@ -1,0 +1,6 @@
+
+此udf返回远程端口和系统api的方法添加管理员 msxtest   msxtest
+
+增加账号
+msxtest
+msxtest

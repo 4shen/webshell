@@ -1,0 +1,109 @@
+{
+    "name": "danog/madelineproto",
+    "description": "PHP implementation of telegram's MTProto protocol.",
+    "type": "project",
+    "license": "AGPL-3.0-only",
+    "homepage": "https://docs.madelineproto.xyz",
+    "keywords": ["telegram", "mtproto", "protocol", "bytes", "messenger", "client", "PHP", "video", "stickers", "audio", "files", "GB"],
+    "conflict": {
+        "krakjoe/pthreads-polyfill": "*"
+    },
+    "require": {
+        "php": ">=7.4.0",
+        "danog/primemodule": "^1",
+        "danog/tgseclib": "^3",
+        "erusev/parsedown": "^1.7",
+        "ext-mbstring": "*",
+        "ext-json": "*",
+        "ext-xml": "*",
+        "ext-dom": "*",
+        "ext-filter": "*",
+        "ext-hash": "*",
+        "ext-zlib": "*",
+        "ext-fileinfo": "*",
+        "amphp/amp": "^2",
+        "amphp/http-client": "^4",
+        "amphp/socket": "^1",
+        "amphp/dns": "^1",
+        "amphp/byte-stream": "^1",
+        "amphp/file": "^1",
+        "amphp/mysql": "^2.0",
+        "danog/dns-over-https": "^0.2",
+        "amphp/http-client-cookies": "^1",
+        "danog/tg-file-decoder": "^0.1",
+        "danog/magicalserializer": "^1.0",
+        "league/uri": "^6",
+        "danog/ipc": "^0.1",
+        "tivie/htaccess-parser": "^0.2.3",
+        "amphp/log": "^1.1"
+    },
+    "require-dev": {
+        "vlucas/phpdotenv": "^3",
+        "phpdocumentor/reflection-docblock": "^4.3",
+        "ennexa/amp-update-cache": "dev-master",
+        "phpunit/phpunit": "^8",
+        "amphp/php-cs-fixer-config": "dev-master",
+        "haydenpierce/class-finder": "^0.4",
+        "amphp/http-server": "dev-master",
+        "amphp/http": "^1.6",
+        "amphp/websocket-client": "dev-master as 1",
+        "amphp/websocket": "dev-master as 1",
+        "ext-ctype": "*",
+        "danog/7to70": "^1",
+        "danog/7to5": "^1",
+        "vimeo/psalm": "dev-master",
+        "phpstan/phpstan": "^0.12.14"
+    },
+    "suggest": {
+        "ext-libtgvoip": "Install the php-libtgvoip extension to make phone calls (https://github.com/danog/php-libtgvoip)"
+    },
+    "authors": [{
+        "name": "Daniil Gentili",
+        "email": "daniil@daniil.it"
+    }],
+    "autoload": {
+        "psr-4": {
+            "danog\\MadelineProto\\": "src/danog/MadelineProto"
+        },
+        "files": [
+            "src/BigIntegor.php",
+            "src/YieldReturnValue.php",
+            "src/polyfill.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "danog\\MadelineProto\\Test\\": "tests/danog/"
+        },
+        "files": [
+            "tools/build_docs/schemas.php",
+            "tools/build_docs/merge.php",
+            "tools/build_docs/layerUpgrade.php"
+        ]
+    },
+    "repositories": [{
+        "type": "git",
+        "url": "https://github.com/danog/dns"
+    }],
+    "scripts": {
+        "post-autoload-dump": [
+            "git submodule init && git submodule update"
+        ],
+        "build": [
+            "@docs",
+            "@cs-fix",
+            "@psalm"
+        ],
+        "check": [
+            "@cs",
+            "@test"
+        ],
+        "test-php7": "tests/test-conversion.sh 70",
+        "test-php56": "tests/test-conversion.sh 5",
+        "cs": "PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix -v --diff --dry-run",
+        "cs-fix": "PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix -v --diff",
+        "psalm": "psalm",
+        "docs": "php tools/build_docs.php",
+        "test": "@php -dzend.assertions=1 -dassert.exception=1 ./vendor/bin/phpunit --coverage-text --config tests/phpunit.xml"
+    }
+}

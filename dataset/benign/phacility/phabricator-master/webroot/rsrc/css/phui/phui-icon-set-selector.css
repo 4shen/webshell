@@ -1,0 +1,42 @@
+/**
+ * @provides phui-icon-set-selector-css
+ */
+
+button.icon-button {
+  background-color: #F7F7F9;
+  background-image: linear-gradient(to bottom, #ffffff, #f1f0f1);
+  border: 1px solid rgba({$alphablue},.2);
+  color: {$darkgreytext};
+  position: relative;
+  width: 16px;
+  height: 16px;
+  padding: 12px;
+  margin: 4px;
+  text-shadow: none;
+  box-shadow: none;
+  box-sizing: content-box;
+}
+
+button.icon-button:hover {
+  border: 1px solid rgba({$alphablue},.5);
+}
+
+button.icon-button .phui-icon-view {
+  color: {$darkbluetext};
+}
+
+.icon-grid {
+  text-align: center;
+}
+
+.icon-icon + .icon-icon {
+  margin-left: 4px;
+}
+
+button.icon-button.selected {
+  border: 1px solid {$sky};
+}
+
+button.icon-button.selected .phui-icon-view {
+  color: {$sky};
+}

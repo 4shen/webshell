@@ -1,0 +1,9 @@
+* text=auto
+*.css linguist-vendored
+*.scss linguist-vendored
+*.js linguist-vendored
+.azure export-ignore
+azure-pipelines.yml export-ignore
+scripts/database.test.sql export-ignore
+scripts/ci export-ignore
+crowdin.yml export-ignore

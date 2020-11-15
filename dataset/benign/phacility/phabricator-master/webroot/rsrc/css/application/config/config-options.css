@@ -1,0 +1,58 @@
+/**
+ * @provides config-options-css
+ */
+
+.config-option-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: none;
+  background: {$page.content};
+}
+
+.config-option-table th,
+.config-option-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid {$thinblueborder};
+}
+
+.config-option-table th {
+  background: {$lightgreybackground};
+  color: {$bluetext};
+  text-align: left;
+  white-space: nowrap;
+}
+
+.config-option-table th em,
+.config-option-table td em {
+  font-weight: normal;
+  color: {$greytext};
+}
+
+.config-option-table td {
+  color: {$darkgreytext};
+  width: 100%;
+  white-space: pre-wrap;
+}
+
+.config-option-table .column-labels th {
+  font-weight: bold;
+  color: {$bluetext};
+  background: {$lightgreybackground};
+  border-right: 1px solid {$thinblueborder};
+}
+
+.config-options-current-value {
+  white-space: nowrap;
+  width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.config-options-current-value.violet {
+  color: {$violet};
+}
+
+.config-options-effective-value,
+.config-option-table .config-options-effective-value th {
+  background: {$gentle.highlight};
+}

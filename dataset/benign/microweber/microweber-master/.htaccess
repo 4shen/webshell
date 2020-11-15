@@ -1,0 +1,59 @@
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</IfModule>
+
+<IfModule mod_security.c>
+  SecRuleEngine Off
+  SecFilterInheritance Off
+  SecFilterEngine Off
+  SecFilterScanPOST Off
+  SecFilterCheckURLEncoding Off
+</IfModule>
+
+<IfModule mod_rewrite.c>
+
+    <IfModule mod_negotiation.c>
+    Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_URI} !^/\.well-known
+    RewriteRule "(^|/)\." - [F]
+
+    RewriteRule ^.*\.(gif|jpe?g|png|svg|bmp|webp|ico)$ - [L]
+
+
+    RewriteCond %{REQUEST_URI} ^/userfiles/.*$ [NC,OR]
+    RewriteCond %{REQUEST_URI} ^/userfiles/media/.*$ [NC]
+    RewriteRule . - [PT,L]
+
+    ErrorDocument 404 /404.html
+
+
+    RewriteCond %{HTTP:Authorization} ^(.+)$
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+
+
+    RewriteCond %{REQUEST_URI} !=/favicon.ico
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+   # RewriteRule ^(.*)$ index.php [NC,L]
+    RewriteRule ^(.*)$ index.php [QSA,L]
+    RedirectMatch 404 /\\.git(/|$)
+    RedirectMatch 404 /\\.env(/|$)
+
+</IfModule>
+
+<FilesMatch "phpunit.xml|composer.lock|\.(dist|db|markdown|md|twig|yaml|yml)|(bower|composer|jsdoc|package)\.json$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+RedirectMatch 404 /(vendor|gulp|src|storage|database|config|bootstrap|tests)(/|$)

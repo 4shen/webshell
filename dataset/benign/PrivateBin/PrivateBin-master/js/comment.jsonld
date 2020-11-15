@@ -1,0 +1,35 @@
+{
+	"@context": {
+		"so": "https://schema.org/",
+		"pb": "?jsonld=types#",
+		"cm": "?jsonld=commentmeta#",
+		"status": {
+			"@type": "so:Integer"
+		},
+		"id": {
+			"@type": "so:name"
+		},
+		"pasteid": {
+			"@type": "so:name"
+		},
+		"parentid": {
+			"@type": "so:name"
+		},
+		"url": {
+			"@type": "so:url"
+		},
+		"v": {
+			"@type": "so:Integer",
+			"@value": 2
+		},
+		"ct": {
+			"@type": "pb:CipherText"
+		},
+		"adata": {
+			"@type": "pb:CipherParameters"
+		},
+		"meta": {
+			"@type": "cm:MetaData"
+		}
+	}
+}

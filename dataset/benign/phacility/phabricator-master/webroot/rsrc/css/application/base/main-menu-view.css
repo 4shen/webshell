@@ -1,0 +1,677 @@
+/**
+ * @provides phabricator-main-menu-view
+ * @requires phui-theme-css
+ */
+
+
+/* - Main Menu -----------------------------------------------------------------
+
+  Main menu at the top of every page that has chrome. It reacts to resolution
+  changes in order to behave reasonably on tablets and phones.
+
+*/
+
+.phabricator-main-menu {
+  position: relative;
+}
+
+.phabricator-main-menu-background {
+  min-height: 44px;
+}
+
+.device-desktop .phabricator-main-menu {
+  height: 44px;
+  padding-right: 4px;
+}
+
+.phabricator-main-menu a:hover {
+  text-decoration: none;
+}
+
+
+/* - Logo ----------------------------------------------------------------------
+
+  The "Phabricator" logo group in the main menu. On tablet and phone devices,
+  this shows a "reveal" button to expand/collapse the rest of the menu.
+
+*/
+
+.device-desktop .phabricator-main-menu-group-logo {
+  float: left;
+}
+
+.phabricator-main-menu-brand {
+  height: 44px;
+  float: left;
+  margin-right: 6px;
+  padding-left: 6px;
+}
+
+.phabricator-main-menu-eye {
+  margin: 2px 0;
+  width: 40px;
+  height: 40px;
+  float: left;
+  display: block;
+  background-image: url(/rsrc/image/logo/light-eye.png);
+  background-size: 40px 40px;
+}
+
+.device-desktop .phabricator-main-menu-brand:hover {
+  background-color: rgba({$alphagrey},.2);
+  cursor: hand;
+}
+
+.device-phone .phabricator-wordmark {
+  display: none;
+}
+
+.phabricator-wordmark {
+  float: left;
+  color: #fff;
+  font-size: 18px;
+  margin: 9px 4px 9px 6px;
+  padding-right: 8px;
+  max-width: 175px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* - Expand/Collapse Button ----------------------------------------------------
+
+  On phones, the menu switches to a vertical layout and uses a button to expand
+  or collapse the items.
+
+*/
+
+.phabricator-menu-button-icon {
+  width: 20px;
+  height: 32px;
+  float: left;
+  margin: 10px 8px 0 8px;
+}
+
+.phabricator-menu-button-icon.phui-icon-view {
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  color: {$hoverwhite};
+  text-align: center;
+  vertical-align: middle;
+  line-height: 24px;
+}
+
+.phabricator-expand-application-menu,
+.phabricator-expand-search-menu {
+  float: right;
+}
+
+.device-desktop .phabricator-main-menu-search-button,
+.device-desktop .phabricator-main-menu-expand-button {
+  display: none;
+}
+
+
+/* - Search --------------------------------------------------------------------
+
+  The main search input in the menu bar.
+
+*/
+
+.device-desktop .phabricator-main-menu-search {
+  width: 298px;
+}
+
+.device .phabricator-main-menu-search {
+  height: 40px;
+}
+
+.phabricator-main-menu-search-container {
+  padding: 8px 0;
+  position: relative;
+  height: 24px;
+  margin: 0 8px 0 0;
+}
+
+.phabricator-main-menu-search-target {
+  position: absolute;
+  top: 42px;
+}
+
+.device-desktop .phabricator-main-menu-search-target {
+  width: 360px;
+}
+
+.device .phabricator-main-menu-search-target {
+  width: 100%;
+  margin-left: -25px;
+}
+
+.device .phabricator-main-menu-search-container {
+  padding: 4px 0;
+  margin: 0 4px;
+}
+
+.phabricator-main-menu .phabricator-main-menu-search input {
+  outline: 0;
+  margin: 0;
+  box-shadow: none;
+  transition: none;
+
+  color: {$bluetext};
+  width: 100%;
+  right: 0;
+  position: absolute;
+  font-size: {$normalfontsize};
+  border: none;
+  background-color: {$page.content};
+  height: 28px;
+  padding: 3px 28px 3px 48px;
+  float: left;
+  width: 280px;
+}
+
+.device .phabricator-main-menu-search input {
+  height: 32px;
+  font-size: {$biggestfontsize};
+  width: 100%;
+  padding-left: 50px;
+  border: 1px solid {$lightblueborder};
+}
+
+.phabricator-main-menu .phabricator-main-menu-search input:focus {
+  background: {$page.content};
+  opacity: 1;
+  color: {$darkbluetext};
+  box-shadow: none;
+}
+
+.phabricator-main-menu-search input.jx-typeahead-placeholder {
+  color: {$bluetext};
+}
+
+.phabricator-main-menu-search button {
+  color: {$bluetext};
+  position: absolute;
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  text-shadow: none;
+  min-width: 0;
+  height: 24px;
+  width: 28px;
+  top: 9px;
+  right: -6px;
+  margin: 0 8px 0 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+.phabricator-main-menu-search button.phabricator-main-menu-search-dropdown {
+  position: absolute;
+  right: auto;
+  left: 12px;
+  width: 40px;
+  background: {$greybackground};
+  z-index: 1;
+}
+
+.device-desktop .phabricator-main-menu-search
+  button.phabricator-main-menu-search-dropdown {
+    height: 24px;
+    top: 10px;
+    border-radius: 3px;
+  }
+
+.device-desktop .phabricator-main-menu-search
+  button.phabricator-main-menu-search-dropdown:hover .phui-icon-view {
+    color: {$sky};
+}
+
+.device .phabricator-main-menu-search
+  button.phabricator-main-menu-search-dropdown {
+    left: 2px;
+    background: {$greybackground};
+}
+
+button.phabricator-main-menu-search-dropdown .caret:before,
+a.phabricator-core-user-menu .caret:before {
+  content: "\f107";
+  font-family: FontAwesome;
+}
+
+.phabricator-main-menu-search button.phabricator-main-menu-search-dropdown
+  .phui-icon-view {
+  color: {$bluetext};
+  font-size: 15px;
+  top: 4px;
+  left: 8px;
+  position: absolute;
+}
+
+.phabricator-main-menu-search-dropdown .caret {
+  position: absolute;
+  right: 20px;
+  top: 2px;
+  border: none;
+  margin-top: 1px;
+}
+
+.phabricator-main-menu-search button:hover {
+  color: {$sky};
+}
+
+.device .phabricator-main-menu-search button {
+  top: 6px;
+  border-radius: 0;
+  height: 28px;
+  right: -6px;
+}
+
+.phabricator-main-menu-search-target div.jx-typeahead-results {
+  background: {$page.content};
+  word-wrap: break-word;
+  overflow-y: auto;
+  box-shadow: {$dropshadow};
+  border: 1px solid {$lightgreyborder};
+  border-radius: 3px;
+  margin-left: -64px;
+}
+
+.device .phabricator-main-menu-search-target div.jx-typeahead-results {
+  margin-left: 28px;
+}
+
+.phabricator-main-search-typeahead-result .phabricator-search-icon {
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 24px;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+.phabricator-main-search-typeahead-result {
+  display: block;
+  padding: 6px 8px 8px 44px;
+  background-position: 8px;
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.phabricator-main-search-typeahead-result .result-name {
+  display: block;
+  font-size: {$normalfontsize};
+  font-weight: bold;
+  color: {$darkgreytext};
+}
+
+.phabricator-main-search-typeahead-result.result-closed {
+  opacity: .8;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.phabricator-main-search-typeahead-result.result-closed
+  .result-name {
+  text-decoration: line-through;
+  color: {$lightgreytext};
+}
+
+.phabricator-main-search-typeahead-result.has-image {
+  padding-left: 48px;
+}
+
+.phabricator-main-search-typeahead-result .result-type {
+  color: {$lightgreytext};
+  font-size: {$smallestfontsize};
+  font-weight: normal;
+}
+
+.device .phabricator-application-menu-expanded.phabricator-search-menu-expanded
+ .phabricator-search-menu {
+  padding: 0;
+}
+
+.device-phone .phabricator-main-search-typeahead-result .result-name {
+  font-size: {$biggestfontsize};
+}
+
+.device-phone .phabricator-main-search-typeahead-result .result-type {
+  font-size: {$normalfontsize};
+}
+
+
+/* - Alert ---------------------------------------------------------------------
+
+  Alert menus are like icon menus but don't obey collapse rules.
+
+*/
+
+.phabricator-main-menu-alerts {
+  display: inline-block;
+  float: left;
+  padding: 4px 0;
+}
+
+.alert-notifications {
+  float: left;
+}
+
+.alert-notifications .phui-icon-view {
+  color: {$hoverwhite};
+}
+
+.device-desktop .alert-notifications:hover {
+  margin-top: -2px;
+  transition-duration: .2s;
+
+  /* See T13508. Avoid animation flickering behavior if the user's cursor is
+     at the very bottom of the element. */
+  padding-bottom: 2px;
+}
+
+.device-desktop .alert-notifications:hover .phui-icon-view {
+  color: #fff;
+}
+
+.phabricator-main-menu-alert-icon,
+.phabricator-main-menu-message-icon,
+.phabricator-main-menu-setup-icon {
+  width: 18px;
+  height: 18px;
+  float: left;
+  padding: 8px 6px 8px 4px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: right;
+}
+
+.phui-icon-view.menu-icon-selected {
+  color: #fff;
+}
+
+.phabricator-main-menu-alert-icon {
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+.setup-unread .phui-icon-view.phabricator-main-menu-setup-icon {
+  color: #ecf36c;
+  font-size: 16px;
+  margin-top: 2px;
+  width: 15px;
+}
+
+.setup-unread .phabricator-main-menu-setup-count {
+  color: #ecf36c;
+  margin-top: 10px;
+}
+
+.device-desktop .alert-notifications.setup-unread:hover .phui-icon-view {
+  color: #ecf36c;
+}
+
+.phabricator-main-menu-alert-count,
+.phabricator-main-menu-message-count,
+.phabricator-main-menu-setup-count {
+  color: #fff;
+  text-align: center;
+  display: none;
+  float: left;
+  margin: 11px 6px 0 -2px;
+  font-size: {$smallerfontsize};
+}
+
+.device-phone .alert-unread .phabricator-main-menu-alert-count,
+.device-phone .message-unread .phabricator-main-menu-message-count,
+.device-phone .setup-unread .phabricator-main-menu-setup-count {
+  display: none;
+}
+
+.alert-unread .phabricator-main-menu-alert-icon,
+.message-unread .phabricator-main-menu-message-icon,
+.setup-unread .phabricator-main-menu-setup-icon {
+  color: #fff;
+}
+
+.alert-unread .phabricator-main-menu-alert-count,
+.message-unread .phabricator-main-menu-message-count,
+.setup-unread .phabricator-main-menu-setup-count {
+  display: block;
+}
+
+
+/* - Core Menu -----------------------------------------------------------------
+
+  Styles unique to the core menu (left button on mobile).
+
+*/
+
+.device .phabricator-search-menu {
+  display: none;
+}
+
+.device-desktop .phabricator-search-menu {
+  float: right;
+}
+
+.device .phabricator-search-menu-expanded .phabricator-search-menu {
+  display: block;
+  position: absolute;
+  top: 38px;
+  left: 8px;
+  right: 8px;
+  border: 1px solid {$lightblueborder};
+  border-radius: 3px;
+  box-shadow: {$dropshadow};
+  background: {$page.background};
+}
+
+.device-desktop .phabricator-application-menu {
+  float: right;
+}
+
+.device-desktop .phabricator-application-menu .phui-list-item-view,
+.device-desktop .phabricator-application-menu .phui-list-item-name  {
+  display: none;
+}
+
+.phabricator-application-menu .phui-list-item-href {
+  display: block;
+}
+
+.phabricator-application-menu .phui-list-item-icon.phui-font-fa {
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  color: {$hoverwhite};
+  margin: 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.device .phabricator-application-menu .phui-list-item-icon.phui-font-fa {
+  margin: 4px 12px 4px 0;
+}
+
+.phabricator-application-menu .phui-list-item-icon.fa-plus {
+  line-height: 22px;
+}
+
+.device-desktop .phabricator-application-menu
+  .core-menu-item.phui-list-item-view:hover
+  .phui-list-item-icon.phui-font-fa {
+    color: #fff;
+  }
+
+.device-desktop .phabricator-application-menu
+  .phui-list-item-view.core-menu-item {
+  display: block;
+}
+
+.device-desktop .phabricator-application-menu .phui-list-item-view {
+  float: left;
+  position: relative;
+  min-width: 36px;
+  height: 36px;
+  margin-top: 4px;
+}
+
+.device-desktop .phabricator-core-menu-icon {
+  top: 4px;
+  left: 4px;
+}
+
+.device .phabricator-core-menu-icon {
+  left: 16px;
+  height: 24px;
+  width: 24px;
+  background-size: 24px;
+  margin: 2px;
+}
+
+.phabricator-core-menu-icon {
+  position: absolute;
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.phabricator-main-menu-dropdown.phui-list-sidenav {
+  position: absolute;
+  background: #fff;
+  top: 42px;
+  padding: 6px 0;
+  margin: 0 20px 0 0;
+  box-shadow: {$dropshadow};
+  border: 1px solid {$lightblueborder};
+  border-radius: 3px;
+}
+
+.phabricator-main-menu-dropdown.phui-list-sidenav .phui-list-item-has-icon
+  .phui-list-item-href {
+    padding: 4px 40px 4px 12px;
+    white-space: nowrap;
+}
+
+.phabricator-main-menu-dropdown.phui-list-sidenav .phui-list-item-type-label
+  .phui-list-item-name {
+    padding-left: 12px;
+}
+
+/* - User Menu -----------------------------------------------------------------
+
+  Styles unique to the user profile menu.
+
+*/
+
+.phabricator-core-user-menu {
+  float: right;
+  display: inline-block;
+  padding: 9px 24px 0 8px;
+  height: 35px;
+  position: relative;
+}
+
+.phabricator-core-user-mobile-menu {
+  display: none;
+}
+
+.phabricator-core-user-menu span.phui-icon-view.phuihead-small {
+  height: 24px;
+  width: 24px;
+  background-size: 24px;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 1px 0 0 0;
+}
+
+.phabricator-core-user-menu .phui-icon-view {
+  color: {$hoverwhite};
+  font-size: 18px;
+  margin: 4px 0 0 0;
+}
+
+.phabricator-core-user-menu .caret {
+  position: absolute;
+  right: 17px;
+  top: 13px;
+  border: none;
+  margin: 1px;
+  color: {$hoverwhite};
+}
+
+.phabricator-core-login-button {
+  float: right;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 3px;
+  margin: 8px 6px 4px;
+  border: 1px solid {$hoverwhite};
+  color: {$hoverwhite};
+}
+
+.device-desktop .phabricator-core-login-button:hover {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.device-desktop .phabricator-core-user-menu:hover .caret,
+.device-desktop .phabricator-core-user-menu:hover .phui-icon-view {
+  color: #fff;
+}
+
+.device .phabricator-core-user-menu .caret {
+  display: none;
+}
+
+.device .phabricator-core-user-mobile-menu {
+  display: block;
+}
+
+.device .phabricator-core-user-menu {
+  padding: 9px 8px 0 8px;
+}
+
+.device .phabricator-core-user-menu .phui-icon-view {
+  font-size: 20px;
+  margin: 3px 0 0 0;
+}
+
+ul.phabricator-core-user-profile-object .phui-oi-objname {
+  font-size: {$biggestfontsize};
+}
+
+ul.phabricator-core-user-profile-object li.phui-oi,
+ul.phabricator-core-user-profile-object .phui-oi-name,
+ul.phabricator-core-user-profile-object .phui-oi-content,
+ul.phabricator-core-user-profile-object .phui-oi-subhead {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+ul.phabricator-core-user-profile-object.phui-oi-list-simple .phui-oi-image {
+  height: 36px;
+  width: 36px;
+}
+
+ul.phabricator-core-user-profile-object.phui-oi-list-simple
+  .phui-oi-content-box {
+    margin-left: 44px;
+}
+
+
+
+/* - Print ---------------------------------------------------------------------
+*/
+
+!print .phabricator-main-menu {
+  display: none;
+}

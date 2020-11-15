@@ -1,0 +1,8 @@
+.DS_Store
+.sass-cache
+*.sublime-*
+rtfm/build
+.phptidy*
+tests/fixtures/wordpress/wp-content/themes/mocked_theme/tmp
+!tests/fixtures/wordpress/wp-content/themes/mocked_theme/tmp/.keep
+node_modules

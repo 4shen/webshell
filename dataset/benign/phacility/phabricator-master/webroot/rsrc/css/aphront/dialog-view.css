@@ -1,0 +1,199 @@
+/**
+ * @provides aphront-dialog-view-css
+ */
+
+.aphront-dialog-view {
+  width: 580px;
+  margin: 32px auto 16px;
+  border: 1px solid {$lightblueborder};
+  border-radius: 3px;
+  background-color: {$page.content};
+}
+
+.jx-client-dialog .aphront-dialog-view {
+  box-shadow: {$dropshadow};
+}
+
+.device-phone .aphront-dialog-view {
+  margin: 16px;
+  width: auto;
+}
+
+.aphront-dialog-view-standalone {
+  margin: 32px auto;
+}
+
+.aphront-dialog-head {
+  padding: 12px 12px 0 12px;
+}
+
+.aphront-dialog-flush .aphront-dialog-body {
+  padding: 0;
+}
+
+.aphront-dialog-view-width-form {
+  width: 820px;
+}
+
+.aphront-dialog-view-width-full {
+  width: 90%;
+  max-width: 1040px;
+}
+
+.aphront-dialog-body {
+  background: {$page.content};
+  padding: 16px;
+  border: none;
+}
+
+.device-phone .aphront-dialog-body {
+  padding: 8px;
+}
+
+.aphront-dialog-tail {
+  border: none;
+  position: relative;
+  background: {$lightgreybackground};
+  padding: 8px 16px;
+  border-top: 1px solid {$thinblueborder};
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.device .aphront-dialog-resize {
+  /* No resizing on devices. */
+  display: none;
+}
+
+.aphront-dialog-resize {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 18px;
+  height: 18px;
+  background-image: url(/rsrc/image/resize.png);
+  background-size: 100%;
+  cursor: nwse-resize;
+  pointer-events: all;
+}
+
+.aphront-dialog-foot {
+  padding: 6px 0;
+  float: left;
+}
+
+.aphront-dialog-tail button,
+.aphront-dialog-tail a.button {
+  float: right;
+  margin-left: 8px;
+}
+
+.jx-client-dialog {
+  position: absolute;
+  width: 100%;
+}
+
+.jx-mask {
+  opacity: .7;
+  background: #292f33;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.jx-dark-mask {
+  background: #292f33;
+  opacity: 0.95;
+}
+
+.jx-white-mask {
+  background: #fff;
+  opacity: 1;
+}
+
+.jx-date-mask {
+  background: #292f33;
+  opacity: 0.5;
+}
+
+.device-desktop .jx-date-mask {
+  display: none;
+}
+
+.aphront-exception-dialog {
+  width: 95%;
+}
+
+.aphront-exception-dialog .exception-message {
+  font-size: 14px;
+  background: {$sh-yellowbackground};
+  border: 1px solid {$sh-yellowborder};
+  padding: 12px;
+  white-space: pre-wrap;
+}
+
+.aphront-exception-dialog .exception-trace {
+  margin-top: 16px;
+}
+
+.aphront-access-dialog {
+  width: 50%;
+}
+
+.aphront-policy-explain-dialog .aphront-dialog-body {
+  padding: 0 12px;
+}
+
+.aphront-policy-rejection {
+  font-weight: bold;
+}
+
+.aphront-capability-details {
+  margin: 20px 0 4px;
+}
+
+.aphront-dialog-view-paragraph + .aphront-dialog-view-paragraph {
+  margin-top: 16px;
+}
+
+.aphront-dialog-view-command {
+  padding: 8px 16px;
+  background: {$greybackground};
+}
+
+.device-desktop .aphront-dialog-flush .phui-oi-list-view {
+  margin: 0;
+  padding: 0;
+}
+
+.aphront-dialog-flush .phui-oi-list-view.phui-object-list-stackable
+ .phui-oi {
+  border: 0;
+}
+
+.aphront-dialog-flush .phui-oi-list-view.phui-object-list-stackable
+ .phui-oi-frame {
+  border: 0;
+  border-top: 1px solid {$thinblueborder};
+}
+
+.aphront-dialog-object-list .phui-object-box {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aphront-dialog-object-list .aphront-dialog-body {
+  padding: 0 12px;
+}
+
+.aphront-dialog-tab-group .aphront-dialog-body {
+  padding: 0 12px;
+}
+
+.aphront-dialog-body > hr {
+  background: {$thinblueborder};
+  margin: 24px 12px;
+}

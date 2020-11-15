@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "XSSTunnel", "XSSTunnel\XSSTunnel.vbproj", "{5F1828F1-B56F-4B54-87E3-27046591FDF4}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "XSSTunnelLib", "XSSTunnelLib\XSSTunnelLib.vbproj", "{74F4BF6E-7D1A-46ED-AE64-D204DB8EBEEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{796BE021-EF62-476C-89F7-928C6AB3785F}"
+	ProjectSection(SolutionItems) = preProject
+		CHANGELOG.txt = CHANGELOG.txt
+		gpl.txt = gpl.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F1828F1-B56F-4B54-87E3-27046591FDF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F1828F1-B56F-4B54-87E3-27046591FDF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F1828F1-B56F-4B54-87E3-27046591FDF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F1828F1-B56F-4B54-87E3-27046591FDF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74F4BF6E-7D1A-46ED-AE64-D204DB8EBEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74F4BF6E-7D1A-46ED-AE64-D204DB8EBEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F4BF6E-7D1A-46ED-AE64-D204DB8EBEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74F4BF6E-7D1A-46ED-AE64-D204DB8EBEEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

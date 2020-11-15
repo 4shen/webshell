@@ -1,0 +1,9 @@
+[
+	{
+		"path": "/coredev/v0/me/contributions",
+		"class": "MediaWiki\\Rest\\Handler\\UserContributionsHandler",
+		"services": [
+			"ContributionsLookup"
+		]
+	}
+]

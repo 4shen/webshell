@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+	<table name="phpbb_posts">
+		<column>post_id</column>
+		<column>enable_bbcode</column>
+		<column>enable_smilies</column>
+		<column>enable_magic_url</column>
+		<column>post_text</column>
+		<column>bbcode_uid</column>
+		<row>
+			<value>1</value>
+			<value>1</value>
+			<value>1</value>
+			<value>1</value>
+			<value></value>
+			<value>abcd1234</value>
+		</row>
+		<row>
+			<value>2</value>
+			<value>1</value>
+			<value>1</value>
+			<value>1</value>
+			<value><![CDATA[<r><IMG src="img.png"><s>[IMG]</s>img.png<e>[/IMG]</e></IMG></r>]]></value>
+			<value></value>
+		</row>
+	</table>
+</dataset>

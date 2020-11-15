@@ -1,0 +1,131 @@
+/**
+ * @provides differential-table-of-contents-css
+ */
+
+.differential-toc-meta {
+  color: {$lightgreytext};
+  padding-top: 2px;
+}
+
+table.aphront-table-view td.differential-toc-char {
+  padding-right: 0;
+  font-weight: bold;
+  color: {$darkbluetext};
+}
+
+table.aphront-table-view td.differential-toc-prop {
+  padding-left: 0;
+  padding-right: 0;
+  font-weight: bold;
+  color: {$darkbluetext};
+}
+
+table.aphront-table-view td.differential-toc-ftype {
+  padding-left: 0;
+  font-weight: bold;
+  color: {$darkbluetext};
+}
+
+.differential-toc-file {
+  color: {$lightgreytext};
+}
+
+.device-phone .differential-toc-file {
+  word-break: break-word;
+}
+
+.differential-toc-cov {
+  color: {$darkbluetext};
+  font-weight: bold;
+}
+
+.differential-toc-reveal-all,
+.differential-toc-edit-all {
+  float: right;
+  margin-left: 4px;
+}
+
+.diff-star-none {
+  color: {$greytext};
+}
+
+.diff-star-okay {
+  color: {$orange};
+}
+
+/* TODO: 'warn' and 'fail' are both red, but we can't make 'warn' yellow since
+   'okay' is a "gold star". */
+.diff-star-warn {
+  color: {$red};
+}
+
+.diff-star-fail {
+  color: {$red};
+}
+
+.diff-star-skip {
+  color: {$indigo};
+}
+
+.differential-toc table td em {
+  color: {$greytext};
+}
+
+.differential-toc .button {
+  margin: 8px 0px 0px 8px;
+}
+
+.differential-mcoverage-loading {
+  color: {$lightgreytext};
+}
+
+.differential-toc-buttons {
+  border-top: 1px solid {$thinblueborder};
+  padding: 8px;
+}
+
+.differential-harbormaster-table-view {
+  margin: 4px 0;
+  border: 1px solid {$thinblueborder};
+}
+
+.diff-toc-path .phui-icon-view {
+  margin-right: 2px;
+  text-align: center;
+  width: 20px;
+  display: inline-block;
+}
+
+table.aphront-table-view-compact td {
+  padding: 3px 8px;
+}
+
+td.diff-toc-path td {
+  padding: 0;
+  color: {$greytext};
+}
+
+.diff-toc-path div.diff-path-component-new {
+  padding: 0 2px;
+  box-shadow: inset 0 -2px {$new-bright};
+  margin: 0 2px;
+}
+
+.diff-toc-path div.diff-path-component-old {
+  padding: 0 2px;
+  box-shadow: inset 0 -2px {$old-bright};
+  margin: 0 2px;
+}
+
+.diff-toc-path a {
+  color: {$darkbluetext};
+}
+
+td.diff-toc-path .diff-path-old td {
+  color: {$lightgreytext};
+}
+
+.diff-toc-low-importance-row,
+.alt-diff-toc-low-importance-row {
+  opacity: 0.5;
+}

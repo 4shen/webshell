@@ -1,0 +1,362 @@
+# Dolibarr language file - en_US - Accountancy (Double entries)
+Accountancy=Счетоводство
+Accounting=Счетоводство
+ACCOUNTING_EXPORT_SEPARATORCSV=Разделител на колони в експортен файл
+ACCOUNTING_EXPORT_DATE=Формат на дата в експортен файл
+ACCOUNTING_EXPORT_PIECE=Експортиране на пореден номер
+ACCOUNTING_EXPORT_GLOBAL_ACCOUNT=Експортиране с глобална сметка
+ACCOUNTING_EXPORT_LABEL=Име на експортиране
+ACCOUNTING_EXPORT_AMOUNT=Сума за експортиране
+ACCOUNTING_EXPORT_DEVISE=Валута за експортиране
+Selectformat=Изберете формата за файла
+ACCOUNTING_EXPORT_FORMAT=Изберете формата за файла
+ACCOUNTING_EXPORT_ENDLINE=Изберете типа пренасяне на нов ред
+ACCOUNTING_EXPORT_PREFIX_SPEC=Посочете префикса в името на файла
+ThisService=Тази услуга
+ThisProduct=Този продукт
+DefaultForService=По подразбиране за услуга
+DefaultForProduct=По подразбиране за продукт
+CantSuggest=Не може да се предложи
+AccountancySetupDoneFromAccountancyMenu=Повечето настройки на счетоводството се извършват от менюто %s
+ConfigAccountingExpert=Конфигурация на модул за експертно счетоводство
+Journalization=Осчетоводяване
+Journaux=Журнали
+JournalFinancial=Финансови журнали
+BackToChartofaccounts=Връщане към сметкоплана
+Chartofaccounts=Сметкоплан
+CurrentDedicatedAccountingAccount=Текуща специална сметка
+AssignDedicatedAccountingAccount=Нова сметка за присвояване
+InvoiceLabel=Име за фактура
+OverviewOfAmountOfLinesNotBound=Преглед на количеството редове, които не са обвързани със счетоводна сметка
+OverviewOfAmountOfLinesBound=Преглед на количеството редове, които вече са свързани към счетоводна сметка
+OtherInfo=Друга информация
+DeleteCptCategory=Премахване на счетоводна сметка от група
+ConfirmDeleteCptCategory=Сигурни ли сте, че искате да премахнете тази счетоводна сметка от групата счетоводни сметки?
+JournalizationInLedgerStatus=Статус на осчетоводяване
+AlreadyInGeneralLedger=Вече осчетоводено в главната счетоводна книга
+NotYetInGeneralLedger=Все още не е осчетоводено в главната счетоводна книга
+GroupIsEmptyCheckSetup=Групата е празна, проверете настройката на персонализираната счетоводна група
+DetailByAccount=Показване на детайли по сметка
+AccountWithNonZeroValues=Сметки с различни от нула стойности
+ListOfAccounts=Списък на сметки
+CountriesInEEC=Държави в ЕИО
+CountriesNotInEEC=Държави извън ЕИО
+CountriesInEECExceptMe=Държави в ЕИО, с изключение на %s
+CountriesExceptMe=Всички държави с изключение на %s
+AccountantFiles=Експортиране на счетоводни документи
+
+MainAccountForCustomersNotDefined=Основна счетоводна сметка за клиенти, която не е дефинирана в настройката
+MainAccountForSuppliersNotDefined=Основна счетоводна сметка за доставчици, която не е дефинирана в настройката
+MainAccountForUsersNotDefined=Основна счетоводна сметка за потребители, която не е дефинирана в настройката
+MainAccountForVatPaymentNotDefined=Основна счетоводна сметка за плащане на ДДС, която не е дефинирана в настройката
+MainAccountForSubscriptionPaymentNotDefined=Основна счетоводна сметка за плащане на абонамент, която не е дефинирана в настройката
+
+AccountancyArea=Секция за счетоводство
+AccountancyAreaDescIntro=Използването на счетоводния модул се извършва на няколко стъпки:
+AccountancyAreaDescActionOnce=Следните действия се изпълняват обикновено само веднъж или веднъж годишно...
+AccountancyAreaDescActionOnceBis=Следващите стъпки трябва да се направят, за да ви спестят време в бъдеще, като ви предлагат правилната счетоводна сметка по подразбиране при извършване на осчетоводяване (добавяне на записи в журнали и в главната счетоводна книга)
+AccountancyAreaDescActionFreq=Следните действия се изпълняват обикновено всеки месец, седмица или ден при много големи компании...
+
+AccountancyAreaDescJournalSetup=СТЪПКА %s: Създайте или проверете съдържанието на списъка с журнали от меню %s
+AccountancyAreaDescChartModel=СТЪПКА %s: Създайте модел на сметкоплана от меню %s
+AccountancyAreaDescChart=СТЪПКА %s: Създайте или проверете съдържанието на вашият сметкоплан от меню %s
+
+AccountancyAreaDescVat=СТЪПКА %s: Определете счетоводните сметки за всяка ставка на ДДС. За това използвайте менюто %s.
+AccountancyAreaDescDefault=СТЪПКА %s: Определете счетоводните сметки по подразбиране. За това използвайте менюто %s.
+AccountancyAreaDescExpenseReport=СТЪПКА %s: Определете счетоводните сметки по подразбиране за всеки вид разходен отчет. За това използвайте менюто %s.
+AccountancyAreaDescSal=СТЪПКА %s: Определете счетоводните сметки по подразбиране за плащане на заплати. За това използвайте менюто %s.
+AccountancyAreaDescContrib=СТЪПКА %s: Определете счетоводните сметки по подразбиране за специални разходи (различни данъци). За това използвайте менюто %s.
+AccountancyAreaDescDonation=СТЪПКА %s: Определете счетоводните сметки по подразбиране за дарения. За това използвайте менюто %s.
+AccountancyAreaDescSubscription=СТЪПКА %s: Определете счетоводните сметки по подразбиране за членски внос. За това използвайте менюто %s.
+AccountancyAreaDescMisc=СТЪПКА %s: Определете задължителната сметка по подразбиране и счетоводните сметки по подразбиране за различни транзакции. За това използвайте менюто %s.
+AccountancyAreaDescLoan=СТЪПКА %s: Определете счетоводните сметки по подразбиране за кредити. За това използвайте менюто %s.
+AccountancyAreaDescBank=СТЪПКА %s: Определете счетоводните сметки и кодът на журнала за всяка банка и финансови сметки. За това използвайте менюто %s.
+AccountancyAreaDescProd=СТЪПКА %s: Определете счетоводните сметки за вашите продукти / услуги. За това използвайте менюто %s.
+
+AccountancyAreaDescBind=СТЪПКА %s: Проверете обвързването между съществуващите %s реда и готовия счетоводен акаунт, така че системата да е в състояние да осчетоводи транзакции в главната счетоводна книга с едно кликване. Осъществете липсващите връзки. За това използвайте менюто %s.
+AccountancyAreaDescWriteRecords=СТЪПКА %s: Запишете транзакции в главната счетоводна книга. За това влезте в меню <strong>%s</strong> и кликнете върху бутон <strong>%s</strong>.
+AccountancyAreaDescAnalyze=СТЪПКА %s: Добавете или променете съществуващите транзакции и генерирайте отчети и експортни данни.
+
+AccountancyAreaDescClosePeriod=СТЪПКА %s: Приключете периода, за да не може да се правят промени в бъдеще.
+
+TheJournalCodeIsNotDefinedOnSomeBankAccount=Задължителна стъпка в настройката не е завършена (счетоводен код на журнал не е определен за всички банкови сметки)
+Selectchartofaccounts=Изберете активен сметкоплан
+ChangeAndLoad=Променяне и зареждане
+Addanaccount=Добавяне на счетоводна сметка
+AccountAccounting=Счетоводна сметка
+AccountAccountingShort=Сметка
+SubledgerAccount=Счетоводна сметка
+SubledgerAccountLabel=Име на счетоводна сметка
+ShowAccountingAccount=Показване на счетоводна сметка
+ShowAccountingJournal=Показване на счетоводен журнал
+AccountAccountingSuggest=Предложена счетоводна сметка
+MenuDefaultAccounts=Сметки по подразбиране
+MenuBankAccounts=Банкови сметки
+MenuVatAccounts=Сметки за ДДС
+MenuTaxAccounts=Сметки за данъци
+MenuExpenseReportAccounts=Сметки за разходни отчети
+MenuLoanAccounts=Сметки за кредити
+MenuProductsAccounts=Сметки за продукти
+MenuClosureAccounts=Сметки за приключване
+MenuAccountancyClosure=Приключване
+MenuAccountancyValidationMovements=Валидиране на движения
+ProductsBinding=Сметки за продукти
+TransferInAccounting=Прехвърляне към счетоводство
+RegistrationInAccounting=Регистриране в счетоводство
+Binding=Обвързване към сметки
+CustomersVentilation=Обвързване на фактура за продажба
+SuppliersVentilation=Обвързване на фактура за доставка
+ExpenseReportsVentilation=Обвързващ на разходен отчет
+CreateMvts=Създаване на нова транзакция
+UpdateMvts=Променяне на транзакция
+ValidTransaction=Валидиране на транзакция
+WriteBookKeeping=Регистриране на транзакции в главната счетоводна книга
+Bookkeeping=Главна счетоводна книга
+AccountBalance=Салдо по сметка
+ObjectsRef=Обект №
+CAHTF=Обща покупка от доставчик преди ДДС
+TotalExpenseReport=Общ разходен отчет
+InvoiceLines=Редове на фактури за свързване
+InvoiceLinesDone=Свързани редове на фактури
+ExpenseReportLines=Редове на разходни отчети за свързване
+ExpenseReportLinesDone=Свързани редове на разходни отчети
+IntoAccount=Свързване на ред със счетоводна сметка
+
+
+Ventilate=Свързване
+LineId=Идентификатор на ред
+Processing=Обработване
+EndProcessing=Обработването е прекратено.
+SelectedLines=Избрани редове
+Lineofinvoice=Ред на фактура
+LineOfExpenseReport=Ред на разходен отчет
+NoAccountSelected=Не е избрана счетоводна сметка
+VentilatedinAccount=Успешно свързване към счетоводната сметка
+NotVentilatedinAccount=Не е свързан със счетоводната сметка
+XLineSuccessfullyBinded=%s продукти / услуги успешно са свързани към счетоводна сметка
+XLineFailedToBeBinded=%s продукти / услуги, които не са свързани с нито една счетоводна сметка
+
+ACCOUNTING_LIMIT_LIST_VENTILATION=Брой елементи за свързване, показани на страница (препоръчително: 50)
+ACCOUNTING_LIST_SORT_VENTILATION_TODO=Започнете сортирането на страницата „За свързване“, използвайки най-новите елементи
+ACCOUNTING_LIST_SORT_VENTILATION_DONE=Започнете сортирането на страницата „Извършено свързване“, използвайки най-новите елементи
+
+ACCOUNTING_LENGTH_DESCRIPTION=Съкращаване на описанието на продукти и услуги в списъци след х символа (препоръчително: 50)
+ACCOUNTING_LENGTH_DESCRIPTION_ACCOUNT=Съкращаване на описанието на сметката на продукти и услуги в списъци след x символа (препоръчително: 50)
+ACCOUNTING_LENGTH_GACCOUNT=Дължина на главните счетоводни сметки (ако тук зададете стойност "6", сметката "706" ще се появи на екрана като "706000")
+ACCOUNTING_LENGTH_AACCOUNT=Дължина на счетоводните сметки на контрагенти (ако тук зададете стойност "6", сметката "401" ще се появи на екрана като "401000")
+ACCOUNTING_MANAGE_ZERO=Разрешава управление на различен брой нули в края на счетоводна сметка. Необходимо е в някои страни като Швейцария. Ако е изключено (по подразбиране) може да зададете следните два параметъра, за да поискате от системата да добави виртуални нули.
+BANK_DISABLE_DIRECT_INPUT=Деактивиране на директно добавяне на транзакция в банкова сметка
+ACCOUNTING_ENABLE_EXPORT_DRAFT_JOURNAL=Активиране на експортиране на журнали в състояние на чернова
+ACCOUNTANCY_COMBO_FOR_AUX=Активиране на комбиниран списък за дъщерна сметка (може да създаде забавяне, ако имате много контрагенти)
+
+ACCOUNTING_SELL_JOURNAL=Журнал за продажби
+ACCOUNTING_PURCHASE_JOURNAL=Журнал за покупки
+ACCOUNTING_MISCELLANEOUS_JOURNAL=Общ журнал
+ACCOUNTING_EXPENSEREPORT_JOURNAL=Журнал за разходни отчети
+ACCOUNTING_SOCIAL_JOURNAL=Журнал за данъци
+ACCOUNTING_HAS_NEW_JOURNAL=Има нов журнал
+
+ACCOUNTING_RESULT_PROFIT=Счетоводна сметка за резултат (печалба)
+ACCOUNTING_RESULT_LOSS=Счетоводна сметка за резултат (загуба)
+ACCOUNTING_CLOSURE_DEFAULT_JOURNAL=Журнал за приключване
+
+ACCOUNTING_ACCOUNT_TRANSFER_CASH=Счетоводна сметка на преходен банков превод
+TransitionalAccount=Преходна сметка за банков превод
+
+ACCOUNTING_ACCOUNT_SUSPENSE=Счетоводна сметка за изчакване
+DONATION_ACCOUNTINGACCOUNT=Счетоводна сметка за регистриране на дарения
+ADHERENT_SUBSCRIPTION_ACCOUNTINGACCOUNT=Счетоводен акаунт за регистриране на членски внос
+
+ACCOUNTING_PRODUCT_BUY_ACCOUNT=Счетоводна сметка по подразбиране за закупени продукти (използва се, ако не е определена в продуктовата карта)
+ACCOUNTING_PRODUCT_SOLD_ACCOUNT=Счетоводна сметка по подразбиране за продадени продукти (използва се, ако не е дефинирана в продуктовата карта)
+ACCOUNTING_PRODUCT_SOLD_INTRA_ACCOUNT=Счетоводна сметка по подразбиране за продадени продукти в ЕИО (използва се, ако не е определена в продуктовата карта)
+ACCOUNTING_PRODUCT_SOLD_EXPORT_ACCOUNT=Счетоводна сметка по подразбиране за продадени и експортирани продукти извън ЕИО (използва се, ако не е определена в продуктовата карта)
+ACCOUNTING_SERVICE_BUY_ACCOUNT=Счетоводна сметка по подразбиране за закупени услуги (използва се, ако не е дефинирана в картата на услугата)
+ACCOUNTING_SERVICE_SOLD_ACCOUNT=Счетоводна сметка по подразбиране за продадени услуги (използва се, ако не е дефинирана в картата на услугата)
+ACCOUNTING_SERVICE_SOLD_INTRA_ACCOUNT=Счетоводна сметка по подразбиране за продадени услуги в ЕИО (използва се, ако не е определена в картата на услугата)
+ACCOUNTING_SERVICE_SOLD_EXPORT_ACCOUNT=Счетоводна сметка по подразбиране за продадени и експортирани услуги извън ЕИО (използва се, ако не е определена в картата на услугата)
+
+Doctype=Вид документ
+Docdate=Дата
+Docref=Референция
+LabelAccount=Име на сметка
+LabelOperation=Име на операция
+Sens=Значение
+LetteringCode=Буквен код
+Lettering=Означение
+Codejournal=Журнал
+JournalLabel=Име на журнал
+NumPiece=Пореден номер
+TransactionNumShort=Транзакция №
+AccountingCategory=Персонализирани групи
+GroupByAccountAccounting=Групиране по счетоводна сметка
+AccountingAccountGroupsDesc=Тук може да определите някои групи счетоводни сметки. Те ще бъдат използвани за персонализирани счетоводни отчети.
+ByAccounts=По сметки
+ByPredefinedAccountGroups=По предварително определени групи
+ByPersonalizedAccountGroups=По персонализирани групи
+ByYear=По година
+NotMatch=Не е зададено
+DeleteMvt=Изтриване на редове от книгата
+DelMonth=Месец за изтриване
+DelYear=Година за изтриване
+DelJournal=Журнал за изтриване
+ConfirmDeleteMvt=Това ще изтрие всички редове в главната книгата за годината / месеца и / или от конкретен журнал (изисква се поне един критерий). Ще трябва да използвате повторно функцията „Регистриране в счетоводство“, за да върнете изтрития запис обратно в главната книга.
+ConfirmDeleteMvtPartial=Това ще изтрие транзакцията от книгата (всички редове, свързани с една и съща транзакция ще бъдат изтрити)
+FinanceJournal=Финансов журнал
+ExpenseReportsJournal=Журнал за разходни отчети
+DescFinanceJournal=Финансов журнал, включващ всички видове плащания по банкова сметка
+DescJournalOnlyBindedVisible=Това е преглед на запис, който е свързан към счетоводна сметка и може да бъде добавен в книгата.
+VATAccountNotDefined= Не е определена сметка за ДДС
+ThirdpartyAccountNotDefined=Не е определена сметка за контрагент
+ProductAccountNotDefined=Не е определена сметка за продукт
+FeeAccountNotDefined=Не е определена сметка за такса
+BankAccountNotDefined=Не е определена сметка за банка
+CustomerInvoicePayment=Плащане на фактура за продажба
+ThirdPartyAccount=Сметка на контрагент
+NewAccountingMvt=Нова транзакция
+NumMvts=Брой транзакции
+ListeMvts=Списък на движения
+ErrorDebitCredit=Дебитът и кредитът не могат да имат стойност по едно и също време
+AddCompteFromBK=Добавяне на счетоводни сметки към групата
+ReportThirdParty=Списък на сметки на контрагенти
+DescThirdPartyReport=Преглед на списъка с клиенти и доставчици, и техните счетоводни сметки
+ListAccounts=Списък на счетоводни сметки
+UnknownAccountForThirdparty=Неизвестна сметна на контрагент. Ще използваме %s
+UnknownAccountForThirdpartyBlocking=Неизвестна сметка на контрагент. Блокираща грешка.
+ThirdpartyAccountNotDefinedOrThirdPartyUnknown=Сметката на контрагента не е определена или контрагента е неизвестен. Ще използваме %s
+ThirdpartyAccountNotDefinedOrThirdPartyUnknownSubledgerIgnored=Неизвестен контрагент или недефинирана счетоводна сметка за това плащане. Ще запазим счетоводната сметка без стойност.
+ThirdpartyAccountNotDefinedOrThirdPartyUnknownBlocking=Сметката на контрагента не е определена или контрагента е неизвестен. Блокираща грешка.
+UnknownAccountForThirdpartyAndWaitingAccountNotDefinedBlocking=Неизвестна сметка на контрагент и сметка за изчакване не са определени. Блокираща грешка.
+PaymentsNotLinkedToProduct=Плащането не е свързано с нито един продукт / услуга
+
+Pcgtype=Група от сметки
+Pcgsubtype=Подгрупа от сметки
+PcgtypeDesc=Групата и подгрупата на акаунта се използват като предварително зададени критерии за „филтриране“ и „групиране“ за някои счетоводни справки. Например „Приход“ или „Разход“ се използват като групи за счетоводни сметки на продукти за съставяне на справка за разходите / приходите.
+
+TotalVente=Общ оборот преди ДДС
+TotalMarge=Общ марж на продажби
+
+DescVentilCustomer=Преглед на списъка с редове на фактури за продажба, свързани (или не) със счетоводна сметка на продукт
+DescVentilMore=В повечето случаи, ако използвате предварително дефинирани продукти или услуги и зададете номер на сметка в картата на продукта / услугата, то системата ще може да извърши всички свързвания между вашите редове на фактури и счетоводната сметка във вашия сметкоплан, просто с едно щракване с бутона <strong>"%s"</strong>. Ако сметката не е зададена в картата на продукта / услугата или ако все още имате някои редове, които не са свързани към сметка, то ще трябва да направите ръчно свързване от менюто "<strong>%s</strong>".
+DescVentilDoneCustomer=Преглед на списъка с редове на фактури за продажба и тяхната счетоводна сметка за продукти
+DescVentilTodoCustomer=Свързване на редове на фактури, които все още не са свързани със счетоводна сметка за продукт
+ChangeAccount=Променете счетоводната сметка на продукта / услугата за избрани редове със следната счетоводна сметка:
+Vide=-
+DescVentilSupplier=Преглед на списъка с редове във фактури за доставка, обвързани или все още не обвързани със счетоводна сметка на продукт (виждат се само записи, които все още не са прехвърлени към счетоводството)
+DescVentilDoneSupplier=Преглед на списъка с редове на фактури за доставка и тяхната счетоводна сметка
+DescVentilTodoExpenseReport=Свържете редове на разходни отчети, които все още не са свързани със счетоводна сметка за такса
+DescVentilExpenseReport=Преглед на списъка с редове на разходни отчети, свързани (или не) със счетоводна сметка за такса
+DescVentilExpenseReportMore=Ако настроите счетоводна сметка за видовете разходен отчет, то системата ще може да извърши всички свързвания между редовете на разходния отчет и счетоводната сметка във вашия сметкоплан, просто с едно щракване с бутона <strong>"%s"</strong>. Ако сметката не е зададена в речника с таксите или ако все още имате някои редове, които не са свързани с нито една сметка ще трябва да направите ръчно свързване от менюто "<strong>%s</strong>".
+DescVentilDoneExpenseReport=Преглед на списъка с редове на разходни отчети и тяхната счетоводна сметка за такса
+
+DescClosure=Преглед на броя движения по месеци, които не са валидирани и отворените фискални години
+OverviewOfMovementsNotValidated=Стъпка 1 / Преглед на движенията, които не са валидирани (необходимо за приключване на фискална година)
+ValidateMovements=Валидиране на движения
+DescValidateMovements=Всякакви промени или изтриване на написаното ще бъдат забранени. Всички записи за изпълнение трябва да бъдат валидирани, в противен случай приключването няма да е възможно.
+SelectMonthAndValidate=Изберете месец и валидирайте движенията
+
+ValidateHistory=Автоматично свързване
+AutomaticBindingDone=Автоматичното свързване завърши
+
+ErrorAccountancyCodeIsAlreadyUse=Грешка, не може да изтриете тази счетоводна сметка, защото се използва.
+MvtNotCorrectlyBalanced=Движението не е правилно балансирано. Дебит = %s | Credit = %s
+Balancing=Балансиране
+FicheVentilation=Свързваща карта
+GeneralLedgerIsWritten=Транзакциите са записани в главната счетоводна книга
+GeneralLedgerSomeRecordWasNotRecorded=Някои от транзакциите не бяха осчетоводени. Ако няма друго съобщение за грешка, то това вероятно е, защото те вече са били осчетоводени.
+NoNewRecordSaved=Няма повече записи за осчетоводяване
+ListOfProductsWithoutAccountingAccount=Списък на продукти, които не са свързани с нито една счетоводна сметка
+ChangeBinding=Промяна на свързване
+Accounted=Осчетоводено в книгата
+NotYetAccounted=Все още не е осчетоводено в книгата
+ShowTutorial=Показване на урок
+
+## Admin
+ApplyMassCategories=Прилагане на масови категории
+AddAccountFromBookKeepingWithNoCategories=Наличната сметка не е част от персонализирана група
+CategoryDeleted=Категорията за счетоводната сметка е премахната
+AccountingJournals=Счетоводни журнали
+AccountingJournal=Счетоводен журнал
+NewAccountingJournal=Нов счетоводен журнал
+ShowAccountingJournal=Показване на счетоводен журнал
+NatureOfJournal=Произход на журнала
+AccountingJournalType1=Разнородни операции
+AccountingJournalType2=Продажби
+AccountingJournalType3=Покупки
+AccountingJournalType4=Банка
+AccountingJournalType5=Разходни отчети
+AccountingJournalType8=Инвентар
+AccountingJournalType9=Има нови
+ErrorAccountingJournalIsAlreadyUse=Този журнал вече се използва
+AccountingAccountForSalesTaxAreDefinedInto=Бележка: Счетоводната сметка за данък върху продажбите е дефинирана в меню <b>%s</b> - <b>%s</b>
+NumberOfAccountancyEntries=Брой записи
+NumberOfAccountancyMovements=Брой движения
+
+## Export
+ExportDraftJournal=Експортиране на журнал в чернова
+Modelcsv=Модел на експортиране
+Selectmodelcsv=Изберете модел на експортиране
+Modelcsv_normal=Класическо експортиране
+Modelcsv_CEGID=Експортиране за CEGID Expert Comptabilité
+Modelcsv_COALA=Експортиране за Sage Coala
+Modelcsv_bob50=Експортиране за Sage BOB 50
+Modelcsv_ciel=Експортиране за Sage Ciel Compta или Compta Evolution
+Modelcsv_quadratus=Експортиране за Quadratus QuadraCompta
+Modelcsv_ebp=Експортиране за EBP
+Modelcsv_cogilog=Експортиране за Cogilog
+Modelcsv_agiris=Експортиране за Agiris
+Modelcsv_LDCompta=Експортиране за LD Compta (v9 и по-нова версия) (Тест)
+Modelcsv_openconcerto=Експортиране за OpenConcerto (Тест)
+Modelcsv_configurable=Експортиране в конфигурируем CSV
+Modelcsv_FEC=Експортиране за FEC
+Modelcsv_Sage50_Swiss=Експортиране за Sage 50 Швейцария
+ChartofaccountsId=Идентификатор на сметкоплан
+
+## Tools - Init accounting account on product / service
+InitAccountancy=Инициализиране на счетоводство
+InitAccountancyDesc=Тази страница може да се използва за инициализиране на счетоводна сметка за продукти и услуги, за които няма определена счетоводна сметка за продажби и покупки.
+DefaultBindingDesc=Тази страница може да се използва за задаване на сметка по подразбиране, която да се използва за свързване на записи за транзакции на плащания на заплати, дарения, данъци и ДДС, когато все още не е зададена конкретна счетоводна сметка.
+DefaultClosureDesc=Тази страница може да се използва за задаване на параметри, използвани за счетоводни приключвания.
+Options=Опции
+OptionModeProductSell=Режим продажби
+OptionModeProductSellIntra=Режим продажби, изнасяни в ЕИО
+OptionModeProductSellExport=Режим продажби, изнасяни в други държави
+OptionModeProductBuy=Режим покупки
+OptionModeProductSellDesc=Показване на всички продукти със счетоводна сметка за продажби.
+OptionModeProductSellIntraDesc=Показване на всички продукти със счетоводна сметка за продажби в ЕИО.
+OptionModeProductSellExportDesc=Показване на всички продукти със счетоводна сметка за други чуждестранни продажби.
+OptionModeProductBuyDesc=Показване на всички продукти със счетоводна сметка за покупки.
+CleanFixHistory=Премахване на счетоводния код от редове, които не съществуват в сметкоплана
+CleanHistory=Нулиране на всички връзки за избраната година
+PredefinedGroups=Предварително определени групи
+WithoutValidAccount=Без валидна специална сметка
+WithValidAccount=С валидна специална сметка
+ValueNotIntoChartOfAccount=Тази стойност на счетоводната сметка не съществува в сметкоплана
+AccountRemovedFromGroup=Сметката е премахната от групата
+SaleLocal=Локална продажба
+SaleExport=Експортна продажба
+SaleEEC=Вътреобщностна продажба
+
+## Dictionary
+Range=Обхват на счетоводна сметка
+Calculated=Изчислено
+Formula=Формула
+
+## Error
+SomeMandatoryStepsOfSetupWereNotDone=Някои задължителни стъпки за настройка не са направени, моля изпълнете ги.
+ErrorNoAccountingCategoryForThisCountry=Няма налична група счетоводни сметки за държава %s (Вижте Начално -> Настройка -> Речници)
+ErrorInvoiceContainsLinesNotYetBounded=Опитвате се да осчетоводите някои редове на фактура <strong>%s</strong>, но някои други редове все още не са свързани към счетоводна сметка. Осчетоводяването на всички редове във фактурата е отхвърлено.
+ErrorInvoiceContainsLinesNotYetBoundedShort=Някои редове във фактурата не са свързани със счетоводна сметка.
+ExportNotSupported=Настроеният формат за експортиране не се поддържа в тази страница
+BookeppingLineAlreayExists=Вече съществуващи редове в счетоводството
+NoJournalDefined=Няма определен журнал
+Binded=Свързани редове
+ToBind=Редове за свързване
+UseMenuToSetBindindManualy=Редовете все още не са свързани, използвайте меню <a href="%s">%s</a>, за да направите връзката ръчно
+
+## Import
+ImportAccountingEntries=Счетоводни записи
+DateExport=Дата на експортиране
+WarningReportNotReliable=Внимание, тази справка не се основава на главната счетоводна книга, така че не съдържа транзакция, ръчно променена в книгата. Ако осчетоводяването ви е актуално, то прегледът на счетоводството е по-точен.
+ExpenseReportJournal=Журнал за разходни отчети
+InventoryJournal=Журнал за инвентар

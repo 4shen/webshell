@@ -1,0 +1,14 @@
+{ "translations": {
+    "Unknown filetype" : "Unbekannter Dateityp",
+    "Invalid image" : "Ungültiges Bild",
+    "seconds ago" : "Sekunden zuvor",
+    "Username" : "Benutzername",
+    "Password" : "Passwort",
+    "__language_name__" : "Deutsch (Österreich)",
+    "Apps" : "Apps",
+    "General" : "Allgemein",
+    "Search" : "Suche",
+    "Settings" : "Einstellungen",
+    "Users" : "Benutzer"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

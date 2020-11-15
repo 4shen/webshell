@@ -1,0 +1,19 @@
+/**
+ * @provides aphront-panel-view-css
+ */
+
+.aphront-panel-preview {
+  padding: 16px;
+}
+
+.device-phone .aphront-panel-preview {
+  display: none;
+}
+
+.aphront-panel-preview-loading-text {
+  color: {$greytext};
+}
+
+.aphront-panel-flush {
+  margin: 0;
+}

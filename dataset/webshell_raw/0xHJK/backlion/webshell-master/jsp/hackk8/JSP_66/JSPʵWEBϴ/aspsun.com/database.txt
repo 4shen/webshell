@@ -1,0 +1,16 @@
+CREATE TABLE sz_shouye(
+id int(11) not null auto_increment,
+title varchar(255),
+sub_title varchar(255),
+keyword  varchar(255),
+author varchar(255),
+source varchar(255),
+operator varchar(255),
+addition varchar(255),
+belong varchar(255),
+senddate date,
+content text,
+primary key(id)
+);
+
+create database xcb;

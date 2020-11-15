@@ -1,0 +1,21 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+sylius:
+    form:
+        group:
+            name: Nosaukums
+        product_filter:
+            name: Nosaukums
+        product_association_type:
+            name: Nosaukums
+        promotion_rule:
+            total_of_items_from_taxon:
+                amount: Summa
+    installer:
+        extensions:
+            off: false
+            on: true
+        settings:
+            off: false
+            on: true

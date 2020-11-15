@@ -1,0 +1,108 @@
+/**
+ * @provides aphront-tooltip-css
+ */
+
+.jx-tooltip-container {
+  position: absolute;
+  padding: 5px;
+
+  /* In Chrome, moving the cursor into the empty space next to the "caret" on
+     the caret side of the tooltip can cause the tooltip to flicker rapidly
+     because the cursor hits the container. To stop this, prevent cursor
+     events on the container. See T8440. */
+  pointer-events: none;
+}
+
+.jx-tooltip-appear {
+  animation: 0.5s tooltip-appear;
+
+  /* Without this, there's a nasty pop-in effect at the end of the animation
+     when Safari changes font smoothing. The text becomes visibly more bold
+     after the last frame of animation. */
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+@keyframes tooltip-appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.jx-tooltip-hidden {
+  opacity: 0;
+}
+
+.jx-tooltip-inner {
+  position: relative;
+  background: #000;
+  border-radius: 3px;
+}
+
+.jx-tooltip {
+  color: #fff;
+  font-size: {$normalfontsize};
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  padding: 6px 8px;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.jx-tooltip:after {
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba({$alphablack}, 0);
+  border-width: 5px;
+}
+
+.jx-tooltip-align-E {
+  margin-left: 5px;
+}
+
+.jx-tooltip-align-E .jx-tooltip:after {
+  margin-top: -5px;
+  border-right-color: #000;
+  right: 100%;
+  top: 50%;
+}
+
+.jx-tooltip-align-E {
+  margin-right: 5px;
+}
+
+.jx-tooltip-align-W .jx-tooltip:after {
+  margin-top: -5px;
+  border-left-color: #000;
+  left: 100%;
+  top: 50%;
+}
+
+.jx-tooltip-align-N {
+  margin-bottom: 5px;
+}
+
+.jx-tooltip-align-N .jx-tooltip:after {
+  margin-left: -5px;
+  border-top-color: #000;
+  top: 100%;
+  left: 50%;
+}
+
+.jx-tooltip-align-N {
+  margin-top: 5px;
+}
+
+.jx-tooltip-align-S .jx-tooltip:after {
+  margin-left: -5px;
+  border-bottom-color: #000;
+  bottom: 100%;
+  left: 50%;
+}

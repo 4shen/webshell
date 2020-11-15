@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Web Shell</title>
+
+<link rel="stylesheet" href="js/jquery-ui-1.11.0/jquery-ui.css" />
+<link rel="stylesheet" href="css/jquery.contextMenu.css" />
+<link rel="stylesheet" href="css/jquery.dataTables.css">
+<link rel="stylesheet" href="css/webshell.css" />
+
+<script type="text/javascript" src="js/jquery-ui-1.11.0/external/jquery/jquery.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.11.0/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery.layout-1.4.js"></script>
+<script type="text/javascript" src="js/jquery.layout.resizeTabLayout-1.3.js"></script>
+<script type="text/javascript" src="js/jquery.layout.resizePaneAccordions-1.2.js"></script>
+<script type="text/javascript" src="js/jquery.contextMenu.js"></script>
+<script type="text/javascript" src="js/dropzone.js"></script>
+<script type="text/javascript" src="js/ace/ace.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="js/debug.js"></script>
+
+<script type="text/javascript" src="js/shell/FontMetrics.js"></script>
+<script type="text/javascript" src="js/shell/Document.js"></script>
+<script type="text/javascript" src="js/shell/Selection.js"></script>
+<script type="text/javascript" src="js/shell/CanvasTextEditor.js"></script>
+
+
+<script type="text/javascript">
+
+	function resizePageLayout () {
+		var pageLayout = $("body").data("layout");
+		if (pageLayout) pageLayout.resizeAll();
+	};
+
+
+	/*
+	 *	Define options for all the layouts
+	 */
+
+	var pageLayoutOptions = {
+		name:					'pageLayout' // only for debugging
+	,	resizeWithWindowDelay:	250		// delay calling resizeAll when window is *still* resizing
+	//,	resizeWithWindowMaxDelay: 2000	// force resize every XX ms while window is being resized
+	,	resizable:				false
+	,	slidable:				false
+	,	closable:				false
+	,	north__paneSelector:	"#outer-north"
+	,	center__paneSelector:	"#outer-center" 
+	,	south__paneSelector:	"#outer-south" 
+	,	south__spacing_open:	0
+	,	north__spacing_open:	0
+	
+	//	add a child-layout inside the center-pane
+	,	center__children: {
+			name:					'tabsContainerLayout'
+		,	resizable:				false
+		,	slidable:				false
+		,	closable:				false
+		,	north__paneSelector:	"#tabbuttons"
+		,	center__paneSelector:	"#tabpanels" 
+		,	spacing_open:			0
+		,	center__onresize:		$.layout.callbacks.resizeTabLayout // resize ALL visible layouts nested inside
+		}
+	};
+
+
+	//	define sidebar options here because are used for BOTH east & west tab-panes (see below)
+	var sidebarLayoutOptions = {
+		name:					'sidebarLayout' // only for debugging
+	,	showErrorMessages:		false	// some panes do not have an inner layout
+	,	resizeWhileDragging:	true
+	,   north__size:			"30%"
+	,   south__size:			"30%"
+	,	minSize:				360    // height of south pane in side bar
+	,	center__minHeight:		100
+	,	spacing_open:			10
+	,	spacing_closed:			10
+	,	contentSelector:		".ui-widget-content"
+	,	togglerContent_open:	'<div class="ui-icon"></div>'
+	,	togglerContent_closed:	'<div class="ui-icon"></div>'
+	};
+
+	//	options used for the tab-panel-layout on all 3 tabs
+	var tabLayoutOptions = {
+	//	name:					'tabPanelLayout' // only for debugging
+		resizeWithWindow:		false	// required because layout is 'nested' inside tabpanels container
+	//,	resizeWhileDragging:	true	// slow in IE because of the nested layouts
+	,	resizerDragOpacity:		0.5
+	,	north__resizable:		false
+	,	south__resizable:		false
+	,	north__closable:		false
+	,	south__closable:		false
+	,	west__minSize:			380     // initial width of west pane
+	,	east__minSize:			300
+	,	center__minWidth:		400
+	,	spacing_open:			10
+	,	spacing_closed:			10
+	,	contentSelector:		".ui-widget-content"
+	,	togglerContent_open:	'<div class="ui-icon"></div>'
+	,	togglerContent_closed:	'<div class="ui-icon"></div>'
+	,	triggerEventsOnLoad:	true // so center__onresize is triggered when layout inits
+	,	center__onresize:		resizeShell
+	,	west__onresize:			$.layout.callbacks.resizePaneAccordions // ditto for west-pane
+	/*
+	,	center__onresize: function (pane, $Pane) {
+			$Pane.find(":ui-accordion").accordion("resize");
+		}
+	*/
+
+	//	add child-layouts for BOTH the east/west panes (sidebars)
+	//	sidebarLayoutOptions was created above so they could be used twice here
+	,	west__children:		sidebarLayoutOptions
+	,	east__children:		sidebarLayoutOptions
+	};
+
+	//
+	// Global Variables
+	//
+	
+	var editorList = {};
+	var shellList = {};
+	var selectedEntry;
+	var selectedTable;
+	var tailEventSource = new Object();
+    
+	function resizeShell(pane_name, element, state, options, layout_name){
+		for (tabid in shellList) {
+			var action = $("#innerScriptTabContainer > div#" +tabid).data('action');
+			if( action == 'shell' ){
+				var width = $("#innerScriptTabContainer > div#" +tabid).width() - 20;
+				var height = $("#innerScriptTabContainer > div#" +tabid).height() - 30;
+				// calculate a height of multiple line height
+				var mod = height % shellList[tabid]._metrics.getHeight();
+				height = height - mod;
+				shellList[tabid].resize(width, height);
+				shellList[tabid].focus();
+			}
+		}
+	}
+	
+	
+	$(document).ready( function() {
+
+		// create the page-layout, which will ALSO create the tabs-wrapper child-layout
+		var pageLayout = $("body").layout( pageLayoutOptions ); 
+
+		// init the tabs inside the center-pane
+		// NOTE: layout.center = NEW pane-instance object
+		pageLayout.center.pane
+			.tabs({
+				// using callback addon
+				activate: $.layout.callbacks.resizeTabLayout
+
+				/* OR using a manual/custom callback
+				activate: function (evt, ui) {
+					var tabLayout = $(ui.newPanel).data("layout");
+					if ( tabLayout ) tabLayout.resizeAll();
+				}*/
+			})
+			// make the tabs sortable
+			//.find(".ui-tabs-nav") .sortable({ axis: 'x', zIndex: 2 }) .end()
+		;
+		// after creating the tabs, resize the tabs-wrapper layout...
+		// we can access this layout as a 'child' property of the outer-center pane
+		pageLayout.center.children.tabsContainerLayout.resizeAll();
+
+		// init ALL the tab-layouts - all use the same options
+		// layout-initialization will _complete_ the first time each layout becomes 'visible'
+		$("#tabShell").layout( tabLayoutOptions );
+		$("#tabDatabase").layout( tabLayoutOptions );
+		$("#tabFilesystem").layout( tabLayoutOptions );
+
+		// init inner-tabs inside outer-tab #3
+		$("#innerScriptTabs").tabs({
+			    activate: function( event, ui ) { 
+	   				var activeIdx = $("#innerScriptTabs").tabs('option', 'active');
+					var tabid = $($("#innerScriptTabs > div .ui-tabs-panel" )[activeIdx]).attr('id');
+					var action = $("#innerScriptTabContainer > div#" +tabid).data('action');
+					console.log('activeIdx: ' + activeIdx + ' tabid: ' + tabid + ' action: ' + action);
+			    	
+					if( action == 'shell' ){
+						$("div#tabShell > div#innerScriptTabs > div#toolbar > button#close_script").css('display','none');
+						$("div#tabShell > div#innerScriptTabs > div#toolbar > button#save_script").css('display','none');
+						$("div#tabShell > div#innerScriptTabs > div#toolbar > button#exec_script").css('display','none');						
+						shellList[tabid].focus();
+					}
+					else {
+						$("div#tabShell > div#innerScriptTabs > div#toolbar > button#close_script").css('display','inline');
+						$("div#tabShell > div#innerScriptTabs > div#toolbar > button#save_script").css('display','inline');
+						$("div#tabShell > div#innerScriptTabs > div#toolbar > button#exec_script").css('display','inline');
+					}
+			    }
+		});
+		$("#innerDatabaseTabs").tabs({
+		    activate: function( event, ui ) { 
+				$("div#tabDatabase > div#innerDatabaseTabs > div#toolbar > button#close_script").css('display','inline');
+				$("div#tabDatabase > div#innerDatabaseTabs > div#toolbar > button#save_script").css('display','inline');
+		    }
+	});
+		$("#innerFilesystemTabs").tabs({        
+		    activate: function( event, ui ) { 
+		    	// change buttons according to type of tab (open,tail)
+   				var activeIdx = $("#innerFilesystemTabs").tabs('option', 'active');
+				var tabid = $($("#innerFilesystemTabs > div .ui-tabs-panel" )[activeIdx]).attr('id');
+				var action = $("#innerFilesystemTabContainer > div#" +tabid).data('action');
+				console.log('activeIdx: ' + activeIdx + ' tabid: ' + tabid + ' action: ' + action);
+				$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#close").css('display','none');
+				$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#save").css('display','none');
+				$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#clear_log").css('display','none');
+				$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#pause_log").css('display','none');
+
+				if( 'open' == action ){
+					$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#close").css('display','inline');
+					$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#save").css('display','inline');
+				}
+				else if( 'tail' == action ){
+					$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#close").css('display','inline');
+					$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#clear_log").css('display','inline');
+					$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#pause_log").css('display','inline');
+				}
+		    }
+		});
+
+		
+		//
+		// Close Icons
+		//
+		
+		$('#innerFilesystemTabs').delegate("span.ui-icon-close", "click", function() {
+				
+			var tabid = $(this).closest("li").remove().attr("aria-controls");
+			
+			if( tailEventSource[tabid] ){
+				var source = tailEventSource[tabid];
+				console.log("close source" + source);
+				source.close();
+				delete tailEventSource[tabid];
+			}
+			
+			$("#" + tabid).remove();
+			$('#innerFilesystemTabs').tabs("refresh");
+			
+			if ( $('#innerFilesystemTabContainer > div').size() == 0 ){
+				$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#close").css('display','none');
+				$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#save").css('display','none');
+				$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#clear_log").css('display','none');
+				$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#pause_log").css('display','none');
+				resizePageLayout();
+			}
+		});
+
+		$('#innerDatabaseTabs').delegate("span.ui-icon-close", "click", function() {
+			
+			var tabid = $(this).closest("li").remove().attr("aria-controls");
+			
+			$("#" + tabid).remove();
+			$('#innerDatabaseTabs').tabs("refresh");
+			
+			if ( $('#innerDatabaseTabContainer > div').size() == 0 ){
+				$("div#tabDatabase > div#innerDatabaseTabs > div#toolbar > button#close_database_table").css('display','none');
+				$("div#tabDatabase > div#innerDatabaseTabs > div#toolbar > button#save_database_table").css('display','none');
+				resizePageLayout();
+			}
+		});
+
+		$('#innerScriptTabs').delegate("span.ui-icon-close", "click", function() {
+			
+			var tabid = $(this).closest("li").remove().attr("aria-controls");
+			$("#" + tabid).remove();
+			$('#innerScriptTabs').tabs("refresh");
+			
+			if ( $('#innerScriptTabContainer > div').size() == 0 ){
+				$("div#tabShell > div#innerScriptTabs > div#toolbar > button#close_script").css('display','none');
+				$("div#tabShell > div#innerScriptTabs > div#toolbar > button#save_script").css('display','none');
+				$("div#tabShell > div#innerScriptTabs > div#toolbar > button#exec_script").css('display','none');
+				resizePageLayout();
+			}
+		});
+		
+		//
+		// Database
+		//	
+		var rc = {};
+		rc.idb = {};
+		rc.idb.db = null;
+
+		rc.idb.open = function() {
+		    var request = indexedDB.open('webshell');
+		    request.onupgradeneeded = function() {
+				// The database did not previously exist, so create object stores and indexes.
+				rc.idb.db = request.result;
+				var scriptStore = rc.idb.db.createObjectStore("script", {keyPath: "key", autoIncrement: true});
+				var cmdStore = rc.idb.db.createObjectStore("command", {keyPath: "key", autoIncrement: true});
+				
+				// Populate with initial data.
+				scriptStore.put({ title:"List Domains", script: "asadmin list-domains"});
+				scriptStore.put({ title: "Log Files", script: "dir /w c:\prg\glassfish4\glassfish\domains\domain1\logs"});
+				cmdStore.put({command: "asadmin list-domains"});
+				cmdStore.put({command: "ps -ef"});
+		    	console.log('database webshell created');
+		    };
+
+	    	request.onsuccess = function() {
+	    		console.log('database webshell opened');
+	    		rc.idb.db = this.result;
+			    rc.idb.getAllScripts();
+			    rc.idb.getAllCommands();
+	    	};
+		};	
+		
+		rc.idb.addScript = function(title, content) {
+			var item = { title: title, script: content };
+			var trans = rc.idb.db.transaction(['script'], 'readwrite');
+			var store = trans.objectStore('script');
+			var request = store.put(item);
+			request.onsuccess = function(evt){
+				  console.log('Script saved with key ' + evt.target.result);
+				  var key = evt.target.result;
+				  renderScript(key, title);
+				};
+		};		
+		
+		rc.idb.addCommand = function(command) {
+			var item = { command: command };
+			var trans = rc.idb.db.transaction(['command'], 'readwrite');
+			var store = trans.objectStore('command');
+			var request = store.put(item);
+			request.onsuccess = function(evt){
+				  console.log('Command saved with key ' + evt.target.result);
+				  var key = evt.target.result;
+				  renderCommand(key, command);				};
+		};		
+		
+		rc.idb.getAllScripts = function() {
+			$("#script_table").find('tbody').children().remove();
+			
+			var trans = rc.idb.db.transaction(['script'], 'readonly');
+			var store = trans.objectStore('script');
+			store.openCursor().onsuccess = function(event) {
+				  var cursor = event.target.result;
+				  if (cursor) {
+					renderScript(cursor.value.key, cursor.value.title);
+				    cursor.continue();
+				  }
+			};
+		};		
+
+		rc.idb.getAllCommands = function() {
+			$("#cmd_table").find('tbody').children().remove();
+			var trans = rc.idb.db.transaction(['command'], 'readonly');
+			var store = trans.objectStore('command');
+			store.openCursor().onsuccess = function(event) {
+				  var cursor = event.target.result;
+				  if (cursor) {
+					renderCommand(cursor.value.key, cursor.value.command);
+					cursor.continue();
+				  }
+			};
+		};		
+		
+		rc.idb.getScript = function(key) {
+			var trans = rc.idb.db.transaction(['script'], 'readonly');
+			var store = trans.objectStore('script');
+			var range = IDBKeyRange.only(key);
+			store.openCursor(range).onsuccess = function(event) {
+				  var cursor = event.target.result;
+				  if (cursor) {
+					var data = {};
+					data['key'] = cursor.value.key;
+					data['filename'] = cursor.value.title;
+					data['filetype'] = 'sh';
+					data['action'] = 'open';
+					data['content'] = cursor.value.script;
+					createEditorTab(data, 'Script');
+				  }
+			};
+		};		
+		
+		$.fn.filterData = function(key, value) {
+		    return this.filter(function() {
+		        return $(this).data(key) == value;
+		    });
+		};
+		
+		function renderScript(key, title) {
+			var row = $("<tr></tr>");
+			var col = $("<td></td>");
+			col.append().html(title);
+			col.data('key', key);
+			row.append(col);
+			$("#script_table").find('tbody').append(row);
+			
+ 	 		col.dblclick(function () {
+   				var key = $(this).data('key');
+   				rc.idb.getScript(key);
+   			});	
+ 			
+ 			row.hover(
+ 					function() {
+ 						$(this).addClass('hover');
+ 						selectedEntry = $(this);
+ 					}, function() {
+ 						$(this).removeClass('hover');
+ 					}
+ 				);
+			
+		};		
+
+		function renderCommand(key, command) {
+			var row = $("<tr>");
+			var col = $("<td>");
+			col.data('key', key);
+			col.append().html(command);
+			row.append(col);
+			$("#cmd_table").find('tbody').append(row);
+			
+			row.hover(
+ 					function() {
+ 						$(this).addClass('hover');
+ 						selectedEntry = $(this);
+ 					}, function() {
+ 						$(this).removeClass('hover');
+ 					}
+ 				);
+
+			col.dblclick(function () {
+    			var OriginalContent = $(this).text();
+    			var key = selectedEntry.find('td').data('key');
+    			$(this).addClass("cellEditing");
+    			$(this).html("<input type='text' value='" + OriginalContent + "' />");
+    			$(this).children().first().focus();
+    	 
+    			$(this).children().first().keypress(function (e) {
+    				if (e.which == 13) { // return key
+    					var newContent = $(this).val();
+    					$(this).parent().text(newContent);
+    					$(this).parent().removeClass("cellEditing");
+	        			rc.idb.updateCommand( key, newContent);
+    				}
+    			});
+    			 
+    			$(this).children().first().blur(function(){
+    				$(this).parent().text(OriginalContent);
+    				$(this).parent().removeClass("cellEditing");
+    			});
+    		});			
+		};		
+		
+		rc.idb.deleteScript = function(tableCol) {
+			var key = tableCol.data('key');
+			var trans = rc.idb.db.transaction(['script'], 'readwrite');
+			var store = trans.objectStore('script');
+			var range = IDBKeyRange.only(key);
+			store.openCursor(range).onsuccess = function (event){
+			    var cursor = event.target.result;
+			    if (cursor) {
+			      var key = cursor.key;
+			      // var primaryKey = cursor.primaryKey;
+					var trans = rc.idb.db.transaction(['script'], 'readwrite');
+					var store = trans.objectStore('script');
+					store.delete(key).onsuccess = function(event) {
+						tableCol.remove();
+			        };
+			    } else {
+			      console.log('Script with key  ' + key + ' not found');
+			    }
+			}
+		};
+
+		rc.idb.deleteCommand = function(tableCol) {
+			var key = tableCol.data('key');
+			var trans = rc.idb.db.transaction(['command'], 'readwrite');
+			var store = trans.objectStore('command');
+			var range = IDBKeyRange.only(key);
+			store.openCursor(range).onsuccess = function (event){
+			    var cursor = event.target.result;
+			    if (cursor) {
+			      var key = cursor.key;
+					var trans = rc.idb.db.transaction(['command'], 'readwrite');
+					var store = trans.objectStore('command');
+					store.delete(key).onsuccess = function(event) {
+						tableCol.remove();
+			        };
+			    } else {
+			    	 console.log('Command with key  ' + key + ' not found');
+			    }
+			}
+		};
+		
+		rc.idb.updateScript = function(key, script){
+			var trans = rc.idb.db.transaction(['script'], 'readwrite');
+			var store = trans.objectStore('script');
+			var range = IDBKeyRange.only(key);
+			store.openCursor(range).onsuccess = function (event){
+			    var cursor = event.target.result;
+			    if (cursor) {
+			    	var title = cursor.value.title;
+			    	var record = {key: key, title: title, script: script}
+		            var updateReq = cursor.update(record);
+		            
+		            updateReq.onsuccess = function (ev) {
+		            	console.log('Script with key ' + key + ' updated');
+		            }
+		            
+		            updateReq.onerror = function (ev) {
+		            	console.log('Failed to update script with key ' + key);
+		            }
+			    } else {
+			    	 console.log('Script with key  ' + key + ' not found');
+			    }
+			}
+		};
+
+		rc.idb.updateScriptTitle = function(key, title){
+			var trans = rc.idb.db.transaction(['script'], 'readwrite');
+			var store = trans.objectStore('script');
+			var range = IDBKeyRange.only(key);
+			store.openCursor(range).onsuccess = function (event){
+			    var cursor = event.target.result;
+			    if (cursor) {
+			    	var script = cursor.value.script;
+			    	var record = {key: key, title: title, script: script}
+		            var updateReq = cursor.update(record);
+		            
+		            updateReq.onsuccess = function (ev) {
+		            	console.log('Script with key ' + key + ' updated');
+		            }
+		            
+		            updateReq.onerror = function (ev) {
+		            	console.log('Failed to update script with key ' + key);
+		            }
+			    } else {
+			    	 console.log('Script with key  ' + key + ' not found');
+			    }
+			}
+		};
+		
+		rc.idb.updateCommand = function(key, command){
+			var trans = rc.idb.db.transaction(['command'], 'readwrite');
+			var store = trans.objectStore('command');
+			var range = IDBKeyRange.only(key);
+			store.openCursor(range).onsuccess = function (event){
+			    var cursor = event.target.result;
+			    if (cursor) {
+			    	var record = {key: key, command: command}
+		            var updateReq = cursor.update(record);
+		            
+		            updateReq.onsuccess = function (ev) {
+		            	console.log('Command with key ' + key + ' updated');
+		            }
+		            
+		            updateReq.onerror = function (ev) {
+		            	console.log('Failed to update command with key ' + key);
+		            }
+			    } else {
+			    	 console.log('Command with key  ' + key + ' not found');
+			    }
+			}
+		};
+		
+		rc.idb.open(); 
+
+		
+		//
+		// Buttons
+		//
+		    
+		// the close buuton removes the active tab
+		$("button#close").click(function(){
+			var activeIdx = $("#innerFilesystemTabs").tabs('option', 'active');
+			var tabid = $($("#innerFilesystemTabs > div .ui-tabs-panel" )[activeIdx]).attr('id');
+			if( tailEventSource[tabid] ){
+				var source = tailEventSource[tabid];
+				httpGet('tail?cmd=stop&tabid='+tabid);
+				source.close();
+				delete tailEventSource[tabid];
+			}
+			
+			$('#innerFilesystemTabContainer > div[aria-hidden="false"]').remove();
+			$('#innerFilesystemTabList > li[aria-selected="true"]').remove();
+			$( "#innerFilesystemTabs" ).tabs( "option", "active", 0 );
+
+			if ( $('#innerFilesystemTabContainer > div').size() == 0 ){
+				$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#close").css('display','none');
+				$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#save").css('display','none');
+				$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#clear_log").css('display','none');
+				$("div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#pause_log").css('display','none');
+			}
+			
+			resizePageLayout();
+		});
+		
+		$("button#save").click(function(){
+			//var active = $('#innerFilesystemTabList .ui-tabs-active');
+			var activeIdx = $("#innerFilesystemTabs").tabs('option', 'active');
+			var tabid = $($("#innerFilesystemTabs > div .ui-tabs-panel" )[activeIdx]).attr('id');
+			// now wrap it in jQuery object
+			// var tabContent$ = $(element);
+			var editor = editorList[tabid];
+			var filecontent = escape(editor.getValue());
+			var filename = $("div#"+tabid).data('filename');
+			var cwd = escape($("div#"+tabid).data('cwd'));
+			saveFile(cwd, filename, filecontent);
+		});
+
+		$("button#clear_log").click(function(){
+			//var active = $('#innerFilesystemTabList .ui-tabs-active');
+			var activeIdx = $("#innerFilesystemTabs").tabs('option', 'active');
+			var tabid = $($("#innerFilesystemTabs > div .ui-tabs-panel" )[activeIdx]).attr('id');
+			var editor = editorList[tabid];
+			editor.setValue('');
+		});
+
+		$("button#pause_log").click(function(){
+			var activeIdx = $("#innerFilesystemTabs").tabs('option', 'active');
+			var tabid = $($("#innerFilesystemTabs > div .ui-tabs-panel" )[activeIdx]).attr('id');
+			
+			var tail_is_paused = $('div#'+tabid).data('tail_is_paused');
+			$('div#'+tabid).data('tail_is_paused', !tail_is_paused);
+			console.log('tail_is_paused: ' + tail_is_paused);
+			var button_label = 'Continue';
+			if( tail_is_paused == true ){
+				button_label = 'Pause';
+				httpGet('tail?cmd=resume&tabid='+tabid);
+			}
+			else{
+				httpGet('tail?cmd=pause&tabid='+tabid);				
+			}
+			$('div#tabFilesystem > div#innerFilesystemTabs > div#toolbar > button#pause_log').text(button_label);
+		});
+
+
+		$("button#close_script").click(function(){
+			var activeIdx = $("#innerScriptTabs").tabs('option', 'active');
+			var tabid = $($("#innerScriptTabs > div .ui-tabs-panel" )[activeIdx]).attr('id');
+			$('#innerScriptTabContainer > div[aria-hidden="false"]').remove();
+			$('#innerScriptTabList > li[aria-selected="true"]').remove();
+			$( "#innerScriptTabs" ).tabs( "option", "active", 0 );
+			
+			if ( $('#innerScriptTabContainer > div').size() == 0 ){
+				$("div#tabShell > div#innerScriptTabs > div#toolbar > button#close_script").css('display','none');
+				$("div#tabShell > div#innerScriptTabs > div#toolbar > button#save_script").css('display','none');
+				$("div#tabShell > div#innerScriptTabs > div#toolbar > button#exec_script").css('display','none');
+			}
+			
+			resizePageLayout();
+		});
+		
+		$("button#save_script").click(function(){
+			var activeIdx = $("#innerScriptTabs").tabs('option', 'active');
+			var tabid = $($("#innerScriptTabs > div .ui-tabs-panel" )[activeIdx]).attr('id');
+			var editor = editorList[tabid];
+			var script = editor.getValue();
+			var key = $("div#"+tabid).data('key');
+			rc.idb.updateScript(key, script);
+		});
+		
+		
+		$("button#exec_script").click(function(){
+			console.log("button#exec_script.click()");
+			var activeIdx = $("#innerScriptTabs").tabs('option', 'active');
+			console.log("button#exec_script.click() " + activeIdx);
+			var tabid = $($("#innerScriptTabs > div .ui-tabs-panel" )[activeIdx]).attr('id');
+			console.log("button#exec_script.click() " + tabid);
+			var editor = editorList[tabid];
+			var script = editor.getValue();
+			console.log("button#exec_script.click() " + script);
+			shell_websocket.send(script);
+		});
+		
+		$("button#new_script").click(function(){
+			rc.idb.addScript('new script', '# add your commands here');
+			var OriginalContent = selectedEntry.text();
+			var key = selectedEntry.find('td').data('key');
+			selectedEntry.addClass("cellEditing");
+			selectedEntry.html("<input type='text' value='" + OriginalContent + "' />");
+			selectedEntry.children().first().focus();
+	 
+			selectedEntry.children().first().keypress(function (e) {
+				if (e.which == 13) {
+					var newContent = $(this).val();
+					$(this).parent().text(newContent);
+					$(this).parent().removeClass("cellEditing");
+        			rc.idb.updateScriptTitle( key, newContent);
+		
+        			selectedEntry.dblclick(function () {
+           				rc.idb.getScript(key);
+           			});	
+
+				}
+			});
+			 
+			selectedEntry.children().first().blur(function(){
+				selectedEntry.parent().text(OriginalContent);
+				selectedEntry.parent().removeClass("cellEditing");
+			});
+
+		});
+
+		$("button#new_command").click(function(){
+			rc.idb.addCommand("new command");
+		});
+		
+		$("button#connect_database").click(function(){
+			var driver = $('select#driver').val();
+			var hostname = $('input#hostname').val();
+			var port = $('input#port').val();
+			var database = $('input#database').val();
+			var userid = $('input#userid').val();
+			var password = $('input#password').val();
+			var json = httpGet('database?cmd=connect&driver=' + driver + '&hostname=' + hostname  + '&port=' + port + '&database=' + database + '&userid=' + userid + '&password=' + password);
+			renderTableList(json);
+		});
+		
+		$("button#refresh_database").click(function(){
+			var json = httpGet('database?cmd=list_tables');
+			renderTableList(json);
+		});
+
+		$("button#open_database_table").click(function(){
+			var tablename = selectedTable.text();
+			createTableTab(tablename);
+		});
+
+		$("button#close_database_table").click(function(){
+			var activeIdx = $("#innerDatabaseTabs").tabs('option', 'active');
+			var tabid = $($("#innerDatabaseTabs > div .ui-tabs-panel" )[activeIdx]).attr('id');
+			$('#innerDatabaseTabContainer > div[aria-hidden="false"]').remove();
+			$('#innerDatabaseTabList > li[aria-selected="true"]').remove();
+			$( "#innerDatabaseTabs" ).tabs( "option", "active", 0 );
+			
+			if ( $('#innerDatabaseTabContainer > div').size() == 0 ){
+				$("div#tabDatabase > div#innerDatabaseTabs > div#toolbar > button#close_database_table").css('display','none');
+				$("div#tabDatabase > div#innerDatabaseTabs > div#toolbar > button#save_database_table").css('display','none');
+			}
+			
+			resizePageLayout();
+		});
+		
+		$("button#save_database_table").click(function(){
+		});
+		
+		
+		//
+		// Remote Database ( not indexedDB)
+		//
+		
+		function renderTableList(json) {
+			var tableArray = jQuery.parseJSON(json);
+			for (var i in tableArray){
+				var row = $("<tr>");
+				var col = $("<td>");
+				col.append().html(tableArray[i]);
+				row.append(col);
+				$('table#database_table').find('tbody').append(row);
+				
+				row.hover(
+	 					function() {
+	 						$(this).addClass('hover');
+	 						selectedTable = $(this);
+	 					}, function() {
+	 						$(this).removeClass('hover');
+	 					}
+	 				);
+	
+				col.dblclick(function () {
+					var tablename = selectedTable.text();
+					createTableTab(tablename);
+	    		});			
+			}
+		};		
+
+		function createTableTab(name){
+			var tabid = createUID();
+			var title = name;
+			var li = $('<li class="ui-state-default ui-corner-top" role="tab" tabindex="1" aria-controls="'+tabid+'" aria-labelledby="ui-id-'+tabid+'" aria-selected="false"><a href="#'+tabid+'" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-'+tabid+'">'+ title +'</a><span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>');
+			$("#innerDatabaseTabList").append(li);
+			var div = $('<div id="'+tabid+'" class="container ui-tabs-panel ui-widget-content ui-corner-bottom" style="height: 100%;" aria-labelledby="ui-id-'+tabid+'" role="tabpanel" aria-expanded="false" aria-hidden="true">');
+			var table = $('<table id="'+tabid+'" class="display" style="height: 100%;">');
+			var thead = $('<thead>');
+			var tbody = $('<tbody>');
+			table.append(thead);
+			table.append(tbody);
+			div.append(table);
+
+			var json = httpGet('database?cmd=open_table&name=' + name);
+			var tableContent = jQuery.parseJSON(json);
+			var row = $("<tr>");
+			for (var i in tableContent.columnNames){
+				var col = $("<td>");
+				col.append().html(tableContent.columnNames[i]);
+				row.append(col);
+			}
+			thead.append(row);
+			
+			for (var i in tableContent.data){
+				var row = $("<tr>");
+				for (var j in tableContent.data[i]){				
+					var col = $("<td>");
+					col.append().html(tableContent.data[i][j]);
+					row.append(col);
+				}
+				tbody.append(row);
+			}
+			
+			table.dataTable();
+// 			$('table#' + tabid).dataTable().makeEditable({
+// 				sUpdateURL: "database?cmd=update_value"
+// 				});
+
+			$("#innerDatabaseTabContainer").append(div);
+			$('#innerDatabaseTabs').tabs("refresh");
+			var index = $('#innerDatabaseTabList > div').length - 1;
+			$('#innerDatabaseTabs').tabs( "option", "active", index );
+			resizePageLayout();
+			return tabid;
+		}
+
+		
+		//
+		// Tables
+		//
+		
+		$( "#filesystem_table tr" ).hover(
+			function() {
+				$(this).addClass('hover');
+				selectedEntry = $(this);
+				var filename = $(this).children().first().text();
+				var cwd = escape($("#cwd").text());
+			}, function() {
+				$(this).removeClass('hover');
+			}
+		);
+		
+		$("#filesystem_table td").dblclick(function () {
+			var filename = $(this).text();
+			var cwd = escape($("#cwd").text());
+			
+			if( $(this).data('type') == 'folder' ){
+				sendFilesystemCommand("chdir", cwd, filename);			 
+			}
+			else{
+				sendFilesystemCommand("open", cwd, filename);			 
+			}
+		});
+		
+		//
+		// Context Menu
+		//
+		
+		$(function(){
+			$.contextMenu({
+				selector: '.context-menu-commands', 
+				callback: function(action, options) {
+					if( action == 'execute' ){
+						shell_websocket.send(selectedEntry.text());
+						for (tabid in shellList) {
+							var action = $("#innerScriptTabContainer > div#" +tabid).data('action');
+							if( action == 'shell' ){
+								shellList[tabid].addCommand(selectedEntry.text());
+							}
+						}
+					}
+					else if ( action == 'delete' ){
+						var tableCol = selectedEntry.find('td');
+						rc.idb.deleteCommand(tableCol);
+					}
+					
+				},
+				items: {
+					"execute": {name: "Execute", icon: "exec"},
+					"delete": {name: "Delete", icon: "delete"}
+				}
+			});
+		});
+		
+		$(function(){
+			$.contextMenu({
+				selector: '.context-menu-filesystem', 
+				callback: function(action, options) {
+					var cwd = escape($("#cwd").text());
+					sendFilesystemCommand(action, cwd, selectedEntry.text());
+				},
+				items: {
+					"open": {name: "Edit", icon: "edit"},
+					"tail": {name: "Tail Logfile", icon: "tail"},
+					"purge": {name: "Purge Logfile", icon: "cut"},
+					"execute": {name: "Execute", icon: "exec"},
+					"delete": {name: "Delete", icon: "delete"}
+				}
+			});
+		});
+		
+		$(function(){
+			$.contextMenu({
+				selector: '.context-menu-scripts', 
+				callback: function(action, options) {
+					if( action == 'rename'){
+	        			var OriginalContent = selectedEntry.text();
+	        			var key = selectedEntry.find('td').data('key');
+	        			selectedEntry.addClass("cellEditing");
+	        			selectedEntry.html("<input type='text' value='" + OriginalContent + "' />");
+	        			selectedEntry.children().first().focus();
+	        	 
+	        			selectedEntry.children().first().keypress(function (e) {
+	        				if (e.which == 13) {
+	        					var newContent = $(this).val();
+	        					$(this).parent().text(newContent);
+	        					$(this).parent().removeClass("cellEditing");
+	    	        			rc.idb.updateScriptTitle( key, newContent);
+        			
+	    	        			selectedEntry.dblclick(function () {
+	    	           				rc.idb.getScript(key);
+	    	           			});	
+
+	        				}
+	        			});
+	        			 
+	        			selectedEntry.children().first().blur(function(){
+	        				selectedEntry.parent().text(OriginalContent);
+	        				selectedEntry.parent().removeClass("cellEditing");
+	        			});
+					}
+					else if( action == 'delete'){
+						var tableCol = selectedEntry.find('td');
+						rc.idb.deleteScript(tableCol);
+					}
+				},
+				items: {
+					"rename": {name: "Rename", icon: "rename"},
+					"delete": {name: "Delete", icon: "delete"}
+				}
+			});
+		});
+
+		
+		//
+		// Drag and Drop
+		//
+		var fileDropZone = new Dropzone("div#file-drop-zone", { 
+	        url : "upload",
+			maxFilesize: 100,
+			parallelUploads: 1,
+			uploadMultiple: false
+		});
+
+		fileDropZone.on("addedfile", function(file) {
+		});
+  
+		fileDropZone.on("sending", function(file, xhr, formData) {
+			$( "#upload_progress" ).text('Upload Progress: 0%');
+			$('button#cancel_upload').css('display','inline');
+			resizePageLayout();
+			$("button#cancel_upload").click(function(){
+				xhr.abort();
+				$('button#cancel_upload').css('display','none');
+				$( "#upload_progress" ).text('Upload aborted');
+				resizePageLayout();
+			});
+		});
+  
+    	
+		fileDropZone.on("complete", function(file) {
+			var cwd = escape($("#cwd").text());
+			sendFilesystemCommand("chdir", cwd, ".");
+			$("#upload_progress").text("Upload finished");
+			$('button#cancel_upload').css('display','none');
+			resizePageLayout();
+		});
+			
+		fileDropZone.on("uploadprogress", function(file, progress) {
+			 $( "#upload_progress" ).text('Upload Progress: ' + progress + '%');
+		});
+    		
+		createShellTab();
+	 }); // end of $(document).ready()
+
+	
+	function createUID() {
+	    var s = [];
+	    var digits = "0123456789abcdefghijklmnopqrstuvwxyz";
+	    s[0] = 'a';
+	    for (var i = 1; i < 20; i++) {
+	        s[i] = digits.substr(Math.floor(Math.random() * 0x10), 1);
+	    }
+
+	    var uid = s.join("");
+	    return uid;
+	}
+	
+	function close()
+	{
+		file_websocket.close();
+		shell_websocket.close();
+	}
+
+	function createWebSockets()
+	{
+		var wsUri = "ws://" +  window.location.host + "/webshell/file_wsocket";
+		file_websocket = new WebSocket(wsUri);
+		file_websocket.onopen = function(evt){ 
+			sendFilesystemCommand("chdir", ".", ".");			 		
+		};
+		file_websocket.onclose = function(evt){
+		};
+		file_websocket.onerror = function(evt){ 
+			document.getElementById('shell').value = evt.data;
+		};
+		file_websocket.onmessage = function(evt){ 
+			var obj = jQuery.parseJSON(evt.data);
+			if( obj.command == 'chdir'){
+				$("#filesystem_table").find('tbody').children().remove();
+				var files = jQuery.parseJSON(obj.response);
+				$.each(files, function(index, entry){
+					if(index==0){
+						$("#cwd").text(unescape(entry.name));
+					}
+					else{
+						var row = $("<tr>");
+						var col = $("<td>");
+						col.data('type', entry.type);
+						col.append().html(entry.name);
+						row.append(col);
+						$("#filesystem_table").find('tbody').append(row);
+					}
+			    });
+				
+				$("#filesystem_table tr").hover(
+						function() {
+							$(this).addClass('hover');
+							selectedEntry = $(this);
+							var filename = $(this).children().first().text();
+							var cwd = escape($("#cwd").text());
+						}, function() {
+							$(this).removeClass('hover');
+						}
+				);
+
+				
+				$("#filesystem_table td").dblclick(function () {
+					var filename = $(this).text();
+					var cwd = escape($("#cwd").text());
+					if( $(this).data('type') == 'folder' ){
+						sendFilesystemCommand("chdir", cwd, filename);			 
+					}
+					else{
+						sendFilesystemCommand("open", cwd, filename);			 
+					}
+				});
+				
+				// $("#filesystemStatusbar").text("Status: " + obj.status);
+			}
+			else if( obj.command == 'open'){
+				var data = {};
+				data['cwd'] = unescape(obj.cwd);
+				data['filename'] = obj.filename;
+				data['filetype'] = obj.filetype;
+				data['content'] = obj.response;
+				data['action'] = 'open';
+				var tabid = createEditorTab(data, 'Filesystem');
+			}
+			else if( obj.command == 'save'){
+				// $("#filesystemStatusbar").text("Status: " + obj.status);
+			}
+			else if( obj.command == 'delete'){
+				var cwd = escape($("#cwd").text());
+				sendFilesystemCommand("chdir", cwd, ".");
+			}
+			else if( obj.command == 'purge'){
+				//$("#filesystemStatusbar").text("Status: " + obj.status);
+			}
+			else if( obj.command == 'load_scripts'){
+				// not yet implemented
+			}
+			else if( obj.command == 'load_commands'){
+// 				var obj = jQuery.parseJSON(obj.response);
+// 				rc.idb.addCommand(command);
+			}
+			else{
+				//$("#filesystemStatusbar").text("Status: " + obj.status);
+			}
+		}; // file_websocket.onmessage
+		
+		var wsUri = "ws://" +  window.location.host + "/webshell/shell_wsocket";
+		shell_websocket = new WebSocket(wsUri);
+		shell_websocket.onopen = function(evt){ 
+			sendFilesystemCommand("chdir", ".", ".");			 		
+		};
+		shell_websocket.onclose = function(evt){
+		};
+		shell_websocket.onerror = function(evt){ 
+			var activeIdx = $("#innerScriptTabs").tabs('option', 'active');
+			var tabid = $($("#innerScriptTabs > div .ui-tabs-panel" )[activeIdx]).attr('id');
+			if( shellList[tabid] ){
+				shellList[tabid].insertTextAtCurrentPosition(evt.data);
+			}
+		};
+		shell_websocket.onmessage = function(evt){ 
+			var activeIdx = $("#innerScriptTabs").tabs('option', 'active');
+			var tabid = $($("#innerScriptTabs > div .ui-tabs-panel" )[activeIdx]).attr('id');
+			if( shellList[tabid] ){
+				shellList[tabid].insertTextAtCurrentPosition(evt.data);
+			}
+		};
+	} // createWebSockets
+
+
+
+	function createEditorTab(data, tab){
+		var tabid = createUID();
+		var title = data['filename'];
+		var li = $('<li class="ui-state-default ui-corner-top" role="tab" tabindex="1" aria-controls="'+tabid+'" aria-labelledby="ui-id-'+tabid+'" aria-selected="false"><a href="#'+tabid+'" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-'+tabid+'">'+ title +'</a><span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>');
+		$("#inner"+tab+"TabList").append(li);
+		var div = $('<div id="'+tabid+'" class="container ui-tabs-panel ui-widget-content ui-corner-bottom" style="height: 100%;" aria-labelledby="ui-id-'+tabid+'" role="tabpanel" aria-expanded="false" aria-hidden="true">');
+		for (var key in data){
+			div.data(key, data[key]);
+		}
+		
+		var divEdit = $('<div id="editor'+tabid+'" style="width: 100%; height: 100%;">');
+		div.append(divEdit);
+		$("#inner"+tab+"TabContainer").append(div);
+	    var editor = ace.edit('editor'+tabid);
+	    editor.getSession().setMode("ace/mode/" + data['filetype']);
+	    editor.setShowPrintMargin(false);
+	    editor.setValue(data['content']);
+	    editor.clearSelection();
+	    if( data['action'] == 'tail' ){
+	    	editor.setReadOnly(true);
+	    }
+	    editorList[tabid] = editor;
+		$('#inner'+tab+'Tabs').tabs("refresh");
+		var index = $('#inner'+tab+'TabList > div').length - 1;
+		$('#inner'+tab+'Tabs').tabs( "option", "active", index );
+		resizePageLayout();
+	    editor.focus();
+	    editor.gotoLine(0, 0, false);
+		return tabid;
+	}
+
+	function createShellTab(){
+		var tabid = createUID();
+		var title = 'Shell';
+		var li = $('<li class="ui-state-default ui-corner-top" role="tab" tabindex="1" aria-controls="'+tabid+'" aria-labelledby="ui-id-'+tabid+'" aria-selected="false"><a href="#'+tabid+'" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-'+tabid+'">'+ title +'</a></li>');
+		$('#innerScriptTabList').append(li);
+		var div = $('<div id="'+tabid+'" class="container ui-tabs-panel ui-widget-content ui-corner-bottom" style="height: 100%;" aria-labelledby="ui-id-'+tabid+'" role="tabpanel" aria-expanded="false" aria-hidden="true">');
+		div.data('action', 'shell');
+		
+		var doc = new Document('');
+	    var shell = new CanvasTextEditor(doc);
+		var divShell = $('<div id="shell'+tabid+'" style="width: 100%; height: 100%;">');
+		divShell.append(shell.getEl());
+		div.append(divShell);
+		$("#innerScriptTabContainer").append(div);
+	    
+	    shellList[tabid] = shell;
+		$('#innerScriptTabs').tabs("refresh");
+		var index = $('#innerScriptTabList > div').length - 1;
+		$('#innerScriptTabs').tabs( "option", "active", index );
+		resizePageLayout();
+		var width = $("#innerScriptTabContainer > div#" +tabid).width() - 20;
+		var height = $("#innerScriptTabContainer > div#" +tabid).height() - 30;
+		// the hight will be a multiple of the line hight
+		var mod = height % shell._metrics.getHeight();
+		height = height - mod;
+		shell.resize(width, height);
+		shell.focus();
+		return tabid;
+	}
+
+	function sendFilesystemCommand(cmd, cwd, filename)
+	{
+		if( cmd == 'tail' ){
+			var data = {};
+			data['cwd'] = cwd;
+			data['filename'] = filename;
+			data['filetype'] = 'text';
+			data['action'] = 'tail';
+			data['content'] = '';
+			data['tail_is_paused'] = false;
+
+			var tabid = createEditorTab(data, 'Filesystem');
+			var source = new EventSource('tail?cmd=start&tabid='+tabid+'&cwd='+cwd+'&filename='+filename);
+			tailEventSource[tabid] = source;
+			source.onmessage = function(event) {
+				if (!event){
+					source.close();
+				}
+				else{
+					var tabid = event.lastEventId;
+					var tail_is_paused = $('div#'+tabid).data('tail_is_paused');
+					if( tail_is_paused == false){
+						var editor = editorList[tabid];
+// 						var numOfLines = editor.session.getLength();
+// 						editor.gotoLine(numOfLines);
+						editor.insert(event.data);
+					}
+				}
+			};
+		}
+		else{
+			var json = '{"scope":"filesystem","command":"'+cmd+'","filename":"'+filename+'","cwd":"'+cwd+'","filecontent":""}';
+			file_websocket.send(json);
+		}
+	}
+
+	function saveFile(cwd, filename, filecontent)
+	{
+		var json = '{"scope":"filesystem","command":"save","filename":"'+filename+'","cwd":"'+cwd+'","filecontent":"'+filecontent+'"}';
+		file_websocket.send(json);
+	}
+	
+	function httpGet(theUrl)
+	{
+	    var xmlHttp = null;
+
+	    xmlHttp = new XMLHttpRequest();
+	    xmlHttp.open( "GET", theUrl, false );
+	    xmlHttp.send( null );
+	    return xmlHttp.responseText;
+	}
+	window.addEventListener("load", createWebSockets, false);
+	window.addEventListener("unload", close, false);
+
+	</script>
+</head>
+<body class="ui-layout-container">
+	<div id="outer-center">
+
+		<ul id="tabbuttons"
+			class="hidden ui-layout-pane ui-layout-pane-north ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-corner-bottom"
+			role="tablist">
+			<li class="tabFilesystem ui-state-default ui-corner-top" role="tab" tabindex="0" 
+				aria-controls="tabFilesystem" aria-labelledby="ui-id-filesystem" aria-selected="true">
+					<a href="#tabFilesystem" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-filesystem">Filesystem</a>
+			</li>
+			<li class="tabDatabase ui-state-default ui-corner-top" role="tab" tabindex="-1" 
+				aria-controls="tabDatabase" aria-labelledby="ui-id-database" aria-selected="false">
+					<a href="#tabDatabase" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-database">Database</a>
+			</li>
+			<li
+				class="tabShell ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="-1" 
+				aria-controls="tabShell" aria-labelledby="ui-id-shell" aria-selected="false">
+					<a href="#tabShell" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-shell">Commandline</a>
+			</li>
+		</ul>
+
+		<div id="tabpanels"
+			class="ui-layout-pane ui-layout-pane-center ui-layout-pane-hover ui-layout-pane-center-hover ui-layout-pane-open-hover ui-layout-pane-center-open-hover">
+
+			<div id="tabFilesystem"
+				class="tab-panel hidden ui-tabs-panel ui-layout-container"
+				aria-labelledby="ui-id-filesystem" role="tabpanel" aria-expanded="false"
+				aria-hidden="true"
+				style="display: none; overflow: hidden; position: relative;">
+				
+				<div
+					class="ui-layout-north ui-widget ui-layout-pane ui-layout-pane-north">
+					<div class="ui-widget-header">&nbsp;</div>
+				</div>
+				<div
+					class="ui-layout-south ui-widget ui-layout-pane ui-layout-pane-south">
+					<div id="filesystemStatusbar"
+						class="toolbar ui-widget-content ui-state-default"
+						style="position: relative; height: 18px;">						
+					</div>
+				</div>
+
+				<div id="innerFilesystemTabs"
+					class="ui-layout-center container tabs ui-tabs ui-widget ui-layout-pane ui-layout-pane-center">
+					<ul id="innerFilesystemTabList"
+						class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header"
+						role="tablist">
+					</ul>
+					<div id="innerFilesystemTabContainer" class="ui-widget-content"
+						style="border-top-width: 0px; position: relative; height: 400px; visibility: visible;">
+					</div>
+					<div id="toolbar"
+						class="ui-widget-footer ui-corner-bottom">
+						<button id="close">Close</button>
+						<button id="save">Save</button>
+						<button id="clear_log">Clear</button>
+						<button id="pause_log">Pause</button>
+					</div>
+				</div>
+
+				<div
+					class="ui-layout-west ui-layout-pane ui-layout-pane-west ui-layout-container">
+					<div class="ui-layout-center ui-layout-pane ui-layout-pane-center">
+						<div id="cwd" class="ui-widget-header ui-corner-top"></div>
+						<div id="file-drop-zone" class="ui-widget-content scrollingtable">
+							<table class="context-menu-filesystem" id="filesystem_table">
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+											
+						<div id="progressbar" class="ui-widget-footer ui-corner-bottom" style="display:none">
+							<span id="upload_progress">&nbsp;</span>
+							<button id="cancel_upload" style="display:none">Cancel</button>
+						</div>
+					</div>
+					<div class="ui-layout-south ui-layout-pane ui-layout-pane-south">
+						<div class="ui-widget-header ui-corner-top">Log File Filter</div>
+						<div class="ui-widget-content scrollingtable" id="logfile-filter">
+							<table>
+								<tr><td>Activate filter</td><td><input type="checkbox"></td></tr>
+								<tr><td>Action</td><td>
+									<input type="radio" name="filter-action" value="highlight-matching" checked>Highlight matching lines<br>
+	    							<input type="radio" name="filter-action" value="remove-non-matching">Remove non matching lines<br>
+								</td></tr>
+								<tr><td>Log level</td><td><select name="loglevel" size="7" multiple>
+									      <option>INFO</option>
+									      <option>WARNING</option>
+									      <option>DEBUG</option>
+									      <option>ERROR</option>
+									      <option>FINE</option>
+									      <option>FINER</option>
+									      <option>FINEST</option>
+									    </select>
+								</td></tr>
+								<tr><td>Time range</td><td><input type="text"></td></tr>
+								<tr><td>Search text</td><td><input type="text"></td></tr>
+							</table>
+						</div>
+					</div>
+					
+				</div>
+				<!-- east panel -->
+			</div>
+			<!-- tabFilesystem -->
+
+
+
+			<div id="tabDatabase"
+				class="tab-panel hidden ui-tabs-panel ui-layout-container"
+				aria-labelledby="ui-id-database" role="tabpanel" aria-expanded="false"
+				aria-hidden="true"
+				style="display: none; overflow: hidden; position: relative;">
+				
+				<div
+					class="ui-layout-north ui-widget ui-layout-pane ui-layout-pane-north">
+					<div class="ui-widget-header">&nbsp;</div>
+				</div>
+				<div
+					class="ui-layout-south ui-widget ui-layout-pane ui-layout-pane-south">
+					<div id="databaseStatusbar"
+						class="toolbar ui-widget-content ui-state-default"
+						style="position: relative; height: 18px;">						
+					</div>
+				</div>
+
+				<div id="innerDatabaseTabs"
+					class="ui-layout-center container tabs ui-tabs ui-widget ui-layout-pane ui-layout-pane-center">
+					<ul id="innerDatabaseTabList"
+						class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header"
+						role="tablist">
+					</ul>
+					<div id="innerDatabaseTabContainer" class="ui-widget-content"
+						style="border-top-width: 0px; position: relative; height: 473px; visibility: visible;">
+					</div>
+					<div id="toolbar"
+						class="ui-widget-footer ui-corner-bottom">
+						<button id="close_database_table">Close</button>
+						<button id="save_database_table">Save</button>
+					</div>
+				</div>
+
+				<div
+					class="ui-layout-west ui-layout-pane ui-layout-pane-west ui-layout-container">
+					<div class="ui-layout-center ui-layout-pane ui-layout-pane-center">
+						<div id="cwd" class="ui-widget-header ui-corner-top"></div>
+						<div id="dbtable" class="ui-widget-content scrollingtable">
+							<table cellpadding="0" cellspacing="0" border="0"
+								class="context-menu-database" id="database_table">
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="ui-widget-footer ui-corner-bottom">
+							<button id="refresh_database">Refresh</button>
+						</div>
+					</div>
+					<div class="ui-layout-south ui-layout-pane ui-layout-pane-south">
+						<div class="ui-widget-header ui-corner-top">Database Connection</div>
+						<div class="ui-widget-content" id="dbconnection"
+							style="position: relative; height: 102px; visibility: visible;">
+							<table cellpadding="0" cellspacing="0" border="0"
+								class="context-menu-database" id="dbconnection">
+								<tbody>
+									<tr><td>Driver</td><td>
+										<select id="driver" size="1">
+									      <option>org.postgresql.Driver</option>
+									      <option>com.mysql.jdbc.Driver</option>
+									      <option>oracle.jdbc.driver.OracleDriver</option>
+									    </select>
+									</td></tr>
+									<tr><td>Server</td><td><input id="hostname" type="text" size="30" maxlength="30" value="localhost"></td></tr>
+									<tr><td>Port</td><td><input id="port" type="text" size="8" maxlength="8" value="5432"></td></tr>
+									<tr><td>Database</td><td><input id="database" type="text" size="30" maxlength="30" value="booktown"></td></tr>
+									<tr><td>UserId</td><td><input id="userid" type="text" size="30" maxlength="30" value="postgres"></td></tr>
+									<tr><td>Password</td><td><input id="password" type="text" size="30" maxlength="30" value="postgres"></td></tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="ui-widget-footer ui-corner-bottom">
+							<button id="connect_database">Connect</button>
+						</div>
+					</div>
+					
+				</div>
+				<!-- east panel -->
+			</div>
+			<!-- tabDatabase -->
+
+
+
+			<div id="tabShell"
+				class="tab-panel hidden ui-tabs-panel ui-layout-container"
+				aria-labelledby="ui-id-shell" role="tabpanel" aria-expanded="true"
+				aria-hidden="false"
+				style="overflow: hidden; position: relative; display: block;">
+				
+				<div
+					class="ui-layout-north ui-widget ui-layout-pane ui-layout-pane-north">
+					<div class="ui-widget-header">&nbsp;</div>
+				</div>
+				
+				<div id="innerScriptTabs"
+					class="ui-layout-center container tabs ui-tabs ui-widget ui-widget-content ui-corner-all ui-layout-pane ui-layout-pane-center">
+					<ul id="innerScriptTabList"
+						class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all"
+						role="tablist">
+					</ul>
+					<div id="innerScriptTabContainer" class="ui-widget-content"
+						style="border-top-width: 0px; position: relative; height: 473px; visibility: visible;">
+					</div>
+					<div id="toolbar"
+						class="ui-widget-footer ui-corner-bottom">
+						<button id="exec_script">Execute</button>
+						<button id="save_script">Save</button>
+						<button id="close_script">Close</button>
+					</div>
+				</div>
+
+				<div
+					class="ui-layout-west ui-layout-pane ui-layout-pane-west ui-layout-container">
+
+					<div class="ui-layout-center ui-layout-pane ui-layout-pane-center">
+						<div class="ui-widget-header ui-corner-top">Script</div>
+						<div class="ui-widget-content scrollingtable">
+							<table class="context-menu-scripts"
+								id="script_table">
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="ui-widget-footer ui-corner-bottom">
+							<button id="new_script">New Script</button>
+						</div>
+					</div>
+					<div class="ui-layout-south ui-layout-pane ui-layout-pane-south">
+						<div class="ui-widget-header ui-corner-top">Command</div>
+						<div class="ui-widget-content scrollingtable">
+							<table class="context-menu-commands" id="cmd_table">
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="ui-widget-footer ui-corner-bottom">
+							<button id="new_command">New Command</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- tabShell -->
+		</div>
+
+	</div>
+	<!-- /#outer-center -->
+
+</body>
+</html>

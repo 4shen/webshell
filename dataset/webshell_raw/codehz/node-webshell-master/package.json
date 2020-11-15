@@ -1,0 +1,27 @@
+{
+  "name": "node-webshell",
+  "version": "1.0.0",
+  "description": "node webshell",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codehz/node-webshell.git"
+  },
+  "keywords": [
+    "node",
+    "webshell"
+  ],
+  "author": "CodeHz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codehz/node-webshell/issues"
+  },
+  "homepage": "https://github.com/codehz/node-webshell#readme",
+  "dependencies": {
+    "pty.js": "github:codehz/pty.js",
+    "websocket": "^1.0.22"
+  }
+}

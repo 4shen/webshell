@@ -1,0 +1,37 @@
+html, body {
+    min-height: 100%;
+}
+
+#shell {
+    width: 800px;
+    height: 480px;
+    font-family: consolas;
+    font-size: 24px;
+    [title] {
+        background-color: #aaa;
+        height: 24px;
+        padding: 4px 0;
+    }
+    [content] {
+        background-color: #222;
+        color: #eee;
+        padding: 0 1em;
+        height: 400px;
+        overflow: auto;
+        .output {
+        }
+        .input-line {
+            #input {
+                color: #eee;
+                background: #222;
+                border: 0 solid transparent;
+                &:focus {
+                    outline: 0;
+                }
+            }
+            &:before {
+                content: "$"
+            }
+        }
+    }
+}

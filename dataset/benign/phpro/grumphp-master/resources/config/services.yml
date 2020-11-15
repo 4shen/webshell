@@ -1,0 +1,75 @@
+services:
+    GrumPHP\Configuration\GuessedPaths:
+        class: GrumPHP\Configuration\GuessedPaths
+        synthetic: true
+        public: true
+
+    Symfony\Component\EventDispatcher\EventDispatcher: ~
+    GrumPHP\Event\Dispatcher\Bridge\SymfonyEventDispatcher:
+        arguments:
+            - '@Symfony\Component\EventDispatcher\EventDispatcher'
+    GrumPHP\Configuration\Resolver\TaskConfigResolver:
+        synthetic: true
+
+    GrumPHP\Event\Dispatcher\EventDispatcherInterface: '@GrumPHP\Event\Dispatcher\Bridge\SymfonyEventDispatcher'
+
+    filesystem:
+        alias: grumphp.util.filesystem
+
+    GrumPHP\Configuration\Configurator\ExecutableFinderConfigurator:
+        arguments:
+            - '@GrumPHP\Util\Paths'
+    executable_finder:
+        class: Symfony\Component\Process\ExecutableFinder
+        configurator: ['@GrumPHP\Configuration\Configurator\ExecutableFinderConfigurator', 'configure']
+        calls:
+            - { method: 'setSuffixes', arguments: [['.phar', '.exe', '.bat', '.cmd', '.com']] }
+
+    process_builder:
+      class: GrumPHP\Process\ProcessBuilder
+      arguments:
+        - '@locator.external_command'
+        - '@grumphp.io'
+        - '@GrumPHP\Configuration\Model\ProcessConfig'
+      public: true
+
+    GrumPHP\Git\GitRepository:
+        arguments:
+            - '@GrumPHP\Locator\GitRepositoryLocator'
+            - { logger: '@grumphp.logger' }
+
+    grumphp.io:
+        alias: grumphp.io.console
+
+    grumphp.io.console:
+        class: GrumPHP\IO\ConsoleIO
+        arguments:
+          - '@console.input'
+          - '@console.output'
+        public: true
+
+    grumphp.logger:
+        class: Monolog\Logger
+        arguments:
+          - 'GrumPHP'
+          - ['@grumphp.logger.handler.nullhandler']
+        public: true
+
+    grumphp.logger.handler.nullhandler:
+        class: Monolog\Handler\NullHandler
+        public: false
+
+    console.input:
+        class: Symfony\Component\Console\Input\ArgvInput
+        synthetic: true
+        public: true
+
+    console.output:
+        class: Symfony\Component\Console\Output\ConsoleOutput
+        synthetic: true
+        public: true
+
+    json.parser:
+        class: Seld\JsonLint\JsonParser
+
+    GrumPHP\Configuration\Configurator\TaskConfigurator: ~

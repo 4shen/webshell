@@ -1,0 +1,55 @@
+/**
+ * @provides diffusion-icons-css
+ */
+
+input.diffusion-clone-uri {
+  display: block;
+  width: 100%;
+}
+
+.diffusion-clone-extras {
+  font-size: 11px;
+  text-align: right;
+  color: {$lightgreytext};
+}
+
+.diffusion-clone-label {
+  height: 30px;
+  line-height: 28px;
+}
+
+.diffusion-browse-name {
+  margin-left: 8px;
+  letter-spacing: 0.02em;
+}
+
+.diffusion-link-icon + .diffusion-link-icon {
+  margin-left: 6px;
+}
+
+.diffusion-search-boxen {
+  padding: 16px;
+}
+
+.diffusion-search-boxen .phui-form-view {
+  padding: 0;
+}
+
+.diffusion-clone-uri-table {
+  width: 100%;
+}
+
+.diffusion-clone-uri-table th {
+  width: 24px;
+  padding: 0 0 0 4px;
+}
+
+.diffusion-clone-uri-table th a.button {
+  width: 12px;
+  height: 19px;
+}
+
+.diffusion-clone-uri-table th a.button .phui-icon-view {
+  left: 15px;
+  top: 7px;
+}

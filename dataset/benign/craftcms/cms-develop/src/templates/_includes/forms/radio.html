@@ -1,0 +1,13 @@
+{%- set value = (value is defined ? value : '1') -%}
+
+<label
+        {%- if block('attr') is defined %} {{ block('attr') }}{% endif %}>
+    <input type="radio" value="{{ value }}"
+        {%- if id ?? false %} id="{{ id }}"{% endif %}
+        {%- if class ?? false %} class="{{ class }}"{% endif %}
+        {%- if name ?? false %} name="{{ name }}"{% endif %}
+        {%- if checked ?? false %} checked{% endif %}
+        {%- if (autofocus ?? false) and not craft.app.request.isMobileBrowser(true) %} autofocus{% endif %}
+        {%- if disabled ?? false %} disabled{% endif %}>
+    {% if label is defined %}{{ label|raw }}{% endif %}
+</label>

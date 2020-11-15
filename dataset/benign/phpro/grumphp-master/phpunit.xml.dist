@@ -1,0 +1,13 @@
+<phpunit bootstrap="test/Bootstrap.php" colors="true">
+    <php>
+        <ini name="error_reporting" value="-1" />
+    </php>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>test/Unit</directory>
+        </testsuite>
+        <testsuite name="E2E">
+            <directory>test/E2E</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

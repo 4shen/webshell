@@ -1,0 +1,59 @@
+{
+    "name": "spatie/laravel-responsecache",
+    "description": "Speed up a Laravel application by caching the entire response",
+    "keywords": [
+        "spatie",
+        "laravel-responsecache",
+        "laravel",
+        "cache",
+        "response",
+        "performance"
+    ],
+    "homepage": "https://github.com/spatie/laravel-responsecache",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Freek Van der Herten",
+            "email": "freek@spatie.be",
+            "homepage": "https://spatie.be",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "laravel/framework": "^7.13",
+        "nesbot/carbon": "^2.35"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "^9.1.5",
+        "orchestra/testbench": "^5.2",
+        "mockery/mockery": "^1.4",
+        "vimeo/psalm": "^3.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spatie\\ResponseCache\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spatie\\ResponseCache\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Spatie\\ResponseCache\\ResponseCacheServiceProvider"
+            ],
+            "aliases": {
+                "ResponseCache": "Spatie\\ResponseCache\\Facades\\ResponseCache"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

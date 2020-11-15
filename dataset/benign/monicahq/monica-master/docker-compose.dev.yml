@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  monicahq:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: monicahq/monicahq:dev
+    depends_on:
+      - mysql
+    ports:
+      - 8080:80
+    env_file: .env.dev
+    volumes:
+      - /var/www/monica/storage
+      - ./app:/var/www/monica/app
+      - ./routes:/var/www/monica/routes
+      - ./database:/var/www/monica/database
+
+  mysql:
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=sekret_root_password
+      - MYSQL_DATABASE=monica
+      - MYSQL_USER=homestead
+      - MYSQL_PASSWORD=secret
+    volumes:
+      - /var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: sekret_root_password
+    restart: always
+    ports:
+      - "3000:80"
+    volumes:
+      - "/sessions"
+
+  mail:
+    container_name: fake_mail
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"

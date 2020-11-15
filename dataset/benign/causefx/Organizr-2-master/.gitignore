@@ -1,0 +1,165 @@
+# PhpStorm Files
+.idea/*
+node_modules/*
+package-lock.json
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Files from my local computer
+php_errors.log
+
+# Backup Files
+.pydio_id
+
+.idea/*
+# =========================
+# Organizr files
+# =========================
+databaseLocation.ini.php
+homepageSettings.ini.php
+loginLog.json
+custom.css
+_config.yml
+org.log
+org*.log
+test.php
+users.db
+speedtest.db
+chatpack.db
+Docker.txt
+Github.txt
+Demo.txt
+config/cacert.pem
+config/config.php
+config/config*.bak.php
+config/users/
+config/users
+config/users*.db
+config/users*.bak.db
+config/tmp/*
+images/cache/*
+backups/*
+backups/
+backups
+test*.php
+tracy/
+logs/
+debug.php
+OrganizrV2/*
+orgv2/*
+test.php
+test/*
+organizrLoginLog.json
+organizrLog.json
+api/config/config*
+upgrade/*
+api/upgrade*
+api/functions/cert/cacert.pem
+wallpaper.jpg
+strings.json
+css/themes/*.css
+!css/themes/Organizr.css
+!css/themes/Blue.css
+*sonflix*
+plugins/images/cache/*.jpg
+testdata*
+strings.txt
+strings.php
+plugins/theme_files/*
+plugins/plugin_files/*
+!plugins/theme_files/index.html
+!plugins/plugin_files/index.html
+plugins/images/userTabs/*
+!plugins/images/userTabs/index.html
+# =========================
+# Plugin files
+# =========================
+api/plugins/*
+!api/plugins/invites.php
+!api/plugins/api/invites.php
+!api/plugins/config/invites.php
+!api/plugins/js/invites.js
+!api/plugins/chat.php
+!api/plugins/api/chat.php
+!api/plugins/config/chat.php
+!api/plugins/js/chat.js
+!api/plugins/healthChecks.php
+!api/plugins/api/healthChecks.php
+!api/plugins/config/healthChecks.php
+!api/plugins/js/healthChecks.js
+!api/plugins/php-mailer.php
+!api/plugins/api/php-mailer.php
+!api/plugins/config/php-mailer.php
+!api/plugins/js/php-mailer.js
+!api/plugins/speedTest.php
+!api/plugins/api/speedTest.php
+!api/plugins/config/speedTest.php
+!api/plugins/js/speedTest.js
+!api/plugins/misc/emailTemplates/default.php
+!api/plugins/misc/emailTemplates/gray.php
+!api/plugins/misc/emailTemplates/light.php
+!api/plugins/misc/emailTemplates/plehex.php
+!api/plugins/misc/speedTest/empty.php
+!api/plugins/misc/speedTest/garbage.php
+!api/plugins/misc/speedTest/getIP.php
+!api/plugins/misc/speedTest/telemetry.php
+!api/plugins/misc/speedTest/telemetry_settings.php
+!api/plugins/misc/speedTest/speedtest_worker.min.js
+
+# =========================
+# Custom files
+# =========================
+api/pages/custom/*.php
+/plugins/images/tabs/eatsleep.jpg
+/plugins/images/cache/tautulli-show.svg
+/plugins/images/cache/tautulli-android.svg
+/plugins/images/cache/tautulli-artist.svg
+/plugins/images/cache/tautulli-movie.svg
+/plugins/images/cache/tautulli-windows.svg
+plugins/images/cache/tautulli-samsung.svg

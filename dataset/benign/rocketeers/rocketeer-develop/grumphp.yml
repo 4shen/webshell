@@ -1,0 +1,19 @@
+parameters:
+    git_dir: .
+    bin_dir: vendor/bin
+    stop_on_failure: true
+    tasks:
+        phpversion: ~
+        git_conflict: ~
+        composer: ~
+        phpcs:
+            standard: "phpcs.xml"
+            ignore_patterns: ["tests", "src/config"]
+        securitychecker:
+            run_always: true
+        jsonlint: ~
+        phpunit: ~
+        git_blacklist:
+            keywords:
+                - "dump("
+                - "exit;"

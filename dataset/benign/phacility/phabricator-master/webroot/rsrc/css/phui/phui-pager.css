@@ -1,0 +1,14 @@
+/**
+ * @provides phui-pager-css
+ */
+
+.phui-pager-view {
+  clear: both;
+  text-align: center;
+}
+
+.phui-pager-view a.button.current,
+.phui-pager-view a.button.current:hover {
+  border-color: {$sh-orangetext};
+  color: {$sh-orangetext};
+}

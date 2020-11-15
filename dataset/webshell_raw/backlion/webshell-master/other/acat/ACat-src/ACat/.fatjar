@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Sun May 25 20:29:43 CST 2014
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=ACat.jar
+manifest.mergeall=true
+manifest.mainclass=org.javaweb.server.Server
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=<po|ACat>~org/~javaweb/~server/~.DS_Store;<po|ACat>~org/~javaweb/~.DS_Store;<po|ACat>~org/~.DS_Store;<po|ACat>~.DS_Store;<jar|msbase.jar>;<jar|mssqlserver.jar>;<jar|msutil.jar>;<jar|postgresql-9.2-1003.jdbc4.jar>
+includes=

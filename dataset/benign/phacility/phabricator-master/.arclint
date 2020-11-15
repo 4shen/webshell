@@ -1,0 +1,85 @@
+{
+  "exclude": [
+    "(^externals/)",
+    "(^webroot/rsrc/externals/(?!javelin/))",
+    "(/__tests__/data/)"
+  ],
+  "linters": {
+    "chmod": {
+      "type": "chmod"
+    },
+    "filename": {
+      "type": "filename"
+    },
+    "generated": {
+      "type": "generated"
+    },
+    "javelin": {
+      "type": "javelin",
+      "include": "(\\.js$)",
+      "exclude": [
+        "(^support/aphlict/)"
+      ]
+    },
+    "jshint-browser": {
+      "type": "jshint",
+      "include": "(\\.js$)",
+      "exclude": [
+        "(^support/aphlict/server/.*\\.js$)",
+        "(^webroot/rsrc/externals/javelin/core/init_node\\.js$)"
+      ],
+      "jshint.jshintrc": "support/lint/browser.jshintrc"
+    },
+    "jshint-node": {
+      "type": "jshint",
+      "include": [
+        "(^support/aphlict/server/.*\\.js$)",
+        "(^webroot/rsrc/externals/javelin/core/init_node\\.js$)"
+      ],
+      "jshint.jshintrc": "support/lint/node.jshintrc"
+    },
+    "json": {
+      "type": "json",
+      "include": [
+        "(^src/docs/book/.*\\.book$)",
+        "(^support/lint/jshintrc$)",
+        "(^\\.arcconfig$)",
+        "(^\\.arclint$)",
+        "(\\.json$)"
+      ]
+    },
+    "merge-conflict": {
+      "type": "merge-conflict"
+    },
+    "nolint": {
+      "type": "nolint"
+    },
+    "phutil-library": {
+      "type": "phutil-library",
+      "include": "(\\.php$)"
+    },
+    "spelling": {
+      "type": "spelling"
+    },
+    "text": {
+      "type": "text",
+      "exclude": [
+        "(^src/(.*/)?__tests__/[^/]+/.*\\.(txt|json|expect))"
+      ]
+    },
+    "text-without-length": {
+      "type": "text",
+      "include": [
+        "(^src/(.*/)?__tests__/[^/]+/.*\\.(txt|json|expect))"
+      ],
+      "severity": {
+        "3": "disabled"
+      }
+    },
+    "xhpast": {
+      "type": "xhpast",
+      "include": "(\\.php$)",
+      "standard": "phutil.xhpast"
+    }
+  }
+}

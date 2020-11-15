@@ -1,0 +1,112 @@
+/**
+ * @provides phabricator-object-selector-css
+ * @requires aphront-dialog-view-css
+ */
+
+.device-desktop .phabricator-object-selector-dialog {
+  width: 860px;
+}
+
+.phabricator-object-selector-dialog .aphront-dialog-body {
+  padding: 0 12px;
+}
+
+.phabricator-object-selector-search {
+  width: 100%;
+  background: {$lightbluebackground};
+  border-bottom: 1px solid {$thinblueborder};
+}
+
+.phabricator-object-selector-search td {
+  padding: 4px 8px;
+  vertical-align: middle;
+}
+
+td.phabricator-object-selector-search-text {
+  width: 100%;
+}
+
+.phabricator-object-selector-row:hover {
+  background-color: {$hoverblue};
+}
+
+.phabricator-object-selector-row:hover a {
+  text-decoration: none;
+  color: {$blacktext};
+}
+
+.phabricator-object-selector-search-text input {
+  width: 100%;
+  border-radius: 14px;
+  padding: 4px 8px;
+  height: 26px;
+  margin: 2px 0;
+}
+
+.phabricator-object-selector-popicon {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.phabricator-object-selector-results {
+  position: relative;
+  height: 24em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.phabricator-object-selector-handle {
+  width: 100%;
+}
+
+.phabricator-object-selector-handle + .phabricator-object-selector-handle {
+  border-top: 1px solid {$thinblueborder};
+}
+
+.phabricator-object-selector-handle td {
+  padding: 4px 8px;
+}
+
+.phabricator-object-selector-handle th {
+  font-weight: bold;
+  vertical-align: middle;
+  width: 100%;
+  overflow: hidden;
+}
+
+.phabricator-object-selector-handle th a {
+  display: block;
+  padding: 4px 0;
+}
+
+.phabricator-object-selector-header {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: {$darkbluetext};
+  background-color: {$lightgreybackground};
+  border-bottom: 1px solid {$thinblueborder};
+  padding: 6px 8px;
+}
+
+.phabricator-object-selector-attach-explicit {
+  padding: 4px;
+  background: {$lightgreybackground};
+  border: solid {$blueborder};
+  border-width: 1px 0px;
+}
+
+.phabricator-object-selector-current {
+  border-top: 1px solid {$thinblueborder};
+}
+
+.object-selector-nothing {
+  padding: 1em;
+  color: {$lightgreytext};
+  text-align: center;
+}
+
+.phabricator-object-selector-instructions {
+  font-size: {$smallestfontsize};
+  color: {$greytext};
+  margin-top: 1.25em;
+}

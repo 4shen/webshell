@@ -1,0 +1,68 @@
+<div class="prompt">
+	<h1><?= _t('gen.auth.registration') ?></h1>
+
+	<form method="post" action="<?= _url('user', 'create') ?>">
+		<input type="hidden" name="_csrf" value="<?= FreshRSS_Auth::csrfToken() ?>" />
+
+		<div class="form-group">
+			<label for="new_user_language"><?= _t('admin.user.language') ?></label>
+			<select name="new_user_language" id="new_user_language">
+			<?php $languages = Minz_Translate::availableLanguages(); ?>
+			<?php foreach ($languages as $lang) { ?>
+			<option value="<?= $lang ?>"<?= $this->preferred_language === $lang ? ' selected="selected"' : '' ?>><?= _t('gen.lang.' . $lang) ?></option>
+			<?php } ?>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="new_user_name"><?= _t('gen.auth.username') ?></label>
+			<input id="new_user_name" name="new_user_name" type="text" size="16" required="required" autocomplete="off" pattern="<?= FreshRSS_user_Controller::USERNAME_PATTERN ?>" autocapitalize="off" />
+			<p class="help"><?= _i('help') ?> <?= _t('gen.auth.username.format') ?></p>
+		</div>
+
+		<?php if ($this->show_email_field) { ?>
+			<div class="form-group">
+				<label for="new_user_email">
+					<?= _t('gen.auth.email') ?>
+				</label>
+				<input id="new_user_email" name="new_user_email" type="email" required />
+			</div>
+		<?php } ?>
+
+		<div class="form-group">
+			<label for="new_user_passwordPlain"><?= _t('gen.auth.password') ?></label>
+			<div class="stick">
+				<input type="password" id="new_user_passwordPlain" name="new_user_passwordPlain" required="required" autocomplete="new-password" pattern=".{7,}" />
+				<a class="btn toggle-password" data-toggle="new_user_passwordPlain"><?= _i('key') ?></a>
+			</div>
+			<noscript><b><?= _t('gen.js.should_be_activated') ?></b></noscript>
+			<p class="help"><?= _i('help') ?> <?= _t('gen.auth.password.format') ?></p>
+
+		</div>
+
+		<?php if ($this->show_tos_checkbox) { ?>
+			<div class="form-group">
+				<label class="checkbox" for="accept-tos">
+					<input type="checkbox" name="accept_tos" id="accept-tos" value="1" required />
+					<?= _t('gen.auth.accept_tos', _url('index', 'tos')) ?>
+				</label>
+			</div>
+		<?php } ?>
+
+		<div class="form-group form-group-actions">
+			<?php
+				$redirect_url = urlencode(Minz_Url::display(
+					array('c' => 'index', 'a' => 'index'),
+					'php', true
+				));
+			?>
+			<input type="hidden" name="r" value="<?= $redirect_url ?>" />
+
+			<button type="submit" class="btn btn-important"><?= _t('gen.action.create') ?></button>
+
+			<a href="<?= _url('index', 'index') ?>"><?= _t('gen.action.cancel') ?></a>
+		</div>
+	</form>
+
+	<p><a href="<?= _url('index', 'about') ?>"><?= _t('gen.freshrss.about') ?></a></p>
+</div>

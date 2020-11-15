@@ -1,0 +1,31 @@
+actor: Tester
+config:
+  test_entry_url: "http://localhost:8080/index-test.php"
+coverage:
+  c3_url: 'http://localhost:8080/index-test.php'
+  enabled: true
+  include:
+  - ../commands/*
+  - ../compat/*
+  - ../components/*
+  - ../controllers/*
+  - ../events/*
+  - ../libs/*
+  - ../models/*
+extensions:
+  enabled:
+  - tests\codeception\_support\HumHubExtension
+include:
+  - ../modules/*/tests
+paths:
+  data: codeception/_data
+  envs: config/env
+  helpers: codeception/_support
+  log: codeception/_output
+  tests: codeception
+settings:
+  bootstrap: _bootstrap.php
+  colors: true
+  log: true
+  memory_limit: 1024M
+  suite_class: \PHPUnit_Framework_TestSuite

@@ -1,0 +1,43 @@
+
+RPC design draft
+
+
+Rules of rpc design:
+
+(1) the rpc related to machine command should start with "machine". like 'machine_list'
+
+(2)
+
+
+Machine related Remote Proceture Call.
+
+    Function: machine_list
+    Desc    : fetch machine list from server
+    Argument: null
+    return:   list of machines or empty .
+
+
+    Function: machine_get
+    Desc    : retrive detail infomation of single machine.
+    Argument: machine_id | name (not determined)
+    return  : machine object or empty object.
+
+    Function: machine_search
+    Desc    : search machine with regular express.
+    Argument: regular express 
+    return  : machine objects or empty .
+
+
+Job related Remote Proceture Call.
+    
+    Function: job_list
+    Desc    : fetch job list from server
+    Argument: null
+    return:   list of all or empty list.
+
+
+    Function: job_detail
+    Desc    : fetch a job detail from server
+    Argument: job_id
+    return:   show the job detail
+

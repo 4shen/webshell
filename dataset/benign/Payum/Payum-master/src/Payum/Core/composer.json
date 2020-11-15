@@ -1,0 +1,96 @@
+{
+    "name": "payum/core",
+    "type": "library",
+    "description": "One million downloads of Payum already! Payum offers everything you need to work with payments. Friendly for all PHP frameworks (Symfony, Laravel, Zend, Yii, Silex). Check more visiting site.",
+    "keywords": [
+        "payment",
+        "recurring payment",
+        "payout",
+        "withdrawal",
+        "subscription",
+        "authorize",
+        "capture",
+        "payout",
+        "refund",
+        "notify"
+    ],
+    "homepage": "https://payum.forma-pro.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kotlyar Maksim",
+            "email": "kotlyar.maksim@gmail.com"
+        },
+        {
+            "name":     "Payum project",
+            "homepage": "https://payum.forma-pro.com/"
+        },
+        {
+            "name":     "Community contributions",
+            "homepage": "https://github.com/Payum/Payum/contributors"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "payum/iso4217": "^1.0",
+        "php-http/message": "^1.0",
+        "php-http/client-implementation": "^1.0",
+        "league/uri": "^5.0",
+        "twig/twig": "^1.0|^2.0"
+    },
+    "require-dev": {
+        "ext-curl": "*",
+        "ext-pdo_sqlite": "*",
+        "payum/omnipay-v3-bridge": "^1@alpha",
+        "omnipay/dummy": "^3@alpha",
+        "omnipay/common": "^3@dev",
+        "doctrine/orm": "2.*",
+        "phpunit/phpunit": "^5.7",
+        "propel/propel1": "~1.7",
+        "psr/log": "~1.0",
+        "php-http/guzzle6-adapter": "^1.0",
+        "zendframework/zend-db": "~2",
+        "symfony/routing": "^4.4|^5.0",
+        "symfony/http-kernel": "^4.4|^5.0",
+        "symfony/http-foundation": "^4.4|^5.0",
+        "symfony/form": "^4.4|^5.0",
+        "symfony/validator": "^4.4|^5.0",
+        "symfony/dependency-injection": "^4.4|^5.0",
+        "symfony/phpunit-bridge": "^4.4|^5.0",
+        "defuse/php-encryption": "^2"
+    },
+    "suggest": {
+        "payum/paypal-express-checkout-nvp": "self.version If you want to use paypal express checkout, digital goods or recurring payments",
+        "payum/paypal-pro-checkout-nvp": "self.version If you want to use paypal pro checkout",
+        "payum/paypal-rest": "self.version If you want to use paypal rest gateway",
+        "payum/paypal-ipn": "self.version If you want to use paypal instant payment notifications(Paypal IPN)",
+        "payum/authorize-net-aim": "self.version If you want to use Authorize.Net AIM payment gateway",
+        "payum/be2bill": "self.version If you want to use be2bill payment gateway",
+        "payum/payex": "self.version If you want to use payex payment gateway",
+        "payum/omnipay-v3-bridge": "^1 If you want to use omnipay's gateways",
+        "doctrine/orm": "~2.3 If you want to store models to database using doctrin2 ORM",
+        "doctrine/mongodb-odm": "~1.1 If you want to store models to mongo doctrin2 ODM",
+        "zendframework/zend-db": "~2.0 If you want to store models to Zend Db ORM",
+        "propel/propel1": "~1.7 If you want to store models to Propel1 ORM",
+        "propel/propel": "If you want to store models to Propel2 ORM",
+        "symfony/routing": "~2.8|~3.0 If you want to use TokenFactory from symfony's bridge",
+        "symfony/http-kernel": "~2.8|~3.0 If you want to use HttpRequestVerifier from symfony's bridge",
+        "symfony/http-foundation": "~2.8|~3.0 If you want to use HttpRequestVerifier or HttpResponse reply from symfony's bridge",
+        "symfony/form": "~2.8|~3.0 If you want to use forms",
+        "symfony/dependency-injection": "~2.8|~3.0 If you want to use container aware stuff",
+        "monolog/monolog": "~1.0 If you want to use PSR-3 logger",
+        "defuse/php-encryption": "^2 If you want to encrypt gateways credentials in database"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": { "Payum\\Core\\": "" }
+    },
+    "target-dir": "Payum/Core",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.5-dev"
+        }
+    }
+}

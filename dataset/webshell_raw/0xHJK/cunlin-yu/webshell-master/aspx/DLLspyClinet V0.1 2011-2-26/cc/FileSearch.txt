@@ -1,0 +1,17 @@
+﻿<table>
+<tr><td>Search Model：</td><td>
+<select class="something" id="SearchModel" name="SearchModel"  >
+<option value="1" selected="selected">Files</option>
+<option value="2">Directory</option>
+<option value="3">ALL</option>
+</select>
+</td></tr>
+<tr><td>Search Path ：</td><td><input  id="SearchPath"  type="text" class="input" name="SearchPath" value=""  size="100" /></td></tr>
+<tr><td>Search key ：</td><td><input  id="SearchKey"  type="text" class="input" name="SearchKey" value="webconfig"  size="100" />(FileName)</td></tr>
+<tr><td>Action ：</td><td><input  id="SearchStart"  type="button" class="bt" name="SearchStart" value="Search Start" size="30"  style="width:150px;" onclick='SearchFile();'  /></td></tr>
+<tr><td> </td><td>
+<input  id="GetSearchDate"  type="button" class="bt" name="GetSearchDate" value="GetSearchDate" size="30" style="width:150px;"  onclick="GetSearchInfo();"  /></td></tr>
+<tr><td> </td><td>
+<input  id="EndProcess"  type="button" class="bt" name="EndProcess" value="EndProcess" size="30" style="width:150px;"  onclick='EndSearch();'  /></td></tr>
+<tr><td> </td><td><div id="SearchDate" name="SearchDate"></div></td></tr>
+</table>

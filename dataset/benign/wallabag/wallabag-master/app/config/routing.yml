@@ -1,0 +1,97 @@
+wallabag_annotation:
+  type : rest
+  resource: "@WallabagAnnotationBundle/Resources/config/routing_annotations.yml"
+
+wallabag_import:
+    resource: "@WallabagImportBundle/Controller/"
+    type: annotation
+    prefix: /import
+
+wallabag_user:
+    resource: "@WallabagUserBundle/Controller/"
+    type: annotation
+    prefix: /users
+
+wallabag_api:
+    resource: "@WallabagApiBundle/Controller/"
+    type: annotation
+    prefix: /
+
+app:
+    resource: "@WallabagCoreBundle/Controller/"
+    type: annotation
+
+doc-api:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix: /api/doc
+
+rest :
+    type : rest
+    resource : "routing_rest.yml"
+    prefix : /api
+
+homepage:
+    path: "/{page}"
+    defaults:
+        _controller: WallabagCoreBundle:Entry:showUnread
+        page : 1
+    requirements:
+        page: \d+
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+
+craue_config_settings_modify:
+    path: /settings
+    defaults:
+        _controller: CraueConfigBundle:Settings:modify
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+2fa_login:
+    path: /2fa
+    defaults:
+        _controller: "scheb_two_factor.form_controller:form"
+
+2fa_login_check:
+    path: /2fa_check
+
+# redirect RSS feed to Atom
+rss_to_atom_unread:
+    path: /{username}/{token}/unread.xml
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: unread_feed
+        permanent: true
+
+rss_to_atom_archive:
+    path: /{username}/{token}/archive.xml
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: archive_feed
+        permanent: true
+
+rss_to_atom_starred:
+    path: /{username}/{token}/starred.xml
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: starred_feed
+        permanent: true
+
+rss_to_atom_all:
+    path: /{username}/{token}/all.xml
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: all_feed
+        permanent: true
+
+rss_to_atom_tags:
+    path: /{username}/{token}/tags/{slug}.xml
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: tag_feed
+        permanent: true

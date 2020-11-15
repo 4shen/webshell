@@ -1,0 +1,225 @@
+{
+  "kind": "webfonts#webfontList",
+  "items": [
+    {
+      "kind": "webfonts#webfont",
+      "family": "Alegreya",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "B612",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Muli",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Titillium Web",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Varela",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Vollkorn",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "IBM Plex Serif",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Crimson Text",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Cairo",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "BioRhyme",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Karla",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Lora",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Frank Ruhl Libre",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Playfair Display",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Archivo",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Spectral",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Fjalla One",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Roboto",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Montserrat",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Rubik",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Source Sans",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Cardo",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Cormorant",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Work Sans",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Rakkas",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Concert One",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Yatra One",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Arvo",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Lato",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Abril FatFace",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Ubuntu",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "PT Serif",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Old Standard TT",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Oswald",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "PT Sans",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Poppins",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Fira Sans",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Nunito",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Oxygen",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Exo 2",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Merriweather",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Open Sans",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Noto Sans",
+      "category": "sans-serif"
+    },
+    {
+      "kind": "webfonts#webfont",
+      "family": "Source Sans Pro",
+      "category": "sans-serif"
+    }
+  ]
+}

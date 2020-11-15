@@ -1,0 +1,31 @@
+# Dolibarr language file - Source file is en_US - paybox
+PayBoxSetup=PayBox modul inställning
+PayBoxDesc=Denna modul erbjuder sidor för att möjliggöra betalning på <a href="http://www.paybox.com" target="_blank">Paybox</a> av kunder. Detta kan användas för en kostnadsfri betalning eller en betalning på en viss Dolibarr objekt (faktura, order, ...)
+FollowingUrlAreAvailableToMakePayments=Följande webbadresser finns att erbjuda en sida till en kund att göra en förskottsbetalning Dolibarr objekt
+PaymentForm=Inbetalningskort
+WelcomeOnPaymentPage=Välkommen till vår online betalningstjänst
+ThisScreenAllowsYouToPay=Denna skärm tillåter dig att göra en online-betalning till %s.
+ThisIsInformationOnPayment=Detta är information om betalning för att göra
+ToComplete=För att komplettera
+YourEMail=E-post för betalning bekräftelse
+Creditor=Borgenär
+PaymentCode=Betalning kod
+PayBoxDoPayment=Pay with Paybox
+YouWillBeRedirectedOnPayBox=Du kommer att omdirigeras på säkrade Paybox sida för att mata dig kreditkortsinformation
+Continue=Nästa
+SetupPayBoxToHavePaymentCreatedAutomatically=Konfigurera din lön med url <b> %s </b> för att ha betalning skapad automatiskt när bekräftat av Paybox.
+YourPaymentHasBeenRecorded=Den här sidan bekräftar att din betalning har registrerats. Tack.
+YourPaymentHasNotBeenRecorded=Din betalning har INTE registrerats och transaktionen har annullerats. Tack.
+AccountParameter=Tagen parametrar
+UsageParameter=Användning parametrar
+InformationToFindParameters=Hjälp att hitta din %s kontoinformation
+PAYBOX_CGI_URL_V2=URL Paybox CGI-modul för betalning
+VendorName=Namn på leverantör
+CSSUrlForPaymentForm=CSS-formatmall URL för inbetalningskort
+NewPayboxPaymentReceived=Ny Paybox betalning mottagen
+NewPayboxPaymentFailed=Ny Paybox betalnings försök men misslyckats
+PAYBOX_PAYONLINE_SENDEMAIL=E-postmeddelande efter betalningsförsök (framgång eller misslyckande)
+PAYBOX_PBX_SITE=Värde för PBX SITE
+PAYBOX_PBX_RANG=Värde för PBX Rang
+PAYBOX_PBX_IDENTIFIANT=Värde för PBX-ID
+PAYBOX_HMAC_KEY=HMAC key

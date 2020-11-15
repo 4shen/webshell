@@ -1,0 +1,7 @@
+D:\dotNet\MyDLL\MyDLL20101012\MyDLL\test\bin\test.dll
+D:\dotNet\MyDLL\MyDLL20101012\MyDLL\test\bin\test.pdb
+D:\dotNet\MyDLL\MyDLL20101012\MyDLL\test\bin\MyModel.dll
+D:\dotNet\MyDLL\MyDLL20101012\MyDLL\test\bin\MyModel.pdb
+D:\dotNet\MyDLL\MyDLL20101012\MyDLL\test\obj\Debug\ResolveAssemblyReference.cache
+D:\dotNet\MyDLL\MyDLL20101012\MyDLL\test\obj\Debug\test.dll
+D:\dotNet\MyDLL\MyDLL20101012\MyDLL\test\obj\Debug\test.pdb

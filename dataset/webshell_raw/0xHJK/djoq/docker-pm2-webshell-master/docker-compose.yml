@@ -1,0 +1,7 @@
+version: '2'
+services:
+  shell:
+    build:
+      context: .
+    ports:
+      - "7890:7890"

@@ -1,0 +1,305 @@
+/**
+ * @provides phui-document-view-pro-css
+ */
+
+.phui-document-view.phui-document-view-pro {
+  max-width: 800px;
+  padding: 16px 16px 32px 16px;
+  margin: 0 auto;
+}
+
+.phui-document-view.phui-document-view-pro.has-curtain {
+  max-width: 1132px;
+}
+
+.printable .phui-document-view.phui-document-view-pro.has-curtain {
+  max-width: none;
+}
+
+.device-desktop .phui-document-inner {
+  overflow: hidden;
+}
+
+.device-desktop .has-curtain .phui-document-content-view {
+  display: table-cell;
+}
+
+.printable .phui-document-content-view {
+  padding-right: 0;
+}
+
+.device-desktop .phui-document-content-outer {
+  display: table;
+  width: 100%;
+  layout: fixed;
+}
+
+/* Force very wide content, like tables with many columns, to scroll inside
+   the frame. See T13202. */
+.phui-document-content-view {
+  max-width: 800px;
+}
+
+.device-desktop .phui-document-content-inner {
+  display: table-row;
+}
+
+.device-desktop .phui-document-curtain {
+  display: table-cell;
+  width: 300px;
+}
+
+.printable .phui-document-curtain {
+  display: none;
+}
+
+.phui-document-container {
+  background-color: {$page.content};
+  position: relative;
+  border-bottom: 1px solid {$document.border};
+}
+
+.phui-document-view-pro-box,
+.phui-document-properties {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+body.printable {
+  background-color: #fff;
+}
+
+.printable .phui-document-view-pro-box {
+  display: none;
+}
+
+.printable .phui-document-container {
+  border: none;
+}
+
+.printable .phui-document-container .phui-header-view .phui-header-subheader {
+  display: none;
+}
+
+.printable .phui-document-container .phui-header-view .phui-header-col3 {
+  display: none;
+}
+
+.device .phui-document-view-pro-box {
+  margin: 0 8px;
+}
+
+.phui-document-view-pro-box .phui-property-list-section {
+  margin: 16px auto;
+}
+
+.device .phui-document-view-pro-box .phui-property-list-section {
+  margin: 0 8px 16px;
+}
+
+.device .phui-document-view-pro-box .phui-property-list-container {
+  padding: 24px 0 0 0;
+}
+
+.device-phone .phui-document-view.phui-document-view-pro {
+  padding: 0 12px;
+  margin: 0 auto;
+}
+
+.phui-document-view-pro .phui-document-toc {
+  position: absolute;
+  top: 34px;
+  left: -44px;
+}
+
+.printable .phui-document-view-pro a.phui-document-toc {
+  display: none;
+}
+
+.phui-document-view-pro .phui-document-toc-list {
+  margin: 8px;
+  border: 1px solid {$lightgreyborder};
+  border-radius: 3px;
+  box-shadow: {$dropshadow};
+  width: 260px;
+  position: absolute;
+  z-index: 30;
+  background-color: {$page.content};
+  top: 52px;
+  left: -40px;
+}
+
+.device .phui-document-view-pro .phui-document-toc {
+  display: none;
+}
+
+.phui-document-toc-list {
+  display: none;
+}
+
+.phui-document-toc-open .phui-document-toc-list {
+  display: block;
+}
+
+.phui-document-toc-open .phui-document-toc {
+  border-color: {$blueborder};
+}
+
+.phui-document-view-pro .phui-document-toc-content {
+  margin: 8px 16px;
+}
+
+.phui-document-view-pro .phui-document-toc-header {
+  font-weight: bold;
+  color: {$bluetext};
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-size: {$smallerfontsize};
+}
+
+.phui-document-view-pro .phui-document-toc-content li {
+  margin: 4px 8px 4px 0;
+}
+
+.phui-document-view-pro .phui-document-toc-content a {
+  padding: 2px 0;
+  display: block;
+  text-decoration: none;
+  color: {$darkbluetext};
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.phui-document-view-pro .phui-document-toc-content a:hover {
+  color: {$anchor};
+  text-decoration: underline;
+}
+
+.phui-document-view-pro .phui-document-toc-content li + ul {
+  margin: 4px 0 4px 8px;
+}
+
+.phui-document-view-pro .phui-document-content .phabricator-remarkup {
+  padding: 16px 0;
+  line-height: 1.7em;
+}
+
+.device-desktop .phui-document-view.phui-document-view-pro {
+  border: 0;
+}
+
+.phui-document-view.phui-document-view-pro .phui-header-shell {
+  background: transparent;
+  border-bottom: 1px solid {$thinblueborder};
+}
+
+.phui-document-view.phui-document-view-pro .phui-header-shell {
+  margin: 0;
+  padding: 16px 0 32px;
+}
+
+.device-phone .phui-document-view.phui-document-view-pro .phui-header-shell {
+  margin: 0;
+  padding: 16px 0 20px;
+}
+
+.phui-document-view.phui-document-view-pro .phui-header-tall
+  .phui-header-header {
+  font-size: 24px;
+  line-height: 30px;
+  color: {$blacktext};
+}
+
+.device-phone .phui-document-view.phui-document-view-pro .phui-header-tall
+  .phui-header-header {
+    font-size: 18px;
+  }
+
+.device-phone .phui-document-view-pro .phui-header-subheader {
+  display: block;
+  padding: 8px 0 0 0;
+}
+
+.phui-document-view-pro .phui-info-view {
+  margin: 16px 0;
+}
+
+.phui-document-view-pro .phabricator-remarkup-embed-image-wide {
+  margin-left: -200px;
+  margin-right: -200px;
+  width: auto;
+}
+
+.phui-document-view-pro .phabricator-remarkup-embed-image-wide img {
+  max-width: 1200px;
+}
+
+@media (max-width: 1200px) {
+  .phui-document-view-pro .phabricator-remarkup-embed-image-wide {
+    margin-left: 0;
+    margin-right: 0;
+    width: auto;
+  }
+
+  .phui-document-view-pro .phabricator-remarkup-embed-image-wide img {
+    max-width: inherit;
+  }
+}
+
+.phui-document-view-pro-box {
+  margin-bottom: 24px;
+}
+
+.phui-document-view-pro-box .phui-timeline-view {
+  padding: 16px 0 0 0;
+  background: none;
+}
+
+.phui-document-view-pro-box .phui-timeline-wedge {
+  display: none;
+}
+
+.phui-document-view-pro-box .phui-timeline-major-event .phui-timeline-group {
+  border: none;
+}
+
+.phui-document-view-pro-box .phui-timeline-major-event .phui-timeline-content {
+  border: none;
+}
+
+.device-desktop .phui-document-view-pro-box
+  .phui-timeline-event-view.phui-timeline-minor-event {
+    margin-left: 62px;
+}
+
+.phui-document-view-pro-box .phui-timeline-title {
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  background-color: {$page.content};
+  border-bottom: 1px solid #F1F1F4;
+}
+
+.phui-document-view-pro-box .phui-timeline-title-with-icon {
+  padding-left: 12px;
+}
+
+.phui-document-view-pro-box .phui-timeline-icon-fill {
+  display: none;
+}
+
+.phui-document-view-pro-box .phui-object-box {
+  margin: 0;
+}
+
+.phui-document-view-pro-box .phui-object-box .remarkup-assist-textarea {
+  height: 9em;
+}
+
+.document-has-foot .phui-document-view-pro {
+  padding-bottom: 0;
+}
+
+.phui-document-foot-content {
+  margin: 64px 0 32px;
+}

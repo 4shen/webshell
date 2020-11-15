@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+require "rubygems"
+
+file = __FILE__
+file = File.readlink(file) while File.symlink?(file)
+
+$LOAD_PATH.unshift File.expand_path('../../lib', file)
+
+require 'webshell'
+
+WebShell.load_prerequisites
+
+SWT_APP_NAME = "JRuby WebShell"
+
+require 'server'
+require 'client'
+
+Thread.new do
+  Server.run!
+end
+
+sleep 3
+
+@@app = Browser.new
+@@app.start
+
+# enforce a GC run to help with a clean exit.
+# When mixing SWT and Swing this is necessary.
+mem_bean = java.lang.management.ManagementFactory.getMemoryMXBean()
+mem_bean.gc

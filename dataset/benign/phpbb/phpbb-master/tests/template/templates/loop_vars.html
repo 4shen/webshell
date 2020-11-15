@@ -1,0 +1,13 @@
+<!-- BEGIN test_loop -->
+<!-- IF test_loop.S_FIRST_ROW -->first<!-- ENDIF -->
+{test_loop.S_ROW_NUM} - a
+{test_loop.VARIABLE} - b
+<!-- IF test_loop.VARIABLE -->set<!-- ENDIF -->
+<!-- IF test_loop.S_LAST_ROW -->
+last
+<!-- ENDIF -->
+<!-- BEGIN inner -->
+{test_loop.inner.S_ROW_NUM} - c
+<!-- IF test_loop.inner.S_LAST_ROW and test_loop.inner.S_ROW_COUNT and test_loop.inner.S_NUM_ROWS -->last inner<!-- ENDIF -->
+<!-- END inner -->
+<!-- END test_loop -->

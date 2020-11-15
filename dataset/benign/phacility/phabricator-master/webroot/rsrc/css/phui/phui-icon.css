@@ -1,0 +1,206 @@
+/**
+ * @provides phui-icon-view-css
+ */
+
+.phui-icon-example .phui-icon-view {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.phui-icon-view.sprite-tokens {
+  height: 18px;
+  width: 18px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.phui-icon-view.sprite-login {
+  height: 28px;
+  width: 28px;
+}
+
+.phui-icon-view.phuihead-medium {
+  height: 50px;
+  width: 50px;
+}
+
+.phui-icon-view.phuihead-small {
+  height: 35px;
+  width: 35px;
+  background-size: 35px;
+}
+
+.phui-icon-has-text:before {
+  margin-right: 6px;
+}
+
+a.phui-icon-view:hover {
+  text-decoration: none;
+  color: {$sky};
+}
+
+img.phui-image-disabled {
+  opacity: .8;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.phui-icon-view.bluetext {
+  color: {$bluetext};
+}
+
+.phui-icon-view.invisible {
+  visibility: hidden;
+}
+
+/* - Icon in a Circle ------------------------------------------------------- */
+
+.phui-icon-circle {
+  border: 1px solid {$lightblueborder};
+  border-radius: 24px;
+  height: 24px;
+  width: 24px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  position: relative;
+}
+
+.phui-icon-circle.circle-medium {
+  height: 36px;
+  width: 36px;
+  border-radius: 36px;
+}
+
+.phui-icon-circle.phui-icon-circle-state {
+  border-color: transparent;
+  background-color: {$bluebackground};
+}
+
+.phui-icon-circle.phui-icon-circle-state .phui-icon-circle-icon {
+  color: {$bluetext};
+  font-size: 16px;
+}
+
+a.phui-icon-circle.phui-icon-circle-state:hover {
+  border-color: transparent !important;
+}
+
+.phui-icon-circle .phui-icon-circle-icon {
+  height: 24px;
+  width: 24px;
+  font-size: 11px;
+  line-height: 24px;
+  color: {$lightblueborder};
+  cursor: pointer;
+}
+
+.phui-icon-circle.circle-medium .phui-icon-circle-icon {
+  font-size: 18px;
+  line-height: 36px;
+}
+
+a.phui-icon-circle.hover-sky:hover {
+  text-decoration: none;
+  border-color: {$sky};
+  cursor: pointer;
+}
+
+a.phui-icon-circle.hover-sky:hover .phui-icon-view {
+  color: {$sky};
+}
+
+a.phui-icon-circle.hover-violet:hover {
+  text-decoration: none;
+  border-color: {$violet};
+  cursor: pointer;
+}
+
+a.phui-icon-circle.hover-violet:hover .phui-icon-view {
+  color: {$violet};
+}
+
+a.phui-icon-circle.hover-pink:hover {
+  text-decoration: none;
+  border-color: {$pink};
+  cursor: pointer;
+}
+
+a.phui-icon-circle.hover-pink:hover .phui-icon-view {
+  color: {$pink};
+}
+
+a.phui-icon-circle.hover-green:hover {
+  text-decoration: none;
+  border-color: {$green};
+  cursor: pointer;
+}
+
+a.phui-icon-circle.hover-green:hover .phui-icon-view {
+  color: {$green};
+}
+
+a.phui-icon-circle.hover-red:hover {
+  text-decoration: none;
+  border-color: {$red};
+  cursor: pointer;
+}
+
+a.phui-icon-circle.hover-red:hover .phui-icon-view {
+  color: {$red};
+}
+
+.phui-icon-circle .phui-icon-view.phui-icon-circle-state-icon {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  font-size: 12px;
+  right: -3px;
+  top: -4px;
+  text-shadow:
+    -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+}
+
+/* - Icon in a Square ------------------------------------------------------- */
+
+.phui-icon-view.phui-icon-square {
+  height: 40px;
+  width: 40px;
+  color: #fff;
+  font-size: 26px;
+  text-align: center;
+  line-height: 38px;
+  border-radius: 3px;
+}
+
+a.phui-icon-view.phui-icon-square:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+
+.phui-icon-emblem {
+  border-radius: 4px;
+}
+
+.phui-timeline-extra .phui-icon-emblem {
+  padding: 4px 6px;
+}
+
+.phui-icon-emblem-violet {
+  background-color: {$violet};
+}
+
+.phui-icon-emblem-red {
+  background-color: {$red};
+}
+
+.phui-icon-emblem-pink {
+  background-color: {$pink};
+}

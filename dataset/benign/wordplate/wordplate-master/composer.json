@@ -1,0 +1,48 @@
+{
+    "name": "wordplate/wordplate",
+    "description": "A modern WordPress stack to make PHP developers happier",
+    "keywords": [
+        "wordplate",
+        "wordpress",
+        "boilerplate"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.2",
+        "wordplate/framework": "^9.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "installer-paths": {
+            "public/mu-plugins/{$name}": [
+                "type:wordpress-muplugin"
+            ],
+            "public/plugins/{$name}": [
+                "type:wordpress-plugin"
+            ],
+            "public/themes/{$name}": [
+                "type:wordpress-theme"
+            ]
+        },
+        "wordpress-install-dir": "public/wordpress"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
+        }
+    ],
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
+    }
+}

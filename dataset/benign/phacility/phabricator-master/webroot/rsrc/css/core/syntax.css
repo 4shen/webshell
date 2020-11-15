@@ -1,0 +1,41 @@
+/**
+ * @provides syntax-highlighting-css
+ * @requires syntax-default-css
+ */
+.remarkup-code .uu { /* Forbidden Unicode */
+  color: #aa0066;
+}
+
+.remarkup-code .language-tag {
+  color: {$lightgreytext};
+}
+
+.remarkup-code td > span {
+  display: inline;
+  line-break: anywhere;
+}
+
+.remarkup-code .rbw_r { color: red; }
+.remarkup-code .rbw_o { color: orange; }
+.remarkup-code .rbw_y { color: yellow; }
+.remarkup-code .rbw_g { color: green; }
+.remarkup-code .rbw_b { color: blue; }
+.remarkup-code .rbw_i { color: indigo; }
+.remarkup-code .rbw_v { color: violet; }
+
+span.crossreference-item {
+  background: {$lightyellow};
+  border-bottom: 1px solid {$yellow};
+  cursor: help;
+}
+
+.remarkup-code .invisible {
+  color: #222222;
+  background: #dddddd;
+}
+
+.suspicious-character {
+  background: #ff7700;
+  color: #ffffff;
+  cursor: default;
+}

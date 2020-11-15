@@ -1,0 +1,32 @@
+download_pictures: Download imagens no seu servidor
+carrot: Habilitar compartilhamento para o Carrot
+diaspora_url: URL Diaspora caso o serviço esteja habilitado
+export_epub: Habilita exportação para ePub
+export_mobi: Habilita exportação para .mobi
+export_pdf: Habilita exportação para PDF
+export_csv: Habilita exportação para CSV
+export_json: Habilita exportação para JSON
+export_txt: Habilita exportação para TXT
+export_xml: Habilita exportação para XML
+shaarli_url: URL Shaarli caso o serviço esteja habilitado
+scuttle_url: URL Scuttle caso o serviço esteja habilitado
+unmark_url: URL Unmark caso o serviço esteja habilitado
+pocket_consumer_key: Chave de consumidor do Pocket para importar conteúdo (https://getpocket.com/developer/docs/authentication)
+share_diaspora: Habilitar compartilhamento para o Diaspora
+share_mail: Habilitar compartilhamento por e-mail
+share_shaarli: Habilitar compartilhamento para o Shaarli
+share_scuttle: Habilitar compartilhamento para o Scuttle
+share_twitter: Habilitar compartilhamento para o Twitter
+share_unmark: Habilitar compartilhamento para o Unmark.it
+show_printlink: Mostrar um link para imprimir o conteúdo
+wallabag_support_url: URL de Suporte do wallabag
+entry: "artigo"
+export: "exportar"
+import: "importar"
+misc: "misc"
+modify_settings: "aplicar"
+matomo_host: Host de seu website Matomo
+matomo_site_id: ID de seu website Matomo
+matomo_enabled: Habilitar Matomo
+demo_mode_enabled: "Habilitar modo demo? (somente usado para o demo público do wallabag)"
+demo_mode_username: "Usuário demo"

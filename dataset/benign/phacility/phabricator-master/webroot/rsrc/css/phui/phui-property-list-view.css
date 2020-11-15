@@ -1,0 +1,380 @@
+/**
+ * @provides phui-property-list-view-css
+ */
+
+.phui-property-list-view .keyboard-shortcuts-available {
+  float: right;
+  height: 16px;
+  margin: 12px 10px -28px 0px;
+  padding: 0px 20px 0px 0px;
+  vertical-align: middle;
+  color: {$greytext};
+  text-align: right;
+  font-size: {$smallestfontsize};
+  background:
+    url('/rsrc/image/icon/fatcow/key_question.png') right center no-repeat;
+}
+
+.device .keyboard-shortcuts-available {
+  display: none;
+}
+
+.phui-property-group-noninitial,
+.phui-property-list-section-noninitial {
+  border-color: {$thinblueborder};
+  border-style: solid;
+  border-width: 1px 0 0;
+}
+
+.device-desktop .phui-property-list-container {
+  padding: 12px 0 12px 0;
+  width: 100%;
+}
+
+.device .phui-property-list-container {
+  padding: 12px 0 4px 0;
+}
+
+.phui-property-list-key {
+  color: {$bluetext};
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.device-desktop .phui-property-list-key {
+  width: 12%;
+  margin-left: 1%;
+  text-align: right;
+  float: left;
+  clear: left;
+  margin-bottom: 4px;
+}
+
+.device-desktop .phui-property-list-has-actions .phui-property-list-key {
+  width: 18%;
+}
+
+.phui-property-list-properties-wrap.phui-property-list-stacked {
+  width: auto;
+  float: none;
+}
+
+.device .phui-property-list-key,
+div.phui-property-list-stacked .phui-property-list-properties
+  .phui-property-list-key {
+    padding-left: 4px;
+    text-align: left;
+    margin-left: 0;
+    width: auto;
+    float: none;
+}
+
+.phui-property-list-value {
+  color: {$darkgreytext};
+}
+
+.device-desktop .phui-property-list-value {
+  width: 84%;
+  margin-left: 1%;
+  float: left;
+  margin-bottom: 4px;
+  word-wrap: break-word;
+}
+
+.device-desktop .phui-property-list-has-actions .phui-property-list-value {
+  width: 78%;
+}
+
+.device .phui-property-list-value,
+.phui-property-list-stacked .phui-property-list-properties
+  .phui-property-list-value {
+    padding: 0 8px;
+    margin-bottom: 8px;
+    width: auto;
+    word-break: break-word;
+    float: none;
+}
+
+.phui-property-list-section-header {
+  color: {$bluetext};
+  padding: 16px 4px 0px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-color: {$thinblueborder};
+  border-style: solid;
+  border-width: 1px 0 0;
+}
+
+.phui-property-list-container + .phui-property-list-text-content {
+  border-color: {$thinblueborder};
+  border-style: solid;
+  border-width: 1px 0 0;
+}
+
+.phui-property-list-section-noninitial .phui-property-list-section-header {
+  border-top: none;
+}
+
+.device .phui-property-list-section-header {
+  padding-left: 4px;
+}
+
+.phui-property-list-section-header-icon .phui-icon-view {
+  display: inline-block;
+  margin: -2px 4px -2px 0;
+}
+
+.phui-property-list-text-content {
+  padding: 16px 4px;
+  overflow: hidden;
+}
+
+.phui-property-list-raw-content {
+  padding: 0px;
+  overflow: hidden;
+}
+
+/* In the common case where we immediately follow a header, move back up 30px
+   so we snuggle next to the header. */
+.device-desktop .phui-header-view
+  + .phabricator-action-list-view {
+  margin-top: -30px;
+}
+
+.device-desktop .phui-header-view
+  + .phabricator-action-list-view
+  + .phui-property-list-view {
+  margin-top: 0px;
+}
+
+
+/* When tags appear in property lists, give them a little more vertical
+   spacing. */
+.phui-property-list-value .phui-tag-view {
+  margin: 2px 0;
+  white-space: pre-wrap;
+}
+
+.phui-property-list-has-actions .phui-property-list-properties-wrap {
+  float: left;
+  width: 78%;
+}
+
+.device .phui-property-list-properties-wrap {
+  width: auto;
+  border: none;
+  float: none;
+  overflow: auto;
+}
+
+.phui-property-list-actions {
+  width: 20%;
+  float: right;
+  margin-right: 12px;
+  border-left: 1px solid {$thinblueborder};
+}
+
+!print .phui-property-list-actions {
+  display: none;
+}
+
+.device .phui-property-list-actions {
+  float: none;
+  width: auto;
+  margin: -12px 0 12px 0;
+  border: none;
+}
+
+.phui-property-list-image-content img {
+  margin: 20px auto;
+  background: url('/rsrc/image/checker_light.png');
+}
+
+.device-desktop .phui-property-list-image-content img:hover {
+  background: url('/rsrc/image/checker_dark.png');
+}
+
+/* - Dashboards ------------------------------------------------------------ */
+
+.dashboard-panel .phui-property-list-section {
+  border-left: 1px solid {$lightblueborder};
+  border-right: 1px solid {$lightblueborder};
+  border-bottom: 1px solid {$blueborder};
+}
+
+
+.document-engine-image img {
+  margin: 20px auto;
+  background: url('/rsrc/image/checker_light.png');
+  max-width: 100%;
+}
+
+.device-desktop .document-engine-image img:hover {
+  background: url('/rsrc/image/checker_dark.png');
+}
+
+.document-engine-video video {
+  margin: 20px auto;
+  display: block;
+  max-width: 95%;
+}
+
+.document-engine-audio audio {
+  display: block;
+  margin: 16px auto;
+  width: 50%;
+  min-width: 240px;
+}
+
+.document-engine-message {
+  margin: 20px auto;
+  text-align: center;
+  color: {$greytext};
+}
+
+.document-engine-error {
+  margin: 20px;
+  padding: 12px;
+  text-align: center;
+  color: {$redtext};
+  background: {$sh-redbackground};
+}
+
+.document-engine-hexdump {
+  margin: 20px;
+  white-space: pre;
+}
+
+.document-engine-remarkup {
+  margin: 20px;
+}
+
+.document-engine-pdf {
+  margin: 20px;
+  text-align: center;
+}
+
+.document-engine-pdf .phabricator-remarkup-embed-layout-link {
+  text-align: left;
+}
+
+.document-engine-text .phabricator-source-code-container {
+  border: none;
+}
+
+.document-engine-jupyter {
+  overflow: hidden;
+  margin: 20px;
+}
+
+.document-engine-jupyter.document-engine-diff {
+  margin: 0;
+}
+
+.document-engine-in-flight {
+  opacity: 0.25;
+}
+
+.document-engine-loading {
+  margin: 20px;
+  text-align: center;
+  color: {$lightgreytext};
+}
+
+.document-engine-loading .phui-icon-view {
+  display: block;
+  font-size: 48px;
+  color: {$lightgreyborder};
+  padding: 8px;
+}
+
+.jupyter-cell-raw {
+  white-space: pre-wrap;
+  background: {$lightgreybackground};
+  color: {$greytext};
+  padding: 8px;
+}
+
+.jupyter-cell-code {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: {$lightgreybackground};
+  border-radius: 2px;
+  border-color: {$lightgreyborder};
+  border-style: solid;
+}
+
+.jupyter-cell-code-block {
+  padding: 8px;
+  border-width: 1px;
+}
+
+.jupyter-cell-code-line {
+  padding: 2px 8px;
+  border-width: 0 1px;
+}
+
+td.new .jupyter-cell-code-line {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: {$new-bright};
+}
+
+td.old .jupyter-cell-code-line {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: {$old-bright};
+}
+
+.jupyter-cell-code-head {
+  border-top-width: 1px;
+  margin-top: 4px;
+  padding-top: 8px;
+}
+
+.jupyter-cell-code-last {
+  border-bottom-width: 1px;
+  margin-bottom: 4px;
+  padding-bottom: 8px;
+}
+
+.jupyter-notebook > tbody > tr > td {
+  padding: 8px;
+}
+
+.jupyter-notebook > tbody > tr > td.jupyter-cell-flush {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.jupyter-notebook,
+.jupyter-notebook > tbody > tr > td {
+  width: 100%;
+}
+
+.jupyter-notebook > tbody > tr > td.jupyter-label {
+  white-space: nowrap;
+  text-align: right;
+  min-width: 56px;
+  font-weight: bold;
+  width: auto;
+  padding: 8px 8px 0;
+}
+
+.jupyter-output {
+  margin: 4px 0;
+  padding: 8px;
+  white-space: pre-wrap;
+  line-break: anywhere;
+}
+
+.jupyter-output-stderr {
+  background: {$sh-redbackground};
+}
+
+.jupyter-output-html {
+  background: {$sh-indigobackground};
+}
+
+.jupyter-cell-markdown {
+  white-space: pre-wrap;
+}

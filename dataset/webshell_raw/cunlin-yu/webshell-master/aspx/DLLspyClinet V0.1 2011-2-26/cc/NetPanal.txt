@@ -1,0 +1,18 @@
+﻿<table>
+<tr><td></td>
+<td><b>Remote DownLoad</b></td>
+</tr>
+
+<tr><td>FileURL:</td>
+<td><input  id="RemoteURL"  name="RemoteURL" type="text" class="input" value="http://www.cnblog.com/zpino/"  size="100" /></td>
+</tr>
+
+<tr><td>localPath:</td>
+<td><input  id="LocalPath" name="LocalPath"  type="text" class="input" value=""  size="100" /></td>
+</tr>
+
+<tr><td></td>
+<td><input type="button" name="URLDownLoad" value="DownLoad" id="URLDownLoad" class="bt"   onclick="URLDownLoad();"/>
+<div id="downloadmsg" name="downloadmsg"></div></td>
+</tr>
+</table>

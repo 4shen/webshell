@@ -1,0 +1,31 @@
+
+                ╭═══════════════╮
+                ║        源码联盟下载说明      ║
+  ╭══════┤      http://www.aspsun.com   ├══════╮
+  ║            ║     E-mail:root@aspsun.com   ║            ║
+  ║            ╰═══════════════╯            ║
+　║                                                          ║
+　║                                                          ║
+　║  版权：本软件版权归作者所有                              ║
+  ║  支持：本软件技术支持可与作者联系                        ║
+　║　说明：本软件由源码联盟(aspsun.com，以下简称本站)搜集整  ║
+　║        理，本站不承担任何技术及版权问题。本站只收集免费  ║
+  ║        软件，在本站下载任何软件仅提供学习参考，不得用于  ║
+  ║        商业用途，请在下载后在24小时内删除。本站不保证软  ║
+  ║        件的完整性和是否隐含病毒，请自行调试及杀毒，如不  ║
+  ║        同意本条款请勿使用，谢谢合作！                    ║
+  ║  其他：要获得更多的软件或最新版本请随时关注本站          ║
+  ║                                                          ║
+  ║      源码联盟提供大量国内外优秀源代码，ASP、PHP、CGI动感 ║
+  ║  技术，等论坛服务。                                      ║
+  ║      我们拥有优秀的WEB 程序员和美工，可为企业或个人提    ║
+  ║  供低价WEB程序定制和网站建设服务。                       ║
+　║                                                          ║
+  ║      再次感谢您对本站的支持！                            ║
+  ║      源码联盟：          http://www.aspsun.com           ║
+  ║      业务联系咨询：root@aspsun.com    QQ:20803336        ║
+　║      联系方式：13813820444  (短信联系)                   ║
+　║                                                          ║
+  ║    ╭───────────────────────╮    ║
+  ╰══┤       ★★★★★★★★★★★★★★★★       ├══╯
+        ╰───────────────────────╯

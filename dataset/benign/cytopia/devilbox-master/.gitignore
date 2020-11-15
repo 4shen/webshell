@@ -1,0 +1,207 @@
+# Note:
+# To effectively apply the changes you will have
+# to re-index the git index (if there are already
+# commited files)
+#
+# $ git rm -r --cached .
+# $ git add .
+# $ git commit -m ".gitignore index rebuild"
+#
+
+
+######################################
+# CUSTOM
+######################################
+
+# Ignore variable data
+/.env
+/backups/*
+/log/[a-z0-9-]*
+
+# Ignore Data dirs
+/data/www/*
+
+# Ignore Certificate Authority
+/ca/*
+
+# Ignore compose override file
+/docker-compose.override.yml
+
+# Ignore custom global vhost gen templates
+/cfg/vhost-gen/apache22.conf
+/cfg/vhost-gen/apache24.conf
+/cfg/vhost-gen/nginx.conf
+
+# Ignore custom HTTPD configs
+/cfg/apache-2.2/*.conf
+/cfg/apache-2.4/*.conf
+/cfg/nginx-stable/*.conf
+/cfg/nginx-mainline/*.conf
+
+# Ignore custom MySQL configs
+/cfg/mysql-5.5/*.cnf
+/cfg/mysql-5.6/*.cnf
+/cfg/mysql-5.7/*.cnf
+/cfg/mysql-8.0/*.cnf
+/cfg/mariadb-5.5/*.cnf
+/cfg/mariadb-10.0/*.cnf
+/cfg/mariadb-10.1/*.cnf
+/cfg/mariadb-10.2/*.cnf
+/cfg/mariadb-10.3/*.cnf
+/cfg/mariadb-10.4/*.cnf
+/cfg/percona-5.5/*.cnf
+/cfg/percona-5.6/*.cnf
+/cfg/percona-5.7/*.cnf
+/cfg/percona-8.0/*.cnf
+
+# Ignore custom PHP.ini configs
+/cfg/php-ini-5.2/*.ini
+/cfg/php-ini-5.3/*.ini
+/cfg/php-ini-5.4/*.ini
+/cfg/php-ini-5.5/*.ini
+/cfg/php-ini-5.6/*.ini
+/cfg/php-ini-7.0/*.ini
+/cfg/php-ini-7.1/*.ini
+/cfg/php-ini-7.2/*.ini
+/cfg/php-ini-7.3/*.ini
+/cfg/php-ini-7.4/*.ini
+/cfg/php-ini-8.0/*.ini
+
+# Ignore custom PHP-FPM configs
+/cfg/php-fpm-5.2/php-fpm.xml
+/cfg/php-fpm-5.3/*.conf
+/cfg/php-fpm-5.4/*.conf
+/cfg/php-fpm-5.5/*.conf
+/cfg/php-fpm-5.6/*.conf
+/cfg/php-fpm-7.0/*.conf
+/cfg/php-fpm-7.1/*.conf
+/cfg/php-fpm-7.2/*.conf
+/cfg/php-fpm-7.3/*.conf
+/cfg/php-fpm-7.4/*.conf
+/cfg/php-fpm-8.0/*.conf
+
+# Ignore custom PHP-FPM startup scripts
+/autostart/*.sh
+/cfg/php-startup-5.2/*.sh
+/cfg/php-startup-5.3/*.sh
+/cfg/php-startup-5.4/*.sh
+/cfg/php-startup-5.5/*.sh
+/cfg/php-startup-5.6/*.sh
+/cfg/php-startup-7.0/*.sh
+/cfg/php-startup-7.1/*.sh
+/cfg/php-startup-7.2/*.sh
+/cfg/php-startup-7.3/*.sh
+/cfg/php-startup-7.4/*.sh
+/cfg/php-startup-8.0/*.sh
+
+# Ignorecustom Varnish configs
+/cfg/varnish-4/*.vcl
+/cfg/varnish-5/*.vcl
+/cfg/varnish-6/*.vcl
+
+# Ignore custom PHP-FPM modules
+/mod/php-fpm-5.2/*.so
+/mod/php-fpm-5.3/*.so
+/mod/php-fpm-5.4/*.so
+/mod/php-fpm-5.5/*.so
+/mod/php-fpm-5.6/*.so
+/mod/php-fpm-7.0/*.so
+/mod/php-fpm-7.1/*.so
+/mod/php-fpm-7.2/*.so
+/mod/php-fpm-7.3/*.so
+/mod/php-fpm-7.4/*.so
+/mod/php-fpm-8.0/*.so
+
+# Ignore custom bash and other confi files
+/bash/*
+!/bash/bashrc.sh-example
+!/bash/README.md
+
+# Ignore documentation sphinx build
+/docs/_build/
+/docs/make.bat
+/docs/linkcheck
+/docs/venv
+*.rst.todo
+
+# Ignore vhost-gen files in test dir (copied on the fly)
+/.tests/tmp/*
+/.tests/www/*
+!/.tests/www/modules
+!/.tests/www/rproxy/js
+
+# Keep folders
+!.keepme
+
+
+######################################
+# GENERIC
+######################################
+
+###### std ######
+.lock
+*.log
+
+###### patches/diffs ######
+*.patch
+*.diff
+*.orig
+*.rej
+
+
+######################################
+# Operating Systems
+######################################
+
+###### OSX ######
+._*
+.DS*
+.Spotlight-V100
+.Trashes
+
+###### Windows ######
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+*.shortcut
+
+######################################
+# Editors
+######################################
+
+###### Sublime ######
+*.sublime-workspace
+*.sublime-project
+
+###### Eclipse ######
+.classpath
+.buildpath
+.project
+.settings/
+
+###### Netbeans ######
+/nbproject/
+
+###### Intellij IDE ######
+.idea/
+.idea_modules/
+
+###### vim ######
+*.swp
+*.swo
+*.swn
+*.swm
+*~
+
+###### TextMate ######
+.tm_properties
+*.tmproj
+
+###### BBEdit ######
+*.bbprojectd
+*.bbproject
+
+###### VS Code ######
+/.vscode

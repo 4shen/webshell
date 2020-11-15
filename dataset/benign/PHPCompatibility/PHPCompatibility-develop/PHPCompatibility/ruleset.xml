@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset name="PHPCompatibility">
+    <description>Coding Standard that checks for PHP version compatibility.</description>
+
+    <autoload>./../PHPCSAliases.php</autoload>
+
+    <!-- Make the utility functions available in PHPCS 2.x -->
+    <rule ref="PHPCS23Utils"/>
+
+</ruleset>

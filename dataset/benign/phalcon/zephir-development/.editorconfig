@@ -1,0 +1,26 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root                     = true
+
+[*]
+end_of_line              = lf
+insert_final_newline     = true
+indent_style             = space
+charset                  = utf-8
+indent_size              = 4
+trim_trailing_whitespace = true
+
+[Makefile]
+indent_style             = tab
+tab_width                = 4
+
+[*.{mk,c,h,awk,bat,frag,lemon,re}]
+indent_style             = tab
+tab_width                = 4
+
+[*.{yml,m4,json,xml,sh}]
+indent_size              = 2
+
+[zephir-autocomplete]
+indent_size              = 2

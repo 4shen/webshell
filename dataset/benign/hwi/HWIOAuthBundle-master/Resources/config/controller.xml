@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="HWI\Bundle\OAuthBundle\Controller\ConnectController" public="true">
+            <argument type="service" id="hwi_oauth.security.oauth_utils" />
+            <argument type="service" id="hwi_oauth.resource_ownermap_locator" />
+
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+
+            <tag name="controller.service_arguments" />
+        </service>
+
+        <service id="HWI\Bundle\OAuthBundle\Controller\LoginController" public="true">
+            <argument type="service" id="security.authentication_utils" />
+            <argument type="service" id="router" />
+            <argument type="service" id="security.authorization_checker" />
+            <argument type="service" id="session" />
+            <argument>%hwi_oauth.connect%</argument>
+            <argument>%hwi_oauth.grant_rule%</argument>
+
+            <call method="setContainer" />
+
+            <tag name="container.service_subscriber" />
+            <tag name="controller.service_arguments" />
+        </service>
+
+        <service id="HWI\Bundle\OAuthBundle\Controller\RedirectToServiceController" public="true">
+            <argument type="service" id="hwi_oauth.security.oauth_utils" />
+            <argument type="service" id="hwi_oauth.util.domain_whitelist" />
+            <argument>%hwi_oauth.firewall_names%</argument>
+            <argument>%hwi_oauth.target_path_parameter%</argument>
+            <argument>%hwi_oauth.failed_use_referer%</argument>
+            <argument>%hwi_oauth.use_referer%</argument>
+
+            <tag name="controller.service_arguments" />
+        </service>
+    </services>
+</container>

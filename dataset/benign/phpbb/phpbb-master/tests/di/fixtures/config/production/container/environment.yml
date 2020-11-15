@@ -1,0 +1,40 @@
+parameters:
+    core: true
+    tables.acl_groups: '%core.table_prefix%acl_groups'
+    tables.acl_options: '%core.table_prefix%acl_options'
+    tables.acl_roles: '%core.table_prefix%acl_roles'
+
+services:
+    config.php:
+        synthetic: true
+
+    dbal.conn:
+        class: phpbb\db\driver\factory
+        arguments:
+            - '@service_container'
+
+    dbal.conn.driver:
+        synthetic: true
+
+    dispatcher:
+        class: phpbb\db\driver\container_mock
+
+    ext.manager:
+        class: phpbb\extension\manager_mock
+
+    config:
+        class: phpbb\config\config
+        arguments:
+            - []
+
+    template.twig.environment:
+        class: Exception
+        arguments:
+            - ~
+            - ~
+            - ~
+            - ~
+            - ~
+            - ~
+            - ~
+            - []

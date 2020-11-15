@@ -1,0 +1,53 @@
+/**
+ * @provides unhandled-exception-css
+ */
+
+.unhandled-exception-detail {
+  max-width: 760px;
+  margin: 24px auto;
+  background: #fff;
+  border: 1px solid #c0392b;
+  border-radius: 3px;
+  padding: 8px;
+}
+
+.unhandled-exception-detail .unhandled-exception-title {
+  color: #c0392b;
+  padding: 4px 8px 12px;
+  border-bottom: 1px solid #f4dddb;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.unhandled-exception-detail .unhandled-exception-body {
+  padding: 16px 12px;
+}
+
+.unhandled-exception-with-stack {
+  max-width: 95%;
+}
+
+.unhandled-exception-stack {
+  background: #fcfcfc;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.unhandled-exception-stack table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #d7d7d7;
+}
+
+.unhandled-exception-stack th {
+  background: #e7e7e7;
+  border-bottom: 1px solid #d7d7d7;
+  padding: 8px;
+}
+
+.unhandled-exception-stack td {
+  padding: 4px 8px;
+  white-space: nowrap;
+}

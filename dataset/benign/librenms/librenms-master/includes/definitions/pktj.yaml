@@ -1,0 +1,26 @@
+os: pktj
+type: network
+group: unix
+text: 'Gandi Packet Journey'
+icon: gandi
+over:
+    - { graph: device_bits, text: 'Device Traffic' }
+    - { graph: device_processor, text: 'Processor Usage' }
+    - { graph: device_mempool, text: 'Memory Usage' }
+processor_stacked: true
+register_mibs:
+    rxCounter: GANDI-MIB
+    txCounter: GANDI-MIB
+    dropCounter: GANDI-MIB
+    acldropCounter: GANDI-MIB
+    ratedropCounter: GANDI-MIB
+    KNIrxCounter: GANDI-MIB
+    KNItxCounter: GANDI-MIB
+    KNIdropCounter: GANDI-MIB
+discovery:
+    -
+      sysDescr_regex: '/^Linux/'
+      snmpget:
+          oid: 'GANDI-MIB::rxCounter.0'
+          op: '!='
+          value: false

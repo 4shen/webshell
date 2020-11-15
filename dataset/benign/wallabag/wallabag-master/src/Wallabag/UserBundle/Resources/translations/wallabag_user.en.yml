@@ -1,0 +1,11 @@
+# Two factor mail
+auth_code:
+    on: 'on'
+    mailer:
+        subject: 'wallabag authentication code'
+        body:
+            hello: "Hi %user%,"
+            first_para: "Since you require two factor authentication to log in on your wallabag account, and a new device just used it, we send you a code to validate its connection."
+            second_para: "Here is the code:"
+            support: "Please don't hesitate to contact us if you have any problems:"
+            signature: "The wallabag team"

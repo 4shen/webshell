@@ -1,0 +1,28 @@
+sudo: false
+dist: xenial
+language: php
+
+services:
+  - mysql
+
+php:
+  - 7.4
+  - 7.3
+  - 7.2
+
+env:
+  - LARAVEL_VERSION=7.* PHPUNIT_VERSION=~8.0
+  - LARAVEL_VERSION=6.* PHPUNIT_VERSION=~8.0
+
+before_script:
+  - echo 'memory_limit = -1' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - composer require "laravel/framework:${LARAVEL_VERSION}" "phpunit/phpunit:${PHPUNIT_VERSION}"
+  - mysql -e "CREATE DATABASE laravel; GRANT ALL ON laravel.* TO 'aimeos'@'127.0.0.1' IDENTIFIED BY 'aimeos'"
+
+script: vendor/bin/phpunit --coverage-clover coverage.xml
+
+after_success:
+  - php vendor/bin/coveralls
+
+matrix:
+  fast_finish: true

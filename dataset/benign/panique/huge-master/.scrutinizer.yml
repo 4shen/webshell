@@ -1,0 +1,9 @@
+# This file just tells the wonderful code quality analyzer Scrutinizer (https://scrutinizer-ci.com/g/panique/huge/)
+# that we are using external services (Travis) to generate code coverage stats
+checks:
+    php:
+        code_rating: true
+        duplication: true
+# test coverage is commented out as this does not seem to work properly right now
+#tools:
+#    external_code_coverage: true

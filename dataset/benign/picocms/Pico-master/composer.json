@@ -1,0 +1,58 @@
+{
+    "name": "picocms/pico",
+    "type": "library",
+    "description": "Pico is a flat file CMS, this means there is no administration backend and database to deal with. You simply create .md files in the \"content\" folder and that becomes a page.",
+    "keywords": ["pico", "picocms", "pico-cms", "simple", "flat-file", "cms", "content-management", "website", "markdown-to-html", "php", "markdown", "yaml", "twig" ],
+    "homepage": "http://picocms.org/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gilbert Pellegrom",
+            "email": "gilbert@pellegrom.me",
+            "role": "Project Founder"
+        },
+        {
+            "name": "Daniel Rudolf",
+            "email": "picocms.org@daniel-rudolf.de",
+            "role": "Lead Developer"
+        },
+        {
+            "name": "The Pico Community",
+            "homepage": "http://picocms.org/"
+        },
+        {
+            "name": "Contributors",
+            "homepage": "https://github.com/picocms/Pico/graphs/contributors"
+        }
+    ],
+    "support": {
+        "docs": "http://picocms.org/docs",
+        "issues": "https://github.com/picocms/Pico/issues",
+        "source": "https://github.com/picocms/Pico"
+    },
+    "require": {
+        "php": ">=5.3.6",
+        "twig/twig": "^1.36",
+        "symfony/yaml" : "^2.8",
+        "erusev/parsedown": "1.8.0-beta-7",
+        "erusev/parsedown-extra": "0.8.0-beta-1"
+    },
+    "suggest": {
+        "picocms/pico-theme": "Pico requires a theme to actually display the contents of your website. This is Pico's official default theme.",
+        "picocms/pico-deprecated": "PicoDeprecated's purpose is to maintain backward compatibility to older versions of Pico.",
+        "picocms/composer-installer": "This Composer plugin is responsible for installing Pico plugins and themes using the Composer package manager."
+    },
+    "autoload": {
+        "psr-0": {
+            "Pico": "lib/",
+            "PicoPluginInterface": "lib/",
+            "AbstractPicoPlugin": "lib/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.1.x-dev",
+            "dev-pico-3.0": "3.0.x-dev"
+        }
+    }
+}

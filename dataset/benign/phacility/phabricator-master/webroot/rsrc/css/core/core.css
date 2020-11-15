@@ -1,0 +1,194 @@
+/**
+ * @provides phabricator-core-css
+ */
+
+body, div, dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6,
+pre, form, fieldset,
+p, blockquote, th, td, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset, img {
+  border: 0;
+}
+
+address, caption, cite, code, dfn, th, var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+caption, th {
+  text-align: left;
+}
+
+td, th {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: bold;
+}
+
+body {
+  font: {$basefont};
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: embed;
+  background: {$page.background};
+  color: {$blacktext};
+
+  /* By default, the iPhone zooms all text on the page by some percentage when
+     you rotate from portrait mode to landscape mode. Disable this, since it
+     breaks lots of things and prevents you from using landscape to see more
+     columns in source code views. */
+  -webkit-text-size-adjust: none;
+
+  /* Prevent content from resizing abruptly when shifting between scrollable
+     and unscrollable pages. */
+  overflow-y: scroll;
+}
+
+body.printable,
+!print body {
+  background: none;
+}
+
+textarea {
+  font: inherit;
+}
+
+table {
+  font-size: inherit;
+  font: 100%;
+}
+
+h1 {
+  font-size: 16px;
+}
+
+h2 {
+  font-size: 14px;
+}
+
+a {
+  -moz-outline-style: none;
+  text-decoration: none;
+  color: {$anchor};
+  cursor: pointer;
+}
+
+.device-desktop a:hover {
+  text-decoration: underline;
+}
+
+img {
+  display: block;
+}
+
+.busy {
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+}
+
+.with-durable-column .busy {
+  right: 308px;
+}
+
+.busy .phui-icon-view {
+  font-size: 32px;
+}
+
+.grouped:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+hr {
+  height: 1px;
+  background: #bbbbbb;
+  border: none;
+}
+
+.aural-only {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+
+  /* NOTE: Without this, Safari sometimes lays these elements out at normal
+     size. An example is the label on the comment action menu on timelines. */
+
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.visual-only {
+  /* These elements are hidden by the 'aria-hidden' attribute. */
+}
+
+.audible .aural-only {
+  clip: auto;
+  width: auto;
+  height: auto;
+  overflow: auto;
+  background: #006699;
+  color: #ffffff;
+}
+
+.audible .aural-only a {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.audible .visual-only {
+  position: absolute !important;
+  background: #990066;
+  opacity: 0.25;
+}
+
+.routing-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 2px;
+  background: {$darkbluetext};
+  z-index: 80;
+  box-shadow: 0 2px 1px rgba(0, 128, 255, 0.25);
+}
+
+.routing-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: {$sky};
+}
+
+.clipboard-copy {
+  visibility: hidden;
+}
+
+.supports-clipboard .clipboard-copy {
+  visibility: visible;
+}
+
+.clipboard-buffer {
+  position: absolute;
+  left: -9999px;
+}

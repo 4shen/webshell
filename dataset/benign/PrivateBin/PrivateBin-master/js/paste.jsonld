@@ -1,0 +1,42 @@
+{
+	"@context": {
+		"so": "https://schema.org/",
+		"pb": "?jsonld=types#",
+		"pm": "?jsonld=pastemeta#",
+		"status": {
+			"@type": "so:Integer"
+		},
+		"id": {
+			"@type": "so:name"
+		},
+		"deletetoken": {
+			"@type": "so:Text"
+		},
+		"url": {
+			"@type": "so:url"
+		},
+		"v": {
+			"@type": "so:Integer",
+			"@value": 2
+		},
+		"ct": {
+			"@type": "pb:CipherText"
+		},
+		"adata": {
+			"@type": "pm:AuthenticatedData"
+		},
+		"meta": {
+			"@type": "pm:MetaData"
+		},
+		"comments": {
+			"@type": "?jsonld=comment",
+			"@container": "@list"
+		},
+		"comment_count": {
+			"@type": "so:Integer"
+		},
+		"comment_offset": {
+			"@type": "so:Integer"
+		}
+	}
+}

@@ -1,0 +1,65 @@
+services:
+    #
+    # Cli Application
+    #
+    GrumPHP\Console\Application:
+        class: Symfony\Component\Console\Application
+        calls:
+            - { method: 'setDispatcher', arguments: ['@Symfony\Component\EventDispatcher\EventDispatcher'] }
+            - { method: 'setCommandLoader', arguments: ['@console.command_loader'] }
+        configurator: ['@GrumPHP\Console\ApplicationConfigurator', 'configure']
+        public: true
+
+    GrumPHP\Console\ApplicationConfigurator: ~
+
+    #
+    # Commands
+    #
+    GrumPHP\Console\Command\ConfigureCommand:
+        arguments:
+            - '@GrumPHP\Configuration\Resolver\TaskConfigResolver'
+            - '@grumphp.util.filesystem'
+            - '@GrumPHP\Util\Paths'
+        tags:
+            - { name: 'console.command' }
+    GrumPHP\Console\Command\RunCommand:
+        arguments:
+            - '@GrumPHP\Collection\TestSuiteCollection'
+            - '@locator.registered_files'
+            - '@GrumPHP\Runner\TaskRunner'
+        tags:
+            - { name: 'console.command' }
+    GrumPHP\Console\Command\Git\CommitMsgCommand:
+        arguments:
+            - '@GrumPHP\Collection\TestSuiteCollection'
+            - '@locator.changed_files'
+            - '@GrumPHP\Runner\TaskRunner'
+            - '@grumphp.util.filesystem'
+            - '@GrumPHP\Util\Paths'
+        tags:
+            - { name: 'console.command' }
+    GrumPHP\Console\Command\Git\DeInitCommand:
+        arguments:
+            - '@grumphp.util.filesystem'
+            - '@GrumPHP\Util\Paths'
+        tags:
+            - { name: 'console.command' }
+    GrumPHP\Console\Command\Git\InitCommand:
+        arguments:
+            - '@GrumPHP\Configuration\Model\HooksConfig'
+            - '@grumphp.util.filesystem'
+            - '@process_builder'
+            - '@GrumPHP\Util\Paths'
+        tags:
+            - { name: 'console.command' }
+    GrumPHP\Console\Command\Git\PreCommitCommand:
+        arguments:
+            - '@GrumPHP\Collection\TestSuiteCollection'
+            - '@locator.changed_files'
+            - '@GrumPHP\Runner\TaskRunner'
+        tags:
+            - { name: 'console.command' }
+
+    # This one is loaded through the TestSuiteCompilerPass
+    GrumPHP\Collection\TestSuiteCollection:
+        synthetic: true

@@ -1,0 +1,20 @@
+{
+    "asia_macau": {
+        "abbreviations": [
+            "+09",
+            "+10",
+            "CDT",
+            "CST",
+            "LMT"
+        ],
+        "cca2": "MO",
+        "cca3": "MAC",
+        "country_code": "MO",
+        "data_sources": [
+            "timezonedb"
+        ],
+        "record_type": "timezone",
+        "zone_id": "248",
+        "zone_name": "Asia\/Macau"
+    }
+}

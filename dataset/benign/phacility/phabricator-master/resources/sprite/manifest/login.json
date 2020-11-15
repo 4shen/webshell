@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "sprites": {
+    "login-Amazon": {
+      "name": "login-Amazon",
+      "rule": ".login-Amazon",
+      "hash": "e915cc22543027da014126a956a2b3a1"
+    },
+    "login-Asana": {
+      "name": "login-Asana",
+      "rule": ".login-Asana",
+      "hash": "cfc35b62afb103c5d484a715071e3cc3"
+    },
+    "login-Bitbucket": {
+      "name": "login-Bitbucket",
+      "rule": ".login-Bitbucket",
+      "hash": "32f7cf08badb1181f883c211eddd89f5"
+    },
+    "login-Disqus": {
+      "name": "login-Disqus",
+      "rule": ".login-Disqus",
+      "hash": "77b29d56329a3c30b79d6b6673b0e39b"
+    },
+    "login-Facebook": {
+      "name": "login-Facebook",
+      "rule": ".login-Facebook",
+      "hash": "1b12a5a5cfe103d4d96213cf7d1ce18a"
+    },
+    "login-Generic": {
+      "name": "login-Generic",
+      "rule": ".login-Generic",
+      "hash": "c8a57930d9b2bca35adbd8e87b1d4a2f"
+    },
+    "login-Github": {
+      "name": "login-Github",
+      "rule": ".login-Github",
+      "hash": "984f7d78e9c6f5e08da259ca319f6be3"
+    },
+    "login-Google": {
+      "name": "login-Google",
+      "rule": ".login-Google",
+      "hash": "72e7b0e1005c92f059f4d5881592ee72"
+    },
+    "login-HTTP": {
+      "name": "login-HTTP",
+      "rule": ".login-HTTP",
+      "hash": "4b2150566fd6c43c530ea56aa3c7feb4"
+    },
+    "login-Jira": {
+      "name": "login-Jira",
+      "rule": ".login-Jira",
+      "hash": "454fab6635fbc3782380dbb1842a794c"
+    },
+    "login-LDAP": {
+      "name": "login-LDAP",
+      "rule": ".login-LDAP",
+      "hash": "e31df2e9faf8ca0925ef93128a82fa7a"
+    },
+    "login-MediaWiki": {
+      "name": "login-MediaWiki",
+      "rule": ".login-MediaWiki",
+      "hash": "f1f0a9382434081a9a84e7584828c2dd"
+    },
+    "login-PayPal": {
+      "name": "login-PayPal",
+      "rule": ".login-PayPal",
+      "hash": "dfa09f45369c93bb0fd82a333b0fe927"
+    },
+    "login-Phabricator": {
+      "name": "login-Phabricator",
+      "rule": ".login-Phabricator",
+      "hash": "54f5ddae4b9d138c438ec00ed42544d2"
+    },
+    "login-Slack": {
+      "name": "login-Slack",
+      "rule": ".login-Slack",
+      "hash": "fe0df2df040032b949aa05948b6bd986"
+    },
+    "login-Stripe": {
+      "name": "login-Stripe",
+      "rule": ".login-Stripe",
+      "hash": "26a00cf2d548bbb9f57d1a6362e996f5"
+    },
+    "login-TestPayment": {
+      "name": "login-TestPayment",
+      "rule": ".login-TestPayment",
+      "hash": "7a8b41cbac5edcde63aa64959fe30b7b"
+    },
+    "login-TwitchTV": {
+      "name": "login-TwitchTV",
+      "rule": ".login-TwitchTV",
+      "hash": "02320cb010a226fb6505d5b31f1f0246"
+    },
+    "login-Twitter": {
+      "name": "login-Twitter",
+      "rule": ".login-Twitter",
+      "hash": "5a60e22662a2f5c5c1bc036153f64a18"
+    },
+    "login-WePay": {
+      "name": "login-WePay",
+      "rule": ".login-WePay",
+      "hash": "39a4c5ec26ee8400239b246761b83aa3"
+    },
+    "login-WordPressCOM": {
+      "name": "login-WordPressCOM",
+      "rule": ".login-WordPressCOM",
+      "hash": "9eae4205dbed0c42a18ee4f8e0fa151b"
+    }
+  },
+  "scales": [
+    1,
+    2
+  ],
+  "header": "/**\n * @provides sprite-login-css\n * @generated\n */\n\n.sprite-login {\n  background-image: url(/rsrc/image/sprite-login.png);\n  background-repeat: no-repeat;\n}\n\n@media\nonly screen and (min-device-pixel-ratio: 1.5),\nonly screen and (-webkit-min-device-pixel-ratio: 1.5),\nonly screen and (min-resolution: 1.5dppx) {\n  .sprite-login {\n    background-image: url(/rsrc/image/sprite-login-X2.png);\n    background-size: {X}px {Y}px;\n  }\n}\n",
+  "type": "standard"
+}

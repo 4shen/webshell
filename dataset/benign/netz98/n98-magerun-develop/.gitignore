@@ -1,0 +1,16 @@
+# Composer
+/vendor/
+
+# Build
+/n98-magerun.phar
+/n98-magerun.phar.asc
+/build/output/
+
+# Magerun stopfile
+/.n98-magerun
+
+# IDEs
+/.idea/
+/nbproject/
+
+/phpunit.xml

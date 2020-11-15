@@ -1,0 +1,109 @@
+3.0.5 ==================================================================================================================
+bd01803 - xudianyang           * 修复break()方法，协程调度返回值错乱的问题
+9dd01ac - xudianyang           * 修复协程异常捕获逻辑漏洞
+40a03f0 - niulingyun           * redis cluster random模式不支持eval的bug修复
+f8f0fd7 - zhanglu              + add setnx in redis proxy
+96fd14c - niulingyun           + 异步协程shell_exec
+73b210a - xudianyang           * 修复yield $cor场景，当$cor抛出异常未能正常捕获的问题
+321161e - xudianyang           + 支持Not Found Controller To Default Controller/Action, Http/Client Support All HTTP METHOD
+16c1735 - xudianyang           + 关闭服务onShutdown事件支持
+bc20c6a - xudianyang           * 修复Timer进程内存泄露的问题
+643f011 - xudianyang           * 修复事务sql出错时的bug
+9064491 - xudianyang           - 移出tidPidTable
+252675c - niulingyun           + session support,but only support file adapter now
+22b7d76 - niulingyun           + 添加Redis Session支持
+d174e4b - xudianyang           * 修复默认路由的bug（Cannot declare class App\Controllers\Index, because the
+622b0e0 - shellvon             + 支持beanstalkd
+1ca5344 - xudianyang           * 日志时间精度提升
+a00a90e - niulingyun           + timer支持多进程模式
+b750744 - niulingyun           + task日志的写入比例可控
+bcde590 - zhanglu              + 通过配置自定义Input类和Output类
+061359f - niulingyun           * 重构GET参数兼容逻辑
+780681a - xudianyang           * 修复goConcurrent Get请求的查询参数为string的报错
+ff9b8a8 - xudianyang           * 优化连接池，提供max_conn,max_time,min_conn选项
+8b4acc9 - xudianyang           * fixed dump array value null
+
+3.0.4 ==================================================================================================================
+3cb4d61 - niulingyun           + 增加队列支持，目前支持redis、rabbitMQ、kafka
+32fc570 - niulingyun           + http client 支持keep-alive缓存
+7a37e9d - niulingyun           + http client 支持gzip
+b6bcbfd - shellvon             + 增加对MySQL字段和表名的转义
+009477c - xudianyang           * 路由路径问题修复
+10024c7 - xudianyang           * 修复打印数组的bug，同时去掉只打印100个元素的限制
+2e02052 - niulingyun           * 调整获取ip的顺序,修复负载器后获取ip的bug
+095b746 - shellvon             * 模版渲染引擎调整为使用官方
+1b50d2f - niulingyun           * 修复RPC重复unpack参数bug
+1575443 - xudianyang           * 优化协程异常捕获逻辑
+5e9ac71 - niulingyun           * 修复两处redis的bug
+bf743cc - niulingyun           * 修复 task 构造函数传参问题和mysql删除操作的bug
+f5d3068 - zhangguangjia        * checkRedisProxy新增redis密码授权
+d93e727 - xudianyang           * 修复Post传递Query参数的问题
+43dffd1 - niulingyun           * 支持直接在url之后带参数形式的GET请求
+7bc5bbb - zhanglu              * 修改input:getAllPostGet返回get+post的参数
+
+3.0.3 ==================================================================================================================
+9a31436 - xudianyang           * 调整processType标识
+4b7df57 - niulingyun           * 异步redis set过期时间增加EX标识
+8e8eb58 - xudianyang           + Timer进程支持多个定时器
+1de66b5 - xudianyang           + Timer进程支持协程调度
+e313c9a - xudianyang           * 重构Request ID
+
+3.0.2 ==================================================================================================================
+9d6e003 - xudianyang           * 修复请求链log_id的问题
+5614caa - xudianyang           + 异常规范、HTTP Access日志
+8b3d8c6 - syyongx              * Fix Restful bug
+28ca9b2 - xudianyang           * 规范Task异常时的日志
+e5793aa - 闫帅兵                * 优化inotify，完美支持文件或者目录的修改、删除、新增
+430c4fa - xudianyang           * 优化MySQL连接池，更简单，更容易使用
+76cc105 - xudianyang           + MySQL Proxy（主从结构、读写分离、支持事务）
+0aa72ec - xudianyang           + HTTP SEND FILE 静态文件（支持域名绑定）
+445e2bb - xudianyang           + 完善和优化MySQL同步模式，和异步模式接口一致
+24524b2 - niulingyun           + 新增异步协程毫秒级sleep,功能同php的sleep函数
+
+3.0.1 ==================================================================================================================
+cfdb0b4 - niulingyun           * 修复controller自动重置public属性
+
+3.0.0 ==================================================================================================================
+508380b - pinguo-xudianyang:   * 调整controller::destroy策略
+3b4c199 - pinguo-xudianyang:   * 修复监控端口的问题
+550757c - pinguo-xudianyang:   * 修复MSFCli模式的报错
+c125044 - pinguo-xudianyang:   + 添加Macro::PROCESS_WORKER,Macro::PROCESS_TASKER,Macro::PROCESS_USER进程标识宏
+85eef20 - pinguo-xudianyang:   * TaskProxy兼容用户自定义进程
+2630446 - pinguo-xudianyang:   + worker exit统计
+a23c91b - pinguo-xudianyang:   + monitor writeln
+02ae54b - pinguo-xudianyang:   * 修复TaskProxy的类名问题
+2874a3c - pinguo-xudianyang:   * 控制台日志优化
+b9e571c - pinguo-xudianyang:   * 调整RestRoute类位置
+128acda - pinguo-xudianyang:   * 控制器销毁逻辑策略调整
+42cdeaa - pinguo-xudianyang:   * 控制台日志标准优化及修复CLI模式进程无法退出的问题
+13e5d4f - pinguo-xudianyang:   * HttpServer dump输出到控制台
+f4289a1 - pinguo-xudianyang:   * 调整协程调度器命名
+5aeebf6 - pinguo-niulingyun:   * uni console output
+1b3ff26 - pinguo-xudianyang:   * 修复TaskProxy的支持问题
+53aa785 - pinguo-xudianyang:   * 修复HTTP协程请求失败时日志记录失败的问题
+4e15178 - pinguo-xudianyang:   * 调整协程调度器命名
+28dbbc3 - pinguo-xudianyang:   * 修复Pool::setCurrentObjParent bug
+4e136cd - pinguo-xudianyang:   * 完善RPC
+fdfab09 - pinguo-xudianyang:   * 重构RPC
+73538b0 - pinguo-xudianyang:   * 内置Pack打包器
+926dea0 - pinguo-zengzhiqiang: + 文件头统一
+9d973b2 - pinguo-lipengcheng:  * add license md
+9b32741 - pinguo-xudianyang:   * 连接池前缀，删除独立进程连接池的支持
+17ea068 - pinguo-lipengcheng:  + add CREDITS
+4b27ad6 - pinguo-xudianyang:   * Server运行状态监控重构
+89e40a0 - pinguo-xudianyang:   * 对象池构造方法传参方式修改为数组 
+89e40a0 - pinguo-xudianyang:   * 销毁对象支持自定义级别(DS_PUBLIC,DS_PROTECTED,DS_PRIVATE)
+5eb1bed - pinguo-xudianyang:   * 修复Http协程类型判断的问题
+aadbc77 - pinguo-xudianyang:   * 完善连接池
+eefce11 - pinguo-xudianyang:   * MySQL协程实现
+3222e0d - pinguo-xudianyang:   * 统一Tasker进程内的对象加载方式 
+3222e0d - pinguo-xudianyang:   * 文件头统一 
+3222e0d - pinguo-xudianyang:   * 所有类方法或者函数的参数注释
+3222e0d - pinguo-xudianyang:   - 去掉TCP（专注HTTP）
+7049260 - pinguo-xudianyang:   * 任何内建对象都可以采用通用对象池创建 
+7049260 - pinguo-xudianyang:   * 所有协程方法使用go关键字作为前缀
+7049260 - pinguo-xudianyang:   * Controller使用通用对象池加载
+c09367f - pinguo-xudianyang:   * 统一普通对象、Model、Task的加载
+c09367f - pinguo-xudianyang:   * 对象池支持构造方法 
+c09367f - pinguo-xudianyang:   * 调用Task方法简化为两步
+c09367f - pinguo-xudianyang:   * 所有框架内核依赖的成员变量及方法以__打头

@@ -1,0 +1,28 @@
+﻿<table>
+<tr><td>
+PackAction:</td>	
+<td><select class="something" id="packAction" name="packAction" onchange="PackActionSelect();" >
+<option value="pack" selected="selected">pack</option>
+<option value="Unpack">Unpack</option>
+</select>
+</td></tr>
+
+<tr id="SourcePathRow" name="SourcePathRow"><td>
+SourcePath:</td>
+<td><input  id="SourcePath" name="SourcePath"  type="text" class="input" value=""  size="100" />
+</td></tr>
+
+<tr ><td>
+GzipPath:</td>
+<td><input  id="GzipPath"  name="GzipPath"  type="text" class="input" value=""  size="100" />
+</td></tr>
+
+<tr><td>
+GzipFileName:</td>
+<td><input  id="GzipFileName"  name="GzipFileName" type="text" class="input" value="dllspy.gzip"  size="100" />
+</td></tr>
+<tr><td>
+</td>
+<td><input type="button" name="packSubmit" value="Submit" id="packSubmit" class="bt"   onclick="packAction();"/>
+<div  id="packstate"  name="packstate" style="color:#F00"></div>
+</td></tr></table>

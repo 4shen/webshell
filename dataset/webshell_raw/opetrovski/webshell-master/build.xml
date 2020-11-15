@@ -1,0 +1,61 @@
+<project name="webshell" default="deploy" basedir=".">
+	<property name="src" location="src"/>
+	<property name="build" location="build"/>
+	<property name="result"  location="result"/>
+	<property name="java.home"  location="C:/prg/jdk1.8.0_25"/>
+	<property name="glassfish.password.file"  location="C:/tmp/asadmin-password.txt"/>
+	<property name="glassfish.home"  location="C:/prg/glassfish4/glassfish"/>
+	<property name="app" value="webshell"/>
+	
+
+	<target name="clean">
+		<delete dir="${result}"/>
+		<mkdir  dir="${result}"/>
+		<mkdir  dir="${result}/classes"/>
+	</target>
+
+	<path id="lib.path.ref">
+	    <fileset dir="WebContent/WEB-INF/lib" includes="*.jar"/>
+	    <fileset dir="lib" includes="*.jar"/>
+	  </path>
+	
+	<target name="build" depends="clean">
+		<javac srcdir="${src}" debug="on" target="1.8" classpathref="lib.path.ref" destdir="${result}/classes"/>
+		
+		<jar destfile="WebContent/WEB-INF/lib/${app}.jar">
+			<fileset dir="${result}/classes"/>
+		</jar>
+		
+		<jar destfile="${result}/${app}.war">
+			<fileset dir="WebContent"/>
+		</jar>
+		<delete file="WebContent/WEB-INF/lib/${app}.jar"/>
+	</target>
+
+	<presetdef name="asadmin_deploy">
+		<java jar="${glassfish.home}/modules/admin-cli.jar" fork="true" jvm="${java.home}/bin/java">
+			<arg line="" />
+			<arg line="--port 4848 --user admin --passwordfile ${glassfish.password.file} --host localhost deploy --force=true --properties compatibility=v2 ${result}/${app}.war" />
+		</java>
+	</presetdef>
+
+	<presetdef name="asadmin_undeploy">
+		<java jar="${glassfish.home}/modules/admin-cli.jar" fork="true" jvm="${java.home}/bin/java">
+			<arg line="" />
+			<arg line="--port 4848 --user admin --passwordfile ${glassfish.password.file} --host localhost undeploy ${app}" />
+		</java>
+	</presetdef>
+
+	<target name="undeploy" depends="build">
+		<asadmin_undeploy failonerror="false">
+			<arg value="" />
+		</asadmin_undeploy>
+	</target>
+
+	<target name="deploy" depends="undeploy">
+		<asadmin_deploy failonerror="true">
+			<arg value="" />
+		</asadmin_deploy>
+	</target>
+
+</project>

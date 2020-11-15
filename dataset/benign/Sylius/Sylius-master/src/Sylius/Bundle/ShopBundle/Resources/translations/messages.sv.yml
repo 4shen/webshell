@@ -1,0 +1,15 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+sylius:
+    lightbox:
+        image_album_label: 'Bild %1 av %2'
+    menu:
+        shop:
+            account:
+                address_book: 'Adressbok'
+                change_password: 'Byt lösenord'
+                dashboard: 'Kontrollpanel'
+                header: 'Ditt konto'
+                order_history: 'Beställningshistorik'
+                personal_information: 'Personlig information'

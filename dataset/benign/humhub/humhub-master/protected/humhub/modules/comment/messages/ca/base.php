@@ -1,0 +1,26 @@
+<?php
+return array (
+  '<strong>Confirm</strong> comment deleting' => '<strong>Confirma</strong> que vols esborrar el comentari',
+  'Access denied!' => 'S\'ha denegat l\'accés!',
+  'Cancel' => 'Cancel·la',
+  'Cancel Edit' => 'Cancel·lar edició',
+  'Comment' => 'Comenta',
+  'Comment has been deleted' => 'El comentari ha sigut eliminat',
+  'Comments' => 'Comentaris',
+  'Delete' => 'Esborra
+',
+  'Do you really want to delete this comment?' => 'Segur que vols esborrar aquest comentari?',
+  'Edit' => 'Editar',
+  'Edit your comment...' => 'Edita el teu comentari...',
+  'Insufficent permissions!' => 'No tens suficients privilegis!',
+  'Read full comment...' => 'Llegir el comentari sencer',
+  'Send' => 'Envia',
+  'Show all {total} comments.' => 'Mostra tots els {total} comentaris.',
+  'Show {count} more comments' => 'Vore els següents {count} comentaris',
+  'The comment must not be empty!' => '',
+  'Whenever a new comment was written.' => 'Un nou comentari per sempre fou escrit',
+  'Write a new comment...' => 'Escriu un nou comentari...',
+  'You are not allowed to comment.' => '',
+  'comment' => 'el comentari',
+  '{displayName} wrote a new comment ' => '{displayName} ha comentat ',
+);

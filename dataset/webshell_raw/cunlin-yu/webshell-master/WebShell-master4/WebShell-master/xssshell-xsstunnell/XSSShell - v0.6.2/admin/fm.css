@@ -1,0 +1,103 @@
+body{
+	background-color:#FFF;
+	color:#333;
+	margin:10px;
+	font:11px Verdana;
+	
+	background-image: url(mg/bg.jpg);
+	background-repeat: repeat-y;
+	background-position: right top;
+}
+
+.code{
+	margin-top:5px;
+	font:10px Lucida Console;
+	width:300px;
+	border:0 solid #999;
+	border-top-width:1px;
+	padding-top:5px;
+}
+
+
+h2{
+	font: bolder 20px "Trebuchet Ms", sans-serif;
+	text-align:center;
+	padding:3px;
+	margin:3px;
+	color:#F60;
+}
+
+/*Links*/
+a:link , a:visited , a:hover , a:active { 
+	color : #0070DF;
+}
+
+a:hover { 
+	text-decoration : none;
+	background-color: #F0F8FF;
+}
+
+/* Logs Box */
+#commands, #victims, #logHolder, #offlinebrowser{
+	margin-right:5px;
+	float:left;
+	width:30%;
+	border:1px solid #CCC;
+	padding:2px;
+	background-color:#F7F7F7;
+}
+
+#offlinebrowser{
+	clear:both;
+	margin-top:10px;
+	width:90%;
+}
+
+#header{
+	position:absolute;
+	top:10px;
+	right:10px;
+	z-index:999;
+}
+
+.commandl, #log{
+	background-color:#FFF;
+	padding:5px;
+	margin:1px;
+	border:1px solid #CCC;
+}
+
+.commandh{
+	background-color:#FFC;
+	padding:5px;
+	margin:1px;
+	border:1px solid #CCC;
+}
+
+/* Offline Browser Iframe*/
+#offlinebrw{
+	border:1px;
+	margin:0;
+	width:100%;
+	height:400px;
+
+}
+
+#debugshell h2{
+	font-size:10px;
+}
+
+.debugshell, #debugshell{
+	color:#0F0;
+	background-color:#000;
+	width:400px;
+	border:1px solid #0F0;
+}
+
+.pushed{
+	color:#F60;
+}
+
+.done{
+	color:#F00;
+}

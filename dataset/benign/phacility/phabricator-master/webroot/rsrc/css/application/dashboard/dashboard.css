@@ -1,0 +1,108 @@
+/**
+ * @provides phabricator-dashboard-css
+ */
+
+.dashboard-view {
+  margin: 16px;
+}
+
+.device-phone .dashboard-view {
+  margin: 8px;
+}
+
+.dashboard-view .phui-object-box {
+  margin: 0 0 16px 0;
+}
+
+.dashboard-box .phui-header-shell {
+  padding-top: 4px;
+  padding-bottom: 16px;
+}
+
+.dashboard-box .phui-header-header {
+  color: {$blacktext};
+}
+
+.dashboard-view .phui-oi-empty .phui-info-view {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-style: italic;
+  color: {$lightgreytext};
+}
+
+.dashboard-view .phui-object-box .phui-object-box {
+  margin: 0;
+}
+
+.device-desktop .aphront-multi-column-fluid .aphront-multi-column-2-up
+  .aphront-multi-column-column-outer.half {
+    width: 50%;
+}
+
+.device-desktop .aphront-multi-column-fluid .aphront-multi-column-2-up
+  .aphront-multi-column-column-outer.third {
+    width: 33.34%;
+}
+
+.device-desktop .aphront-multi-column-fluid .aphront-multi-column-2-up
+  .aphront-multi-column-column-outer.thirds {
+    width: 66.66%;
+}
+
+.grippable .aphront-multi-column-column .dashboard-box.phui-object-box {
+  cursor: move;
+}
+
+.grippable .aphront-multi-column-column .dashboard-box.phui-object-box:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.10);
+}
+
+.grippable .aphront-multi-column-column .dashboard-box.phui-object-box:hover
+  .dashboard-box {
+    box-shadow: none;
+}
+
+.aphront-multi-column-fluid .aphront-multi-column-column .drag-ghost {
+  list-style-type: none;
+}
+
+.aphront-multi-column-fluid .aphront-multi-column-column
+  .dashboard-panel-placeholder {
+    display: none;
+}
+
+.aphront-multi-column-fluid .aphront-multi-column-column.dashboard-column-empty
+  .dashboard-panel-placeholder {
+    display: block;
+    padding: 20px;
+    margin: 0 0 12px 0;
+    text-decoration: none;
+    border: 1px {$greyborder} dashed;
+    color: {$greytext};
+}
+
+.aphront-multi-column-fluid .aphront-multi-column-column.drag-target-list
+  .dashboard-panel-placeholder {
+    display: none;
+}
+
+.aphront-multi-column-fluid .aphront-multi-column-column-outer
+  .aphront-multi-column-column .phui-info-view {
+    margin: 0;
+}
+
+.dashboard-preview-box {
+  margin: -16px -16px 16px;
+}
+
+.phui-info-view + .dashboard-preview-box {
+  margin-top: 0;
+}
+
+.drag-frame .phui-object-box {
+  box-shadow: {$dropshadow};
+}
+
+.drag-frame .phui-object-box .phui-object-box {
+  box-shadow: none;
+}

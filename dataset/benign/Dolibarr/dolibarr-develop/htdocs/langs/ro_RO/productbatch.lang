@@ -1,0 +1,24 @@
+# ProductBATCH language file - en_US - ProductBATCH
+ManageLotSerial=Foloseşte lot / număr de serie
+ProductStatusOnBatch=Da (Lot / Număr de serie cerut)
+ProductStatusNotOnBatch=Nu (Lot / Număr de serie nefolosit)
+ProductStatusOnBatchShort=Da
+ProductStatusNotOnBatchShort=Nu
+Batch=Lot / Serie
+atleast1batchfield=Data expirării sau data vânzării sau  lot / serie
+batch_number=Lot / Număr serie
+BatchNumberShort=Lot / Serie
+EatByDate=Data expirării
+SellByDate=Data vânzării
+DetailBatchNumber=Detalii Lot / Serie
+printBatch=Lot/Serie: %s
+printEatby=Expiră la : %s
+printSellby=Vândut la: %s
+printQty=Cant: %d
+AddDispatchBatchLine=Adauga o linie pentru trimiterea perioadei de valabilitate 
+WhenProductBatchModuleOnOptionAreForced=Când modulul Lot / Serial este activat, scăderea automată a stocurilor este forțată la "Reducerea stocurilor reale la validarea livrărilor" și modul automat de creștere este forțat la "Cresterea stocurilor reale la expedierea manuală în depozite" și nu poate fi editat. Alte opțiuni pot fi definite așa cum doriți.
+ProductDoesNotUseBatchSerial=Acest produs nu foloseste numărul de lot / serie
+ProductLotSetup=Configurarea lotului / numărului serial al modulului
+ShowCurrentStockOfLot=Afișați stocul curent pentru cuplu de produs/lot
+ShowLogOfMovementIfLot=Afișați jurnalul mișcărilor pentru cuplu de produs/lot
+StockDetailPerBatch=Detaliu stoc pe lot

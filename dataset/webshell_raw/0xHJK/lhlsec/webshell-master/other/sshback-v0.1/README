@@ -1,0 +1,58 @@
+              __     ______              __
+.-----.-----.|  |--.|   __ \.---.-.----.|  |--.
+|__ --|__ --||     ||   __ <|  _  |  __||    <
+|_____|_____||__|__||______/|___._|____||__|__|
+Copyright (C) 2014
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+Have you ever needed to have access to an ssh server from behind
+a NAT'ed firewall? Now you can. SSHBack allows you to have reverse 
+ssh connections connect back to you.
+
+Made from 100% FOSS recycled materials, this software is made to 
+withstand the most demanding conditions, including, but not 
+limited to: __FILL_IN_BLANK_HERE__
+
+(For amusement purposes only. Do not abuse or misuse this product.
+Do not ruin anyone's day with this software, please!)
+
+sshback client machine: has openssh-server on
+sshback sever machine: has openssh-client on
+
+NOTE: "Server_Common_Name" must be able to DNS resolve
+      on the client machine, e.g.
+$ host www.servercommonname.com
+www.servercommonname.com has address xxx.xxx.xxx.xxx
+
+run 
+$ ./sshback_make_certs.sh
+to make all the certs
+
+then move client.pem, server.crt, and sshback_client.sh to the 
+  machine with openssh-server installed
+make sure 'socat' is installed
+chmod +x sshback_client.sh
+add line to /etc/rc.local like...
+/path/to/sshback_client.sh &
+...to make it autorun
+
+then move server.pem, client.crt, and sshback_client.sh to the 
+  machine with openssh-client installed
+make sure 'socat' is installed
+chmod +x sshback_server.sh
+and then when you want to connect up, just ./sshback_server.sh
+  and wait up to 1 minute it should connect back
+

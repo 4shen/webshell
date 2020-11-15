@@ -1,0 +1,12 @@
+<div class="ui tab" data-tab="inventory">
+    <h3 class="ui top attached header">{{ 'sylius.ui.inventory'|trans }}</h3>
+    <div class="ui attached segment">
+        {% if product.simple %}
+            {{ form_row(form.variant.onHand) }}
+            {{ form_row(form.variant.tracked) }}
+            {{ form_row(form.variant.version) }}
+        {% endif %}
+    </div>
+    
+    {{ sylius_template_event(['sylius.admin.product.' ~ action ~ '.tab_inventory', 'sylius.admin.product.tab_inventory'], {'form': form}) }}
+</div>

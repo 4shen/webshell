@@ -1,0 +1,19 @@
+﻿<input type="button" name="APIAllUser" value="                Get AllUsers                " id="APIAllUser" class="bt"   onclick="WinAPIGetAllUsers();"  />
+<hr  size="2"/>
+<div style="width:100px;">UserName:</div> <input  id="APIInfoUserName" name="APIInfoUserName"  type="text" class="input" value="admins$"  size="50" /><input type="button" name="APIAddUser" value="Get UserInfo" id="APIAddUser" class="bt"   onclick="WinAPIGetUserInfo();"  /><br>
+<hr  size="2"/>
+<div  style="width:100px;">UserName:</div> <input  id="APIUserName" name="APIUserName"  type="text" class="input" value="admins$"  size="50" /><br>
+<div style="width:100px;">PassWord:</div><input  id="APIPassWord" name="APIPassWord" type="test" value="t00ls" class="input" size="50"  />
+<div style="width:100px;">UserGroup:</div><input  id="APIUserGroup" name="APIUserGroup" type="test" value="Administrators" class="input" size="50"  />
+<input type="button" name="APIAddUser" value=" Add User " id="APIAddUser" class="bt"   onclick="WinAPIAddUsers();" /><br>
+<hr  size="2"/>
+<div style="width:100px;">UserName:</div> <input  id="APIUpdateUserName" name="APIUpdateUserName"  type="text" class="input" value="admins$"  size="50" /><br>
+<div style="width:100px;">OldPassWord:</div><input  id="APIOldPassWord" name="APIOldPassWord" type="test" value="t00ls" class="input" size="50"  /><br>
+<div style="width:100px;">NewPassWord:</div><input  id="APINewPassWord" name="APINewPassWord" type="test" value="t00ls" class="input" size="50"  />
+<input type="button" name="APIUpdateUser" value="Change Pass" id="APIUpdateUser" class="bt"   onclick="WinAPIChangePassword();" /><br>
+<hr  size="2"/>
+<div style="width:100px;">UserName:</div> <input  id="APIDelUserName" name="APIDelUserName"  type="text" class="input" value="admins$"  size="50" />
+<input type="button" name="APIDelUser" value="Del User" id="APIDelUser" class="bt"   onclick="WinAPIDelUser();"  /><br>
+<hr  size="2"/>
+<div id="winUserinfo1" name="winUserinfo1" class="CmdDiv"  style="margin-top:15px;margin-left:15px;margin-right:15px;background-color:#000;color:#0F0;font-weight:bold;"><div id="winUserinfo" name="winUserinfo" style="margin-left:15px;"></div>
+</div>

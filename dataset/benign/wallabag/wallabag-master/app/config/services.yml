@@ -1,0 +1,47 @@
+parameters:
+    lexik_form_filter.get_filter.doctrine_orm.class: Wallabag\CoreBundle\Event\Subscriber\CustomDoctrineORMSubscriber
+
+services:
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }
+
+    wallabag.twig_extension:
+        class: Wallabag\CoreBundle\Twig\WallabagExtension
+        public: false
+        arguments:
+            - "@wallabag_core.entry_repository"
+            - "@wallabag_core.tag_repository"
+            - "@security.token_storage"
+            - "%wallabag_core.cache_lifetime%"
+            - "@translator"
+            - "%kernel.root_dir%"
+        tags:
+            - { name: twig.extension }
+
+    wallabag.twig_matomo_extension:
+        class: MatomoTwigExtension\MatomoTwigExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    wallabag.locale_listener:
+        class: Wallabag\CoreBundle\Event\Listener\LocaleListener
+        arguments: ["%kernel.default_locale%"]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    wallabag.user_locale_listener:
+        class: Wallabag\CoreBundle\Event\Listener\UserLocaleListener
+        arguments: ["@session"]
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login, method: onInteractiveLogin }
+
+    craue_config_cache_provider:
+        class: Symfony\Component\Cache\Adapter\FilesystemAdapter
+        public: false
+        arguments:
+            - 'craue_config'
+            - 0
+            - '%kernel.cache_dir%'

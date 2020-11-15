@@ -1,0 +1,14 @@
+{
+	"@context": {
+		"so": "https://schema.org/",
+		"pb": "?jsonld=types#"
+	},
+	"MetaData": {
+		"created": {
+			"@type": "CreationTime"
+		},
+		"icon": {
+			"@type": "so:url"
+		}
+	}
+}

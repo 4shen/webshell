@@ -1,0 +1,16 @@
+/**
+ * @provides herald-test-css
+ */
+
+.herald-condition-note {
+  color: {$red};
+}
+
+textarea.herald-field-value-transcript {
+  width: 100%;
+  height: 10em;
+}
+
+.condition-test-value {
+  color: {$greytext};
+}

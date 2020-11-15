@@ -1,0 +1,21 @@
+# Dolibarr language file - Source file is en_US - salaries
+SALARIES_ACCOUNTING_ACCOUNT_PAYMENT=Contul contabil utilizat pentru terț utilizator
+SALARIES_ACCOUNTING_ACCOUNT_PAYMENT_Desc=Contul contabil dedicat definit pe cardul de utilizator va fi utilizat doar pentru contabilitatea subregistru. Aceasta va fi utilizată pentru Registrul general și ca valoare implicită a contabilității suregistru dacă nu este definită contul de contabilitate dedicat pentru utilizatori.
+SALARIES_ACCOUNTING_ACCOUNT_CHARGE=Contul de contabilitate implicit pentru plata salariilor
+Salary=Salariu
+Salaries=Salarii
+NewSalaryPayment=Plata noua salariu
+AddSalaryPayment=Adăugați plata salarială
+SalaryPayment=Plata salariu
+SalariesPayments=Plati salarii
+ShowSalaryPayment=Arata plata salariu
+THM=Rata orară medie
+TJM=Rata medie zilnică
+CurrentSalary=Salariu curent
+THMDescription=Această valoare poate fi utilizată pentru a calcula costul timpului consumat pe un proiect introdus de utilizatori dacă se utilizează un proiect de modul
+TJMDescription=Această valoare este în prezent doar informativă și nu este utilizată pentru niciun calcul
+LastSalaries=Cele mai recente %splăți salariale
+AllSalaries=Toate plățile salariale
+SalariesStatistics=Statistici salariale
+# Export
+SalariesAndPayments=Salarii și plăți

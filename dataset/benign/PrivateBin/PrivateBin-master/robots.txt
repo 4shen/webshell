@@ -1,0 +1,13 @@
+# "A robots.txt a day keeps the robots away."
+# (for performance and privacy reasons)
+#
+# Note: To be effective this robots.txt must be put into the root of your server
+# directory.
+
+User-agent: *
+Disallow: /
+
+# If you don't want this instance to be listed on https://privatebin.info/directory/
+# uncomment the following lines:
+#User-agent: PrivateBinDirectoryBot
+#Disallow: /

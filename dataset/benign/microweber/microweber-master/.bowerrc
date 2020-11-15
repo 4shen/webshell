@@ -1,0 +1,6 @@
+{
+  "directory": "userfiles/modules/microweber/api/libs",
+  "scripts": {
+    "postinstall": "gulp publish"
+  }
+}

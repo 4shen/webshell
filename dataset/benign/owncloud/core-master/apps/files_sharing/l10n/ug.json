@@ -1,0 +1,12 @@
+{ "translations": {
+    "Uploading..." : "يۈكلەۋاتىدۇ…",
+    "Cancel" : "ۋاز كەچ",
+    "Share" : "ھەمبەھىر",
+    "Pending" : "كۈتۈۋاتىدۇ",
+    "Shared by" : "ھەمبەھىرلىگۈچى",
+    "Sharing" : "ھەمبەھىر",
+    "Password" : "ئىم",
+    "Name" : "ئاتى",
+    "Download" : "چۈشۈر"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

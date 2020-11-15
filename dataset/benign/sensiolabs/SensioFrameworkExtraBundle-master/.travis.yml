@@ -1,0 +1,39 @@
+language: php
+
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+        - .phpunit
+
+php:
+    - 7.1
+    - 7.2
+    - 7.3
+    - 7.4
+    - nightly
+
+matrix:
+    include:
+        - php: 7.2
+          env: deps=low
+    fast_finish: true
+
+env:
+    global:
+        - deps=no
+
+before_install:
+    - export SYMFONY_PHPUNIT_DIR="$(pwd)/.phpunit"
+    - INI_FILE=~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+    - echo memory_limit = -1 >> $INI_FILE
+    - phpenv config-rm xdebug.ini || true
+    - if [ $TRAVIS_PHP_VERSION = "nightly" ]; then composer config platform.php 7.4.99; fi;
+
+install:
+    - if [ "$deps" = "no" ]; then composer install; fi;
+    - if [ "$deps" = "low" ]; then composer --prefer-lowest --prefer-stable update; fi;
+
+script:
+    - ./vendor/bin/simple-phpunit

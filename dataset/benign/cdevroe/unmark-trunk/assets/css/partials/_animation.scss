@@ -1,0 +1,51 @@
+// Animation Keyframes
+//********************************************************//
+@-webkit-keyframes rotate-forever { @include rotate-forever; }
+   @-moz-keyframes rotate-forever { @include rotate-forever; }
+        @keyframes rotate-forever { @include rotate-forever; }
+
+// Animation of Spinner
+.unmark-spinner {
+    animation-duration: 0.75s;
+    animation-iteration-count: infinite;
+    animation-name: rotate-forever;
+    animation-timing-function: linear;
+    height: 44px;
+    width: 44px;
+    border: 2px solid darken($color_grey, 20%);
+    border-right-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+// Position of Spinner
+.unmark-spinner {
+    display: none;
+    //margin: 130px auto 0;
+    margin: 0 auto;
+}
+
+.unmark-success {
+    display: none;
+    margin: 0 auto;
+    width: 75px;
+    i {
+        width: 75px;
+        height: 75px;
+        display: block;
+        background-size: 100%;
+    }
+}
+
+// Default Spinner
+.icon-spinner {
+    animation-duration: 0.75s;
+    animation-iteration-count: infinite;
+    animation-name: otate-forever;
+    animation-timing-function: linear;
+    display: inline-block;
+    width: 25px;
+    height: 24px;
+    overflow: hidden;
+    padding: 0;
+}

@@ -1,0 +1,16 @@
+{
+    "name": "MPOS/php-mpos",
+    "description": "MPOS stands for Mining Portal Open Source. A unified mining interface for various Scrypt and SHA256d Crypto-currencies!",
+    "require-dev": {
+        "codeception/codeception": "~2.0"
+    },
+    "authors": [
+        {
+            "name": "Sebastian Grewe",
+            "email": "sebastian.grewe@gmail.com"
+        }
+    ],
+    "require": {
+        "google/recaptcha": "~1.1"
+    }
+}

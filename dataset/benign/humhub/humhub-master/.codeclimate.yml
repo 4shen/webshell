@@ -1,0 +1,14 @@
+version: '2'
+plugins:
+    duplication:
+        enabled: true
+        config:
+            languages: [php]
+    phpcodesniffer:
+        enabled: true
+        config:
+            standard: phpcs.xml.dist
+exclude_patterns:
+    - '**/messages/'
+    - '**/codeception/_support/_generated/'
+    - static/assets/

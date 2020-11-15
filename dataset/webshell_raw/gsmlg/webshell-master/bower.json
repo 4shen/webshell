@@ -1,0 +1,28 @@
+{
+  "name": "webshell",
+  "version": "0.0.0",
+  "homepage": "https://github.com/gsmlg/webshell",
+  "authors": [
+    "gsmlg <gsmlg@gsmlg.com>"
+  ],
+  "description": "webshell",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "shell",
+    "term"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ace-builds": "~1.1.9",
+    "jquery": "~2.1.4"
+  }
+}

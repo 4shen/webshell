@@ -1,0 +1,101 @@
+{
+  "name": "microweber/microweber",
+  "type": "application",
+  "description": "New generation CMS with drag and drop",
+  "keywords": [
+    "cms",
+    "drag and drop",
+    "shop",
+    "blog",
+    "framework",
+    "laravel"
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.microweberapi.com/"
+    }, {
+      "type": "composer",
+      "url": "https://private-packages.microweberapi.com/"
+    }
+  ],
+  "require": {
+    "composer/composer": "v1.8.5",
+    "composer/installers": "1.*",
+    "laravel/framework": "5.4.*",
+    "illuminate/contracts": "5.4.*",
+    "guzzlehttp/guzzle": "~6.0",
+    "laravel/socialite": "3.0.2",
+    "socialiteproviders/linkedin": "*",
+    "illuminate/support": "5.4.*",
+    "symfony/http-foundation": "3.4.*", 
+    "vlucas/phpdotenv": "2.2",
+    "rcrowe/twigbridge": "^0.9.6",
+    "graham-campbell/markdown": "7.1.x-dev",
+    "keboola/csv": "1.1.*",
+    "league/omnipay": "2.*",
+    "omnipay/stripe": "~2.0",
+    "omnipay/paypal": "~2.0",
+    "omnipay/mollie": "3.*",
+    "ramsey/uuid": "3.0",
+    "paragonie/random_compat": "1.*",
+    "coduo/php-humanizer": "2.0.*",
+    "omnipay/common": "*",
+    "league/csv": "^7.2",
+    "giggsey/libphonenumber-for-php": "^7.6",
+    "laravelcollective/html": "5.4.*",
+    "ezyang/htmlpurifier": "^4.8",
+    "jeremeamia/superclosure": "2.*",
+    "arcanedev/seo-helper": "1.2",
+    "intervention/image": "^2.3",
+    "knplabs/knp-menu": "^2.2",
+    "jenssegers/agent": "~2.1",
+    "geoip2/geoip2": "~2.0",
+    "dompdf/dompdf": "0.8.2",
+    "nikic/php-parser": "3.1.5",
+    "doctrine/dbal": "2.5.3",
+    "microweber-deps/recurr": "~3.1",
+    "microweber-deps/laravel-tagging": "~2.2",
+    "oyejorge/less.php": "1.*",
+    "aws/aws-sdk-php": "^3.0",
+    "mailerlite/mailerlite-api-v2-php-sdk": "*",
+    "finlet/flexmail": "*",
+    "microweber-templates/liteness": "dev-master",
+    "phpoffice/phpspreadsheet": "1.10.1",
+	"microweber-templates/new-world": "dev-master",
+
+    "microweber-templates/dream": "dev-master"
+   },
+  "require-dev": {
+      "fzaninotto/faker": "^1.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/",
+      "App\\": "app/"
+    }
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "php artisan key:generate"
+    ]
+  },
+  "config": {
+    "preferred-install": "dist",
+    "platform": {
+      "php": "7.2"
+    },
+    "github-protocols": [
+      "https",
+      "http",
+      "git"
+    ]
+  },
+  "minimum-stability": "dev",
+  "homepage": "http://microweber.com",
+  "license": "MIT",
+  "support": {
+    "email": "support@microweber.com",
+    "irc": "irc://irc.freenode.org/microweber"
+  }
+}

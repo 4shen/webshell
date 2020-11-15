@@ -1,0 +1,66 @@
+table {
+  min-width: 100px;
+  max-width: 100%;
+  thead {
+    @include lightDark(background-color, #f8f8f8, #333);
+    font-weight: 500;
+  }
+  td, th {
+    min-width: 10px;
+    padding: 6px 8px;
+    border: 1px solid #DDD;
+    overflow: auto;
+    line-height: 1.2;
+  }
+  td p, th p {
+    margin: 0;
+  }
+}
+
+table.table {
+  width: 100%;
+  tr td, tr th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  th, td {
+    text-align: start;
+    border: none;
+    padding: $-s $-s;
+    vertical-align: middle;
+    margin: 0;
+  }
+  th {
+    font-weight: bold;
+  }
+  tr:hover {
+    @include lightDark(background-color, #eee, #333);
+  }
+  .text-right {
+    text-align: end;
+  }
+  .text-center {
+    text-align: center;
+  }
+  td.actions {
+    overflow: visible;
+  }
+  a {
+    display: inline-block;
+  }
+}
+
+table.no-style {
+  td {
+    border: 0;
+    padding: 0;
+  }
+}
+
+table.list-table {
+  margin: 0 -$-xs;
+  td {
+    border: 0;
+    vertical-align: middle;
+    padding: $-xs;
+  }
+}

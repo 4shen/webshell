@@ -1,0 +1,38 @@
+grumphp:
+  process_timeout: 480
+  tasks:
+    phpcs:
+      standard: PSR2
+      ignore_patterns:
+        - "spec/*Spec.php"
+        - "test/*.php"
+        - "stubs/*.php"
+    phpspec:
+      format: progress
+      verbose: true
+    phpunit:
+      testsuite: Unit
+    composer:
+      no_check_lock: true
+    composer_normalize: ~
+    yamllint:
+      parse_custom_tags: true
+      ignore_patterns:
+        - "#test/(.*).yml#"
+    phplint: ~
+    phpparser:
+      ignore_patterns:
+        - '#src/Event/Event.php#'
+        - '#test/Symfony/(.*)#'
+      visitors:
+        no_exit_statements: ~
+        never_use_else: ~
+        forbidden_function_calls:
+          blacklist: [var_dump]
+    paratest:
+      testsuite: E2E
+      verbose: true
+      functional: true
+  testsuites:
+    git_pre_commit:
+      tasks: [phpcs, phpspec, phpunit, composer, composer_normalize, yamllint, phplint, phpparser]

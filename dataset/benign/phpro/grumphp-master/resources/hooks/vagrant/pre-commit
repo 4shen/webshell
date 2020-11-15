@@ -1,0 +1,23 @@
+#!/bin/sh
+
+#
+# Run the hook command.
+# Note: this will be replaced by the real command during copy.
+#
+
+# Fetch the GIT diff and format it as command input:
+DIFF=$(git -c diff.mnemonicprefix=false --no-pager diff -r -p -m -M --full-index --no-color --staged | cat)
+
+# Run GrumPHP
+cd $(VAGRANT_HOST_DIR) && vagrant ssh --command '$(which sh)' << COMMANDS
+
+  cd $(VAGRANT_PROJECT_DIR)
+
+  # Transfer the DIFF
+  DIFF=\$(cat <<- '__GRUMPHP_DIFF_HEREDOC__'
+	${DIFF}
+	__GRUMPHP_DIFF_HEREDOC__
+  )
+
+  printf "%s\n" "\${DIFF}" | $(EXEC_GRUMPHP_COMMAND) $(HOOK_COMMAND) '--ansi' '--skip-success-output'
+COMMANDS

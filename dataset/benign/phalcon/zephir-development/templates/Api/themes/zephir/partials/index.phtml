@@ -1,0 +1,19 @@
+<?php
+/**
+ * @var array $namespaces
+ */
+?>
+
+<?= $this->partial('partials/breadcrumb.phtml', ['items'=> []]) ?>
+
+<div class="namespace-list">
+    <ul>
+    <?php foreach($namespaces as $namespaceName => $ns): ?>
+        <li>
+            <a href="<?= $this->url(Zephir\Documentation::namespaceUrl($namespaceName)) ?>">
+                <?= $namespaceName ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+</div>

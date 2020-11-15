@@ -1,0 +1,4 @@
+vendor
+composer.lock
+grumphp.yml
+.phpunit.result.cache

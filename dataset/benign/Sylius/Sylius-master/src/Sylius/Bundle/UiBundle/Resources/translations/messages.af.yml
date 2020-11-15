@@ -1,0 +1,24 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+sylius:
+    form:
+        option:
+            name: 'Naam'
+    ui:
+        city: 'Stad'
+        company: 'Maatskappy'
+        country: 'Land'
+        first_name: 'Naam'
+        last_name: 'Van'
+        lastname: 'Van'
+        members: 'Lede'
+        name: 'Naam'
+        postcode: 'Poskode'
+        presentation: 'Weergawe'
+        province: 'Provinsie'
+        provinces: 'Provinsies'
+        scope: 'Gebied'
+        street: 'Straat'
+        type: 'Tipe'
+        zone: 'Area'

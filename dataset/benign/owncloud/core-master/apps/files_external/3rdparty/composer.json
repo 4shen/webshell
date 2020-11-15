@@ -1,0 +1,20 @@
+{
+	"name": "files_external/3rdparty",
+	"description": "3rdparty components for files_external",
+	"license": "MIT",
+	"config": {
+		"vendor-dir": ".",
+		"optimize-autoloader": true,
+		"classmap-authoritative": true
+	},
+	"require": {
+		"icewind/smb": "3.2.3",
+		"icewind/streams": "0.7.2",
+		"google/apiclient": "2.4.1",
+		"guzzlehttp/guzzle": "^5.3"
+	},
+	"autoload": {
+		"files": ["../lib/config.php"]
+	}
+}
+

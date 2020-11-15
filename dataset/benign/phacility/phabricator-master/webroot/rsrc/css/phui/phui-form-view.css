@@ -1,0 +1,594 @@
+/**
+ * @provides phui-form-view-css
+ */
+
+.phui-form-view {
+  padding: 16px;
+}
+
+.device-phone .phui-object-box .phui-form-view {
+  padding: 0;
+}
+
+.phui-form-view.phui-form-full-width {
+  padding: 0;
+}
+
+.phui-form-view label.aphront-form-label {
+  width: 19%;
+  height: 28px;
+  line-height: 28px;
+  float: left;
+  text-align: right;
+  font-weight: bold;
+  font-size: {$normalfontsize};
+  color: {$bluetext};
+  -webkit-font-smoothing: antialiased;
+}
+
+.device-phone .phui-form-view label.aphront-form-label,
+.phui-form-full-width.phui-form-view label.aphront-form-label {
+  display: block;
+  float: none;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 3px;
+}
+
+.aphront-form-input {
+  margin-left: 20%;
+  margin-right: 20%;
+  width: 60%;
+}
+
+.device-phone .aphront-form-input,
+.device .aphront-form-input select,
+.device .aphront-form-input pre,
+.phui-form-full-width .aphront-form-input {
+  margin-left: 0%;
+  margin-right: 0%;
+  width: 100%;
+}
+
+.aphront-form-input *::-webkit-input-placeholder {
+  color:{$greytext} !important;
+}
+
+.aphront-form-input *::-moz-placeholder {
+  color:{$greytext} !important;
+  opacity: 1; /* Firefox nudges the opacity to 0.4 */
+}
+
+.aphront-form-input *:-ms-input-placeholder  {
+  color:{$greytext} !important;
+}
+
+
+.aphront-form-error {
+  width: 18%;
+  float: right;
+  color: {$red};
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.aphront-form-label .aphront-form-error {
+  display: none;
+}
+
+.aphront-dialog-body .phui-form-view {
+  padding: 0;
+}
+
+.device-phone .aphront-form-error,
+.phui-form-full-width .aphront-form-error {
+  display: none;
+}
+
+.device-phone .aphront-form-label .aphront-form-error,
+.phui-form-full-width .aphront-form-label .aphront-form-error {
+  display: block;
+  float: right;
+  padding: 0;
+  width: auto;
+}
+
+.device-phone .aphront-form-drag-and-drop-upload {
+  display: none;
+}
+
+.aphront-form-required {
+  font-weight: normal;
+  color: {$lightgreytext};
+  font-size: {$smallestfontsize};
+  -webkit-font-smoothing: antialiased;
+}
+
+.aphront-form-input input[type="text"],
+.aphront-form-input input[type="password"] {
+  width: 100%;
+}
+
+.aphront-form-cvc-input input {
+  width: 64px;
+}
+
+.aphront-form-input textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  height: 12em;
+}
+
+.aphront-form-control {
+  padding: 4px;
+}
+
+.device-phone .aphront-form-control {
+  padding: 4px 8px 8px;
+}
+
+.phui-form-full-width .aphront-form-control {
+  padding: 4px 0;
+}
+
+.aphront-form-control-submit button,
+.aphront-form-control-submit a.button,
+.aphront-form-control-submit input[type="submit"] {
+  float: right;
+  margin: 4px 0 0 8px;
+}
+
+.aphront-form-control-textarea textarea.aphront-textarea-very-short {
+  height: 44px;
+}
+
+.aphront-form-control-textarea textarea.aphront-textarea-very-tall {
+  height: 24em;
+}
+
+.phui-form-view .aphront-form-caption {
+  font-size: {$smallerfontsize};
+  color: {$bluetext};
+  padding: 8px 0;
+  margin-right: 20%;
+  margin-left: 20%;
+  -webkit-font-smoothing: antialiased;
+  line-height: 16px;
+}
+
+.device-phone .phui-form-view .aphront-form-caption,
+.phui-form-full-width .phui-form-view .aphront-form-caption {
+  margin: 0;
+}
+
+.aphront-form-instructions {
+  width: 60%;
+  margin-left: 20%;
+  padding: 12px 4px;
+  color: {$darkbluetext};
+}
+
+.device .aphront-form-instructions,
+.phui-form-full-width .aphront-form-instructions {
+  width: auto;
+  margin: 0;
+  padding: 12px 8px 8px;
+}
+
+.aphront-form-important {
+  margin: .5em 0;
+  background: #ffffdd;
+  padding: .5em 1em;
+}
+.aphront-form-important code {
+  display: block;
+  padding: .25em;
+  margin: .5em 2em;
+}
+
+.aphront-form-control-markup .aphront-form-input {
+  font-size: {$normalfontsize};
+  padding: 3px 0;
+}
+
+.aphront-form-control-static .aphront-form-input {
+  line-height: 28px;
+}
+
+.aphront-form-control-togglebuttons .aphront-form-input {
+  padding: 2px 0 0 0;
+}
+
+table.aphront-form-control-radio-layout,
+table.aphront-form-control-checkbox-layout {
+  margin-top: 4px !important;
+  font-size: {$normalfontsize};
+}
+
+table.aphront-form-control-radio-layout th {
+  padding-left: 8px;
+  padding-bottom: 8px;
+  font-weight: bold;
+  color: {$darkgreytext};
+}
+
+
+table.aphront-form-control-checkbox-layout th {
+  padding-top: 2px;
+  padding-left: 8px;
+  padding-bottom: 4px;
+  color: {$darkgreytext};
+}
+
+.aphront-form-control-radio-layout td input,
+.aphront-form-control-checkbox-layout td input {
+  margin-top: 4px;
+  width: auto;
+}
+
+.aphront-form-control-radio-layout label.disabled,
+.aphront-form-control-checkbox-layout label.disabled {
+  color: {$greytext};
+}
+
+.aphront-form-radio-caption {
+  margin-top: 4px;
+  font-size: {$smallerfontsize};
+  font-weight: normal;
+  color: {$bluetext};
+}
+
+.aphront-form-control-image span {
+  margin: 0 4px 0 2px;
+}
+
+.aphront-form-control-image .default-image {
+  display: inline;
+  width: 12px;
+}
+
+.aphront-form-input hr {
+  border: none;
+  background: #bbbbbb;
+  height: 1px;
+  position: relative;
+}
+
+.phui-form-inset {
+  margin: 12px 0;
+  padding: 8px;
+  background: #f7f9fd;
+  border: 1px solid {$lightblueborder};
+  border-radius: 3px;
+}
+
+.phui-form-inset h1 {
+  color: {$bluetext};
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  font-size: {$biggerfontsize};
+  border-bottom: 1px solid {$thinblueborder};
+}
+
+.aphront-form-drag-and-drop-file-list {
+  width: 400px;
+}
+
+.drag-and-drop-instructions {
+  color: {$darkgreytext};
+  font-size: {$smallestfontsize};
+  padding: 6px 8px;
+}
+
+.drag-and-drop-file-target {
+  border: 1px dashed #bfbfbf;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+body .phui-form-view .remarkup-assist-textarea.aphront-textarea-drag-and-drop {
+  background: {$sh-greenbackground};
+  border: 1px solid {$sh-greenborder};
+}
+
+.aphront-form-crop .crop-box {
+  cursor: move;
+  overflow: hidden;
+}
+
+.aphront-form-crop .crop-box .crop-image {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+.calendar-button {
+  display: inline;
+  padding: 8px 4px;
+  margin: 2px 8px 2px 2px;
+  position: relative;
+}
+
+.aphront-form-date-container {
+  position: relative;
+  display: inline;
+}
+
+.aphront-form-date-container select {
+  margin: 2px;
+  display: inline;
+}
+.aphront-form-date-container input.aphront-form-date-enabled-input {
+  width: auto;
+  display: inline;
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.aphront-form-date-container .aphront-form-time-input-container,
+.aphront-form-date-container .aphront-form-date-input-container {
+  position: relative;
+  display: inline-block;
+  width: 7em;
+}
+
+.aphront-form-date-container input.aphront-form-time-input,
+.aphront-form-date-container input.aphront-form-date-input {
+  width: 7em;
+}
+
+.aphront-form-time-input-container div.jx-typeahead-results a.jx-result {
+  border: none;
+}
+
+.phui-time-typeahead-value {
+  padding: 4px;
+}
+
+.fancy-datepicker {
+  position: absolute;
+  width: 240px;
+}
+
+.device .fancy-datepicker {
+  width: 100%;
+}
+
+.fancy-datepicker-core {
+  width: 240px;
+  margin: 0 auto;
+  padding: 1px;
+  font-size: {$smallerfontsize};
+  text-align: center;
+}
+
+.fancy-datepicker-core .month-table,
+.fancy-datepicker-core .day-table {
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 1px;
+  width: 100%;
+}
+
+.fancy-datepicker-core .month-table {
+  margin-bottom: 6px;
+  font-size: {$normalfontsize};
+  background-color: {$hoverblue};
+  border-radius: 2px;
+}
+
+.fancy-datepicker-core .month-table td.lrbutton {
+  width: 18%;
+  color: {$lightbluetext};
+}
+
+.fancy-datepicker-core .month-table td {
+  padding: 4px;
+  font-weight: bold;
+  color: {$bluetext};
+}
+
+.fancy-datepicker-core .month-table td.lrbutton:hover {
+  border-radius: 2px;
+  background: {$hoverselectedblue};
+  color: {$darkbluetext};
+}
+
+.fancy-datepicker-core .day-table td {
+  overflow: hidden;
+  vertical-align: center;
+  text-align: center;
+  border: 1px solid {$thinblueborder};
+  padding: 4px 0;
+}
+
+.fancy-datepicker .fancy-datepicker-core .day-table td.day:hover {
+  background-color: {$hoverblue};
+  border-color: {$lightblueborder};
+}
+
+.fancy-datepicker-core .day-table td.day-placeholder {
+  border-color: transparent;
+  background: transparent;
+}
+
+.fancy-datepicker-core .day-table td.weekend {
+  color: {$lightgreytext};
+  border-color: {$lightgreyborder};
+  background: {$lightgreybackground};
+}
+
+.fancy-datepicker-core .day-table td.day-name {
+  background: transparent;
+  border: 1px transparent;
+  vertical-align: bottom;
+  color: {$lightgreytext};
+}
+
+.fancy-datepicker-core .day-table td.today {
+  background: {$greybackground};
+  border-color: {$greyborder};
+  color: {$darkgreytext};
+  font-weight: bold;
+}
+
+.fancy-datepicker-core .day-table td.datepicker-selected {
+  background: {$lightgreen};
+  border-color: {$green};
+  color: {$green};
+}
+
+.fancy-datepicker-core td {
+  cursor: pointer;
+}
+
+.fancy-datepicker-core td.novalue {
+  cursor: inherit;
+}
+
+.picker-open .calendar-button .phui-icon-view {
+  color: {$sky};
+}
+
+.fancy-datepicker-core {
+  background-color: white;
+  border: 1px solid {$lightgreyborder};
+  box-shadow: {$dropshadow};
+  border-radius: 3px;
+}
+
+/* When the activation checkbox for the control is toggled off, visually
+disable the individual controls. We don't actually use the "disabled" property
+because we still want the values to submit. This is just a visual hint that
+the controls won't be used. The controls themselves are still live, work
+properly, and submit values. */
+.datepicker-disabled select,
+.datepicker-disabled .calendar-button,
+.datepicker-disabled input[type="text"] {
+  opacity: 0.5;
+}
+
+.aphront-form-date-container.no-time .aphront-form-time-input{
+  display: none;
+}
+
+.login-to-comment {
+  margin: 12px;
+}
+
+.phui-form-divider hr {
+  height: 1px;
+  border: 0;
+  background: {$thinblueborder};
+  width: 85%;
+  margin: 15px auto;
+}
+
+.recaptcha_only_if_privacy {
+  display: none;
+}
+
+.phabricator-standard-custom-field-header {
+  font-size: 16px;
+  color: {$bluetext};
+  border-bottom: 1px solid {$lightbluetext};
+  padding: 16px 0 4px;
+  margin-bottom: 4px;
+}
+
+.device-desktop .text-with-submit-control-outer-bounds {
+  position: relative;
+}
+
+.device-desktop .text-with-submit-control-text-bounds {
+  position: absolute;
+  left: 0;
+  right: 184px;
+}
+
+.device-desktop .text-with-submit-control-submit-bounds {
+  text-align: right;
+}
+
+.device-desktop .text-with-submit-control-submit {
+  width: 180px;
+}
+
+.phui-form-iconset-table td {
+  vertical-align: middle;
+  padding: 4px 0;
+}
+
+.phui-form-iconset-table .phui-form-iconset-button-cell {
+  padding: 4px 8px;
+}
+
+.aphront-form-preview-hidden {
+  opacity: 0.5;
+}
+
+.aphront-form-error .phui-icon-view {
+  float: right;
+  color: {$lightgreyborder};
+  font-size: 20px;
+}
+
+.device-desktop .aphront-form-error .phui-icon-view:hover {
+  color: {$red};
+}
+
+.phui-form-static-action {
+  height: 28px;
+  line-height: 28px;
+  color: {$bluetext};
+}
+
+.phuix-form-checkbox-action {
+  padding: 4px;
+  color: {$bluetext};
+}
+
+.phuix-form-checkbox-action input[type=checkbox] {
+  margin: 4px 0;
+}
+
+.phuix-form-checkbox-label {
+  margin-left: 4px;
+}
+
+.phui-form-timer-icon {
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  font-size: 18px;
+  background: {$greybackground};
+  border-radius: 4px;
+  text-align: center;
+  vertical-align: middle;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.phui-form-timer-content {
+  padding: 4px 8px;
+  color: {$darkgreytext};
+  vertical-align: middle;
+}
+
+.mfa-form-enroll-button {
+  text-align: center;
+}
+
+.phui-form-timer-updated {
+  animation: phui-form-timer-fade-in 2s linear;
+}
+
+
+@keyframes phui-form-timer-fade-in {
+  0% {
+    background-color: {$lightyellow};
+  }
+  100% {
+    background-color: transparent;
+  }
+}

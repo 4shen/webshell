@@ -1,0 +1,10 @@
+    /**
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function $METHOD$()
+    {
+        $data = [];
+        return view('$VIEW$',$data);
+    }
+

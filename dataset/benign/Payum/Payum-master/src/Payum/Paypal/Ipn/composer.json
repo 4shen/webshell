@@ -1,0 +1,43 @@
+{
+    "name": "payum/paypal-ipn",
+    "type": "library",
+    "description": "Paypal instant payment notification",
+    "keywords": ["payment", "paypal", "ipn", "instant payment notification"],
+    "homepage": "https://payum.forma-pro.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kotlyar Maksim",
+            "email": "kotlyar.maksim@gmail.com"
+        },
+        {
+            "name":     "Payum project",
+            "homepage": "https://payum.forma-pro.com/"
+        },
+        {
+            "name":     "Community contributions",
+            "homepage": "https://github.com/Payum/PaypalIpn/contributors"
+        }
+    ],
+    "require": {
+        "payum/core": "^1.5"
+    },
+    "require-dev": {
+        "payum/core": "^1.5",
+        "phpunit/phpunit": "^5.7",
+        "php-http/guzzle6-adapter": "^1.0",
+        "symfony/phpunit-bridge": "^3.1|^4"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": { "Payum\\Paypal\\Ipn": "" }
+    },
+    "target-dir": "Payum/Paypal/Ipn",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.5-dev"
+        }
+    }
+}

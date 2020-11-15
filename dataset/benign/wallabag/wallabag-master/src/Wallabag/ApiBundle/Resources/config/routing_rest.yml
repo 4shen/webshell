@@ -1,0 +1,34 @@
+entry:
+  type: rest
+  resource: "WallabagApiBundle:EntryRest"
+  name_prefix:  api_
+
+search:
+  type: rest
+  resource: "WallabagApiBundle:SearchRest"
+  name_prefix:  api_
+
+tag:
+  type: rest
+  resource: "WallabagApiBundle:TagRest"
+  name_prefix:  api_
+
+tagging_rule:
+  type: rest
+  resource: "WallabagApiBundle:TaggingRuleRest"
+  name_prefix:  api_
+
+annotation:
+  type: rest
+  resource: "WallabagApiBundle:AnnotationRest"
+  name_prefix:  api_
+
+misc:
+  type: rest
+  resource: "WallabagApiBundle:WallabagRest"
+  name_prefix:  api_
+
+user:
+  type: rest
+  resource: "WallabagApiBundle:UserRest"
+  name_prefix:  api_

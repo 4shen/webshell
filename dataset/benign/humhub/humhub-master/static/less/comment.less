@@ -1,0 +1,131 @@
+//
+// Comments
+// --------------------------------------------------
+.comment-container {
+    margin-top: 10px;
+    .wall-entry-controls {
+        margin-left: 50px;
+    }
+}
+
+.comment {
+    .media {
+        position: relative !important;
+        margin-top: 0;
+
+        .nav-pills.preferences {
+            display: none;
+            right: -3px;
+            top: -3px;
+        }
+    }
+
+    /*-- Since v1.2 overflow: visible */
+    .media-body {
+        overflow:visible;
+    }
+
+    .jp-progress {
+        background-color: #dbdcdd !important;
+    }
+    .jp-play-bar {
+        background: #cacaca;
+    }
+
+    .content {
+        a {
+            color: darken(@info, 20%);
+        }
+    }
+}
+
+.comment.guest-mode {
+    .media:last-child {
+        .wall-entry-controls {
+            margin-bottom: 0;
+            margin-left: 50px;
+        }
+        hr {
+            display: none;
+        }
+    }
+}
+
+// fileupload button
+.comment_create,
+.content_edit {
+    position: relative;
+
+    .comment-buttons {
+        position: absolute;
+        bottom: 2px;
+        right: 5px;
+        z-index:300;
+    }
+
+    .has-error + .comment-buttons {
+        bottom: 24px !important;
+    }
+
+    .btn-comment-submit {
+        margin-top: 3px;
+    }
+
+    .fileinput-button {
+        float: left;
+        padding: 6px 10px;
+        background: transparent !important;
+        .fa {
+            color: @background3;
+        }
+    }
+    .fileinput-button:hover .fa {
+        background: transparent !important;
+        color: @background4;
+    }
+    .fileinput-button:active {
+        box-shadow: none !important;
+    }
+}
+
+.post-richtext-input-group {
+    position:relative;
+    .comment-buttons {
+        bottom:7px !important;
+    }
+}
+
+.comment-container .content_edit {
+    margin-left: 50px;
+}
+
+.comment-container {
+    .media {
+        overflow: visible;
+    }
+}
+
+.comment_edit_content {
+    margin-left: 50px;
+}
+
+.comment-message {
+    overflow:hidden;
+    overflow-wrap: break-word;
+}
+
+.comment-create-input-group {
+    position:relative;
+
+    .ProsemirrorEditor {
+        .ProseMirror {
+            padding-right: 72px;
+        }
+    }
+}
+
+.comment-create-input-group.scrollActive {
+    .comment-buttons {
+        right: 22px;
+    }
+}

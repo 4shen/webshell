@@ -1,0 +1,738 @@
+application:
+  check-root-user: true
+
+twig:
+  baseDirs:
+    - ./res/twig
+
+plugin:
+  folders:
+    - /usr/share/n98-magerun/modules
+    - /usr/local/share/n98-magerun/modules
+
+helpers:
+  twig: N98\Util\Console\Helper\TwigHelper
+  database: N98\Util\Console\Helper\DatabaseHelper
+  parameter: N98\Util\Console\Helper\ParameterHelper
+  table: N98\Util\Console\Helper\TableHelper
+  io: N98\Util\Console\Helper\IoHelper
+
+script:
+  folders:
+    - /usr/local/share/n98-magerun/scripts
+
+init:
+  code: admin
+  type: store
+  options: []
+
+detect:
+  subFolders:
+    - web
+    - www
+    - htdocs
+    - public
+    - pub
+    - webroot
+    - web-root
+    - wwwroot
+
+event:
+  subscriber:
+    - N98\Magento\Application\Console\EventSubscriber\CheckRootUser
+    - N98\Magento\Command\ComposerWrapper\EventSubscriber
+    - N98\Util\Console\Helper\IoHelper
+
+commands:
+  customCommands:
+    - N98\Magento\Command\Admin\DisableNotificationsCommand
+    - N98\Magento\Command\Admin\User\ChangePasswordCommand
+    - N98\Magento\Command\Admin\User\CreateUserCommand
+    - N98\Magento\Command\Admin\User\ListCommand
+    - N98\Magento\Command\Admin\User\DeleteUserCommand
+    - N98\Magento\Command\Admin\User\ChangeStatusCommand
+    - N98\Magento\Command\Admin\User\LockCommand
+    - N98\Magento\Command\Admin\User\LockdownCommand
+    - N98\Magento\Command\Admin\User\UnlockCommand
+    - N98\Magento\Command\Cache\CleanCommand
+    - N98\Magento\Command\Cache\Dir\FlushCommand
+    - N98\Magento\Command\Cache\DisableCommand
+    - N98\Magento\Command\Cache\EnableCommand
+    - N98\Magento\Command\Cache\FlushCommand
+    - N98\Magento\Command\Cache\ListCommand
+    - N98\Magento\Command\Cache\ReportCommand
+    - N98\Magento\Command\Cache\ViewCommand
+    - N98\Magento\Command\Category\Create\DummyCommand
+    - N98\Magento\Command\Cms\Banner\ToggleCommand
+    - N98\Magento\Command\Cms\Block\ListCommand
+    - N98\Magento\Command\Cms\Block\ToggleCommand
+    - N98\Magento\Command\Cms\Page\PublishCommand
+    - N98\Magento\Command\Config\DeleteCommand
+    - N98\Magento\Command\Config\DumpCommand
+    - N98\Magento\Command\Config\GetCommand
+    - N98\Magento\Command\Config\SetCommand
+    - N98\Magento\Command\Config\SearchCommand
+    - N98\Magento\Command\Customer\ChangePasswordCommand
+    - N98\Magento\Command\Customer\CreateCommand
+    - N98\Magento\Command\Customer\CreateDummyCommand
+    - N98\Magento\Command\Customer\InfoCommand
+    - N98\Magento\Command\Customer\ListCommand
+    - N98\Magento\Command\Customer\DeleteCommand
+    - N98\Magento\Command\Database\ConsoleCommand
+    - N98\Magento\Command\Database\CreateCommand
+    - N98\Magento\Command\Database\DropCommand
+    - N98\Magento\Command\Database\DumpCommand
+    - N98\Magento\Command\Database\ImportCommand
+    - N98\Magento\Command\Database\InfoCommand
+    - N98\Magento\Command\Database\QueryCommand
+    - N98\Magento\Command\Database\VariablesCommand
+    - N98\Magento\Command\Database\StatusCommand
+    - N98\Magento\Command\Database\Maintain\CheckTablesCommand
+    - N98\Magento\Command\Design\DemoNoticeCommand
+    - N98\Magento\Command\Developer\Code\Model\MethodCommand
+    - N98\Magento\Command\Developer\EmailTemplate\UsageCommand
+    - N98\Magento\Command\Developer\Ide\PhpStorm\MetaCommand
+    - N98\Magento\Command\Developer\Setup\Script\AttributeCommand
+    - N98\Magento\Command\Developer\ConsoleCommand
+    - N98\Magento\Command\Developer\Log\DbCommand
+    - N98\Magento\Command\Developer\Log\LogCommand
+    - N98\Magento\Command\Developer\Log\SizeCommand
+    - N98\Magento\Command\Developer\Module\CreateCommand
+    - N98\Magento\Command\Developer\Module\Disableenable\DisableCommand
+    - N98\Magento\Command\Developer\Module\Disableenable\EnableCommand
+    - N98\Magento\Command\Developer\Module\UpdateCommand
+    - N98\Magento\Command\Developer\Module\ListCommand
+    - N98\Magento\Command\Developer\Module\Observer\ListCommand
+    - N98\Magento\Command\Developer\Module\Rewrite\ConflictsCommand
+    - N98\Magento\Command\Developer\Module\Rewrite\ListCommand
+    - N98\Magento\Command\Developer\Module\Dependencies\OnCommand
+    - N98\Magento\Command\Developer\Module\Dependencies\FromCommand
+    - N98\Magento\Command\Developer\ProfilerCommand
+    - N98\Magento\Command\Developer\Report\CountCommand
+    - N98\Magento\Command\Developer\ClassLookupCommand
+    - N98\Magento\Command\Developer\SymlinksCommand
+    - N98\Magento\Command\Developer\MergeCssCommand
+    - N98\Magento\Command\Developer\MergeJsCommand
+    - N98\Magento\Command\Developer\TemplateHintsBlocksCommand
+    - N98\Magento\Command\Developer\TemplateHintsCommand
+    - N98\Magento\Command\Developer\Theme\DuplicatesCommand
+    - N98\Magento\Command\Developer\Theme\ListCommand
+    - N98\Magento\Command\Developer\Theme\InfoCommand
+    - N98\Magento\Command\Developer\Translate\InlineAdminCommand
+    - N98\Magento\Command\Developer\Translate\InlineShopCommand
+    - N98\Magento\Command\Developer\Translate\SetCommand
+    - N98\Magento\Command\Developer\Translate\ExportCommand
+    - N98\Magento\Command\Eav\Attribute\Create\DummyCommand
+    - N98\Magento\Command\Eav\Attribute\ListCommand
+    - N98\Magento\Command\Eav\Attribute\RemoveCommand
+    - N98\Magento\Command\Eav\Attribute\ViewCommand
+    - N98\Magento\Command\GiftCard\CreateCommand
+    - N98\Magento\Command\GiftCard\InfoCommand
+    - N98\Magento\Command\GiftCard\RemoveCommand
+    - N98\Magento\Command\GiftCard\Pool\GenerateCommand
+    - N98\Magento\Command\Indexer\ListCommand
+    - N98\Magento\Command\Indexer\ListMviewCommand
+    - N98\Magento\Command\Indexer\ReindexAllCommand
+    - N98\Magento\Command\Indexer\ReindexMviewCommand
+    - N98\Magento\Command\Indexer\ReindexCommand
+    - N98\Magento\Command\Installer\InstallCommand
+    - N98\Magento\Command\Installer\UninstallCommand
+    - N98\Magento\Command\LocalConfig\GenerateCommand
+    - N98\Magento\Command\MagentoConnect\DownloadExtensionCommand
+    - N98\Magento\Command\MagentoConnect\InstallExtensionCommand
+    - N98\Magento\Command\MagentoConnect\ListExtensionsCommand
+    - N98\Magento\Command\MagentoConnect\UpgradeExtensionCommand
+    - N98\Magento\Command\MagentoConnect\ValidateExtensionCommand
+    - N98\Magento\Command\Media\Cache\Image\ClearCommand
+    - N98\Magento\Command\Media\Cache\JsCss\ClearCommand
+    - N98\Magento\Command\Media\DumpCommand
+    - N98\Magento\Command\OpenBrowserCommand
+    - N98\Magento\Command\ScriptCommand
+    - N98\Magento\Command\Script\Repository\ListCommand
+    - N98\Magento\Command\Script\Repository\RunCommand
+    - N98\Magento\Command\SelfUpdateCommand
+    - N98\Magento\Command\ShellCommand
+    - N98\Magento\Command\System\CheckCommand
+    - N98\Magento\Command\System\Cron\HistoryCommand
+    - N98\Magento\Command\System\Cron\ListCommand
+    - N98\Magento\Command\System\Cron\RunCommand
+    - N98\Magento\Command\System\InfoCommand
+    - N98\Magento\Command\System\MaintenanceCommand
+    - N98\Magento\Command\System\Setup\CompareVersionsCommand
+    - N98\Magento\Command\System\Setup\ChangeVersionCommand
+    - N98\Magento\Command\System\Setup\RemoveCommand
+    - N98\Magento\Command\System\Setup\RunCommand
+    - N98\Magento\Command\System\Setup\IncrementalCommand
+    - N98\Magento\Command\System\Store\Config\BaseUrlListCommand
+    - N98\Magento\Command\System\Store\ListCommand
+    - N98\Magento\Command\System\Url\ListCommand
+    - N98\Magento\Command\System\Website\ListCommand
+    - "composer:init": Composer\Command\InitCommand
+    - "composer:install": Composer\Command\InstallCommand
+    - "composer:require": Composer\Command\RequireCommand
+    - "composer:update": Composer\Command\UpdateCommand
+    - "composer:validate": Composer\Command\ValidateCommand
+    - "composer:search": Composer\Command\SearchCommand
+    - "composer:diagnose": Composer\Command\DiagnoseCommand
+
+  disabled:
+    - dummy
+
+  aliases: []
+
+  N98\Magento\Command\Installer\InstallCommand:
+    magento-packages:
+      - name: magento-mirror-1.9.4.1
+        version: 1.9.4.1
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.4.1.zip
+          type: zip
+          shasum: c1045a378aadbb453f0e01a9b1e0234bb9aac749
+        extra:
+          sample-data: sample-data-1.9.2.4
+      - name: magento-mirror-1.9.4.0
+        version: 1.9.4.0
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.4.0.zip
+          type: zip
+          shasum: e79ea1a5e9fb175cd9a48af8e8b94e9485dfeffb
+        extra:
+          sample-data: sample-data-1.9.2.4
+          
+      - name: magento-mirror-1.9.3.10
+        version: 1.9.3.10
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.3.10.zip
+          type: zip
+          shasum: c4eb4a0728154cfdae2781c15d9a1405136efa1e
+        extra:
+          sample-data: sample-data-1.9.2.4
+
+      - name: magento-mirror-1.9.3.9
+        version: 1.9.3.9
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.3.9.zip
+          type: zip
+          shasum: 55172f38d18f12c62fa8b331ba85bb65d6c476e5
+        extra:
+          sample-data: sample-data-1.9.2.4
+
+      - name: magento-mirror-1.9.3.8
+        version: 1.9.3.8
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.3.8.zip
+          type: zip
+          shasum: 1d23757eb2314a5979bbe8222840d27303c51a9c
+        extra:
+          sample-data: sample-data-1.9.2.4
+
+      - name: magento-mirror-1.9.3.7
+        version: 1.9.3.7
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.3.7.zip
+          type: zip
+          shasum: 018b9c8a21c05fcb67e78202cb2331ec2862b7a2
+        extra:
+          sample-data: sample-data-1.9.2.4
+
+      - name: magento-mirror-1.9.3.6
+        version: 1.9.3.6
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.3.6.zip
+          type: zip
+          shasum: 7ecc735c1d7d80f7b412caded7ab160013b00eb2
+        extra:
+          sample-data: sample-data-1.9.2.4
+
+      - name: magento-mirror-1.9.3.4
+        version: 1.9.3.4
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.3.4.zip
+          type: zip
+          shasum: 6dadf8de337ae7033839839caeb15cbb2e98e4b8
+        extra:
+          sample-data: sample-data-1.9.2.4
+
+      - name: magento-mirror-1.9.3.3
+        version: 1.9.3.3
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.3.3.zip
+          type: zip
+          shasum: f613968e1ea667ec1a0f0198b7c1d319e2598580
+        extra:
+          sample-data: sample-data-1.9.2.4
+
+      - name: magento-mirror-1.9.3.2
+        version: 1.9.3.2
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.3.2.zip
+          type: zip
+          shasum: 8dccfa5a8ab6131f0e536e8c7269e5fb8559e03d
+        extra:
+          sample-data: sample-data-1.9.2.4
+
+      - name: magento-mirror-1.9.3.1
+        version: 1.9.3.1
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.3.1.zip
+          type: zip
+          shasum: e46ebd867142427b1f1587df2fd8198f73dc6595
+        extra:
+          sample-data: sample-data-1.9.2.4
+
+      - name: magento-mirror-1.9.3.0
+        version: 1.9.3.0
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.3.0.zip
+          type: zip
+          shasum: a1f18d56c03f74207a712b12b2d93d7c524d1f1d
+        extra:
+          sample-data: sample-data-1.9.2.4
+
+      - name: magento-mirror-1.9.2.4
+        version: 1.9.2.4
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.2.4.zip
+          type: zip
+          shasum: 4a32fb868cf8194c958e01bcd85779b7855fe36c
+        extra:
+          sample-data: sample-data-1.9.2.4
+
+      - name: magento-mirror-1.9.2.3
+        version: 1.9.2.3
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.2.3.zip
+          type: zip
+          shasum: 8a93762d4897203dd77e3a527887199f66620678
+        extra:
+          sample-data: sample-data-1.9.1.0
+
+      - name: magento-mirror-1.9.2.2
+        version: 1.9.2.2
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.2.2.zip
+          type: zip
+          shasum: 4abf582992311935cf1edcd888bf9024bc752cdf
+        extra:
+          sample-data: sample-data-1.9.1.0
+
+      - name: magento-mirror-1.9.2.1
+        version: 1.9.2.1
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.2.1.zip
+          type: zip
+          shasum: ce0c435a7320c4cac47290337b64861c2674e3f8
+        extra:
+          sample-data: sample-data-1.9.1.0
+
+      - name: magento-mirror-1.9.2.0
+        version: 1.9.2.0
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.2.0.zip
+          type: zip
+          shasum: 019538c04b6359ad61e4c6d2f54c835bd76f7141
+        extra:
+          sample-data: sample-data-1.9.1.0
+
+      - name: magento-mirror-1.9.1.1
+        version: 1.9.1.1
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.1.1.zip
+          type: zip
+          shasum: 3aa497d245affb273cc55851163f5133cecef650
+        extra:
+          sample-data: sample-data-1.9.1.0
+
+      - name: magento-mirror-1.9.1.0
+        version: 1.9.1.0
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.1.0.zip
+          type: zip
+          shasum: e3dcfea601ada21ce84ee4836d801dd2feeb08d1
+        extra:
+          sample-data: sample-data-1.9.1.0
+
+      - name: magento-mirror-1.9.0.1
+        version: 1.9.0.1
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.0.1.zip
+          type: zip
+          shasum: 9c87abc997957ebbf646e1a4d87d3d09e4d773f5
+        extra:
+          sample-data: sample-data-1.9.0.0
+
+      - name: magento-mirror-1.9.0.0
+        version: 1.9.0.0
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.9.0.0.zip
+          type: zip
+          shasum: 98dc5a70d0d12fa595032a7e4257e9a8ee8e293c
+        extra:
+          sample-data: sample-data-1.9.0.0
+
+      - name: magento-mirror-1.8.1.0
+        version: 1.8.1.0
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.8.1.0.zip
+          type: zip
+          shasum: 3fbff399799177e8048cc4048f66213fedd132c1
+        extra:
+          sample-data: sample-data-1.6.1.0
+
+      - name: magento-mirror-1.8.0.0
+        version: 1.8.0.0
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.8.0.0.zip
+          type: zip
+          shasum: 9b1dee54d0b047b66d7ad6b8ea1ff414b7773093
+        extra:
+          sample-data: sample-data-1.6.1.0
+
+      - name: magento-mirror-1.7.0.2
+        version: 1.7.0.2
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.7.0.2.zip
+          type: zip
+          shasum: e7f761d1ca60d16db867e24b5219de8815d0ea25
+        extra:
+          sample-data: sample-data-1.6.1.0
+
+      - name: magento-mirror-1.6.2.0
+        version: 1.6.2.0
+        dist:
+          url: https://github.com/OpenMage/magento-mirror/archive/1.6.2.0.zip
+          type: zip
+          shasum: db0de6d0d82427d997a206554bcd7e5874099671
+        extra:
+          sample-data: sample-data-1.6.1.0
+
+      - name: magento-mirror-1.5.1.0
+        version: 1.5.1.0
+        source:
+          url: git://github.com/OpenMage/magento-mirror.git
+          type: git
+          reference: magento-1.5
+        extra:
+          sample-data: sample-data-1.1.2
+
+      - name: magento-mirror-1.4.2.0
+        version: 1.4.2.0
+        source:
+          url: git://github.com/OpenMage/magento-mirror.git
+          type: git
+          reference: magento-1.4
+        extra:
+          sample-data: sample-data-1.1.2
+
+      - name: openmage-lts-1.9.4.x
+        version: dev-1.9.4.x
+        source:
+          url: https://github.com/OpenMage/magento-lts.git
+          type: git
+          reference: 1.9.4.x
+        extra:
+          sample-data: sample-data-1.9.2.4
+
+      - name: mageplus-master
+        version: dev-master
+        source:
+          url: https://github.com/mageplus/mageplus.git
+          type: git
+          reference: master
+        extra:
+          sample-data: sample-data-1.6.1.0
+
+      - name: magento-ce-1.9.2.4
+        version: 1.9.2.4
+        dist:
+          url: http://www.magentocommerce.com/downloads/assets/1.9.2.4/magento-1.9.2.4.zip
+          type: zip
+          shasum: 219fe2b88068cf73953b90ce01186cb1f19affea
+        extra:
+          sample-data: sample-data-1.9.2.4
+
+      - name: magento-ce-1.9.2.3
+        version: 1.9.2.3
+        dist:
+          url: http://www.magentocommerce.com/downloads/assets/1.9.2.3/magento-1.9.2.3.zip
+          type: zip
+          shasum: c211c1d31468dfbc45decd7d00266281fdc97b20
+        extra:
+          sample-data: sample-data-1.9.1.0
+
+      - name: magento-ce-1.9.2.2
+        version: 1.9.2.2
+        dist:
+          url: http://www.magentocommerce.com/downloads/assets/1.9.2.2/magento-1.9.2.2.zip
+          type: zip
+          shasum: 6b6de6bee57a2992affa1fad01444cb6c05e0788
+        extra:
+          sample-data: sample-data-1.9.1.0
+
+      - name: magento-ce-1.9.2.1
+        version: 1.9.2.1
+        dist:
+          url: http://www.magentocommerce.com/downloads/assets/1.9.2.1/magento-1.9.2.1.zip
+          type: zip
+          shasum: b158de5c3bc587931d99af1bd11f3235e75d1191
+        extra:
+          sample-data: sample-data-1.9.1.0
+
+      - name: magento-ce-1.9.2.0
+        version: 1.9.2.0
+        dist:
+          url: http://www.magentocommerce.com/downloads/assets/1.9.2.0/magento-1.9.2.0.zip
+          type: zip
+          shasum: f5cd7053c41f19e9007ce6817ad12344e6fc0263
+        extra:
+          sample-data: sample-data-1.9.1.0
+
+      - name: magento-ce-1.9.1.1
+        version: 1.9.1.1
+        dist:
+          url: http://www.magentocommerce.com/downloads/assets/1.9.1.1/magento-1.9.1.1.zip
+          type: zip
+          shasum: c9074bf9646b28c035d369db7189aec9733ea978
+        extra:
+          sample-data: sample-data-1.9.1.0
+
+      - name: magento-ce-1.9.1.0
+        version: 1.9.1.0
+        dist:
+          url: http://www.magentocommerce.com/downloads/assets/1.9.1.0/magento-1.9.1.0.zip
+          type: zip
+          shasum: ef2da3723033614d4f10c3a12e8392d1730ade30
+        extra:
+          sample-data: sample-data-1.9.1.0
+
+      - name: magento-ce-1.9.0.1
+        version: 1.9.0.1
+        dist:
+          url: http://www.magentocommerce.com/downloads/assets/1.9.0.1/magento-1.9.0.1.zip
+          type: zip
+          shasum: ff84a32100598cff43d765e3d6cb0bc1a5a414b3
+        extra:
+          sample-data: sample-data-1.9.0.0
+
+      - name: magento-ce-1.8.1.0
+        version: 1.8.1.0
+        dist:
+          url: http://www.magentocommerce.com/downloads/assets/1.8.1.0/magento-1.8.1.0.zip
+          type: zip
+          shasum: 9b47925c8e68a4eea0963e32af884944e3b90ee0
+        extra:
+          sample-data: sample-data-1.6.1.0
+
+      - name: magento-ce-1.8.0.0
+        version: 1.8.0.0
+        dist:
+          url: http://www.magentocommerce.com/downloads/assets/1.8.0.0/magento-1.8.0.0.zip
+          type: zip
+          shasum: 51a140dc651e1d2e3693571f86963a01c168f740
+        extra:
+          sample-data: sample-data-1.6.1.0
+
+      - name: magento-ce-1.7.0.2
+        version: 1.7.0.2
+        dist:
+          url: http://www.magentocommerce.com/downloads/assets/1.7.0.2/magento-1.7.0.2.zip
+          type: zip
+          shasum: 0183fac38b6c5a6ff13b9363304eb70d9298b759
+        extra:
+          sample-data: sample-data-1.6.1.0
+
+      - name: magento-ce-1.6.2.0
+        version: 1.6.2.0
+        dist:
+          url: http://www.magentocommerce.com/downloads/assets/1.6.2.0/magento-1.6.2.0.zip
+          type: zip
+          shasum: 136a5ce5d49cc7d4fd6a43452aafcfbac97722be
+        extra:
+          sample-data: sample-data-1.6.1.0
+
+    demo-data-packages:
+      - name: sample-data-1.9.2.4
+        version: 1.9.2.4
+        dist:
+          url: https://sourceforge.net/projects/mageloads/files/assets/1.9.2.4/magento-sample-data-1.9.2.4-fix.tar.gz
+          type: tar
+          shasum: fe5930d0f41c2b5e92b86f7f7fc4247c927efa01
+
+      - name: sample-data-1.9.1.0
+        version: 1.9.1.0
+        dist:
+          url: https://sourceforge.net/projects/mageloads/files/assets/1.9.1.0/magento-sample-data-1.9.1.0.tar.gz
+          type: tar
+          shasum: 617e0271900772ac8f11e7bb86e29fca0f640562
+
+      - name: sample-data-1.9.0.0
+        version: 1.9.0.0
+        dist:
+          url: https://sourceforge.net/projects/mageloads/files/assets/1.9.0.0/magento-sample-data-1.9.0.0.tar.gz
+          type: tar
+          shasum: b2b535901eb2db92a8602baf8a839ab2120c4c8f
+
+      - name: sample-data-1.6.1.0
+        version: 1.6.1.0
+        dist:
+          url: https://sourceforge.net/projects/mageloads/files/assets/1.6.1.0/magento-sample-data-1.6.1.0.tar.gz
+          type: tar
+          shasum: a9226bc92966855327f6eb62ff8f6c562b2113a2
+
+      - name: sample-data-1.1.2
+        version: 1.1.2
+        dist:
+          url: https://sourceforge.net/projects/mageloads/files/assets/1.1.2/magento-sample-data-1.1.2.zip
+          type: zip
+          shasum: 6bbb57e387c59da2752fe013aadef6dcd3cd2b29
+
+    installation:
+      pre-check:
+        php:
+          extensions:
+            - pdo_mysql
+            - spl
+            - dom
+            - simplexml
+            - hash
+            - curl
+            - iconv
+            - ctype
+            - gd
+
+      defaults:
+        currency: EUR
+        locale: de_DE
+        timezone: Europe/Berlin
+        use_secure: no
+        use_rewrites: yes
+        session_save: files
+        admin_username: admin
+        admin_firstname: John
+        admin_lastname: Doe
+        admin_password: password123
+        admin_frontname: admin
+        admin_email: john.doe@example.com
+        encryption_key:
+
+  N98\Magento\Command\Database\DumpCommand:
+    table-groups:
+      - id: admin
+        description: Admin tables
+        tables: "admin*"
+
+      - id: log
+        description: Log tables
+        tables: "log_url log_url_info log_visitor log_visitor_info log_visitor_online report_event report_compared_product_index report_viewed_*"
+
+      - id: dataflowtemp
+        description: Temporary tables of the dataflow import/export tool
+        tables: "dataflow_batch dataflow_batch_export dataflow_batch_import dataflow_import_data dataflow_session"
+
+      - id: importexporttemp
+        description: Temporary tables of the Import/Export module
+        tables: "importexport_importdata"
+
+      - id: sessions
+        description: Database session tables
+        tables: "core_session"
+
+      - id: stripped
+        description: Standard definition for a stripped dump (logs, sessions and dataflow)
+        tables: "@log @dataflowtemp @importexporttemp @sessions"
+
+      - id: sales
+        description: Sales data (orders, invoices, creditmemos etc)
+        tables: "sales_order_aggregated* sales_order_tax* sales_flat* sales_recurring_* sales_refunded_* sales_payment_* enterprise_sales_* enterprise_customer_sales_* sales_bestsellers_* salesrule_coupon_usage salesrule_customer"
+
+      - id: customers
+        description: Customer data - Should not be used without @sales
+        tables: "customer_address* customer_entity* wishlist*"
+
+      - id: emails
+        description: Email queue tables
+        tables: "core_email_queue*"
+
+      - id: newsletter
+        description: Newsletter subscriber data
+        tables: "newsletter_problem newsletter_queue* newsletter_subscriber"
+
+      - id: trade
+        description: Current trade data (customers and orders). You usally do not want those in developer systems.
+        tables: "@customers @sales"
+
+      - id: development
+        description: Removes logs and trade data so developers do not have to work with real customer data
+        tables: "@admin @trade @stripped @search @newsletter @emails"
+
+      - id: ee_changelog
+        description: Changelog tables of new indexer since EE 1.13
+        tables: "*_cl"
+
+      - id: search
+        description: Search related tables
+        tables: "catalogsearch_*"
+
+      - id: idx
+        description: Tables with _idx suffix and index event tables
+        tables: "*_idx index_event index_process_event"
+
+  N98\Magento\Command\Customer\ListCommand:
+    limit: 1000
+
+  N98\Magento\Command\System\CheckCommand:
+    checks:
+      settings:
+        - N98\Magento\Command\System\Check\Settings\SecureBaseUrlCheck
+        - N98\Magento\Command\System\Check\Settings\UnsecureBaseUrlCheck
+        - N98\Magento\Command\System\Check\Settings\SecureCookieDomainCheck
+        - N98\Magento\Command\System\Check\Settings\UnsecureCookieDomainCheck
+      filesystem:
+        - N98\Magento\Command\System\Check\Filesystem\FoldersCheck
+        - N98\Magento\Command\System\Check\Filesystem\FilesCheck
+      php:
+        - N98\Magento\Command\System\Check\PHP\ExtensionsCheck
+        - N98\Magento\Command\System\Check\PHP\BytecodeCacheExtensionsCheck
+      security:
+        - N98\Magento\Command\System\Check\Security\LocalConfigAccessableCheck
+      mysql:
+        - N98\Magento\Command\System\Check\MySQL\VersionCheck
+        - N98\Magento\Command\System\Check\MySQL\EnginesCheck
+
+    filesystem:
+      folders:
+        media: "Used for images and other media files."
+        var: "Used for caching, reports, etc."
+        var/cache: "Used for caching"
+        var/session: "Used as file based session save"
+
+      files:
+        app/etc/local.xml: "Magento local configuration."
+        index.php.sample: "Used to generate staging websites in Magento enterprise edition"
+
+    php:
+      required-extensions:
+        - simplexml
+        - mcrypt
+        - hash
+        - gd
+        - dom
+        - iconv
+        - curl
+        - soap
+        - pdo
+        - pdo_mysql
+
+      bytecode-cache-extensions:
+        - apc
+        - eaccelerator
+        - xcache
+        - Zend Optimizer
+        - Zend OPcache
+
+  N98\Magento\Command\Media\DumpCommand:
+    strip:
+      folders:
+        - catalog/product/cache
+        - css
+        - js

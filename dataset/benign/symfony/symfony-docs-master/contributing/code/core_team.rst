@@ -1,0 +1,200 @@
+Symfony Core Team
+=================
+
+The **Symfony Core** team is the group of developers that determine the
+direction and evolution of the Symfony project. Their votes rule if the
+features and patches proposed by the community are approved or rejected.
+
+All the Symfony Core members are long-time contributors with solid technical
+expertise and they have demonstrated a strong commitment to drive the project
+forward.
+
+This document states the rules that govern the Symfony core team. These rules
+are effective upon publication of this document and all Symfony Core members
+must adhere to said rules and protocol.
+
+Core Organization
+-----------------
+
+Symfony Core members are divided into groups. Each member can only belong to one
+group at a time. The privileges granted to a group are automatically granted to
+all higher priority groups.
+
+The Symfony Core groups, in descending order of priority, are as follows:
+
+1. **Project Leader**
+
+* Elects members in any other group;
+* Merges pull requests in all Symfony repositories.
+
+2. **Mergers Team**
+
+* Merge pull requests on the main Symfony repository.
+
+In addition, there are other groups created to manage specific topics:
+
+**Security Team**
+
+* Manage the whole security process (triaging reported vulnerabilities, fixing
+  the reported issues, coordinating the release of security fixes, etc.)
+
+**Recipes Team**
+
+* Manage the recipes in the main and contrib recipe repositories.
+
+**Documentation Team**
+
+* Manage the whole `symfony-docs repository`_.
+
+Active Core Members
+~~~~~~~~~~~~~~~~~~~
+
+* **Project Leader**:
+
+  * **Fabien Potencier** (`fabpot`_).
+
+* **Mergers Team** (``@symfony/mergers`` on GitHub):
+
+  * **Nicolas Grekas** (`nicolas-grekas`_);
+  * **Christophe Coevoet** (`stof`_);
+  * **Christian Flothmann** (`xabbuh`_);
+  * **Tobias Schultze** (`Tobion`_);
+  * **Kévin Dunglas** (`dunglas`_);
+  * **Jakub Zalas** (`jakzal`_);
+  * **Javier Eguiluz** (`javiereguiluz`_);
+  * **Grégoire Pineau** (`lyrixx`_);
+  * **Ryan Weaver** (`weaverryan`_);
+  * **Robin Chalas** (`chalasr`_);
+  * **Maxime Steinhausser** (`ogizanagi`_);
+  * **Samuel Rozé** (`sroze`_);
+  * **Yonel Ceruto** (`yceruto`_).
+
+* **Security Team** (``@symfony/security`` on GitHub):
+
+  * **Fabien Potencier** (`fabpot`_);
+  * **Michael Cullum** (`michaelcullum`_).
+
+* **Recipes Team**:
+
+  * **Fabien Potencier** (`fabpot`_);
+  * **Tobias Nyholm** (`Nyholm`_).
+
+* **Documentation Team** (``@symfony/team-symfony-docs`` on GitHub):
+
+  * **Fabien Potencier** (`fabpot`_);
+  * **Ryan Weaver** (`weaverryan`_);
+  * **Christian Flothmann** (`xabbuh`_);
+  * **Wouter De Jong** (`wouterj`_);
+  * **Jules Pietri** (`HeahDude`_);
+  * **Javier Eguiluz** (`javiereguiluz`_).
+  * **Oskar Stark** (`OskarStark`_).
+
+Former Core Members
+~~~~~~~~~~~~~~~~~~~
+
+They are no longer part of the core team, but we are very grateful for all their
+Symfony contributions:
+
+* **Bernhard Schussek** (`webmozart`_);
+* **Abdellatif AitBoudad** (`aitboudad`_);
+* **Romain Neutron** (`romainneutron`_);
+* **Jordi Boggiano** (`Seldaek`_).
+
+Core Membership Application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+At present, new Symfony Core membership applications are not accepted.
+
+Core Membership Revocation
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A Symfony Core membership can be revoked for any of the following reasons:
+
+* Refusal to follow the rules and policies stated in this document;
+* Lack of activity for the past six months;
+* Willful negligence or intent to harm the Symfony project;
+* Upon decision of the **Project Leader**.
+
+Should new Symfony Core memberships be accepted in the future, revoked
+members must wait at least 12 months before re-applying.
+
+Code Development Rules
+----------------------
+
+Symfony project development is based on pull requests proposed by any member
+of the Symfony community. Pull request acceptance or rejection is decided based
+on the votes cast by the Symfony Core members.
+
+Pull Request Voting Policy
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* ``-1`` votes must always be justified by technical and objective reasons;
+
+* ``+1`` votes do not require justification, unless there is at least one
+  ``-1`` vote;
+
+* Core members can change their votes as many times as they desire
+  during the course of a pull request discussion;
+
+* Core members are not allowed to vote on their own pull requests.
+
+Pull Request Merging Policy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A pull request **can be merged** if:
+
+* It is a minor change [1]_;
+
+* Enough time was given for peer reviews;
+
+* At least two **Merger Team** members voted ``+1`` (only one if the submitter
+  is part of the Merger team) and no Core member voted ``-1`` (via GitHub
+  reviews or as comments).
+
+Pull Request Merging Process
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+All code must be committed to the repository through pull requests, except for
+minor changes [1]_ which can be committed directly to the repository.
+
+**Mergers** must always use the command-line ``gh`` tool provided by the
+**Project Leader** to merge the pull requests.
+
+Release Policy
+~~~~~~~~~~~~~~
+
+The **Project Leader** is also the release manager for every Symfony version.
+
+Symfony Core Rules and Protocol Amendments
+------------------------------------------
+
+The rules described in this document may be amended at anytime at the
+discretion of the **Project Leader**.
+
+.. [1] Minor changes comprise typos, DocBlock fixes, code standards
+       violations, and minor CSS, JavaScript and HTML modifications.
+
+.. _`symfony-docs repository`: https://github.com/symfony/symfony-docs
+.. _`fabpot`: https://github.com/fabpot/
+.. _`webmozart`: https://github.com/webmozart/
+.. _`Tobion`: https://github.com/Tobion/
+.. _`nicolas-grekas`: https://github.com/nicolas-grekas/
+.. _`stof`: https://github.com/stof/
+.. _`dunglas`: https://github.com/dunglas/
+.. _`jakzal`: https://github.com/jakzal/
+.. _`Seldaek`: https://github.com/Seldaek/
+.. _`weaverryan`: https://github.com/weaverryan/
+.. _`aitboudad`: https://github.com/aitboudad/
+.. _`xabbuh`: https://github.com/xabbuh/
+.. _`javiereguiluz`: https://github.com/javiereguiluz/
+.. _`lyrixx`: https://github.com/lyrixx/
+.. _`chalasr`: https://github.com/chalasr/
+.. _`ogizanagi`: https://github.com/ogizanagi/
+.. _`Nyholm`: https://github.com/Nyholm
+.. _`sroze`: https://github.com/sroze
+.. _`yceruto`: https://github.com/yceruto
+.. _`michaelcullum`: https://github.com/michaelcullum
+.. _`wouterj`: https://github.com/wouterj
+.. _`HeahDude`: https://github.com/HeahDude
+.. _`OskarStark`: https://github.com/OskarStark
+.. _`romainneutron`: https://github.com/romainneutron

@@ -1,0 +1,74 @@
+{
+    "banner": [
+        "This file is part of the Zephir.",
+        "",
+        "(c) Phalcon Team <team@zephir-lang.com>",
+        "",
+        "For the full copyright and license information, please view",
+        "the LICENSE file that was distributed with this source code."
+    ],
+    "directories": [
+       "kernels",
+       "Library",
+       "prototypes",
+       "templates",
+       "vendor"
+    ],
+    "files": [
+        "LICENSE"
+    ],
+    "blacklist": [
+        "ext",
+        "tests",
+        "stub"
+    ],
+    "finder": [
+        {
+            "in": "kernels",
+            "name": "*.*"
+        },
+        {
+            "in": "Library",
+            "name": "*.*"
+        },
+        {
+            "in": "prototypes",
+            "name": "*.*"
+        },
+        {
+            "in": "templates",
+            "name": "*.*"
+        },
+        {
+            "in": "vendor",
+            "name": "*.php",
+            "exclude": [
+                "CHANGELOG",
+                "CONTRIBUTING",
+                "README",
+                "Tests",
+                "behat",
+                "ext",
+                "bin",
+                "build",
+                "doc",
+                "docs",
+                "doc-template",
+                "fixtures",
+                "test",
+                "tests",
+                "test_old",
+                "vendor-bin"
+            ]
+        }
+    ],
+    "compression": "GZ",
+    "compactors": [
+        "KevinGH\\Box\\Compactor\\Php"
+    ],
+    "replacement-sigil": "$",
+    "replacements": {
+        "kernel-environment": "prod"
+    },
+    "git-commit-short": "Id"
+}

@@ -1,0 +1,80 @@
+/*below section is override bootstrap 4 for openemr and some new classes all prefixed with oe-*/
+input[type=checkbox],
+input[type=radio] {
+  margin: 4px;
+}
+
+.form-group {
+  margin-bottom: 5px !important;
+}
+
+.form-horizontal .control-label {
+  padding-top: 2px;
+}
+
+/* This code needs to be gone cuz it's terrible */
+fieldset {
+  margin-bottom: 10px;
+  padding: 0 0 15px;
+}
+
+legend {
+  padding: 0 10px;
+}
+
+.oe-custom-line {
+  padding-bottom: 5px;
+}
+
+.oe-large {
+  display: inline-block;
+}
+
+.oe-small {
+  display: none;
+}
+
+.oe-show-hide {
+  display: none;
+}
+
+.oe-legend-radio {
+  font-size: 12px;
+  padding: 5px 5px 0 0;
+}
+
+.oe-bold-black {
+  color: $body-color;
+  font-weight: 700;
+}
+
+.oe-payment-select {
+  font-size: 12px;
+  text-align: right;
+  width: 80px !important;
+}
+
+.oe-ckbox-label {
+  font-weight: 500;
+  padding-left: 30px;
+}
+
+.oe-file-div {
+  padding: 10px 15px;
+}
+
+.oe-modal-dialog {
+  width: 65% !important;
+}
+
+.oe-btn-circle {
+  border-radius: 15px;
+  font-size: 12px;
+  height: 30px;
+  line-height: 1.428571429;
+  padding: 6px 0;
+  text-align: center;
+  width: 30px;
+}
+
+/*above section is override bootstrap 4 for openemr and some new classes all prefixed with oe-*/

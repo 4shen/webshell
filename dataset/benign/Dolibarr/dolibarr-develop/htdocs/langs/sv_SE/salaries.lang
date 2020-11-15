@@ -1,0 +1,21 @@
+# Dolibarr language file - Source file is en_US - salaries
+SALARIES_ACCOUNTING_ACCOUNT_PAYMENT=Redovisningskonto som används för tredje part
+SALARIES_ACCOUNTING_ACCOUNT_PAYMENT_Desc=Det dedikerade bokföringskontot som definieras på användarkortet kommer endast att användas för Subledger-bokföring. Den här kommer att användas för huvudboken och som standardvärde för Subledger-bokföring om ett dedikerat användarkonto på användare inte är definierat.
+SALARIES_ACCOUNTING_ACCOUNT_CHARGE=Redovisningskonto som standard för lönebetalningar
+Salary=Lön
+Salaries=Löner
+NewSalaryPayment=Ny löneutbetalning
+AddSalaryPayment=Lägg till lönbetalning
+SalaryPayment=Lönebetalning
+SalariesPayments=Löneutbetalningar
+ShowSalaryPayment=Visa löneutbetalning
+THM=Genomsnittlig timpris
+TJM=Genomsnittlig dagskurs
+CurrentSalary=Nuvarande lön
+THMDescription=Det här värdet kan användas för att beräkna kostnaden för tidskrävande på ett projekt som användaren har infört om modulprojekt används
+TJMDescription=Detta värde är för närvarande endast för information och används inte för någon beräkning
+LastSalaries=Senaste %s lönebetalningar
+AllSalaries=Alla lönebetalningar
+SalariesStatistics=Lönestatistik
+# Export
+SalariesAndPayments=Salaries and payments

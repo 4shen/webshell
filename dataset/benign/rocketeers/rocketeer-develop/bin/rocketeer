@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+use Rocketeer\Console\Console;
+use Rocketeer\Services\Container\Container;
+
+$vendors = [
+    __DIR__.'/../vendor',
+    __DIR__.'/../../..',
+];
+
+// Load user files
+$plugins = getcwd().'/.rocketeer/vendor/autoload.php';
+if (file_exists($plugins)) {
+    require_once $plugins;
+}
+
+// Loop through the possible vendor folders and require the first
+// one available
+foreach ($vendors as $vendor) {
+    $vendor .= '/autoload.php';
+
+    if (file_exists($vendor)) {
+        require_once $vendor;
+        break;
+    }
+}
+
+// Then we launch the console application
+$container = new Container();
+$container->get(Console::class)->run();

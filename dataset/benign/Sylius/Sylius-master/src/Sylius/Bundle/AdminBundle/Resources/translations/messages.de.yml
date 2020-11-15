@@ -1,0 +1,51 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+sylius:
+    email:
+        shipment_confirmation:
+            has_been_sent_using: 'wurde gesendet mit'
+            subject: 'Versandbestätigung'
+            thank_you_for_transaction: 'Vielen Dank für eine erfolgreiche Transaktion.'
+            tracking_code: 'Tracking-Code.'
+            you_can_check_its_location: 'Sie können den Standort mit dem'
+            your_order_with_number: 'Ihre Bestellung mit Nummer'
+    menu:
+        admin:
+            main:
+                catalog:
+                    association_types: Verbindungstypen
+                    attributes: Attribute
+                    header: Katalog
+                    inventory: Lagerbestände
+                    options: Optionen
+                    products: Produkte
+                    taxons: Produktgruppen
+                configuration:
+                    admin_users: Administratoren
+                    channels: Ausgabekanäle
+                    countries: Länder
+                    currencies: Währungen
+                    exchange_rates: Wechselkurse
+                    header: Einstellung
+                    locales: Gebietsschemata
+                    payment_methods: Bezahlmethoden
+                    shipping_categories: Versandkategorien
+                    shipping_methods: Versandarten
+                    tax_categories: Steuerkategorien
+                    tax_rates: Steuersätze
+                    zones: Gebiete
+                marketing:
+                    header: Marketing
+                    product_reviews: Produkt-Bewertung
+                    promotions: Aktionen
+                customers:
+                    customers: Kunden
+                    groups: Gruppen
+                    header: Kunde
+                sales:
+                    header: Verkäufe
+                    orders: Bestellungen
+    ui:
+        gateway:
+            no_sca_support_notice: Das gewählte Zahlungs-Gateway unterstützt kein SCA.

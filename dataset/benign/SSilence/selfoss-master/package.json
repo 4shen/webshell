@@ -1,0 +1,32 @@
+{
+  "name": "selfoss",
+  "description": "selfoss",
+  "ver": "2.19-SNAPSHOT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SSilence/selfoss.git"
+  },
+  "engines": {
+    "npm": ">=5"
+  },
+  "scripts": {
+    "bump-version": "$NODE utils/bump-version.js",
+    "check": "npm run check:client && npm run check:server",
+    "check:client": "npm run lint:client",
+    "check:server": "npm run lint:server && npm run cs:server && npm run test:server",
+    "cs:server": "composer run-script cs",
+    "dev": "npm run --prefix assets/ dev",
+    "build": "npm run --prefix assets/ build",
+    "dist": "python3 utils/create-zipball.py",
+    "fix": "npm run fix:client && npm run fix:server",
+    "fix:client": "npm run --prefix assets/ fix",
+    "fix:server": "composer run-script fix",
+    "install-dependencies": "npm run install-dependencies:client && npm run install-dependencies:server",
+    "install-dependencies:client": "npm install --production=false --prefix assets/",
+    "install-dependencies:server": "composer install --dev",
+    "lint:client": "npm run --prefix assets/ lint",
+    "lint:server": "composer run-script lint",
+    "test:server": "composer run-script test",
+    "postinstall": "npm run install-dependencies"
+  }
+}

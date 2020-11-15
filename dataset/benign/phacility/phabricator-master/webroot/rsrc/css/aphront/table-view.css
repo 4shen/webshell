@@ -1,0 +1,380 @@
+/**
+ * @provides aphront-table-view-css
+ */
+
+.aphront-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.aphront-table-view {
+  width: 100%;
+  border-collapse:  collapse;
+  background: {$page.content};
+  border: 1px solid {$lightblueborder};
+  border-bottom: 1px solid {$blueborder};
+}
+
+.aphront-table-view-fixed {
+  table-layout: fixed;
+}
+
+.aphront-table-view-fixed th {
+  box-sizing: border-box;
+}
+
+.aphront-table-notice {
+  padding: 12px 16px;
+  color: {$darkbluetext};
+  border-bottom: 1px solid {$thinblueborder};
+}
+
+.phui-two-column-view .aphront-table-notice .phui-info-view {
+  margin: 0;
+}
+
+.aphront-table-view tr.alt {
+  background: {$lightgreybackground};
+}
+
+.device-desktop .aphront-table-view tr:hover {
+  background: {$bluebackground};
+}
+
+.device-desktop .aphront-table-view tr.no-data:hover {
+  background: inherit;
+}
+
+.aphront-table-view th,
+.aphront-table-view td.header {
+  font-weight: bold;
+  white-space: nowrap;
+  color: {$bluetext};
+  font-weight: bold;
+  text-shadow: 0 1px 0 white;
+  background-color: {$lightbluebackground};
+}
+
+.aphront-table-view td.row-divider {
+  background-color: {$bluebackground};
+  font-weight: bold;
+  padding: 8px 12px;
+}
+
+.aphront-table-view td.indent {
+  padding-left: 24px;
+}
+
+.aphront-table-view th {
+  border-bottom: 1px solid {$thinblueborder};
+}
+
+th.aphront-table-view-sortable-selected {
+  background-color: {$greybackground};
+}
+
+.aphront-table-view th a,
+.aphront-table-view th a:hover,
+.aphront-table-view th a:link {
+  color: {$bluetext};
+  text-shadow: 0 1px 0 white;
+  display: block;
+  text-decoration: none;
+}
+
+.aphront-table-view th a:hover {
+  text-decoration: underline;
+  color: {$darkbluetext};
+}
+
+.aphront-table-view td.header {
+  text-align: right;
+  border-right: 1px solid {$thinblueborder};
+}
+
+.aphront-table-view td {
+  white-space: nowrap;
+  vertical-align: middle;
+  color: {$darkbluetext};
+}
+
+.aphront-table-down-sort {
+  display: inline-block;
+  margin-top: 5px;
+  width: 0;
+  height: 0;
+  vertical-align: top;
+  border-top: 4px solid {$bluetext};
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  content: "";
+}
+
+.aphront-table-up-sort {
+  display: inline-block;
+  margin-top: 5px;
+  width: 0;
+  height: 0;
+  vertical-align: top;
+  border-bottom: 4px solid {$bluetext};
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  content: "";
+}
+
+/* - Padding -------------------------------------------------------------------
+
+  On desktops, we have more horizontal space and use it to space columns out.
+
+  On devices, we make each row slightly taller to create a larger hit target
+  for links.
+
+*/
+
+.aphront-table-view th {
+  padding: 8px 10px;
+}
+
+.aphront-table-view td {
+  padding: 8px 10px;
+}
+
+.device-tablet .aphront-table-view th,
+.device-phone .aphront-table-view th {
+  overflow: hidden;
+}
+
+.aphront-table-view td.sorted-column {
+  background: {$lightbluebackground};
+}
+
+.aphront-table-view tr.alt td.sorted-column {
+  background: {$greybackground};
+}
+
+.aphront-table-view td.action {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.aphront-table-view td.larger {
+  font-size: {$biggerfontsize};
+}
+
+.aphront-table-view td.pri {
+  font-weight: bold;
+  color: {$darkbluetext};
+}
+
+.aphront-table-view td.top {
+  vertical-align: top;
+}
+
+/* Apply this rule to both "<th />" and "<td />" so that the header widths
+   are correct if the table has no rows. */
+.aphront-table-view th.wide,
+.aphront-table-view td.wide {
+  white-space: normal;
+  width: 100%;
+}
+
+.aphront-table-view th.right,
+.aphront-table-view td.right {
+  text-align: right;
+}
+
+.aphront-table-view td.mono {
+  font-family: "Monaco", monospace;
+  font-size: {$smallestfontsize};
+}
+
+.aphront-table-view td.n {
+  font-family: "Monaco", monospace;
+  font-size: {$smallestfontsize};
+  text-align: right;
+}
+
+.aphront-table-view td.nudgeright, .aphront-table-view th.nudgeright {
+  padding-right: 0;
+}
+
+.aphront-table-view td.wrap {
+  white-space: normal;
+}
+
+.aphront-table-view td.prewrap {
+  font-family: "Monaco", monospace;
+  font-size: {$smallestfontsize};
+  white-space: pre-wrap;
+}
+
+.aphront-table-view td.narrow {
+  width: 1px;
+}
+
+.aphront-table-view td.icon, .aphront-table-view th.icon {
+  width: 1px;
+  padding: 0px;
+}
+
+.aphront-table-view td.icon + td.icon {
+  padding-left: 8px;
+}
+
+div.single-display-line-bounds {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+span.single-display-line-content {
+  white-space: pre;
+  position: absolute;
+}
+
+.device-phone span.single-display-line-content {
+  white-space: nowrap;
+  position: static;
+}
+
+.aphront-table-view td.object-link {
+  white-space: nowrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 320px;
+  max-width: 320px;
+}
+
+.aphront-table-view tr.closed td.object-link .object-name,
+.aphront-table-view tr.alt-closed td.object-link .object-name {
+  text-decoration: line-through;
+  color: rgba({$alphablack}, 0.5);
+}
+
+.aphront-table-view tr.closed td.object-link a,
+.aphront-table-view tr.alt-closed td.object-link a {
+  color: rgba({$alphablack}, 0.5);
+}
+
+.aphront-table-view tr.closed td.graph-status,
+.aphront-table-view tr.alt-closed td.graph-status,
+.object-graph-table em {
+  color: {$lightgreytext};
+}
+
+.aphront-table-view tr.highlighted {
+  background: #fdf9e4;
+}
+
+.aphront-table-view tr.alt-highlighted {
+  background: {$sh-yellowbackground};
+}
+
+.aphront-table-view tr.diff-removed,
+.aphront-table-view tr.alt-diff-removed {
+  background: {$lightred}
+}
+
+.aphront-table-view tr.diff-added,
+.aphront-table-view tr.alt-diff-added {
+  background: {$lightgreen}
+}
+
+.aphront-table-view tr.no-data td {
+  padding: 16px;
+  text-align: center;
+  color: {$lightgreytext};
+  font-style: italic;
+}
+
+.aphront-table-view td.thumb img {
+  max-width: 64px;
+  max-height: 64px;
+}
+
+.aphront-table-view td.threads {
+  font-family: monospace;
+  white-space: pre;
+  padding: 0 0 0 8px;
+}
+
+.aphront-table-view td.threads canvas {
+  display: block;
+}
+
+.aphront-table-view td.radio {
+  text-align: center;
+  padding: 2px 4px 0px;
+}
+
+.aphront-table-view th.center,
+.aphront-table-view td.center {
+  text-align: center;
+}
+
+.device .aphront-table-view td + td.center,
+.device .aphront-table-view th + th.center {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.device-desktop .aphront-table-view-device {
+  display: none;
+}
+
+.device-tablet .aphront-table-view-nodevice,
+.device-phone .aphront-table-view-nodevice {
+  display: none;
+}
+
+.aphront-table-view td.link {
+  padding: 0;
+}
+
+.aphront-table-view td.link a {
+  display: block;
+  padding: 6px 8px;
+  font-weight: bold;
+}
+
+.phui-object-box .aphront-table-view {
+  border: none;
+}
+
+.object-graph-header {
+  padding: 8px 12px;
+  overflow: hidden;
+  background: {$lightyellow};
+  border-bottom: 1px solid {$lightblueborder};
+  vertical-align: middle;
+}
+
+.object-graph-header .object-graph-header-icon {
+  float: left;
+  margin-top: 10px;
+}
+
+.object-graph-header a.button {
+  float: right;
+}
+
+.object-graph-header-message {
+  margin: 8px 200px 8px 20px;
+}
+
+.device .object-graph-header .object-graph-header-icon {
+  display: none;
+}
+
+.device .object-graph-header-message {
+  clear: both;
+  margin: 0;
+}
+
+.device .object-graph-header a.button {
+  margin: 0 auto 12px;
+  display: block;
+  width: 180px;
+  float: none;
+}

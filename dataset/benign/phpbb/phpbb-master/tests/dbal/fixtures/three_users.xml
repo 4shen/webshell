@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+	<table name="phpbb_users">
+		<column>user_id</column>
+		<column>username_clean</column>
+		<column>user_permissions</column>
+		<column>user_sig</column>
+		<row>
+			<value>1</value>
+			<value>barfoo</value>
+			<value></value>
+			<value></value>
+		</row>
+		<row>
+			<value>2</value>
+			<value>foobar</value>
+			<value></value>
+			<value></value>
+		</row>
+		<row>
+			<value>3</value>
+			<value>bertie</value>
+			<value></value>
+			<value></value>
+		</row>
+	</table>
+</dataset>

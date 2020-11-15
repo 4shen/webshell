@@ -1,0 +1,21 @@
+/**
+ * @provides differential-core-view-css
+ */
+
+.differential-primary-pane {
+  margin-top: -20px;
+}
+
+.differential-panel {
+  padding: 16px;
+}
+
+.differential-panel h1 {
+  border-bottom: 1px solid #aaaa99;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.differential-content-hidden {
+  margin: 0 0 24px 0;
+}

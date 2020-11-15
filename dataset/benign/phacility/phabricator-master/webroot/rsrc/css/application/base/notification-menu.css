@@ -1,0 +1,170 @@
+/**
+ * @provides phabricator-notification-menu-css
+ */
+
+.phabricator-notification-menu {
+  background: {$page.content};
+  font-size: {$smallerfontsize};
+  line-height: 18px;
+  word-wrap: break-word;
+  overflow-y: auto;
+  box-shadow: {$dropshadow};
+  border: 1px solid {$lightgreyborder};
+  border-radius: 3px;
+}
+
+.phabricator-notification {
+  padding: 8px 12px;
+  color: {$darkgreytext};
+}
+
+.phabricator-notification-menu-loading {
+  text-align: center;
+  padding: 10px 0;
+  color: {$lightgreytext};
+}
+
+.device-desktop .phabricator-notification-menu,
+.device-tablet .phabricator-notification-menu {
+  position: absolute;
+  width: 360px;
+  top: 42px;
+}
+
+.device-phone .phabricator-notification-menu {
+  border-bottom: 1px solid {$thinblueborder};
+  width: 94%;
+  max-width: 390px;
+  top: 42px !important;
+  left: 3% !important;
+  position: absolute;
+}
+
+.phabricator-notification-list.pm {
+  padding: 0;
+}
+
+.phabricator-notification-list .phabricator-notification {
+  padding: 8px;
+}
+
+.phabricator-notification-menu .phabricator-notification {
+  cursor: pointer;
+}
+
+.device-desktop .phabricator-notification-menu .phabricator-notification:hover {
+  background: {$lightgreybackground};
+}
+
+.device-desktop .phabricator-notification-menu
+ .phabricator-notification-unread.phabricator-notification:hover {
+  background: {$hoverselectedblue};
+}
+
+.phabricator-notification + .phabricator-notification {
+  border-top: 1px solid {$thinblueborder};
+}
+
+.no-notifications {
+  color: {$lightgreytext};
+}
+
+.phabricator-notification-warning {
+  background: {$sh-yellowbackground};
+}
+
+.phabricator-notification-list .phabricator-notification-unread,
+.phabricator-notification-menu .phabricator-notification-unread {
+  background: {$hoverblue};
+}
+
+.phabricator-notification-read {
+  color: {$lightgreytext};
+}
+
+.phabricator-notification-foot {
+  color: {$lightgreytext};
+  font-size: {$smallestfontsize};
+  line-height: 18px;
+  position: relative;
+}
+
+.phabricator-notification-unread .phabricator-notification-foot {
+  padding-left: 10px;
+}
+
+.phabricator-notification-foot .phabricator-notification-status {
+  display: none;
+}
+
+.phabricator-notification-unread .phabricator-notification-foot
+  .phabricator-notification-status {
+    font-size: 7px;
+    color: {$lightbluetext};
+    position: absolute;
+    display: inline-block;
+    top: 6px;
+    left: 0;
+}
+
+.phabricator-notification-header {
+  font-weight: bold;
+  padding: 10px 12px;
+  font-size: {$smallerfontsize};
+  border-bottom: 1px solid {$thinblueborder};
+}
+
+.phabricator-notification-header a {
+  color: {$anchor};
+}
+
+.phabricator-notification-header a:hover {
+  text-decoration: underline;
+}
+
+.phabricator-notification-header .phabricator-notification-clear-all {
+  color: {$anchor};
+  float: right;
+  font-weight: normal;
+}
+
+.phabricator-notification-footer {
+  background: {$greybackground};
+  border-top: 1px solid {$thinblueborder};
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding: 8px;
+  font-size: {$smallerfontsize};
+  color: {$darkgreytext};
+}
+
+.phabricator-notification-footer a {
+  color: {$darkgreytext};
+}
+
+.phabricator-notification-footer a:hover {
+  text-decoration: underline;
+}
+
+.phabricator-notification-menu .aphlict-connection-status {
+  color: {$lightgreytext};
+}
+
+.aphlict-connection-status {
+  position: relative;
+}
+
+.aphlict-connection-status .phui-icon-view {
+  font-size: 9px;
+  position: absolute;
+  top: 4px;
+}
+
+.aphlict-connection-status .connection-status-text {
+  margin-left: 12px;
+}
+
+.phabricator-notification .phui-timeline-value {
+  font-style: italic;
+  color: #000;
+}

@@ -1,0 +1,7 @@
+{% autoescape false -%}
+
+You have been added to package {{ package_name }} as a maintainer.
+
+{{ url('view_package', { 'name': package_name }) }}
+
+{%- endautoescape %}

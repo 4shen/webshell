@@ -1,0 +1,21 @@
+<?php
+return array (
+  '<strong>Manage</strong> spaces' => '<strong>Διαχείριση</strong> χώρων',
+  'Add new space' => 'Προσθήκη νέου χώρου',
+  'Change owner' => 'Αλλαγή κατόχου',
+  'Default Content Visiblity' => 'Προεπιλεγμένη προβολή περιεχομένου',
+  'Default Join Policy' => 'Προεπιλεγμένη πολιτική εγγραφής',
+  'Default Visibility' => 'Προεπιλεγμένη ορατότητα',
+  'Default space' => 'Προεπιλεγμένος χώρος',
+  'Here you can define your default settings for new spaces. These settings can be overwritten for each individual space.' => 'Εδώ μπορείτε να ορίσετε τις προεπιλεγμένες ρυθμίσεις για νέους χώρους. Αυτές οι ρυθμίσεις μπορούν να αντικατασταθούν για κάθε μεμονωμένο χώρο.',
+  'Invalid space' => 'Μη έγκυρος χώρος',
+  'Manage members' => 'Διαχειριστείτε τα μέλη',
+  'Manage modules' => 'Διαχείριση μονάδων',
+  'Open space' => 'Άνοιξε χώρο',
+  'Overview' => 'Επισκόπηση',
+  'Search by name, description, id or owner.' => 'Αναζήτηση βάσει ονόματος, περιγραφής, ταυτότητας ή κατόχου.',
+  'Settings' => 'Ρυθμίσεις',
+  'Space Settings' => 'Ρυθμίσεις χώρου',
+  'Spaces' => 'Χώροι',
+  'This overview contains a list of each space with actions to view, edit and delete spaces.' => 'Αυτή η επισκόπηση περιέχει μια λίστα με κάθε χώρο με ενέργειες για προβολή, επεξεργασία και διαγραφή κενών.',
+);

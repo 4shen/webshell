@@ -1,0 +1,42 @@
+@import "variables";
+@import "mixins";
+@import "spacing";
+@import "html";
+@import "text";
+@import "layout";
+@import "blocks";
+@import "tables";
+@import "header";
+@import "lists";
+@import "pages";
+
+
+html, body {
+  background-color: #FFF;
+}
+
+body {
+  font-family: 'DejaVu Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Roboto", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.page-content {
+  overflow: hidden;
+}
+
+// Prevent code block overflow on export
+pre {
+  padding-left: 12px;
+}
+pre:after {
+  display: none;
+}
+pre code {
+  white-space: pre-wrap;
+}

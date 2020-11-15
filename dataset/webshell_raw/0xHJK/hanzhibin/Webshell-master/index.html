@@ -1,0 +1,64 @@
+<html>
+<head>
+    <script src='jslib/jquery-1.10.2.js'         type='text/javascript'> </script>
+    <script src='jslib/jquery.terminal-0.7.6.js' type='text/javascript'> </script>
+    <script src='jslib/jquery.jsonrpcclient.js'  type='text/javascript'> </script>
+    <script src='jslib/jquery.json-2.4.js'       type='text/javascript'> </script>
+    <script src='ret_render.js'                  type='text/javascript'> </script>
+    <script src='command_parser.js'              type='text/javascript'> </script>
+    <script src='command_handler.js'             type='text/javascript'> </script>
+    <link href="css/terminal.css"         rel="stylesheet"/>
+    <link href="css/white.css"         rel="stylesheet"/>
+    <script  type='text/javascript'>
+    var greeting_string = "Welcome to Hamsta web shell, enjoy it!\n"; 
+    $(document).ready(
+        function(){
+            var prompts = ['hamsta'];
+            $('#hamsta_webshell').terminal(
+                  function(command, term) {
+        	        //term.echo('DEBUG -- Command is:  ' + command + "</br>");
+                        
+                        var cmdline = command.split(' ');
+                        var cmd  = $.trim(cmdline[0]);
+                        
+                        p = new command_parser(term);
+                        r = new printer(term);
+                        h = new command_handler(p, r);
+                        rpc = p.parse(cmdline, term);
+                        if ( rpc && rpc.name != 'help')
+                            h.run(rpc);
+                        
+                  },
+                  {
+                      greetings: greeting_string,
+                      name: 'hamsta_shell',
+                      height: window.innerHeight,
+                      history: true,
+                      outputLimit: 1000,
+                      prompt: window.location.hostname+':' + get_prompt_string(prompts)
+                  }
+             );
+        }
+    );
+    
+
+
+    function get_prompt_string( prompts )
+    {
+        var prompt_str = "/";
+        if (prompts && prompts.length>0)
+        {
+            $.each( prompts, function(index, value){
+                prompt_str += value + "/";
+            });
+        }
+        prompt_str += ">"
+        return prompt_str;
+    }
+
+    </script>
+</head>
+    <body>
+        <div id='hamsta_webshell'></div>
+    </body>
+</html>

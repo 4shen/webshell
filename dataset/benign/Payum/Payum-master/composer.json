@@ -1,0 +1,107 @@
+{
+    "name": "payum/payum",
+    "type": "library",
+    "description": "One million downloads of Payum already! Payum offers everything you need to work with payments. Friendly for all PHP frameworks (Symfony, Laravel, Zend, Yii, Silex). Check more visiting site.",
+    "keywords": [
+        "payment",
+        "recurring payment",
+        "payout",
+        "withdrawal",
+        "instant payment notification",
+        "ipn",
+        "paypal",
+        "paypal express",
+        "paypal pro",
+        "paypal rest",
+        "paypal digital goods",
+        "authorize.net",
+        "be2bill",
+        "payex",
+        "stripe",
+        "stripe.js",
+        "stripe checkout",
+        "jms payment"
+    ],
+    "homepage": "https://payum.forma-pro.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kotlyar Maksim",
+            "email": "kotlyar.maksim@gmail.com"
+        },
+        {
+            "name":     "Payum project",
+            "homepage": "https://payum.forma-pro.com/"
+        },
+        {
+            "name":     "Community contributions",
+            "homepage": "https://github.com/Payum/Payum/contributors"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3",
+        "payum/iso4217": "~1.0",
+        "php-http/message": "^1.0",
+        "php-http/client-implementation": "^1.0",
+        "league/uri": "^5.0",
+        "twig/twig": "~1.0|~2.0"
+    },
+    "require-dev": {
+        "ext-curl": "*",
+        "ext-pdo_sqlite": "*",
+        "payum/omnipay-v3-bridge": "^1@alpha",
+        "omnipay/dummy": "^3@alpha",
+        "omnipay/common": "^3@dev",
+        "doctrine/orm": "^2.5",
+        "phpunit/phpunit": "^7.5",
+        "propel/propel1": "~1.7",
+        "psr/log": "~1.0",
+        "zendframework/zend-db": "~2",
+        "symfony/routing": "^4.4|^5.0",
+        "symfony/http-kernel": "^4.4|^5.0",
+        "symfony/http-foundation": "^4.4|^5.0",
+        "symfony/form": "^4.4|^5.0",
+        "symfony/templating": "^4.4|^5.0",
+        "symfony/validator": "^4.4|^5.0",
+        "symfony/phpunit-bridge": "^4.4|^5.0",
+        "symfony/dependency-injection": "^4.4|^5.0",
+        "authorizenet/authorizenet": "~1.8",
+        "sofort/sofortlib-php": "^3.0",
+        "paypal/rest-api-sdk-php" : "0.5.*",
+        "klarna/checkout": "~1|~2.0",
+        "fp/klarna-invoice": "0.1.*",
+        "stripe/stripe-php": "~2.0|~3.0",
+        "php-http/guzzle6-adapter": "^1.1.1",
+        "defuse/php-encryption": "^2",
+        "ext-soap": "*"
+    },
+    "replace": {
+        "payum/core": "^1",
+        "payum/paypal-express-checkout-nvp": "self.version",
+        "payum/paypal-pro-checkout-nvp": "self.version",
+        "payum/paypal-rest": "self.version",
+        "payum/paypal-ipn": "self.version",
+        "payum/klarna-checkout": "self.version",
+        "payum/klarna-invoice": "self.version",
+        "payum/authorize-net-aim": "self.version",
+        "payum/be2bill": "self.version",
+        "payum/payex": "self.version",
+        "payum/offline": "self.version",
+        "payum/stripe": "self.version",
+        "payum/sofort": "self.version"
+    },
+    "conflict": {
+        "league/uri-components": "<1.7.1"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-4": { "Payum\\": "src/Payum/" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.5-dev"
+        }
+    }
+}

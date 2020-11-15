@@ -1,0 +1,268 @@
+{
+  "2.0.0-alpha.100": {
+    "date": "20180108",
+    "title": "First Public Alpha",
+    "new": "Everything is new",
+    "fixed": "API Calls in settings page being to fast for refresh|Sign-up form submit issue in Wizard",
+    "notes": "This is alpha - expect bugs|Please report bugs in GitHub issues page"
+  },
+  "2.0.0-alpha.110": {
+    "date": "20180109",
+    "title": "Small Addition",
+    "new": "3 Options for appearance|Upgrade module completed",
+    "fixed": "More API lag times",
+    "notes": "This is alpha - expect bugs|Please report bugs in GitHub issues page"
+  },
+  "2.0.0-alpha.115": {
+    "date": "20180109",
+    "title": "Updater Fix",
+    "new": "New Updater Progress Bar",
+    "fixed": "Lag Times on updater|Added longer timeouts",
+    "notes": "This is alpha - expect bugs|Please report bugs in GitHub issues page"
+  },
+  "2.0.0-alpha.120": {
+    "date": "2018-01-10 20:00:00",
+    "title": "Color Picker Testing",
+    "new": "",
+    "fixed": "Attempt to fix color picker",
+    "notes": "This is alpha - expect bugs|Please report bugs in GitHub issues page"
+  },
+  "2.0.0-alpha.125": {
+    "date": "2018-01-10 23:00",
+    "title": "Image Manager",
+    "new": "Added Image Manager",
+    "fixed": "Color Selector|Wizard Preloader",
+    "notes": "This is alpha - expect bugs|Please report bugs in GitHub issues page"
+  },
+  "2.0.0-alpha.130": {
+    "date": "2018-01-10 23:00",
+    "title": "Plugin Framework",
+    "new": "Plugin Framework nearly complete|Added Mail Plugin",
+    "fixed": "",
+    "notes": "This is alpha - expect bugs|Please report bugs in GitHub issues page"
+  },
+  "2.0.0-alpha.200": {
+    "date": "2018-02-04 21:00",
+    "title": "Homepage Work Started",
+    "new": "Plex Streams on homepage|Plex Recent Added on homepage|Emby Streams on homepage|Emby Recent Added on homepage|SabNZBd on homepage",
+    "fixed": "Multiple things for performance",
+    "notes": "This is alpha - expect bugs|Please report bugs in GitHub issues page"
+  },
+  "2.0.0-alpha.250": {
+    "date": "2018-02-05 21:00",
+    "title": "NZBGet Homepage",
+    "new": "NZBGet on homepage - please check for bugs",
+    "fixed": "",
+    "notes": "This is alpha - expect bugs|Please report bugs in GitHub issues page"
+  },
+  "2.0.0-alpha.800": {
+    "date": "2018-04-20 19:25",
+    "title": "Update so heavy - is it Stoned?",
+    "new": "Homepage Items - see below:|Downloader: Deluge - Transmission - Qbit|Calendar: Sonarr - Radarr - CouchPotato - Sickrage/Beard/Medusa|Ombi requests and approvals|Custom HTML (2 blocks)|Custom CSS|Plex Invites|Mail Templates",
+    "fixed": "Lots of minor little things",
+    "notes": "Beta coming soon"
+  },
+  "2.0.0-alpha.815": {
+    "date": "2018-04-24 21:36",
+    "title": "Bug Fixes",
+    "new": "",
+    "fixed": "Plex Now Playing bug not showing items|Invite menu not loaded on initial load",
+    "notes": "Beta coming soon"
+  },
+  "2.0.0-beta.100": {
+    "date": "2018-05-04 19:00",
+    "title": "First Beta Release",
+    "new": "SpeedTest|Email templates",
+    "fixed": "",
+    "notes": "RC coming soon"
+  },
+  "2.0.0-beta.200": {
+    "date": "2018-05-17 18:00",
+    "title": "Second Beta Release",
+    "new": "Homepage Test Button on some modules|Smaller Nav bar|Recent Item Limits|Nav buttons on sliders|Settings save revamped|Ombi user import on register|Test iFrame buttons|Ombi auth for requesting|Favicon support|Ping Support|New Alert Styles|New Lockout Timeout system",
+    "fixed": "Calendar Alt Title|Deluge Hide/Seed|More DDNS workarounds|Homepage auth issues|Deluge no results|PHPMailer plugin fixes|Wizard auto login",
+    "notes": "Calendar has Today Button now"
+  },
+  "2.0.0-beta.500": {
+    "date": "2018-08-31 23:59",
+    "title": "A Bunch of things since last real release",
+    "new": "Chat System - Powered by Pusher|Keyboard Shortcuts|Fullscreen button|Icon and Image selector for tabs|Multiple Tautulli SSO|Pagination to search|Redirect added to error page|Auth Debug toggle|Custom CSS and JS for themes|Theme Marketplace|Plugin Marketplace|Calendar Sorting|Email user from user mgmt|Tab sort for unsorted|Cache image size option",
+    "fixed": "Deluge Test Button|PHP5.6 Error|Sonarr local cert|Plex Invite error codes|Email center fixes #891|Fixed log out issues|Fixed Cookie issues - Use any domain you want now",
+    "notes": "Lots of small fixes"
+  },
+  "2.0.0-beta.600": {
+    "date": "2018-09-02 02:00",
+    "title": "2FA - Finally",
+    "new": "Google 2FA - More services to come",
+    "fixed": "Small Chat dupe bug",
+    "notes": "More small fixes"
+  },
+  "2.0.0-beta.800": {
+    "date": "2018-10-25 22:40",
+    "title": "Closer to v2.0",
+    "new": "rTorrent HP Support|Plex OAuth|Tautulli SSO using Plex OAuth|Import Plex Users|Combined Downloaders on HP|Account Area Active Token Section|Alphanumberic tab icons|Debug Area WIP|Remember me length setting|Disable ping sound",
+    "fixed": "NZBGet file size bug|Password Save bug|Auth issue if DB has wrong permissions|Ombi TV show issue|Scrollbars on FF|Token revoke on logout|BTC address|Homepage and Settings tab type non-change fix|Tab settings not reset (#942)|SSO code position (#946)|Gravatar email change fix (#951)",
+    "notes": "Added plex token to db for plex users|Added SSL option to chat|Added Bazzrr logo|Disable username and email change if 2FA enabled|Misc UI changes"
+  },
+  "2.0.0-beta.950": {
+    "date": "2019-01-23 22:40",
+    "title": "The one before v2.0",
+    "new": "Ombi SSO with Plex Token|Default TV Request options for Ombi|Token Section in user settings|Local URL connection if on LAN|Added preload Tab options|Added downloader count to combined downloader|Added option to disable Strict Plex Friend",
+    "fixed": "Fixed Emby Connect|Disable lock function for oAuth users (#973)|Better error handling for the *arrs|make settings open first tab if not active already (#901)|make sure db ends with .db (#971)|Fix deluge hide seeding etc (#867)|fix downloaders showing blank if no permissions (#977)|Plex login button css (#985)|Add tab help (#987)|Fix close buttons (#883)|close buttons on popups fixed (#996)|fix clipboard with value with filename containing space (#994)|Move machine ID check outside of foreach (#1014)|Fixed language error if not langpack is installed for that lang (#1028)|undefined index on sickrage (#1038)|Fix iframe focus not shifting back (#1042)",
+    "notes": "Added more debug information|Reworked the way languages are loaded|Updated Language strings|Revamped Splash page"
+  },
+  "2.0.0-beta.960": {
+    "date": "2019-01-27 00:20",
+    "title": "Some fixes before v2.0",
+    "new": "Update page includes links to GH issues|Cleaner Login|Default to Plex Auth if enabled on login screen",
+    "fixed": "Fix Plex oAuth remains enabled when switching back to Organizr DB only (#1046)|Fix Ombi if no TV Requests again|2FA box includes login button now",
+    "notes": "Hoping for a smooth release of 2.0 this coming week"
+  },
+  "2.0.0-beta.980": {
+    "date": "2019-02-22 15:30",
+    "title": "Little things here and there",
+    "new": "Added news section to settings page|Add new pathsWritable function for multiple paths|Added global variable for main path and api path|Added update check for folder permissions|Added login with plex email and plex username for oauth|Added option for Ombi Homepage pulls Ombi Username instead of alias (#1052)|Added error catching on json parse for ajax calls|Add Pi-Hole image (#1060)|Added DB Path to folder check|Disable update and download if using docker container|Added Close Tab to Alt + Click|Disable branch change for docker users",
+    "fixed": "Fix update button on message not working if not on settings page (#1050)|Fix js reload button on new tab creation|Finally fix ombi limit to user|Fix tab edit/create when using same tab name already in use (#1066)|Embi local API requires exact case for username (#1061)|Fix edit tab name if exists",
+    "notes": "Remove constant welcome message - Added welcome message only on login|Clean up org errors a little bit"
+  },
+  "2.0.0-beta.990": {
+    "date": "2019-02-28 21:20",
+    "title": "Yes, this is the last beta",
+    "new": "Ability to update if using Docker|More Calendar info|Feature to disable/restrict debug area (#1080)|Added DB Schema to debug|Added docker commit info to see if new update is out",
+    "fixed": "rTorrent different endpoints (#1072)|Changing username breaks Tautulli SSO autologin for guest users (#1017)|Issue with menu CSS (#1075)|Unsorted Tab Placement option reverses sort for all tabs (#1037)|Work on LDAP, Should work with AD, OpenLDAP, FreeIPA (#1074)|Plex share invite placeholder (#1000)",
+    "notes": "Beta? What? No More?"
+  },
+  "2.0.0": {
+    "date": "2019-03-01 16:30",
+    "title": "Finally Version 2.0",
+    "new": "",
+    "fixed": "",
+    "notes": "Please report bugs in GitHub issues page"
+  },
+  "2.0.20": {
+    "date": "2019-03-04 23:00",
+    "title": "Security Fixes",
+    "new": "",
+    "fixed": "Security issue around CRFS and file upload and delete (#1086)|Clicking on iCal Calendar Item Locks Up GUI (#1092)|Custom js and css ace boxes not encoding correctly|Possibility for co-admin to become admin|Branch being disabled",
+    "notes": "Please report bugs in GitHub issues page"
+  },
+  "2.0.32": {
+    "date": "2019-03-05 19:50",
+    "title": "Auto-Reload and Auto-Close",
+    "new": "Auto Close and Auto reload feature (#1071)",
+    "fixed": "Undefined index dbLocation (#1093)|Disable show update to new version if on docker|Ombi sso only works with full email as user id (#1047)|Clear ajax calls if homepage is closed|Hardcoded news and sponsors branch",
+    "notes": "Please report bugs in GitHub issues page"
+  },
+  "2.0.49": {
+    "date": "2019-03-08 19:00",
+    "title": "Plex Recent is back",
+    "new": "Requests now show type of request on hover",
+    "fixed": "Plex homepage items don't redirect to Plex when the tab name has special characters (#1096)|Work around for Plex recentlyAdded api call (#1069)|FormKey issues|Calendar misc text issue",
+    "notes": "Updated language translations|Please report bugs in GitHub issues page"
+  },
+  "2.0.70": {
+    "date": "2019-03-15 23:40",
+    "title": "Weekly Update",
+    "new": "Radarr 4k Image|SRI Hash for External JS (#1055)|Limit for Ombi items (#1107)|CTRL + SHIFT on splash page to not close it after click",
+    "fixed": "Fix for bootstrap screen width bug @leram84|Ombi on homepage causes site to hang (#1107)|Fix SSO if user is LDAP user|Auto reload on internal tabs|Request button border-radius",
+    "notes": "Updated language translations|Please report bugs in GitHub issues page"
+  },
+  "2.0.180": {
+    "date": "2019-05-03 18:00",
+    "title": "Long Overdue Update",
+    "new": "Emby Invites|HealthChecks.io to homepage|Added ability to have more than one api token for healthchecks.io|Updated SweetAlert to new version|Option to define local IP override|LDAP login test|iFrame sandbox options|Refreshes to plex and emby recent|OPNsense to Default Icon Library (#1131)|Added refresh to calendar|Added refresh to Streams|Added keybinding for next and previous tabs|Toggle to turn of organizr debug errors|Added method to login with API|Add header to auth line for current user - used for Grafana SSO|Shortcut to edit homepage item on tab page|Allow custom URL for selfhosted version of healthchecks (#1161)",
+    "fixed": "Ombi SSO error (#1117)|Changed Windows update method|Multiple CSS fixes|Invite select2 box code|V2 emby unexpected token (#1121)|Fix Menu overlapping (#1122)|Calendar does not show recurring events (#1104)|Fix big log files (#990)|Ignore js error for downloader (#1133)|Make all urls without scheme http (#1133)|Mobile login form autocapitalises and auto-corrects (#1138)|Undefined index: description (#1154)|http and https check (#1154)|Tab Url choose image text/image is misaligned (#1146)|invite settings box|Misaligned trashcan icon in Tab Editor menu (#1147)",
+    "notes": "Updated language translations|Added more default tab images|Please report bugs in GitHub issues page"
+  },
+  "2.0.225": {
+    "date": "2019-05-31 21:20",
+    "title": "Small Things and Language Updates",
+    "new": "Support for custom GA Tracking code|Manual update checker",
+    "fixed": "Download file function|2FA if using Password Manager|Calendar Localization|Emby local Auth|Sonarr JSON issue|Typos",
+    "notes": "Disabled Emby Connect due to Emby|Made Debug error false by default|Updated language translations|Added more default tab images|Please report bugs in GitHub issues page"
+  },
+  "2.0.235": {
+    "date": "2019-06-07 19:30",
+    "title": "Small Weekly Update",
+    "new": "Plex Admin and Strict info to debug area",
+    "fixed": "Radarr image problem if Radarr Auth is on|Plex login for admin using username and pass for SSO|Powershell update script|Login screen for oAuth only as backend",
+    "notes": "Please report bugs in GitHub issues page|Updated language translations|Added more default tab images"
+  },
+  "2.0.270": {
+    "date": "2019-06-29 00:35",
+    "title": "Small Weekly Update",
+    "new": "Login lockout feature|JDownloader HP Support - rix|Coupon indicator on sponsor section|Sponsor API call|Custom Pages API endpoint|Theme analytics|SVG added to whitelist",
+    "fixed": "Homepage Loading Sections Displaying for Disabled Items (#1204)|Healthchecks tag issue|Updated Evo logo|Updated Netdata logo|Updated Nextcloud logo|CSS fix for alt headers on HP|HP Downloader counter on MS Edge|Cache image button on recent items",
+    "notes": "Please report bugs in GitHub issues page|Updated language translations"
+  },
+  "2.0.307": {
+    "date": "2019-08-31 16:40",
+    "title": "Sorry for late update",
+    "new": "Added Auth Proxy - Accept X-Forwarded-User (#1215)|Ombi default sort option|JDownloader Actions|Set of wallpapers for login page (#1214)|Logging to help with email debug|HTTP codes to API|IPInfo in settings logs|Plex oauth update - thanks swifty|Disable Google Authenticator for Local Access (#1232)",
+    "fixed": "Upgraded Simplebar|Homepage downloader variable being overwritten|Timeout on Docker update|Radarr Calendar Image URL",
+    "notes": "Please report bugs in GitHub issues page|Updated language translations"
+  },
+  "2.0.320": {
+    "date": "2019-10-11 16:25",
+    "title": "Super small update",
+    "new": "Unifi Homepage Item|Login and Top Bar Logo (#1029)|Add 5 minute buffer to plex thumbs",
+    "fixed": "Quick and dirty fix for Google iCal Not working (#1233)|Forgot to add License back (#1247)|Fix context menu disabled on lock screen (#1243)|Dropdown arrows on Tab Groups not animating (#1239)|Fix Unifi cookie to be loaded on first api call|Cannot re-order new tabs from bottom upwards in Settings after adding many (#1175)",
+    "notes": "Add a class and data-tab-name to sidenav groups (#1249)|Please report bugs in GitHub issues page|Updated language translations"
+  },
+  "2.0.325": {
+    "date": "2019-10-18 20:20",
+    "title": "Fix Unifi Homepage",
+    "new": "",
+    "fixed": "Plugin Files not loading css files|Remove unifiCookie from unif homepage check",
+    "notes": "Please report bugs in GitHub issues page|Updated language translations"
+  },
+  "2.0.362": {
+    "date": "2020-01-13 20:15",
+    "title": "Long awaited release - Sorry!",
+    "new": "Added Jellyfin support - uses same HP Modal as Emby|Added new tab images for Fritzbox, Kodi, OpenHAB and Calibre-Web|Added nginx auth_request dynamic endpoints to allow permission management on organizr front end|Add email header for Auth Proxy use (#1298)|Add another Variable to PR (#1298)|Update local function to take force variable|Added rtorrent bypass cert check",
+    "fixed": "qBittorrent Workaround for v2 API (#1287)|Dependency check fails incorrectly on PHP 7.4 (#1288)|Fix depreciated item on PHP 7.4 (#1288)|7.4 work on array check|XSS Vulnerability (#1291)|Cleaner XSS Vulnerability (#1291)|Closing tabs open up top tab (#1266)|more clean up on unifi homepage item|fix typ-os|Add homepage-element-title class to left-aligned homepage element names|Fix plex show on homepage",
+    "notes": "Please report bugs in GitHub issues page|Updated language translations"
+  },
+  "2.0.370": {
+    "date": "2020-02-21 14:55",
+    "title": "YouTube Homepage Fix",
+    "new": "Added option to forward to local instance if detected",
+    "fixed": "Fix for YouTube daily query quota is too low (#1297)",
+    "notes": "Please report bugs in GitHub issues page|Updated language translations"
+  },
+  "2.0.390": {
+    "date": "2020-03-06 20:50",
+    "title": "",
+    "new": "Remove tab has after logout|Added ChangeLog Link (#1292)|server auth redirect for traefik (#1240)|Edit wording for rutorrent urls|add ssl options to fopen on getCert function",
+    "fixed": "Fixed Radarr V2 and V3 image issue|Workaround for Organizr become unresponsive after opening Tab Editor tab (#1319)|How to Reset the \"Color and Themes\" Section? (#1085)|Attempt to fix rutorrent issues with seedboxes|Attempt to fix 2.0.370 update not working (#1316)",
+    "notes": "Framework changes below|Updated PHP Mailer|Updated JWT|Updated pusher|Updated LDAP|Updated guzzle|removed TLD Extract|Please report bugs in GitHub issues page|Updated language translations"
+  },
+  "2.0.408": {
+    "date": "2020-03-27 20:35",
+    "title": "Small Update",
+    "new": "Reworked Ombi Homepage ajax loading screen - faster now|added validate token api endpoint|sidebar rtl for tabs|added org token check and logout if not valid|Add IDs to all downloader Homepage item? (#1213)|Add toggle for login image|increase jdownloader timeout",
+    "fixed": "Fix Sidebar doesn't load tabs on iPhone running iOS 13.4+ (#1328)|Attempt to fix api call for image fetch for some users|check if HTTP_X_FORWARDED_SERVER is set|rtorrent/Nzbget API homepage modules and special character in password (#1309)|fix for nzbget connection|2FA login breaks with LastPass Chrome extension (#997)Ombi homepage item \"Item limit\" setting does not change the number of items displayed on the homepage (#1324)",
+    "notes": "Updated Dibi|Please report bugs in GitHub issues page|Updated language translations"
+  },
+  "2.0.570": {
+    "date": "2020-05-01 19:15",
+    "title": "Quarantine Update",
+    "new": "Weather Homepage Item|Pi-Hole Homepage Item|Tautulli Homepage Item|Monitorr Homepage Item|Netdata Homepage Item|SpeedTest Homepage Item|HealthChecks Plugin|Bandwidth info to Now Playing|Config files can now contain arrays|Scrape API endpoint|New API Docs WIP located at /api/docs",
+    "fixed": "iOS icon issue|Language Bug|Cache Image timing|fix hardcoded plugins directory for root (#1341)|Ombi Posters|Plex Timeouts|Indent cleanup|Homepage Item shortcut in Tab Editor broken (#1368)|Empty login form submitting|Sanitize username going into log (#1359)|Ombi Div for tv items|edit sttabs for reflect more than just settings tabs|Emby HomePage Add-in - Item Details URL Needs updating (#1290)|Fix JQuery error on settings save (#1356)",
+    "notes": "Added note about Samesite issues|New Radarr Logo|Please report bugs in GitHub issues page"
+  },
+  "2.0.631": {
+    "date": "2020-06-19 19:15",
+    "title": "Whoa - sorry for the wait",
+    "new": "Added css bottom-close-splash",
+    "fixed": "Netadata fixes|Docker update fixes|Tautulli Fixes|Hardcode fixes for days beyond one year|Typos|NZBHydra tab image|fix stray / in index.php and js/functions.php (#1408)|LDAP with STARTTLS support (#1411)",
+    "notes": "Please report bugs in GitHub issues page"
+  },
+  "2.0.633": {
+    "date": "2020-06-20 02:01",
+    "title": "Small Bugfix",
+    "new": "",
+    "fixed": "Fix heredoc error on php versions under 7.3",
+    "notes": "Please report bugs in GitHub issues page"
+  }
+}

@@ -1,0 +1,12 @@
+# What is this?
+
+These are some of the examples we found on compromised Drupal installs at [Nucleus](https://www.nucleus.be/en/).
+
+They are the direct result of [CVE-2018-7600](https://www.drupal.org/sa-core-2018-002), a remote code execution vulnerability in Drupal.
+
+The pattern:
+
+- search.php, dump.php & wp-post.php: same filename everywhere. Always in the root of the Drupal installation.
+- favicon_0ac3c0.ico: the `0ac3c0` part is a variable hash every time. The file gets dumped somewhere in the `/themes/` or `/modules/` directory.
+
+These can easily be found & detected through a combination of [Maldet](https://www.rfxn.com/projects/linux-malware-detect/) and regex-searches on functions like `eval`, `gzinflate`, etc.

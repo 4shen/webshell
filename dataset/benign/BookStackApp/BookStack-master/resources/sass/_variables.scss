@@ -1,0 +1,71 @@
+// Variables
+///////////////
+
+// Screen breakpoints
+$xxl: 1400px;
+$xl: 1100px;
+$ipad-width: 1028px; // Is actually 1024 but we go over to ensure functionality.
+$l: 1000px;
+$m: 880px;
+$s: 600px;
+$xs: 400px;
+$xxs: 360px;
+$screen-lg: 1200px;
+$screen-md: 992px;
+$screen-sm: 768px;
+
+// List of screen sizes
+$screen-sizes: (('xxs', $xxs), ('xs', $xs), ('s', $s), ('m', $m), ('l', $l), ('xl', $xl));
+
+// Spacing (Margins+Padding)
+$-xxxl: 64px;
+$-xxl: 48px;
+$-xl: 32px;
+$-l: 24px;
+$-m: 16px;
+$-s: 12px;
+$-xs: 6px;
+$-xxs: 3px;
+
+// List of our spacing sizes
+$spacing: (('none', 0), ('xxs', $-xxs), ('xs', $-xs), ('s', $-s), ('m', $-m), ('l', $-l), ('xl', $-xl), ('xxl', $-xxl));
+
+// Fonts
+$text: -apple-system, BlinkMacSystemFont,
+"Segoe UI", "Oxygen", "Ubuntu", "Roboto", "Cantarell",
+"Fira Sans", "Droid Sans", "Helvetica Neue",
+sans-serif;
+$mono: "Lucida Console", "DejaVu Sans Mono", "Ubunto Mono", Monaco, monospace;
+$heading: $text;
+$fs-m: 14px;
+$fs-s: 12px;
+
+// Colours
+:root {
+  --color-primary: #206ea7;
+  --color-primary-light: rgba(32,110,167,0.15);
+
+  --color-page: #206ea7;
+  --color-page-draft: #7e50b1;
+  --color-chapter: #af4d0d;
+  --color-book: #077b70;
+  --color-bookshelf: #a94747;
+}
+
+$positive: #0f7d15;
+$negative: #ab0f0e;
+$info: #0288D1;
+$warning: #cf4d03;
+
+// Text colours
+$text-dark: #444;
+$text-light: #EEE;
+
+// Shadows
+$bs-light: 0 0 4px 1px #CCC;
+$bs-dark: 0 0 4px 1px rgba(0, 0, 0, 0.5);
+$bs-med: 0 1px 3px 1px rgba(76, 76, 76, 0.26);
+$bs-large: 0 1px 6px 1px rgba(22, 22, 22, 0.2);
+$bs-card: 0 1px 6px -1px rgba(0, 0, 0, 0.1);
+$bs-card-dark: 0 1px 6px -1px rgba(0, 0, 0, 0.5);
+$bs-hover: 0 2px 2px 1px rgba(0,0,0,.13);

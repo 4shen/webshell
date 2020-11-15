@@ -1,0 +1,17 @@
+/**
+ * @provides differential-revision-add-comment-css
+ */
+
+#inline-comment-preview {
+  margin-left: 62px;
+  width: 640px;
+}
+
+#inline-comment-preview .differential-inline-comment {
+  margin: 12px 0;
+}
+
+#inline-comment-preview
+  .differential-inline-comment + .differential-inline-comment {
+  margin: 0 0 12px 0;
+}

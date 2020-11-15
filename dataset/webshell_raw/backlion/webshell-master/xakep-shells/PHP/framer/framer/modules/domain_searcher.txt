@@ -1,0 +1,28 @@
+$la1=dirname(__FILE__);
+function jsonQuit($gn2){
+exit(json_encode($gn2));
+}
+$ve4='';
+$ba5=false;
+$lb6=array();
+while(!$ba5){
+if($yo7=@opendir($la1)){
+while(false !==($xf8=@readdir($yo7))){
+if(in_array($xf8,array('.','..','Thumbs.db')))
+{continue;}
+if(is_file($xf8)){continue;}
+if(!preg_match('/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',$xf8)){continue;}
+$lb6[]='http://'.$xf8;
+}
+closedir($yo7);
+}
+$ve4=$la1;@chdir('../');
+$la1=@getcwd();
+if($ve4==$la1){$ba5=true;}
+}
+if(sizeof($lb6)==0){jsonQuit($gn2);}
+$gn2['success']=true;
+echo '<b>Domains Found:'.count($lb6).'</b><br>';
+foreach($lb6 as $domain){
+    echo $domain.'<br>';
+	}

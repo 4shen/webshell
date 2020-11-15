@@ -1,0 +1,42 @@
+############################################################################
+#
+#  This file contains all the commands available in the system. Each command
+#has its own description and How-to-use. All the commands involved in this tool
+#should be list here.
+#
+#
+#Author: William Han,  Jerry Tang       Date: 2013-10-09
+#
+############################################################################
+
+#help [cmd]
+
+    Usage: help  [command]
+    
+    Description: By default, it displays all the commands supported in this tool. if the command is specified, It will print out
+    
+    the corresponding help info of the command.
+    
+    Commands:
+        
+	machine - list, search, and send job to machines which is managed by the system.
+        job     - list, track the running machine.
+
+       
+
+
+#machine
+
+    Usage: machine [options] [machine_name| machine_id]
+
+    Description: this cmmand is used to list and find machines you want to know details about.
+  
+    Options:
+
+    -h show help information.
+    -l list all the machines managed by the system.
+    -s search machine by name.  (regular expression supported)
+
+
+
+#job

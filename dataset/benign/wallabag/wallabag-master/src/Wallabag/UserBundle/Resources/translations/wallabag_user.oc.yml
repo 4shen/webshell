@@ -1,0 +1,11 @@
+# Two factor mail
+auth_code:
+    on: 'sus'
+    mailer:
+        subject: "Còdi d'autentificacion wallabag"
+        body:
+            hello: "Bonjorn %user%,"
+            first_para: "Estant qu'avètz activat l'autentificacion en dos temps sus vòstre compte wallabag e que venètz de vos connectar d'un novèl periferic (ordinador, mobil, etc.) vos mandem un còdi per validar la connexion."
+            second_para: "Vaquí lo còdi per dintrar : "
+            support: "S'avètz un problèma de connexion, dobtetz pas a contactar l'assisténcia : "
+            signature: "La còla de wallabag"

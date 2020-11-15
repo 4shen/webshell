@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @link https://www.humhub.org/
+ * @copyright Copyright (c) 2015 HumHub GmbH & Co. KG
+ * @license https://www.humhub.com/licences
+ */
+
+namespace humhub\modules\content\widgets;
+
+use Yii;
+use humhub\modules\content\components\ContentContainerController;
+
+/**
+ * PinLink for Wall Entries
+ *
+ * This widget will attached to the WallEntryControlsWidget and displays
+ * the "Pin or Unpin" Link to the Content Objects.
+ *
+ * @since 0.5
+ */
+class ArchiveLink extends \yii\base\Widget
+{
+
+    /**
+     * @var \humhub\modules\content\components\ContentActiveRecord
+     */
+    public $content;
+
+    /**
+     * Executes the widget.
+     */
+    public function run()
+    {
+        if (!Yii::$app->controller instanceof ContentContainerController || !$this->content->content->canArchive() || $this->content->content->getContainer()->isArchived()) {
+            return;
+        }
+
+        return $this->render('archiveLink', [
+                    'object' => $this->content,
+                    'id' => $this->content->content->id,
+        ]);
+    }
+
+}
+
+?>

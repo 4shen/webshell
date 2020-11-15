@@ -1,0 +1,338 @@
+// Login Page
+#unmark_login_page {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    //background: darken($color_gray, 3%);
+    background: $color_darkest;
+    top: 0;
+    z-index: 99999;
+    //padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include sm {
+      //padding-top: 80px;
+      //padding-bottom: 150px;
+    }
+}
+.homepage {
+  #unmark_login_page {
+    @include sm {
+      height: calc(100% - 68px);
+    }
+    @include md {
+      height: calc(100% - 150px);
+    }
+  }
+}
+
+#unmark_about_page { display: none; }
+.login-page-bottom {
+    background: none;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    height: 68px;
+    text-align: center;
+    margin-top: 30px;
+    @include sm {
+        background: $color_darkest;
+        position: absolute;
+        margin-top: 0;
+        bottom: auto;
+        top: 100%;
+    }
+    @include md {
+        height: 150px;
+        padding: 10px 20px 20px 20px;
+        //box-shadow: 0 18px 26px -20px rgba(0,0,0,0.4) inset, 0 5px 8px -6px rgba(0,0,0,0.35) inset;
+    }
+    a {
+      display: block;
+      //padding: 30px;
+      height: 68px;
+      @include sm {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        padding: 20px;
+      }
+      @include md {
+        //height: 150px;
+        padding: 40px 30px;
+      }
+    }
+    i {
+        display: none;
+        width: 27px;
+        height: 27px;
+        margin: 25px auto 0;
+        background-size: 100%;
+        opacity: 0.6;
+        transform: rotate(180deg);
+        @include md {
+            display: inline-block;
+        }
+    }
+    span {
+        @include title-text;
+        color: $color_darkest;
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 600;
+        @include sm {
+          color: transparentize(white, 0.2);
+        }
+        @include md {
+            font-size: 13px;
+            display: block;
+        }
+    }
+}
+
+.loginWrapper, .forgotPassWrapper, .resetWrapper {
+    width: 300px;
+    margin: 0 auto;
+    //text-align: center;
+    position: relative;
+    color: $color_light;
+    border-radius: 8px;
+    box-shadow: 0 4px 5px 0 transparentize(darken($color_darkest, 20%), .93), 0 12px 20px 0 transparentize(darken($color_darkest, 20%), .95);
+    padding: 20px;
+    background: $color_white;
+    @include sm {
+        //margin-top: 50px;
+    }
+    .loginInner {
+        position: relative;
+    }
+    h1 {
+        @include title-text;
+        font-size: 11px;
+        margin: 15px 0 5px 0;
+    }
+    .login-branding {
+      padding: 10px 0 28px;
+      text-align: center;
+      .login-branding-wrapper {
+        margin: 0 auto;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .login-ball {
+        width: 26px;
+        //margin: 0 auto;
+        margin: 0 7px 0 5px;
+    }
+    .login-text {
+        width: 86px;
+        //margin: 0 auto 30px auto;
+        margin: 0 7px;
+        padding-bottom: 2px;
+        svg {
+          fill: $color_darkest;
+        }
+    }
+    form {
+        margin-bottom: 0;
+        position: relative;
+        .field-input {
+            @include input-style(14px);
+            &:not([type=submit]):not([type=file]) {
+              @include xs {
+                //line-height: 1;
+                -webkit-appearance: none;
+              }
+            }
+            &[type=password] {
+              letter-spacing: 1.75px;
+            }
+            &.small-left {
+                width: 110px;
+                float: left;
+                margin-right: 10px;
+            }
+            &.small-right {
+                width: 155px;
+                float: left;
+            }
+        }
+        .login-submit2 {
+            background: $color_red;
+            color: $color_white;
+            font-size: 17px;
+        }
+        .login-submit, .forgot-submit {
+            position: relative;
+            margin: 0;
+            top: auto;
+            left: auto;
+            right: auto;
+            background: $color_blue;
+            padding: 12px 15px 15px;
+            font-size: 15px;
+            letter-spacing: .35px;
+            width: 100%;
+            height: 48px;
+            //box-shadow: 0 30px 60px -24px transparentize(white, .8) inset, 0 10px 12px -12px transparentize($color_darkest, .7) inset;
+            color: white;
+            font-weight: 700;
+            border-radius: 5px;
+            &:after {
+              /*
+                content: "";
+                width: 14px;
+                height: 7px;
+                border: solid white;
+                border-width: 0 0 2px 2px;
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -4px;
+                margin-top: -6px;
+                */
+            }
+            i {
+                width: 12px;
+                height: 12px;
+                display: block;
+                background-size: 100%;
+                margin-top: 4px;
+                margin-right: -3px;
+                display: none;
+            }
+        }
+        .forgot-submit {
+            //top: 2px;
+        }
+        ::-webkit-input-placeholder {
+            @include input-placeholder;
+        }
+        ::-moz-placeholder {
+            @include input-placeholder;
+        }
+        :-ms-input-placeholder {
+            @include input-placeholder;
+        }
+    }
+    .login-links {
+      margin-top: 22px;
+      margin-bottom: 8px;
+      text-align: center;
+      @include sm {
+        margin-bottom: 10px;
+      }
+      p {
+        font-size: 13px;
+        color: desaturate(lighten($color_darkest, 12%), 20%);
+      }
+    }
+    a.forgot-pass, a.register {
+        font-size: 13px;
+        font-weight: 400;
+        color: $color_darkest;
+        border-bottom: 1px solid transparentize($color_dark, .85);
+    }
+    span.sep {
+        color: transparentize($color_dark, .8);
+        padding: 0 8px;
+    }
+    .response-message {
+        color: $color_darkest;
+        font-size: 13px;
+        display: none;
+        font-weight: 400;
+        background: $color_gray;
+        margin-top: 20px;
+        border-radius: 4px;
+        font-weight: 600;
+        line-height: 1.4;
+        padding: 12px 16px 14px;
+        &.error {
+            color: white;
+            background: $color_red;
+            border:none;
+        }
+    }
+    #current_sub_card span {
+        display: block;
+        margin-bottom: 15px;
+        font-size: 13px;
+    }
+    form#register_user .login-submit {
+        //top: 101px;
+        display:block;
+    }
+}
+
+.hiddenform h1 {
+    margin-bottom: 25px;
+}
+
+.forgotPassWrapper {
+    //top: -500px;
+    display: none;
+}
+#unmarkLogin, #unmarkForgotPass, #register_user {
+  //overflow: hidden;
+  //border-radius: 6px;
+  padding: 0;
+  //box-shadow: 0 4px 5px 0 transparentize(darken($color_darkest, 20%), .93), 0 12px 20px 0 transparentize(darken($color_darkest, 20%), .95);
+}
+
+.resetWrapper {
+    a.forgot-pass {
+        margin-top: 15px;
+        display: block;
+    }
+    .gethere {
+        display: none;
+        border: 1px solid $color_light;
+        padding: 10px 10px 0 10px;
+        margin-top: 25px;
+        font-size: 14px;
+        position: relative;
+        p {
+            margin: 0;
+            padding: 5px 5px 0px 5px;
+            &.last {
+                margin-bottom:25px;
+            }
+        }
+        a {
+            display: block;
+            float: left;
+            padding: 10px 41px;
+            margin: 0 0 -15px -10px;
+            border: 1px solid $color_light;
+        }
+        a.help {
+            margin-left: -11px;
+        }
+        a.home {
+            margin-right: -11px;
+            padding-right: 49px;
+            border-left: none;
+        }
+        &:before {
+            position:absolute;
+            top: -11px;
+            content: "";
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid $color_light;
+            left: 45%;
+        }
+    }
+}

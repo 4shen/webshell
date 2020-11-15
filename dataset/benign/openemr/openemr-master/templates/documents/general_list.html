@@ -1,0 +1,217 @@
+{**
+* general document list
+*
+* @package   OpenEMR
+* @link      http://www.open-emr.org
+* @author    Brady Miller <brady.g.miller@gmail.com>
+* @copyright Copyright (c) 2017-2018 Brady Miller <brady.g.miller@gmail.com>
+* @license   https://github.com/openemr/openemr/blob/master/LICENSE GNU General Public License 3
+*}
+<html>
+<head>
+
+{headerTemplate assets='datetime-picker|select2'}
+<link rel="stylesheet" href="{$GLOBALS.assets_static_relative}/dropzone/dist/dropzone.css">
+{literal}
+<style>
+.select2-selection {
+height: 35px!important;
+border-radius: 4px 0 0 4px!important;
+}
+.warn_diagnostic {
+    margin: 10 auto 10 auto;
+    color: rgb(255, 0, 0);
+    font-size: 1.5rem;
+}
+.fixed-height {
+    min-width: 200px;
+    padding: 1px;
+    max-height: 35%;
+    overflow: auto;
+}
+</style>
+{/literal}
+<script src="{$GLOBALS.webroot}/library/js/DocumentTreeMenu.js"></script>
+<script src="{$GLOBALS.assets_static_relative}/dropzone/dist/dropzone.js"></script>
+
+<script>
+	function callTemplateModule() {literal}{{/literal}
+		top.restoreSession();
+		let tele  = document.getElementById("template_filename");
+		let tname = encodeURIComponent(tele.options[tele.selectedIndex].value);
+        let callUrl = '{$GLOBALS.webroot}/portal/patient/onsitedocuments?pid=' + {$patient_id|js_url} + '&catid=' + {$category_id|js_url} + '&is_module=true&new=' + tname;
+		location.assign(callUrl);
+	{literal}}{/literal}
+	// dropzone javascript asset translation(s)
+    Dropzone.prototype.defaultOptions.dictDefaultMessage = {xlj t='Drop files here to upload'};
+</script>
+<title>{xlt t='Documents'}</title>
+</head>
+<!-- ViSolve - Call expandAll function on loading of the page if global value 'expand_document' is set -->
+{if $GLOBALS.expand_document_tree}
+  <body class="body_top" onload="javascript:objTreeMenu_1.expandAll();return false;">
+{else}
+  <body class="body_top">
+{/if}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="title">
+					<h2>{xlt t='Documents'} <a href='interface/patient_file/summary/demographics.php' onclick='top.restoreSession()' title="{xla t='Go Back'}" ><i id='advanced-tooltip' class='fa fa-undo fa-2x small' aria-hidden='true'></i></a></h2>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3">
+			<div id="documents_list">
+				<fieldset>
+				<legend>{xlt t='Documents List'}</legend>
+                <div style="padding: 0 10px">
+                    <div class="ui-widget form-inline" class='float-right'>
+                         <select id="selectPatient" class="form-control" type="text" data-placeholder="{$place_hld|attr}" style="width:150px;" >
+                            <option></option></select>
+                        <button id='pid' class="btn btn-primary pBtn" type="button" class='float-right' style="border-radius: 0 0.25rem 0.25rem 0">0</button>
+                    </div>
+                    <a id="list_collapse" href="#" onclick="javascript:objTreeMenu_1.collapseAll();return false;">&nbsp;({xlt t='Collapse all'})</a>
+                    {$tree_html}
+                </div>
+			</fieldset>
+            </div>
+		</div>
+
+		<div class="col-sm-9">
+			<div id="documents_actions">
+
+				<fieldset>
+
+					<legend>{xlt t='Document Uploader/Viewer'}</legend>
+                    <div style="padding: 0 10px">
+						{if $message}
+							<div class='text' style="margin-bottom:-10px; margin-top:-8px; padding:10px;"><i>{$message|text}</i></div><br />
+						{/if}
+						{if $messages}
+							<div class='text' style="margin-bottom:-10px; margin-top:-8px; padding:10px;"><i>{$messages|text}</i></div><br />
+						{/if}
+						{$activity}
+					</div>
+				</fieldset>
+
+			</div>
+		</div>
+	</div>
+</div><!--end of container div-->
+<script>
+var curpid = {$cur_pid|js_escape};
+var newVersion= {$is_new|js_escape};
+var demoPid = {$demo_pid|js_escape};
+var inUseMsg = {$used_msg|js_escape};
+{literal}
+if(curpid == demoPid && !newVersion){
+    $(".ui-widget").hide();
+}
+else{
+    $("#pid").text(curpid);
+}
+$(function () {
+    $("#selectPatient").select2({
+        ajax: {
+            url: "{/literal}{$GLOBALS.webroot}/library/ajax/document_helpers.php{literal}",
+            dataType: 'json',
+            data: function(params) {
+                return {
+                  {/literal}
+                  csrf_token_form: {$CSRF_TOKEN_FORM|js_escape},
+                  {literal}
+                  term: params.term
+                };
+            },
+            processResults: function(data) {
+                return  {
+                    results: $.map(data, function(item, index) {
+                        return {
+                            text: item.label,
+                            id: index,
+                            value: item.value,
+                            label: item.label
+                        }
+                    })
+                };
+                return x;
+            },
+            cache: true
+        },
+        minimumInputLength: 3
+    });
+
+    $('#selectPatient').on('select2:select', function (e) {
+        e.preventDefault();
+        if (e.params.data.value == '00' && ! e.params.data.label.match({/literal}{xlj t="Reset"}{literal})){
+            alert(inUseMsg);
+            return false;
+        }
+        $(this).val(e.params.data.label);
+        location.href  = "{/literal}{$GLOBALS.webroot}{literal}/controller.php?document&list&patient_id=" + encodeURIComponent(e.params.data.value) + "&patient_name=" + encodeURIComponent(e.params.data.label);
+        $("#pid").text(e.params.data.value);
+    });
+
+    $(".pBtn").click(function(event) {
+    var $input = $("#selectPatient");
+    $input.val('');
+    });
+});
+$("#list_collapse").detach().appendTo("#objTreeMenu_1_node_1 nobr");
+
+// functions to view and pop out documents as needed.
+//
+$(function () {
+    $("img[id^='icon_objTreeMenu_']").tooltip({
+        items: $("img[src*='file3.png']"),
+        content: {/literal}{xlj t="Double Click on this icon to pop up document in a new viewer."}{literal}
+    });
+
+    $("img[id^='icon_objTreeMenu_']").on('dblclick', function (e) {
+        let popsrc = $(this).next("a").attr('href') || '';
+        let diview = $(this).next("a").text();
+        let dflg = false;
+        if (!popsrc.includes('&view&')) {
+            return false;
+        } else if (diview.toLowerCase().includes('.dcm') || diview.toLowerCase().includes('.zip')) {
+            popsrc = "{/literal}{$GLOBALS.webroot}{literal}/library/dicom_frame.php?web_path=" + encodeURIComponent(popsrc);
+            dflg = true;
+        }
+        popsrc = popsrc.replace('&view&', '&retrieve&') + 'as_file=false';
+        let poContentModal = function () {
+            let wname = '_' + Math.random().toString(36).substr(2, 6);
+            let opt = "menubar=no,location=no,resizable=yes,scrollbars=yes,status=no";
+            window.open(popsrc, wname, opt);
+        };
+
+        let btnText = {/literal}{xlj t="Full Screen"}{literal};
+        let btnClose = {/literal}{xlj t="Close"}{literal};
+        let size = 'modal-xl';
+        let sizeHeight = 'full';
+        if (dflg) {
+            size = 'modal-md';
+        }
+        dlgopen(popsrc, 'popdoc', size, 600, '', '', {
+            buttons: [
+                {text: btnText, close: true, style: 'primary btn-sm', click: poContentModal},
+                {text: btnClose, close: true, style: 'default btn-sm'}
+            ],
+            sizeHeight: sizeHeight,
+            allowResize: true,
+            allowDrag: true,
+            dialogId: '',
+            type: 'iframe'
+        });
+        return false;
+    });
+});
+
+$(function () {{/literal}
+    {datetimepickerSupport}
+{literal}});{/literal}
+
+</script>
+</body>
+</html>

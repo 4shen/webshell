@@ -1,0 +1,8 @@
+composer.phar
+composer.lock
+phpunit.xml
+cov
+vendor
+bin
+src/Payum/Core/Bridge/Propel2/Model/Base
+src/Payum/Core/Bridge/Propel2/Model/Map

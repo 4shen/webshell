@@ -1,0 +1,149 @@
+/**
+ * @provides setup-issue-css
+ */
+.setup-issue-background {
+  padding: 12px 0;
+}
+
+.setup-issue-shell {
+  max-width: 880px;
+  margin: 16px auto;
+}
+
+.setup-issue {
+  background: #fff;
+  border: 1px solid #e4e5e6;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.setup-issue p {
+  margin: 12px 0;
+}
+
+.setup-issue table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e2e2e2;
+}
+
+.setup-issue table th {
+  text-align: right;
+  width: 30%;
+  background: #F8F9FC;
+  border: 1px solid #e2e2e2;
+  padding: 8px;
+}
+
+.setup-issue table td {
+  border: 1px solid #e2e2e2;
+  padding: 8px;
+  word-break: break-word;
+}
+
+.setup-issue pre {
+  width: auto;
+  border: 1px solid #e2e2e2;
+  padding: 12px;
+  background: #F8F9FC;
+  overflow-x: auto;
+  border-radius: 3px;
+}
+
+.setup-issue tt {
+  color: black;
+  background: #EBECEE;
+  padding: 2px 4px;
+}
+
+.setup-issue em {
+  font-weight: bold;
+}
+
+.setup-issue-instructions {
+  font-size: 13px;
+  padding: 16px;
+  line-height: 20px;
+  background: rgba(71,87,120,0.08);
+  border-radius: 3px;
+}
+
+.setup-fatal .setup-issue-instructions {
+  color: #af1404;
+  background: #f4dddb;
+}
+
+.setup-issue-name {
+  font-size: 15px;
+  font-weight: bold;
+  color: #6B748C;
+  border-bottom: 1px solid #e2e2e2;
+  overflow: hidden;
+  padding: 16px;
+  line-height: 24px;
+}
+
+.setup-issue-body {
+  padding: 16px;
+}
+
+.setup-issue-status {
+  margin: 0 0 16px 0;
+  padding: 12px;
+  background: #FDF5D4;
+  color: #ab8206;
+  border-radius: 3px;
+}
+
+.setup-issue-actions {
+  padding: 12px;
+  background-color: #f5f5f5;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  overflow: hidden;
+  text-align: right;
+}
+
+.setup-issue-actions .button {
+  margin-left: 8px;
+}
+
+.setup-issue-next {
+  padding: 12px;
+  border: 1px solid #BFCFDA;
+  background: #daeaf3;
+  text-align: center;
+  margin: 12px 0;
+  color: #2980b9;
+  border-radius: 3px;
+}
+
+.setup-issue-config {
+  padding: 12px 0;
+}
+
+.setup-issue-config + .setup-issue-config {
+  padding-top: 0;
+}
+
+.setup-issue ul {
+  width: 90%;
+  margin: 1em auto;
+  list-style: circle;
+}
+
+.setup-issue-debug {
+  margin-top: 8px;
+  padding: 4px;
+  text-align: right;
+  color: #74777D;
+}
+
+.phui-two-column-view .setup-issue-background {
+  padding: 0;
+}
+
+.phui-two-column-view .setup-issue-shell {
+  width: auto;
+  margin: 0;
+}
